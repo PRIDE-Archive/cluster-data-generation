@@ -15,5 +15,5 @@ import java.util.List;
  */
 public interface ISpectraFilter<F, S> {
 
-    F filter(List<S> spectra);
+    public F filter(List<S> spectra);
 }
