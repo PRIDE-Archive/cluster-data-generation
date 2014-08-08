@@ -35,6 +35,15 @@
         </developer>
     </developers>
 
+    <!--
+        mvn build command
+
+        mvn -P spectra-filter-archive-executable-build clean package
+
+        This will build a zipped file containing the jar file and all the dependencies
+
+    -->
+
     <scm>
         <connection>scm:svn:https://spectra-cluster.googlecode.com/svn/spectra-filter-archive/trunk</connection>
         <developerConnection>scm:svn:https://spectra-cluster.googlecode.com/svn/spectra-filter-archive/trunk</developerConnection>
@@ -140,7 +149,7 @@
                     </excludes>
                     <archive>
                         <manifest>
-                            <mainClass>uk.ac.ebi.pride.spectracluster.ArchiveProjectSpectraFilter</mainClass>
+                            <mainClass>uk.ac.ebi.pride.spectracluster.export.Exporter</mainClass>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib</classpathPrefix>
                             <useUniqueVersions>false</useUniqueVersions>
