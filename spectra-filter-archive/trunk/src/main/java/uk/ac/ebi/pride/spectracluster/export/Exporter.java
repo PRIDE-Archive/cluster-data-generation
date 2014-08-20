@@ -139,8 +139,9 @@ public class Exporter {
         PrintWriter out = null;
         try {
             File projectInternalPath = new File(activeDirectory, "internal");
-            out = new PrintWriter(new FileWriter(outFile));
-            final List<File> files = readMZTabFiles(activeDirectory);
+             final List<File> files = readMZTabFiles(activeDirectory);
+            if(!files.isEmpty())
+                out = new PrintWriter(new FileWriter(outFile));
             for (File mzTab : files) {
                 ArchiveSpectra spec = ArchiveProjectSpectraFilter.buildArchiveSpectra(mzTab, projectInternalPath);
                 if (spec == null) {
@@ -163,7 +164,8 @@ public class Exporter {
             throw new RuntimeException(ex);
         }
         finally {
-            out.close();
+            if(out != null)
+                out.close();
             //    if (numberWritten == 0)
             //         outFile.delete();
 
