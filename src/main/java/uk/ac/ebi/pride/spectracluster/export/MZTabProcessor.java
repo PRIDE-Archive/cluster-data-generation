@@ -19,26 +19,56 @@ import java.io.*;
 import java.util.*;
 
 /**
-* uk.ac.ebi.pride.spectracluster.export.MZTabProcessor
-*
-* @author Steve Lewis
-* @date 22/05/2014
-*/
+ * uk.ac.ebi.pride.spectracluster.export.MZTabProcessor
+ *
+ * @author Steve Lewis
+ * @date 22/05/2014
+ */
 public class MZTabProcessor {
     public static final int MAX_MS_RUNS = 1000;
+
+    /**
+     * convert a modificaction string pt a PSM
+     * @param p
+     * @return
+     */
+    public static final String buildModificationString(PSM p) {
+        SplitList<Modification> modifications = p.getModifications();
+        int size = modifications.size();
+        boolean empty = modifications.isEmpty();
+        if (!empty && size > 0) {
+            StringBuilder sb = new StringBuilder();
+            boolean isFirst = false;
+            String s = modifications.toString();
+            for (Modification modification : modifications) {
+                if (isFirst) {
+                    isFirst = false;
+                }
+                else {
+                    sb.append(",");
+                }
+                sb.append(modification.toString());
+            }
+
+            return sb.toString();
+        }
+        else {
+            return null;
+        }
+    }
 
 
     private final Exporter exporter;
     @SuppressWarnings("UnusedDeclaration")
     private Map<String, Protein> idToProtein = new HashMap<String, Protein>();
-    Map<String,PSM>  spectrumToPSM = new HashMap<String, PSM>();
+    Map<String, PSM> spectrumToPSM = new HashMap<String, PSM>();
     private final ArchiveSpectra tabHandler;
     private String accession;
 
-    public MZTabProcessor(Exporter exporter, ArchiveSpectra th ) {
+    public MZTabProcessor(Exporter exporter, ArchiveSpectra th) {
         this.exporter = exporter;
-          tabHandler = th;
-        if(tabHandler.getMzTabFile() == null)
+        tabHandler = th;
+        if (tabHandler.getMzTabFile() == null)
             return;
         addTabHandler(tabHandler);
     }
@@ -92,25 +122,26 @@ public class MZTabProcessor {
         return totalWritten;
     }
 
-    protected int handleMFGFile(File file , Appendable out) {
+    protected int handleMFGFile(File file, Appendable out) {
         int numberProcessed = 0;
         int totalWritten = 0;
-        try{
-             LineNumberReader rdr = new LineNumberReader(new FileReader(file));
-             ISpectrum psm = ParserUtilities.readMGFScan(rdr);
+        try {
+            LineNumberReader rdr = new LineNumberReader(new FileReader(file));
+            ISpectrum psm = ParserUtilities.readMGFScan(rdr);
             while (psm != null) {
-                if(processPSM(psm,  out))
-                    totalWritten++ ;
+                if (processPSM(psm, out))
+                    totalWritten++;
                 psm = ParserUtilities.readMGFScan(rdr);
                 numberProcessed++;
             }
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e) {
             throw new UnsupportedOperationException(e);
         }
         return totalWritten;
     }
 
-    protected PSM getPSM(String peptideId ) {
+    protected PSM getPSM(String peptideId) {
         int index = peptideId.indexOf("spectrum=");
         if (index < 0)
             return null;
@@ -119,44 +150,51 @@ public class MZTabProcessor {
         return psm;
     }
 
-    protected boolean processPSM(ISpectrum spectrum,  Appendable out) {
+    protected boolean processPSM(ISpectrum spectrum, Appendable out) {
         final String id = spectrum.getId();
 
-        if(getAccession() != null)
-            spectrum.setProperty(KnownProperties.TAXONOMY_KEY,getAccession());
+        if (getAccession() != null)
+            spectrum.setProperty(KnownProperties.TAXONOMY_KEY, getAccession());
 
-        PSM peptide = getPSM(id );
-        if(peptide != null) {
+        PSM peptide = getPSM(id);
+        if (peptide != null) {
             final String sequence = peptide.getSequence();
-            spectrum.setProperty(KnownProperties.IDENTIFIED_PEPTIDE_KEY,sequence);
+            spectrum.setProperty(KnownProperties.IDENTIFIED_PEPTIDE_KEY, sequence);
+
+            SplitList<Modification> modifications = peptide.getModifications();
+            if(modifications != null && !modifications.isEmpty())   {
+                spectrum.setProperty(KnownProperties.MODIFICATION_KEY,modifications.toString()  );
+
+            }
+
             String proteinAccession = peptide.getAccession();
-            if(proteinAccession != null)   {
+            if (proteinAccession != null) {
                 final Protein protein = idToProtein.get(proteinAccession);
-                if(protein != null)  {
+                if (protein != null) {
                     final String database = protein.getDatabase();
-                    spectrum.setProperty(KnownProperties.PROTEIN_KEY,database + ":" + proteinAccession);
+                    spectrum.setProperty(KnownProperties.PROTEIN_KEY, database + ":" + proteinAccession);
                 }
             }
             exporter.incrementIdentifiedSpectra();
-          }
-         else {
+        }
+        else {
             exporter.incrementUnidentifiedSpectra();
         }
 
-       final TypedFilterCollection filters = getExporter().getFilters();
-       ISpectrum passed = (ISpectrum)filters.passes(spectrum);
+        final TypedFilterCollection filters = getExporter().getFilters();
+        ISpectrum passed = (ISpectrum) filters.passes(spectrum);
 
         final boolean ret = passed != null;
-        if(ret)
-            MGFSpectrumAppender.INSTANCE.appendSpectrum(out,spectrum);
+        if (ret)
+            MGFSpectrumAppender.INSTANCE.appendSpectrum(out, spectrum);
 
         return ret; // true if appended
-      }
+    }
 
     protected void addTabHandler(ArchiveSpectra tab) {
         final MZTabFile mzTabs = tab.getMzTabFile();
         setAccessionFromHeader(mzTabs);
-    //     buildMSRunFiles(tab);
+        //     buildMSRunFiles(tab);
         final Collection<PSM> psMs = mzTabs.getPSMs();
         handleProteins(mzTabs);
         handlePSMs(psMs);
@@ -166,11 +204,11 @@ public class MZTabProcessor {
     private void setAccessionFromHeader(MZTabFile mzTabs) {
         final Metadata metadata = mzTabs.getMetadata();
         final SortedMap<Integer, Sample> sampleMap = metadata.getSampleMap();
-        if(sampleMap.size() == 1)  {
+        if (sampleMap.size() == 1) {
             for (Integer index : sampleMap.keySet()) {
-             Sample s = sampleMap.get(index);
+                Sample s = sampleMap.get(index);
                 final List<Param> speciesList = s.getSpeciesList();
-                if(speciesList.size() == 1)  {
+                if (speciesList.size() == 1) {
                     Param specias = speciesList.get(0);
                     accession = specias.getAccession();
                 }
