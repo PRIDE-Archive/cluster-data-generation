@@ -123,7 +123,10 @@ public class Exporter {
         if (!projectInternalPath.exists()) {
             return ret;
         }
-        for (File mzTab : projectInternalPath.listFiles()) {
+        File[] files = projectInternalPath.listFiles();
+        if(files == null)
+            return ret;
+        for (File mzTab : files) {
             // searching for mztab file
             if (mzTab.getName().endsWith(ArchiveProjectSpectraFilter.PRIDE_MZTAB_SUFFIX)) {
                 ret.add(mzTab);
