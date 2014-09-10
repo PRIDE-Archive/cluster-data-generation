@@ -2,7 +2,9 @@ package uk.ac.ebi.pride.spectracluster.filters;
 
 import com.lordjoe.filters.*;
 import org.xml.sax.*;
+import uk.ac.ebi.pride.spectracluster.export.*;
 import uk.ac.ebi.pride.spectracluster.spectrum.*;
+import uk.ac.ebi.pride.spectracluster.util.*;
 
 import javax.annotation.*;
 
@@ -73,6 +75,37 @@ public class SpectrumFilters {
                 if (testObject.getPeaksCount() >= length)
                     return testObject;
                 return null;
+            }
+        };
+    }
+
+
+
+    /**
+     * return true of a ISpectrum mz is >= min and <= max
+     *
+     * @param length max allowed length
+     * @return
+     */
+    public static ITypedFilter<ISpectrum> getPrecursorMZLimitsFilter(final double maxMZ, final double minMZ) {
+        if(minMZ < 0 || minMZ >= maxMZ)
+            throw new IllegalArgumentException("bad MZ Limits min " + minMZ + " max " + maxMZ);
+
+        return new AbstractSpectrumTypedFilter() {
+            /**
+             * return 0 if it passes the filter otherwise return null
+             *
+             * @param testObject
+             * @return as above
+             */
+            @Override
+            public ISpectrum passes(@Nonnull ISpectrum testObject) {
+                double mz = testObject.getPrecursorMz();
+                if (mz < minMZ )
+                    return null;
+                if (  mz > maxMZ)
+                     return null;
+                 return testObject;
             }
         };
     }
@@ -177,11 +210,20 @@ public class SpectrumFilters {
 
             value = attributes.getValue("taxonomy");
             if (value != null) {
-                throw new UnsupportedOperationException("Fix This"); // ToDo
-//                Exporter.setOnlyExportedTaxonomy(value);
-//                   setElementObject(getTaxonomyFilter(value));
-//                return;
+                 Exporter.setOnlyExportedTaxonomy(value);
+                 setElementObject(getTaxonomyFilter(value));
+                return;
             }
+            value = attributes.getValue("maximumMZ");
+             if (value != null) {
+                 int max = Integer.parseInt(value);
+                 int min = MZIntensityUtilities.LOWEST_USABLE_MZ;
+                 value = attributes.getValue("minimumMZ");
+                 if(value != null  )
+                     min = Integer.parseInt(value);
+                    setElementObject(getPrecursorMZLimitsFilter(max,min));
+                 return;
+             }
 
             StringBuilder sb = new StringBuilder();
             //noinspection ForLoopReplaceableByForEach
