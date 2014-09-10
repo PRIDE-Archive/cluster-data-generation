@@ -1,6 +1,7 @@
 package uk.ac.ebi.pride.spectracluster.export;
 
 import com.lordjoe.filters.*;
+import com.lordjoe.utilities.*;
 import uk.ac.ebi.pride.spectracluster.*;
 import uk.ac.ebi.pride.spectracluster.filter.archive.*;
 import uk.ac.ebi.pride.spectracluster.filters.*;
@@ -35,8 +36,7 @@ public class Exporter {
             return;
         if (Exporter.onlyExportedTaxonomy != null) {
             Exporter.onlyExportedTaxonomy = null;
-        }
-        else {
+        } else {
             Exporter.onlyExportedTaxonomy = onlyExportedTaxonomy;
         }
     }
@@ -60,6 +60,7 @@ public class Exporter {
     private final TypedFilterCollection filters;
     private int unidentifiedSpectra;
     private int identifiedSpectra;
+    private int discardedSpectra;
 
     public Exporter(File outputDirectory, File activeDirectory, TypedFilterCollection filt) {
         filters = filt;
@@ -82,6 +83,18 @@ public class Exporter {
 
     public void incrementIdentifiedSpectra() {
         identifiedSpectra++;
+    }
+
+    public int getDiscardedSpectra() {
+        return discardedSpectra;
+    }
+
+    public void setDiscardedSpectra(final int pDiscardedSpectra) {
+        discardedSpectra = pDiscardedSpectra;
+    }
+
+    public void incrementDiscardedSpectra() {
+        discardedSpectra++;
     }
 
 
@@ -152,21 +165,22 @@ public class Exporter {
                     continue;
                 }
                 MZTabProcessor processor = new MZTabProcessor(this, spec);
-                processor.handleCorrespondingMGFs(out);
+             //   processor.handleCorrespondingMGFs(out);
                 final String onlyExportedTaxonomy1 = getOnlyExportedTaxonomy();
                 final String accession = processor.getAccession();
                 if (onlyExportedTaxonomy1 != null) {
                     if (!onlyExportedTaxonomy1.equals(accession))
                         continue; // skip files wrong taxomony
                 }
-                numberWritten += processor.handleCorrespondingMGFs(out);
+                int numberThisPass = processor.handleCorrespondingMGFs(out);
+                if(numberThisPass == 0)
+                    System.out.println("No mgf files");
+                numberWritten += numberThisPass;
 
             }
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             throw new RuntimeException(ex);
-        }
-        finally {
+        } finally {
             if(out != null)
                 out.close();
             //    if (numberWritten == 0)
@@ -180,6 +194,72 @@ public class Exporter {
         final TypedFilterCollection parse = TypedFilterCollection.parse(file);
         return parse;
     }
+
+
+    private static void exportSpecificDirectories(String[] args) {
+        int index = 0;
+        File outputDirectory = new File(args[index++]);
+        TypedFilterCollection.registerHandler(SpectrumFilters.TAG, new SpectrumFilters.SpectrumFilterSaxHandler(null));
+        TypedFilterCollection filters = buildFilters(new File(args[index++]));
+        for (; index < args.length; index++) {
+            String arg = args[index];
+            File dir = new File(arg);
+            Exporter exp = new Exporter(outputDirectory, dir, filters);
+            exp.exportDirectory();
+            System.out.println("exported " + dir +
+                    "  identified " + exp.getIdentifiedSpectra() +
+                    " unidentified " + exp.getUnidentifiedSpectra() +
+                    "  discarded " + exp.getDiscardedSpectra()
+
+            );
+
+        }
+        //   MaximialPeakFilter.showStatistics(System.out);
+    }
+
+
+    private static void exportSpecificDirectoryList(String[] args) {
+        int index = 0;
+        File outputDirectory = new File(args[index++]);
+        TypedFilterCollection.registerHandler(SpectrumFilters.TAG, new SpectrumFilters.SpectrumFilterSaxHandler(null));
+        TypedFilterCollection filters = buildFilters(new File(args[index++]));
+        String[] lines = FileUtilities.readInAllLines(new File(args[index++]));
+        for (String arg : lines) {
+            if(arg.startsWith("2005/"))
+                continue; // iignore early
+            if(arg.startsWith("2006/"))
+                 continue; // iignore early
+            if(arg.startsWith("2007/"))
+                 continue; // iignore early
+            if(arg.startsWith("2008/"))
+                 continue; // iignore early
+             File dir = new File("S:/" + arg);
+
+            File testFile = buildTestFile(arg);
+            if(!testFile.exists())
+                continue;
+            if(testFile.length() > 0)
+                  continue;
+              Exporter exp = new Exporter(outputDirectory, dir, filters);
+
+            exp.exportDirectory();
+            System.out.println("exported " + dir +
+                    "  identified " + exp.getIdentifiedSpectra() +
+                    " unidentified " + exp.getUnidentifiedSpectra() +
+                    "  discarded " + exp.getDiscardedSpectra()
+
+            );
+
+        }
+
+        //   MaximialPeakFilter.showStatistics(System.out);
+    }
+
+    private static File buildTestFile(String arg) {
+        String pathname = "../export-pride-unidentified" + arg.substring(arg.lastIndexOf("/")) + ".mgf";
+        return new File(pathname);
+    }
+
 
     /**
      * usage outputDirectory filterFile directoryToProcess
@@ -200,24 +280,8 @@ public class Exporter {
        </Filters>
      */
     public static void main(String[] args) {
-        int index = 0;
-        File outputDirectory = new File(args[index++]);
-        TypedFilterCollection.registerHandler(SpectrumFilters.TAG, new SpectrumFilters.SpectrumFilterSaxHandler(null));
-        TypedFilterCollection filters = buildFilters(new File(args[index++]));
-        for (; index < args.length; index++) {
-            String arg = args[index];
-            File dir = new File(arg);
-            Exporter exp = new Exporter(outputDirectory, dir, filters);
-            exp.exportDirectory();
-            System.out.println("exported " + dir +
-                            "  identified " + exp.getIdentifiedSpectra() +
-                            " unidentified " + exp.getUnidentifiedSpectra()
-
-            );
-
-        }
-        //   MaximialPeakFilter.showStatistics(System.out);
-
+       // exportSpecificDirectories(args);
+        exportSpecificDirectoryList(args);
     }
 
 
