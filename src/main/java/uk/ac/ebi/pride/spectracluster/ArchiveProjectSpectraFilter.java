@@ -61,8 +61,10 @@ public class ArchiveProjectSpectraFilter {
             }
             return null;
         }
-        catch (IOException e) {
-            throw new RuntimeException(e);
+        catch ( Exception e) {
+            System.err.println("Failed on file " + mzTab);
+            e.printStackTrace( System.err);
+            return null;   // ok continue
 
         }
 

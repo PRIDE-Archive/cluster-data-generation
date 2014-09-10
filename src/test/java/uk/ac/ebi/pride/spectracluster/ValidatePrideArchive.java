@@ -28,6 +28,38 @@ public class ValidatePrideArchive {
     private static void validateDirectory(final File pFile1, PrintWriter out) {
         File projectInternalPath = new File(pFile1, "internal");
         if (!projectInternalPath.exists()) {
+             return;
+        }
+        boolean hasMZTab = false;
+        for (File mzTab : projectInternalPath.listFiles()) {
+            // searching for mztab file
+             if (mzTab.getName().endsWith(ArchiveProjectSpectraFilter.PRIDE_MZTAB_SUFFIX)) {
+                hasMZTab = true;
+//                ElapsedTimer timer = new ElapsedTimer();
+//                ArchiveSpectra spectra = ArchiveProjectSpectraFilter.buildArchiveSpectra(mzTab, projectInternalPath);
+//                timer.showElapsed("Finished handling " + mzTab.getName());
+//                if (spectra == null) {
+//                    out.println(mzTab.getPath() + " bad parse");
+//                }
+//                else {
+//                    out.println(mzTab.getPath() + " good parse");
+//                    for (File file : spectra.getMgfFiles()) {
+//                        out.println(file.getPath());
+//                    }
+//                }
+            }
+        }
+        if(hasMZTab) {
+            String s = pFile1.getPath() ;
+            s = s.replace("\\","/");
+            out.println(s);
+        }
+     }
+
+
+    private static void validateDirectoryComplete(final File pFile1, PrintWriter out) {
+        File projectInternalPath = new File(pFile1, "internal");
+        if (!projectInternalPath.exists()) {
             out.println(pFile1.getPath() + " no internal");
             return;
         }
@@ -52,11 +84,10 @@ public class ValidatePrideArchive {
 
 
     private static void validatePrideArchive(final PrintWriter pOut) {
-        for (int i = 2005; i < 2014; i++) {
+        for (int i = 2005; i < 2015; i++) {
             File dir = new File(Integer.toString(i));
             validateTopLevelDirectory(dir, pOut);
-
-        }
+         }
 
         pOut.close();
     }
@@ -79,7 +110,6 @@ public class ValidatePrideArchive {
         }
         else {
             validatePrideArchive(out);
-
         }
 
     }
