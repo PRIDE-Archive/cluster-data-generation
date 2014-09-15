@@ -5,7 +5,7 @@ import org.apache.commons.io.*;
 import uk.ac.ebi.pride.jmztab.model.*;
 import uk.ac.ebi.pride.jmztab.utils.*;
 import uk.ac.ebi.pride.jmztab.utils.errors.*;
-import uk.ac.ebi.pride.spectracluster.filter.archive.*;
+import uk.ac.ebi.pride.spectracluster.archive.*;
 
 import java.io.*;
 import java.util.*;
@@ -100,11 +100,6 @@ public class ArchiveProjectSpectraFilter {
                 archiveSpectra.add(spectra);
             }
         }
-
-
-        // filter the spectra
-        ArchiveSpectraFilter archiveSpectraFilter = new ArchiveSpectraFilter(outputFile);
-        archiveSpectraFilter.filter(archiveSpectra);
 
     }
 }

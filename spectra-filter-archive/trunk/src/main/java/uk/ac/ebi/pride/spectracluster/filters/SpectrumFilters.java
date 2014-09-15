@@ -208,12 +208,6 @@ public class SpectrumFilters {
                 return;
             }
 
-            value = attributes.getValue("taxonomy");
-            if (value != null) {
-                 Exporter.setOnlyExportedTaxonomy(value);
-                 setElementObject(getTaxonomyFilter(value));
-                return;
-            }
             value = attributes.getValue("maximumMZ");
              if (value != null) {
                  int max = Integer.parseInt(value);

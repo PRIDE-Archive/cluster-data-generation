@@ -1,0 +1,7 @@
+<Filters>
+    <FileFilter extension="mgf"/> <!-- only identified spectra -->
+    <SpectrumFilter identified="true"/> <!--  at least 16 peaks -->
+    <SpectrumFilter minimumLength="16"/> <!-- precursor 200-5500 -->
+    <SpectrumFilter minimumMZ="200" maximumMZ="5500"/> <!-- require precursors -->
+    <SpectrumFilter withPrecursors="true"/>
+</Filters>
