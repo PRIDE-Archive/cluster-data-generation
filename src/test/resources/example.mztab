@@ -1,0 +1,63 @@
+MTD	mzTab-version	1.0
+MTD	mzTab-mode	Complete
+MTD	mzTab-type	Identification
+MTD	mzTab-ID	PRD000715-24805
+MTD	title	Characterization of the Human Cardiac MyBP-C Phosphoproteome in Healthy and Failing Hearts
+MTD	description	Phosphoproteome characterization of cMyBP-C using SCX-TiO2 and SDS-PAGE methods
+MTD	sample_processing[1]	[PRIDE, PRIDE:0000025, Reduction, ]
+MTD	sample_processing[2]	[PRIDE, PRIDE:0000026, Alkylation, ]
+MTD	sample_processing[3]	[PRIDE, PRIDE:0000024, Enzyme digestion, ]
+MTD	sample_processing[4]	[SEP, sep:00208, SPE surface, ]
+MTD	sample_processing[5]	[SEP, sep:00214, affinity chromatography, ]
+MTD	sample_processing[6]	[PRIDE, PRIDE:0000027, Mass spectrometry, ]
+MTD	instrument[1]-name	[MS, MS:1000031, Instrument model, LTQ-Orbitrap]
+MTD	instrument[1]-source	[MS, MS:1000073, electrospray ionization, ]
+MTD	instrument[1]-analyzer[1]	[MS, MS:1000449, LTQ Orbitrap, ]
+MTD	instrument[1]-detector	[MS, MS:1000111, electron multiplier tube, ]
+MTD	software[1]	[MS, MS:1001456, analysis software, Xcalibur v2.0.7]
+MTD	protein_search_engine_score[1]	[MS, MS:1001163, SEQUEST:consensus score, ]
+MTD	psm_search_engine_score[1]	[PRIDE, PRIDE:0000053, Sequest score, ]
+MTD	psm_search_engine_score[2]	[PRIDE, PRIDE:0000012, Delta Cn, ]
+MTD	contact[1]-name	Jennifer Van Eyk
+MTD	contact[1]-affiliation	Johns Hopkins University
+MTD	contact[1]-email	jvaneyk1@jhmi.edu
+MTD	uri[1]	http://www.ebi.ac.uk/pride/archive/assays/24805
+MTD	fixed_mod[1]	[MS, MS:1002453, No fixed modifications searched, ]
+MTD	variable_mod[1]	[MOD, MOD:01455, O-phosphorylated residue, 79.966331]
+MTD	variable_mod[2]	[MOD, MOD:00425, monohydroxylated residue, 15.994915]
+MTD	variable_mod[3]	[MOD, MOD:00397, iodoacetamide derivatized residue, 57.021464]
+MTD	ms_run[1]-format	[MS, MS:1000564, PSI mzData file, ]
+MTD	ms_run[1]-location	file:/PRIDE_Exp_Complete_Ac_24805.xml
+MTD	ms_run[1]-id_format	[MS, MS:1000777, spectrum identifier nativeID format, ]
+MTD	sample[1]-species[1]	[NEWT, 9606, Homo sapiens (Human), ]
+MTD	sample[1]-tissue[1]	[BTO, BTO:0001629, left ventricle, ]
+MTD	sample[1]-description	Human Tissue
+MTD	assay[1]-sample_ref	sample[1]
+MTD	assay[1]-ms_run_ref	ms_run[1]
+MTD	custom[1]	[, , Date of export, Thu Sep 04 18:43:05 BST 2014]
+MTD	custom[2]	[, , Original converted file, file:/nfs/pride/prod/archive/PRD000715/internal/PRIDE_Exp_Complete_Ac_24805.xml]
+MTD	custom[3]	[, , Project title, cMyBP-C phosphoproteome]
+
+COM	Only variable modifications can be reported when the original source is a PRIDE XML file
+
+PRH	accession	description	taxid	species	database	database_version	search_engine	best_search_engine_score[1]	search_engine_score[1]_ms_run[1]	num_psms_ms_run[1]	num_peptides_distinct_ms_run[1]	num_peptides_unique_ms_run[1]	ambiguity_members	modifications	protein_coverage	opt_global_cv_PRIDE:0000303_Decoy_hit	opt_global_num_merge_proteins	opt_global_duplicated_proteins_search_engines	opt_global_duplicated_proteins_best_search_engines_score	opt_global_duplicated_proteins_search_engines_scores	opt_global_duplicated_proteins_had_quantification
+PRT	IPI00292412	null	null	null	ipi.HUMAN.v3.79.fasta	null	[MS, MS:1001208, SEQUEST, ]	0.0	0.0	16	16	null	null	MOD:00397,MOD:00425,MOD:01455	0.0	0	1	null	null	null	0
+
+PSH	sequence	PSM_ID	accession	unique	database	database_version	search_engine	search_engine_score[1]	search_engine_score[2]	modifications	retention_time	charge	exp_mass_to_charge	calc_mass_to_charge	spectra_ref	pre	post	start	end	opt_global_cv_MS:1002217_decoy_peptide
+PSM	TPRDSKLEAPAEEDVWEILR	2	IPI00292412	null	ipi.HUMAN.v3.79.fasta	null	[MS, MS:1001208, SEQUEST, ]	2.656	0.0	5-MOD:01455	null	null	1217.5823635	null	ms_run[1]:spectrum=2	R	Q	null	null	0
+PSM	RTSLAGGGR	5	IPI00292412	null	ipi.HUMAN.v3.79.fasta	null	[MS, MS:1001208, SEQUEST, ]	1.9143	0.0	3-MOD:01455	null	null	477.73232650000006	null	ms_run[1]:spectrum=5	R	R	null	null	0
+PSM	ISDSHEDTGILDFSSLLK	15	IPI00292412	null	ipi.HUMAN.v3.79.fasta	null	[MS, MS:1001208, SEQUEST, ]	1.9198	0.0	2-MOD:01455	null	null	1028.9800685	null	ms_run[1]:spectrum=15	R	K	null	null	0
+PSM	ISDSHEDTGILDFSSLLK	6	IPI00292412	null	ipi.HUMAN.v3.79.fasta	null	[MS, MS:1001208, SEQUEST, ]	3.6678	0.0	8-MOD:01455	null	null	686.3258209999999	null	ms_run[1]:spectrum=6	R	K	null	null	0
+PSM	VIEAEKAEPMLAPAPAPAEATGAPGEAPAPAAELGESAPSPK	10	IPI00292412	null	ipi.HUMAN.v3.79.fasta	null	[MS, MS:1001208, SEQUEST, ]	4.6091	0.0	10-MOD:00425,40-MOD:01455	null	null	1363.0091096666667	null	ms_run[1]:spectrum=10	K	G	null	null	0
+PSM	ATLVLQVVDKPSPPQDLR	14	IPI00292412	null	ipi.HUMAN.v3.79.fasta	null	[MS, MS:1001208, SEQUEST, ]	2.5986	0.0	12-MOD:01455	null	null	686.0332186666666	null	ms_run[1]:spectrum=14	K	V	null	null	0
+PSM	VHKLTIDDVTPADEADYSFVPEGFACNLSAK	1	IPI00292412	null	ipi.HUMAN.v3.79.fasta	null	[MS, MS:1001208, SEQUEST, ]	6.5441	0.0	10-MOD:01455,26-MOD:00397	null	null	1163.8678743333332	null	ms_run[1]:spectrum=1	R	L	null	null	0
+PSM	APARPAPDAPEDTGDSDEWVFDKK	3	IPI00292412	null	ipi.HUMAN.v3.79.fasta	null	[MS, MS:1001208, SEQUEST, ]	3.1233	0.0	16-MOD:01455	null	null	898.7290803333334	null	ms_run[1]:spectrum=3	K	L	null	null	0
+PSM	RISDSHEDTGILDFSSLLK	9	IPI00292412	null	ipi.HUMAN.v3.79.fasta	null	[MS, MS:1001208, SEQUEST, ]	3.2636	0.0	5-MOD:01455	null	null	554.0188085	null	ms_run[1]:spectrum=9	R	K	null	null	0
+PSM	EVGPADQGSYAVIAGSSK	17	IPI00292412	null	ipi.HUMAN.v3.79.fasta	null	[MS, MS:1001208, SEQUEST, ]	2.7142	0.0	17-MOD:01455	null	null	908.416836	null	ms_run[1]:spectrum=17	R	V	null	null	0
+PSM	EVGPADQGSYAVIAGSSK	7	IPI00292412	null	ipi.HUMAN.v3.79.fasta	null	[MS, MS:1001208, SEQUEST, ]	2.3034	0.0	10-MOD:01455	null	null	908.416714	null	ms_run[1]:spectrum=7	R	V	null	null	0
+PSM	TLTISQCSLADDAAYQCVVGGEK	4	IPI00292412	null	ipi.HUMAN.v3.79.fasta	null	[MS, MS:1001208, SEQUEST, ]	5.0716	0.0	7-MOD:00397,8-MOD:01455,17-MOD:00397	null	null	1283.5639305	null	ms_run[1]:spectrum=4	R	C	null	null	0
+PSM	SVEVAAGSPAVFEAETER	8	IPI00292412	null	ipi.HUMAN.v3.79.fasta	null	[MS, MS:1001208, SEQUEST, ]	2.9977	0.0	1-MOD:01455	null	null	964.949978	null	ms_run[1]:spectrum=8	R	A	null	null	0
+PSM	TSLAGGGR	11	IPI00292412	null	ipi.HUMAN.v3.79.fasta	null	[MS, MS:1001208, SEQUEST, ]	1.7461	0.0	1-MOD:01455	null	null	399.68014150000005	null	ms_run[1]:spectrum=11	R	R	null	null	0
+PSM	LTIDDVTPADEADYSFVPEGFACNLSAK	12	IPI00292412	null	ipi.HUMAN.v3.79.fasta	null	[MS, MS:1001208, SEQUEST, ]	2.7918	0.0	2-MOD:01455,23-MOD:00397	null	null	1042.4636993333334	null	ms_run[1]:spectrum=12	K	L	null	null	0
+PSM	RTLTISQCSLADDAAYQCVVGGEK	13	IPI00292412	null	ipi.HUMAN.v3.79.fasta	null	[MS, MS:1001208, SEQUEST, ]	4.8822	0.0	6-MOD:01455,8-MOD:00397,18-MOD:00397	null	null	908.0838776666666	null	ms_run[1]:spectrum=13	K	C	null	null	0
+

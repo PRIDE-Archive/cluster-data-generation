@@ -1,16 +1,21 @@
 package uk.ac.ebi.pride.spectracluster.export;
 
-import com.lordjoe.filters.*;
-import uk.ac.ebi.pride.spectracluster.*;
-import uk.ac.ebi.pride.spectracluster.filter.archive.*;
-import uk.ac.ebi.pride.spectracluster.filters.*;
+import com.lordjoe.filters.TypedFilterCollection;
+import org.apache.commons.io.FilenameUtils;
+import uk.ac.ebi.pride.jmztab.model.MZTabFile;
+import uk.ac.ebi.pride.jmztab.model.MsRun;
+import uk.ac.ebi.pride.jmztab.utils.MZTabFileParser;
+import uk.ac.ebi.pride.jmztab.utils.errors.MZTabErrorList;
+import uk.ac.ebi.pride.spectracluster.archive.ArchiveSpectra;
+import uk.ac.ebi.pride.spectracluster.filters.SpectrumFilters;
 
-import java.io.*;
-import java.util.*;
-
-//import com.lordjoe.filters.*;
-//import uk.ac.ebi.pride.spectracluster.filters.*;
-//import uk.ac.ebi.pride.spectracluster.retrievers.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.SortedMap;
 
 /**
  * uk.ac.ebi.pride.spectracluster.export.Exporter
@@ -20,165 +25,151 @@ import java.util.*;
  */
 public class Exporter {
 
-    private static String onlyExportedTaxonomy;
+    public static final String PRIDE_MZTAB_SUFFIX = ".pride.mztab";
+    public static final String PRIDE_MGF_SUFFIX = ".pride.mgf";
+    public static final String MGF_SUFFIX = ".mgf";
+    public static final String INTERNAL_DIRECTORY = "internal";
 
-    public static String getOnlyExportedTaxonomy() {
-        return onlyExportedTaxonomy;
-    }
-
-    public static void setOnlyExportedTaxonomy(String onlyExportedTaxonomy) {
-        if (onlyExportedTaxonomy == null) {
-            Exporter.onlyExportedTaxonomy = null;
-            return;
-        }
-        if (onlyExportedTaxonomy.equals(Exporter.onlyExportedTaxonomy))
-            return;
-        if (Exporter.onlyExportedTaxonomy != null) {
-            Exporter.onlyExportedTaxonomy = null;
-        }
-        else {
-            Exporter.onlyExportedTaxonomy = onlyExportedTaxonomy;
-        }
-    }
-
-    /**
-     * @param directory
-     * @return given a project
-     */
-    public static File fromDirectory(File baseDirectory, File directory) {
-        if (!baseDirectory.exists() && !baseDirectory.mkdirs())
-            throw new IllegalStateException("bad base directory");
-        final String child = directory.getName() + ".mgf";
-        File outFile = new File(baseDirectory, child);
-        return outFile;
-    }
-
-    //   private final TypedFilterCollection filters;
     private final File outputDirectory;
     private final File activeDirectory;
-    private final String experimentId;
+    private final String projectAccession;
     private final TypedFilterCollection filters;
-    private int unidentifiedSpectra;
-    private int identifiedSpectra;
 
-    public Exporter(File outputDirectory, File activeDirectory, TypedFilterCollection filt) {
-        filters = filt;
+    public Exporter(File outputDirectory, File activeDirectory, TypedFilterCollection filters) {
+        this.filters = filters;
         this.outputDirectory = outputDirectory;
         this.activeDirectory = activeDirectory;
+
+
         String name = activeDirectory.getAbsolutePath();
         name = name.replace("\\", "/");
-        //      name = name.replace("/generated", "");
-        experimentId = name.substring(name.lastIndexOf("/") + 1);
+        projectAccession = name.substring(name.lastIndexOf("/") + 1);
 
     }
 
-    public int getIdentifiedSpectra() {
-        return identifiedSpectra;
-    }
-
-    public void setIdentifiedSpectra(final int pIdentifiedSpectra) {
-        identifiedSpectra = pIdentifiedSpectra;
-    }
-
-    public void incrementIdentifiedSpectra() {
-        identifiedSpectra++;
-    }
-
-
-    public int getUnidentifiedSpectra() {
-        return unidentifiedSpectra;
-    }
-
-    public void setUnidentifiedSpectra(final int pUnidentifiedSpectra) {
-        unidentifiedSpectra = pUnidentifiedSpectra;
-    }
-
-    public void incrementUnidentifiedSpectra() {
-        unidentifiedSpectra++;
-    }
-
-    public TypedFilterCollection getFilters() {
-        return filters;
+    public File getOutputDirectory() {
+        return outputDirectory;
     }
 
     public File getActiveDirectory() {
         return activeDirectory;
     }
 
+    public TypedFilterCollection getFilters() {
+        return filters;
+    }
+
     @SuppressWarnings("UnusedDeclaration")
-    public String getExperimentId() {
-        return experimentId;
+    public String getProjectAccession() {
+        return projectAccession;
     }
 
-    public static List<File> getMZTabFiles(File directory) {
-        ITypedFilter<File> mzTabFiler = FileFilters.getHasExtensionFilter("mztab");
-        final List<File> files = FileFilters.applyFileFilters(directory, mzTabFiler);
-        return files;
+    public void exportDirectory() throws IOException {
+        // output file
+        File outFile = buildOutputFile(outputDirectory, activeDirectory);
+
+
+        PrintWriter out = null;
+        try {
+            // find all the PRIDE generated mzTab files
+            File projectInternalPath = new File(activeDirectory, INTERNAL_DIRECTORY);
+            List<File> files = readMZTabFiles(activeDirectory);
+            if (!files.isEmpty()) {
+                out = new PrintWriter(new FileWriter(outFile));
+
+                for (File mzTab : files) {
+                    // map the relationship between mzTab file and its mgf files
+                    ArchiveSpectra spec = buildArchiveSpectra(mzTab, projectInternalPath);
+                    if (spec == null) {
+                        System.err.println("Bad mzTab file " + mzTab);
+                        continue;
+                    }
+
+                    // export spectra
+                    MZTabProcessor processor = new MZTabProcessor(spec);
+                    processor.handleCorrespondingMGFs(filters, out);
+
+                    out.flush();
+                }
+            }
+        } finally {
+            if (out != null)
+                out.close();
+        }
     }
 
 
-    protected static List<File> readMZTabFiles(final File pFile1) {
-        File projectInternalPath = new File(pFile1, "internal");
+    protected List<File> readMZTabFiles(final File pFile1) {
+        File projectInternalPath = new File(pFile1, INTERNAL_DIRECTORY);
         List<File> ret = new ArrayList<File>();
         if (!projectInternalPath.exists()) {
             return ret;
         }
+
         File[] files = projectInternalPath.listFiles();
-        if(files == null)
+        if (files == null)
             return ret;
+
         for (File mzTab : files) {
             // searching for mztab file
-            if (mzTab.getName().endsWith(ArchiveProjectSpectraFilter.PRIDE_MZTAB_SUFFIX)) {
+            if (mzTab.getName().endsWith(PRIDE_MZTAB_SUFFIX)) {
                 ret.add(mzTab);
             }
         }
+
         return ret;
     }
 
+    /**
+     * Build output file
+     *
+     * @param directory
+     * @return given a project
+     */
+    protected File buildOutputFile(File baseDirectory, File directory) {
+        if (!baseDirectory.exists() && !baseDirectory.mkdirs())
+            throw new IllegalStateException("bad base directory");
 
-    public void exportDirectory() {
-        final File outFile = fromDirectory(outputDirectory, activeDirectory);
-        int numberWritten = 0;
-        PrintWriter out = null;
-        try {
-            File projectInternalPath = new File(activeDirectory, "internal");
-             final List<File> files = readMZTabFiles(activeDirectory);
-            if(!files.isEmpty())
-                out = new PrintWriter(new FileWriter(outFile));
-            for (File mzTab : files) {
-                ArchiveSpectra spec = ArchiveProjectSpectraFilter.buildArchiveSpectra(mzTab, projectInternalPath);
-                if (spec == null) {
-                    System.err.println("Bad mztab file " + mzTab);
-                    continue;
-                }
-                MZTabProcessor processor = new MZTabProcessor(this, spec);
-                processor.handleCorrespondingMGFs(out);
-                final String onlyExportedTaxonomy1 = getOnlyExportedTaxonomy();
-                final String accession = processor.getAccession();
-                if (onlyExportedTaxonomy1 != null) {
-                    if (!onlyExportedTaxonomy1.equals(accession))
-                        continue; // skip files wrong taxomony
-                }
-                numberWritten += processor.handleCorrespondingMGFs(out);
-
-            }
-        }
-        catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
-        finally {
-            if(out != null)
-                out.close();
-            //    if (numberWritten == 0)
-            //         outFile.delete();
-
-        }
+        String child = directory.getName() + MGF_SUFFIX;
+        return new File(baseDirectory, child);
     }
 
-    private static TypedFilterCollection buildFilters(File file) {
-        @SuppressWarnings("UnnecessaryLocalVariable")
-        final TypedFilterCollection parse = TypedFilterCollection.parse(file);
-        return parse;
+    /**
+     * Build an ArchiveSpectra object for a given mzTab object
+     *
+     * @param inputPath
+     * @param mzTab
+     * @return
+     * @throws IOException
+     */
+    protected ArchiveSpectra buildArchiveSpectra(File mzTab, File inputPath) throws IOException {
+        // parse mztab object
+        MZTabFileParser mzTabFileParser = new MZTabFileParser(mzTab, System.out);
+        MZTabFile mzTabFile = mzTabFileParser.getMZTabFile();
+
+        // check whether there is any parsing error
+        MZTabErrorList errorList = mzTabFileParser.getErrorList();
+        if (errorList.isEmpty()) {
+
+            // construct ArchiveSpectra object
+            ArchiveSpectra spectra = new ArchiveSpectra(mzTabFile);
+
+            SortedMap<Integer, MsRun> msRunMap = mzTabFile.getMetadata().getMsRunMap();
+            for (MsRun msRun : msRunMap.values()) {
+                String msRunFile = msRun.getLocation().getFile();
+                String msRunFileName = new File(msRunFile).getName();
+                String msRunFileNameWithoutExtension = FilenameUtils.removeExtension(msRunFileName);
+
+                String mgfFileName = msRunFileNameWithoutExtension + PRIDE_MGF_SUFFIX;
+                File mgfFile = new File(inputPath, mgfFileName);
+                if (mgfFile.exists()) {
+                    spectra.addMgfFile(mgfFile);
+                }
+            }
+
+            return spectra;
+        }
+        return null;
     }
 
     /**
@@ -199,28 +190,18 @@ public class Exporter {
 
        </Filters>
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         int index = 0;
         File outputDirectory = new File(args[index++]);
         TypedFilterCollection.registerHandler(SpectrumFilters.TAG, new SpectrumFilters.SpectrumFilterSaxHandler(null));
         File filtersFile = new File(args[index++]);
-        TypedFilterCollection filters = buildFilters(filtersFile);
+        TypedFilterCollection filters = TypedFilterCollection.parse(filtersFile);
         for (; index < args.length; index++) {
             String arg = args[index];
             File dir = new File(arg);
             Exporter exp = new Exporter(outputDirectory, dir, filters);
             exp.exportDirectory();
-            System.out.println("exported " + dir +
-                            "  identified " + exp.getIdentifiedSpectra() +
-                            " unidentified " + exp.getUnidentifiedSpectra()
-
-            );
-
+            System.out.println("exported " + dir);
         }
-
-          //   MaximialPeakFilter.showStatistics(System.out);
-
     }
-
-
 }

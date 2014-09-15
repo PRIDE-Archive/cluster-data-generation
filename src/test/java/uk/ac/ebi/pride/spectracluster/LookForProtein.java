@@ -1,9 +1,7 @@
 package uk.ac.ebi.pride.spectracluster;
 
-import com.lordjoe.utilities.*;
 import uk.ac.ebi.pride.jmztab.model.*;
 import uk.ac.ebi.pride.jmztab.utils.*;
-import uk.ac.ebi.pride.spectracluster.filter.archive.*;
 
 import java.io.*;
 import java.util.*;
