@@ -95,7 +95,7 @@ public class MZTabProcessor {
 
         ArrayList<PSM> psms = new ArrayList<PSM>(1);
         // spectrum id
-        String spectrumRef = msRun.getReference()+ ":" + parts[2];
+        String spectrumRef = msRun.getReference() + ":" + parts[2];
 
         for (Map.Entry<PSM, String> psmStringEntry : psmToSpectrum.entrySet()) {
             if (psmStringEntry.getValue().equals(spectrumRef)) {
@@ -171,14 +171,12 @@ public class MZTabProcessor {
             SplitList<Modification> mods = psm.getModifications();
             if (mods != null && !mods.isEmpty()) {
                 modifications += mods.toString() + ";";
+            } else {
+                modifications += "NO-MOD;";
             }
         }
 
-        if (modifications.length() > 0) {
-            return modifications.substring(0, modifications.length() - 1);
-        } else {
-            return null;
-        }
+        return modifications.substring(0, modifications.length() - 1).replaceAll("NO-MOD", "");
     }
 
     protected void addMzTabHandler(ArchiveSpectra tab) {
