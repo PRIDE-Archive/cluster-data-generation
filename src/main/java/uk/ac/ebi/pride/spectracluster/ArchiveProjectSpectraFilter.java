@@ -81,10 +81,9 @@ public class ArchiveProjectSpectraFilter {
         }
 
         // check if input path exists
-        String inputPath = args[0] + (args[0].endsWith(File.separator) ? "" : File.separator) + "internal";
-        File projectInternalPath = new File(inputPath);
+        File projectInternalPath = new File(args[0], "internal");
         if (!projectInternalPath.exists()) {
-            System.err.println("Input file path must exists: " + inputPath);
+            System.err.println("Input file path must exists: " + projectInternalPath.getAbsolutePath());
         }
 
         // output file for the filtered results

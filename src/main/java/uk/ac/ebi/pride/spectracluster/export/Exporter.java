@@ -193,6 +193,8 @@ public class Exporter {
     public static void main(String[] args) throws IOException {
         int index = 0;
         File outputDirectory = new File(args[index++]);
+        System.out.println("Output to: " + outputDirectory.getAbsolutePath());
+
         TypedFilterCollection.registerHandler(SpectrumFilters.TAG, new SpectrumFilters.SpectrumFilterSaxHandler(null));
         File filtersFile = new File(args[index++]);
         TypedFilterCollection filters = TypedFilterCollection.parse(filtersFile);

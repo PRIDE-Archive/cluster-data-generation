@@ -1,0 +1,6 @@
+<Filters>
+    <FileFilter extension="mgf"/>
+    <SpectrumFilter identified="true"/>
+    <SpectrumFilter minimumLength="100"/>
+    <SpectrumFilter withPrecursors="true"/>
+</Filters>
