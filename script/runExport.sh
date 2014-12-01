@@ -11,4 +11,4 @@ MEMORY_LIMIT=4000
 
 ##### RUN it on the production LSF cluster
 ## this is not queued in the PRIDE LSF submission group, this is submitted as regular job as it is independent of any other job
-bsub -M ${MEMORY_LIMIT} -R "rusage[mem=${MEMORY_LIMIT}]" -q production-rh6 -o /dev/null -J PRIDE-CLUSTER-EXPORT ./runJava.sh ./log/${LOG_FILE_NAME}.log ${MEMORY_LIMIT}m -jar ${project.build.finalName}.jar ${OUTPUT_PATH} ${FILTER_XML} ${INPUT_PATH}
+bsub -M ${MEMORY_LIMIT} -R "rusage[mem=${MEMORY_LIMIT}]" -q production-rh6 -o /dev/null -g /spectra_cluster_exporter -J PRIDE-CLUSTER-EXPORT ./runJava.sh ./log/${LOG_FILE_NAME}.log ${MEMORY_LIMIT}m -jar ${project.build.finalName}.jar ${OUTPUT_PATH} ${FILTER_XML} ${INPUT_PATH}

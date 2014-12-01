@@ -10,6 +10,7 @@ package uk.ac.ebi.pride.spectracluster.export;
 // todo rewrite after new interface
 
 import com.lordjoe.filters.TypedFilterCollection;
+import org.apache.commons.io.FilenameUtils;
 import uk.ac.ebi.pride.jmztab.model.*;
 import uk.ac.ebi.pride.spectracluster.archive.ArchiveSpectra;
 import uk.ac.ebi.pride.spectracluster.io.MGFSpectrumAppender;
@@ -193,7 +194,7 @@ public class MZTabProcessor {
         SortedMap<Integer, MsRun> msRunMap = mzTab.getMetadata().getMsRunMap();
         for (MsRun msRun : msRunMap.values()) {
             String msRunFile = msRun.getLocation().getFile();
-            String msRunFileName = new File(msRunFile).getName();
+            String msRunFileName = FilenameUtils.getName(msRunFile);
             fileToMsRun.put(msRunFileName, msRun);
         }
     }
