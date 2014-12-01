@@ -157,7 +157,7 @@ public class Exporter {
             SortedMap<Integer, MsRun> msRunMap = mzTabFile.getMetadata().getMsRunMap();
             for (MsRun msRun : msRunMap.values()) {
                 String msRunFile = msRun.getLocation().getFile();
-                String msRunFileName = new File(msRunFile).getName();
+                String msRunFileName = FilenameUtils.getName(msRunFile);
                 String msRunFileNameWithoutExtension = FilenameUtils.removeExtension(msRunFileName);
 
                 String mgfFileName = msRunFileNameWithoutExtension + PRIDE_MGF_SUFFIX;
