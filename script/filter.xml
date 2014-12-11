@@ -1,6 +1,7 @@
-<Filters>
-    <FileFilter extension="mgf"/>
-    <SpectrumFilter identified="true"/>
-    <SpectrumFilter minimumLength="100"/>
-    <SpectrumFilter withPrecursors="true"/>
-</Filters>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Properties can be used to define the Predicates and Functions</comment>
+<entry key="identified.spectrum">true</entry>
+<entry key="minimum.number.of.peaks">100</entry>
+<entry key="with.precursors">true</entry>
+</properties>
