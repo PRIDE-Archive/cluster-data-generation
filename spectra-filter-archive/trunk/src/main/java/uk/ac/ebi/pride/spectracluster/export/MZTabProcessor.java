@@ -1,15 +1,5 @@
 package uk.ac.ebi.pride.spectracluster.export;
 
-/**
- * uk.ac.ebi.pride.spectracluster.export.MZTabProcessor
- * User: Steve
- * Date: 8/6/2014
- */
-
-
-// todo rewrite after new interface
-
-import com.lordjoe.filters.TypedFilterCollection;
 import org.apache.commons.io.FilenameUtils;
 import uk.ac.ebi.pride.jmztab.model.*;
 import uk.ac.ebi.pride.spectracluster.archive.ArchiveSpectra;
@@ -17,6 +7,7 @@ import uk.ac.ebi.pride.spectracluster.io.MGFSpectrumAppender;
 import uk.ac.ebi.pride.spectracluster.io.ParserUtilities;
 import uk.ac.ebi.pride.spectracluster.spectrum.ISpectrum;
 import uk.ac.ebi.pride.spectracluster.spectrum.KnownProperties;
+import uk.ac.ebi.pride.spectracluster.util.function.IFunction;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -25,8 +16,6 @@ import java.io.LineNumberReader;
 import java.util.*;
 
 /**
- * uk.ac.ebi.pride.spectracluster.export.MZTabProcessor
- *
  * @author Steve Lewis
  * @date 22/05/2014
  */
@@ -50,16 +39,7 @@ public class MZTabProcessor {
         return taxonomyIds;
     }
 
-    public ArchiveSpectra getArchiveSpectra() {
-        return archiveSpectra;
-    }
-
-    @SuppressWarnings("UnusedDeclaration")
-    public Protein getProtein(String proteinAccession) {
-        return idToProtein.get(proteinAccession);
-    }
-
-    public int handleCorrespondingMGFs(TypedFilterCollection filters, Appendable out) {
+    public int handleCorrespondingMGFs(IFunction<ISpectrum, ISpectrum> filters, Appendable out) {
         int totalWritten = 0;
         for (File run : archiveSpectra.getMgfFiles()) {
             totalWritten += handleMFGFile(run, filters, out);
@@ -67,7 +47,7 @@ public class MZTabProcessor {
         return totalWritten;
     }
 
-    protected int handleMFGFile(File file, TypedFilterCollection filters, Appendable out) {
+    protected int handleMFGFile(File file, IFunction<ISpectrum, ISpectrum> filters, Appendable out) {
         int totalWritten = 0;
         try {
             LineNumberReader rdr = new LineNumberReader(new FileReader(file));
@@ -107,7 +87,7 @@ public class MZTabProcessor {
         return psms;
     }
 
-    protected boolean processPSM(ISpectrum spectrum, TypedFilterCollection filters, Appendable out) {
+    protected boolean processPSM(ISpectrum spectrum, IFunction<ISpectrum, ISpectrum> filters, Appendable out) {
         final String id = spectrum.getId();
 
         if (!getTaxonomyId().isEmpty()) {
@@ -136,13 +116,14 @@ public class MZTabProcessor {
 //            }
         }
 
-        ISpectrum passed = (ISpectrum) filters.passes(spectrum);
+        ISpectrum filteredSpectrum = filters.apply(spectrum);
 
-        final boolean ret = passed != null;
-        if (ret)
+        if (filteredSpectrum != null) {
             MGFSpectrumAppender.INSTANCE.appendSpectrum(out, spectrum);
+            return true;
+        }
 
-        return ret; // true if appended
+        return false;
     }
 
     private String combineSpecies(Collection<String> taxonomyIds) {

@@ -6,7 +6,7 @@
 
     <groupId>uk.ac.ebi.pride.spectracluster</groupId>
     <artifactId>spectra-filter-archive</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <licenses>
         <license>
@@ -38,9 +38,7 @@
     <properties>
         <commons-io.version>2.4</commons-io.version>
         <jmztab.version>3.0.2-SNAPSHOT</jmztab.version>
-        <concurrenttools.version>0.0.1-SNAPSHOT</concurrenttools.version>
         <spectra-cluster.version>1.0.6-SNAPSHOT</spectra-cluster.version>
-        <jsr305.version>2.0.1</jsr305.version>
     </properties>
 
     <dependencies>
@@ -63,23 +61,10 @@
         </dependency>
 
         <dependency>
-             <groupId>uk.ac.ebi.pride.spectracluster</groupId>
-             <artifactId>concurrenttools</artifactId>
-             <version>${concurrenttools.version}</version>
-         </dependency>
-
-        <dependency>
             <groupId>uk.ac.ebi.pride.spectracluster</groupId>
             <artifactId>spectra-cluster</artifactId>
             <version>${spectra-cluster.version}</version>
         </dependency>
-
-        <!-- needed for annotations SLewis -->
-        <dependency>
-             <groupId>com.google.code.findbugs</groupId>
-             <artifactId>jsr305</artifactId>
-             <version>${jsr305.version}</version>
-         </dependency>
 
     </dependencies>
 

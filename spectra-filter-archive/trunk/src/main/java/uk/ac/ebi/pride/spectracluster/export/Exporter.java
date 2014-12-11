@@ -1,13 +1,17 @@
 package uk.ac.ebi.pride.spectracluster.export;
 
-import com.lordjoe.filters.TypedFilterCollection;
 import org.apache.commons.io.FilenameUtils;
 import uk.ac.ebi.pride.jmztab.model.MZTabFile;
 import uk.ac.ebi.pride.jmztab.model.MsRun;
 import uk.ac.ebi.pride.jmztab.utils.MZTabFileParser;
 import uk.ac.ebi.pride.jmztab.utils.errors.MZTabErrorList;
 import uk.ac.ebi.pride.spectracluster.archive.ArchiveSpectra;
-import uk.ac.ebi.pride.spectracluster.filters.SpectrumFilters;
+import uk.ac.ebi.pride.spectracluster.filters.SpectrumPredicateParser;
+import uk.ac.ebi.pride.spectracluster.spectrum.ISpectrum;
+import uk.ac.ebi.pride.spectracluster.util.function.Functions;
+import uk.ac.ebi.pride.spectracluster.util.function.IFunction;
+import uk.ac.ebi.pride.spectracluster.util.function.spectrum.RemoveEmptyPeakFunction;
+import uk.ac.ebi.pride.spectracluster.util.predicate.IPredicate;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -18,7 +22,7 @@ import java.util.List;
 import java.util.SortedMap;
 
 /**
- * uk.ac.ebi.pride.spectracluster.export.Exporter
+ * Export spectra from PRIDE Archive to MGF files
  *
  * @author Steve Lewis
  * @date 21/05/2014
@@ -30,50 +34,22 @@ public class Exporter {
     public static final String MGF_SUFFIX = ".mgf";
     public static final String INTERNAL_DIRECTORY = "internal";
 
-    private final File outputDirectory;
-    private final File activeDirectory;
-    private final String projectAccession;
-    private final TypedFilterCollection filters;
+    private final IFunction<ISpectrum, ISpectrum> filter;
 
-    public Exporter(File outputDirectory, File activeDirectory, TypedFilterCollection filters) {
-        this.filters = filters;
-        this.outputDirectory = outputDirectory;
-        this.activeDirectory = activeDirectory;
-
-
-        String name = activeDirectory.getAbsolutePath();
-        name = name.replace("\\", "/");
-        projectAccession = name.substring(name.lastIndexOf("/") + 1);
-
+    public Exporter(IFunction<ISpectrum, ISpectrum> filter) {
+        this.filter = filter;
     }
 
-    public File getOutputDirectory() {
-        return outputDirectory;
-    }
-
-    public File getActiveDirectory() {
-        return activeDirectory;
-    }
-
-    public TypedFilterCollection getFilters() {
-        return filters;
-    }
-
-    @SuppressWarnings("UnusedDeclaration")
-    public String getProjectAccession() {
-        return projectAccession;
-    }
-
-    public void exportDirectory() throws IOException {
+    public void export(File inputDirectory, File outputDirectory) throws IOException {
         // output file
-        File outFile = buildOutputFile(outputDirectory, activeDirectory);
+        File outFile = buildOutputFile(outputDirectory, inputDirectory);
 
 
         PrintWriter out = null;
         try {
             // find all the PRIDE generated mzTab files
-            File projectInternalPath = new File(activeDirectory, INTERNAL_DIRECTORY);
-            List<File> files = readMZTabFiles(activeDirectory);
+            File projectInternalPath = new File(inputDirectory, INTERNAL_DIRECTORY);
+            List<File> files = readMZTabFiles(inputDirectory);
             if (!files.isEmpty()) {
                 out = new PrintWriter(new FileWriter(outFile));
 
@@ -87,7 +63,7 @@ public class Exporter {
 
                     // export spectra
                     MZTabProcessor processor = new MZTabProcessor(spec);
-                    processor.handleCorrespondingMGFs(filters, out);
+                    processor.handleCorrespondingMGFs(filter, out);
 
                     out.flush();
                 }
@@ -98,8 +74,7 @@ public class Exporter {
         }
     }
 
-
-    protected List<File> readMZTabFiles(final File pFile1) {
+    private List<File> readMZTabFiles(final File pFile1) {
         File projectInternalPath = new File(pFile1, INTERNAL_DIRECTORY);
         List<File> ret = new ArrayList<File>();
         if (!projectInternalPath.exists()) {
@@ -126,7 +101,7 @@ public class Exporter {
      * @param directory
      * @return given a project
      */
-    protected File buildOutputFile(File baseDirectory, File directory) {
+    private File buildOutputFile(File baseDirectory, File directory) {
         if (!baseDirectory.exists() && !baseDirectory.mkdirs())
             throw new IllegalStateException("bad base directory");
 
@@ -142,7 +117,7 @@ public class Exporter {
      * @return
      * @throws IOException
      */
-    protected ArchiveSpectra buildArchiveSpectra(File mzTab, File inputPath) throws IOException {
+    private ArchiveSpectra buildArchiveSpectra(File mzTab, File inputPath) throws IOException {
         // parse mztab object
         MZTabFileParser mzTabFileParser = new MZTabFileParser(mzTab, System.out);
         MZTabFile mzTabFile = mzTabFileParser.getMZTabFile();
@@ -178,31 +153,32 @@ public class Exporter {
      * @param args
      */
     /*
-    Uses a filter file like
-       <Filters>
-           <FileFilter extension="mgf"/>
-           <!-- will not run without spectrum class
-          <Filter applicableType="uk.ac.ebi.pride.spectracluster.spectrum.ISpectrum" charge="2" />
-          -->
-           <SpectrumFilter identified="true"/>
-           <SpectrumFilter minimumLength="100"/>
-           <SpectrumFilter withPrecursors="true"/>
-
-       </Filters>
+        <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+        <properties>
+            <comment>Properties can be used to define the Predicates and Functions</comment>
+            <entry key="identified.spectrum">true</entry>
+            <entry key="minimum.number.of.peaks">100</entry>
+            <entry key="with.precursors">true</entry>
+        </properties>
      */
     public static void main(String[] args) throws IOException {
         int index = 0;
         File outputDirectory = new File(args[index++]);
         System.out.println("Output to: " + outputDirectory.getAbsolutePath());
 
-        TypedFilterCollection.registerHandler(SpectrumFilters.TAG, new SpectrumFilters.SpectrumFilterSaxHandler(null));
+        // parse all the filters
         File filtersFile = new File(args[index++]);
-        TypedFilterCollection filters = TypedFilterCollection.parse(filtersFile);
+        IPredicate<ISpectrum> predicate = SpectrumPredicateParser.parse(filtersFile);
+
+        // add function to remove empty peak lists
+        RemoveEmptyPeakFunction removeEmptyPeakFunction = new RemoveEmptyPeakFunction();
+        IFunction<ISpectrum, ISpectrum> condition = Functions.condition(removeEmptyPeakFunction, predicate);
+
         for (; index < args.length; index++) {
             String arg = args[index];
             File dir = new File(arg);
-            Exporter exp = new Exporter(outputDirectory, dir, filters);
-            exp.exportDirectory();
+            Exporter exp = new Exporter(condition);
+            exp.export(dir, outputDirectory);
             System.out.println("exported " + dir);
         }
     }
