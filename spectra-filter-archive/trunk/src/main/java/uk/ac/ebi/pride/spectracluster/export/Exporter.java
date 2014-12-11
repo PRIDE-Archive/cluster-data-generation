@@ -10,7 +10,7 @@ import uk.ac.ebi.pride.spectracluster.filters.SpectrumPredicateParser;
 import uk.ac.ebi.pride.spectracluster.spectrum.ISpectrum;
 import uk.ac.ebi.pride.spectracluster.util.function.Functions;
 import uk.ac.ebi.pride.spectracluster.util.function.IFunction;
-import uk.ac.ebi.pride.spectracluster.util.function.spectrum.RemoveEmptyPeakFunction;
+import uk.ac.ebi.pride.spectracluster.util.function.spectrum.RemoveSpectrumEmptyPeakFunction;
 import uk.ac.ebi.pride.spectracluster.util.predicate.IPredicate;
 
 import java.io.File;
@@ -171,7 +171,7 @@ public class Exporter {
         IPredicate<ISpectrum> predicate = SpectrumPredicateParser.parse(filtersFile);
 
         // add function to remove empty peak lists
-        RemoveEmptyPeakFunction removeEmptyPeakFunction = new RemoveEmptyPeakFunction();
+        RemoveSpectrumEmptyPeakFunction removeEmptyPeakFunction = new RemoveSpectrumEmptyPeakFunction();
         IFunction<ISpectrum, ISpectrum> condition = Functions.condition(removeEmptyPeakFunction, predicate);
 
         for (; index < args.length; index++) {
