@@ -39,9 +39,25 @@
         <commons-io.version>2.4</commons-io.version>
         <jmztab.version>3.0.2-SNAPSHOT</jmztab.version>
         <spectra-cluster.version>1.0.6-SNAPSHOT</spectra-cluster.version>
+        <junit.version>4.11</junit.version>
+        <mockito-all.version>1.9.5</mockito-all.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>${mockito-all.version}</version>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>uk.ac.ebi.pride</groupId>
             <artifactId>jmztab-modular-util</artifactId>
@@ -97,10 +113,7 @@
                         <include>**/*Tests.java</include>
                         <include>**/*Test.java</include>
                     </includes>
-                    <excludes>
-                        <exclude>**/ModificationTests.java</exclude>
-                    </excludes>
-                    <skipTests>true</skipTests>
+                    <skipTests>false</skipTests>
                     <junitArtifactName>junit:junit</junitArtifactName>
                 </configuration>
             </plugin>

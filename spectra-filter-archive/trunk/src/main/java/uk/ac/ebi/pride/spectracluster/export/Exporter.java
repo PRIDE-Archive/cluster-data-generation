@@ -13,10 +13,7 @@ import uk.ac.ebi.pride.spectracluster.util.function.IFunction;
 import uk.ac.ebi.pride.spectracluster.util.function.spectrum.RemoveSpectrumEmptyPeakFunction;
 import uk.ac.ebi.pride.spectracluster.util.predicate.IPredicate;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedMap;
@@ -51,7 +48,7 @@ public class Exporter {
             File projectInternalPath = new File(inputDirectory, INTERNAL_DIRECTORY);
             List<File> files = readMZTabFiles(inputDirectory);
             if (!files.isEmpty()) {
-                out = new PrintWriter(new FileWriter(outFile));
+                out = new PrintWriter(new BufferedWriter(new FileWriter(outFile)));
 
                 for (File mzTab : files) {
                     // map the relationship between mzTab file and its mgf files
