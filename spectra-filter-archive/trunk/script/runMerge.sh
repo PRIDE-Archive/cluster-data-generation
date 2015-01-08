@@ -7,7 +7,7 @@ OUTPUT_SIZE=$3
 NUMBER_OF_BATCH=$4
 
 # Log file name
-LOG_FILE_NAME="$(basename ${INPUT_PATH})-merge.log"
+LOG_FILE_NAME="$(basename ${INPUT_PATH})-merge"
 MEMORY_LIMIT=30000
 
 ##### RUN it on the production LSF cluster

@@ -33,6 +33,8 @@ public class Merger {
         // get all the mgf files to be processed
         Set<File> mgfFileQueue = getMgfFiles(args[0]);
 
+        logger.info("Found {} mgf files", mgfFileQueue.size());
+
         // max file size
         long maxOutputFileSizeInByte = getMaxFileSize(args[2]);
 
@@ -95,10 +97,12 @@ public class Merger {
 
         for (File mgfFile : mgfFileQueue) {
             FileGroup selectedFileGroup = null;
-            long fileSize = 0;
+
+            long fileSize = -1;
             for (FileGroup fileGroup : fileGroups) {
-                if (fileSize >= fileGroup.getSumOfFileSize()) {
+                if (fileSize == -1 || fileSize >= fileGroup.getSumOfFileSize()) {
                     selectedFileGroup = fileGroup;
+                    fileSize = selectedFileGroup.getSumOfFileSize();
                 }
             }
 

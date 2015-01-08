@@ -32,7 +32,7 @@
         </fileSet>
         <fileSet>
             <outputDirectory>/log</outputDirectory>
-            <directory>${project.basedir}/target</directory>
+            <directory>${project.basedir}/script</directory>
             <excludes>
                 <exclude>*</exclude>
             </excludes>
