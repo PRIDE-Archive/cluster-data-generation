@@ -32,6 +32,18 @@ public final class SpectrumPredicateParser {
             predicates.add(new IdentifiedPredicate());
         }
 
+        // filter by identified spectrum
+        String filterUnidentifiedSpectrum = properties.getProperty("unidentified.spectrum");
+        if (filterUnidentifiedSpectrum != null && "true".equalsIgnoreCase(filterUnidentifiedSpectrum)) {
+            predicates.add(new UnidentifiedPredicate());
+        }
+
+        // filter by taxonomy id
+        String filterByTaxonomy = properties.getProperty("taxonomy");
+        if (filterByTaxonomy != null) {
+            predicates.add(new TaxonomyPredicate(filterByTaxonomy));
+        }
+
         // minimum number of peaks
         String miniNumOfPeaks = properties.getProperty("minimum.number.of.peaks");
         if (miniNumOfPeaks != null) {
