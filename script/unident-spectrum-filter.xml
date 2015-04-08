@@ -1,0 +1,9 @@
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>Properties can be used to define the Predicates and Functions</comment>
+    <entry key="unidentified.spectrum">true</entry>
+    <entry key="minimum.number.of.peaks">20</entry>
+    <entry key="with.precursors">true</entry>
+    <entry key="none.negative.peaks">true</entry>
+    <entry key="precursor.mz.range">200-5000</entry>
+</properties>
