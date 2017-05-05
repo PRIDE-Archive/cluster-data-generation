@@ -31,7 +31,7 @@ public class SpectrumPredicateParserTest {
         ISpectrum spectrum = mock(ISpectrum.class);
         when(spectrum.getProperty(KnownProperties.IDENTIFIED_PEPTIDE_KEY)).thenReturn("KKKKKK");
         when(spectrum.getPeaksCount()).thenReturn(200);
-        ArrayList<IPeak> peaks = new ArrayList<IPeak>();
+        ArrayList<IPeak> peaks = new ArrayList<>();
         peaks.add(new Peak(100, 100));
         when(spectrum.getPeaks()).thenReturn(peaks);
         when(spectrum.getPrecursorMz()).thenReturn(200f);

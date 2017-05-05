@@ -24,7 +24,7 @@ public final class SpectrumPredicateParser {
         Properties properties = new Properties();
         properties.loadFromXML(new FileInputStream(filterXmlFile));
 
-        List<IPredicate<ISpectrum>> predicates = new ArrayList<IPredicate<ISpectrum>>();
+        List<IPredicate<ISpectrum>> predicates = new ArrayList<>();
 
         // filter by identified spectrum
         String filterIdentifiedSpectrum = properties.getProperty("identified.spectrum");
@@ -70,7 +70,6 @@ public final class SpectrumPredicateParser {
             if (parts.length != 2) {
                 throw new IllegalStateException("Illegal precursor mz range: " + precursorMzRange);
             }
-
             WithinPrecursorMZRangePredicate withinPrecursorMZRangePredicate = new WithinPrecursorMZRangePredicate(Float.parseFloat(parts[0]), Float.parseFloat(parts[1]));
             predicates.add(withinPrecursorMZRangePredicate);
         }

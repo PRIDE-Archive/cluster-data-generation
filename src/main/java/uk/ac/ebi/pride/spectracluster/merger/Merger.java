@@ -4,11 +4,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Merge a group of MGF files
@@ -77,24 +80,17 @@ public class Merger {
     }
 
     private static Set<File> getMgfFiles(String arg) {
-        Set<File> mgfFileQueue = new LinkedHashSet<File>();
+        Set<File> mgfFileQueue;
         File inputFolder = new File(arg);
-        for (File file : inputFolder.listFiles()) {
-            if (file.getName().endsWith("mgf")) {
-                mgfFileQueue.add(file);
-            }
-        }
+        mgfFileQueue = Arrays.stream(inputFolder.listFiles()).filter(file -> file.getName().endsWith("mgf")).collect(Collectors.toCollection(LinkedHashSet::new));
         return mgfFileQueue;
     }
 
     private static FileGroup[] splitMgfFilesIntoGroups(Set<File> mgfFileQueue, int numberOfBatch) {
-        FileGroup[] fileGroups = new FileGroup[numberOfBatch];
+
+        FileGroup[] fileGroups = IntStream.range(0, numberOfBatch).mapToObj(i -> new FileGroup()).toArray(FileGroup[]::new);
 
         // init file groups
-        for (int i = 0; i < numberOfBatch; i++) {
-            fileGroups[i] = new FileGroup();
-        }
-
         for (File mgfFile : mgfFileQueue) {
             FileGroup selectedFileGroup = null;
 
@@ -113,7 +109,7 @@ public class Merger {
     }
 
     private static class FileGroup {
-        private final Set<File> files = new LinkedHashSet<File>();
+        private final Set<File> files = new LinkedHashSet<>();
         private long sumOfFileSize = 0l;
 
         void addFile(File file) {

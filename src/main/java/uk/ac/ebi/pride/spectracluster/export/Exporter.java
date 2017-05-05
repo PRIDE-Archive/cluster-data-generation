@@ -7,6 +7,7 @@ import uk.ac.ebi.pride.jmztab.utils.MZTabFileParser;
 import uk.ac.ebi.pride.jmztab.utils.errors.MZTabErrorList;
 import uk.ac.ebi.pride.spectracluster.archive.ArchiveSpectra;
 import uk.ac.ebi.pride.spectracluster.filters.SpectrumPredicateParser;
+import uk.ac.ebi.pride.spectracluster.mztab.IFilter;
 import uk.ac.ebi.pride.spectracluster.spectrum.ISpectrum;
 import uk.ac.ebi.pride.spectracluster.util.function.Functions;
 import uk.ac.ebi.pride.spectracluster.util.function.IFunction;
@@ -14,9 +15,8 @@ import uk.ac.ebi.pride.spectracluster.util.function.spectrum.RemoveSpectrumEmpty
 import uk.ac.ebi.pride.spectracluster.util.predicate.IPredicate;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.SortedMap;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Export spectra from PRIDE Archive to MGF files
@@ -27,14 +27,22 @@ import java.util.SortedMap;
 public class Exporter {
 
     public static final String PRIDE_MZTAB_SUFFIX = ".pride.mztab";
-    public static final String PRIDE_MGF_SUFFIX = ".pride.mgf";
-    public static final String MGF_SUFFIX = ".mgf";
+    public static final String PRIDE_MGF_SUFFIX   = ".pride.mgf";
+    public static final String MGF_SUFFIX         = ".mgf";
     public static final String INTERNAL_DIRECTORY = "internal";
 
     private final IFunction<ISpectrum, ISpectrum> filter;
 
+    private final Map<String, IFilter> idPredicates;
+
     public Exporter(IFunction<ISpectrum, ISpectrum> filter) {
         this.filter = filter;
+        this.idPredicates = null;
+    }
+
+    public Exporter(IFunction<ISpectrum, ISpectrum> filter, Map<String, IFilter> idPredicates){
+        this.filter = filter;
+        this.idPredicates = idPredicates;
     }
 
     public void export(File inputDirectory, File outputDirectory) throws IOException {
@@ -48,7 +56,7 @@ public class Exporter {
             File projectInternalPath = new File(inputDirectory, INTERNAL_DIRECTORY);
             List<File> files = readMZTabFiles(inputDirectory);
             if (!files.isEmpty()) {
-                out = new PrintWriter(new BufferedWriter(new FileWriter(outFile)));
+                out = new PrintWriter(new BufferedWriter(new FileWriter(outFile)), false);
 
                 for (File mzTab : files) {
                     // map the relationship between mzTab file and its mgf files
@@ -59,7 +67,7 @@ public class Exporter {
                     }
 
                     // export spectra
-                    MZTabProcessor processor = new MZTabProcessor(spec);
+                    MZTabProcessor processor = new MZTabProcessor(idPredicates, spec);
                     processor.handleCorrespondingMGFs(filter, out);
 
                     out.flush();
@@ -72,8 +80,9 @@ public class Exporter {
     }
 
     private List<File> readMZTabFiles(final File pFile1) {
+
         File projectInternalPath = new File(pFile1, INTERNAL_DIRECTORY);
-        List<File> ret = new ArrayList<File>();
+        List<File> ret = new ArrayList<>();
         if (!projectInternalPath.exists()) {
             return ret;
         }
@@ -82,13 +91,8 @@ public class Exporter {
         if (files == null)
             return ret;
 
-        for (File mzTab : files) {
-            // searching for mztab file
-            if (mzTab.getName().endsWith(PRIDE_MZTAB_SUFFIX)) {
-                ret.add(mzTab);
-            }
-        }
-
+        // searching for mztab file
+        ret = Arrays.stream(files).filter(mzTab -> mzTab.getName().endsWith(PRIDE_MZTAB_SUFFIX)).collect(Collectors.toList());
         return ret;
     }
 
@@ -124,10 +128,10 @@ public class Exporter {
         if (errorList.isEmpty()) {
 
             // construct ArchiveSpectra object
-            ArchiveSpectra spectra = new ArchiveSpectra(mzTabFile);
+            ArchiveSpectra spectra = new ArchiveSpectra(mzTabFile, mzTab);
 
             SortedMap<Integer, MsRun> msRunMap = mzTabFile.getMetadata().getMsRunMap();
-            for (MsRun msRun : msRunMap.values()) {
+            msRunMap.values().stream().forEach(msRun -> {
                 String msRunFile = msRun.getLocation().getFile();
                 String msRunFileName = FilenameUtils.getName(msRunFile);
                 String msRunFileNameWithoutExtension = FilenameUtils.removeExtension(msRunFileName);
@@ -137,7 +141,7 @@ public class Exporter {
                 if (mgfFile.exists()) {
                     spectra.addMgfFile(mgfFile);
                 }
-            }
+            });
 
             return spectra;
         }

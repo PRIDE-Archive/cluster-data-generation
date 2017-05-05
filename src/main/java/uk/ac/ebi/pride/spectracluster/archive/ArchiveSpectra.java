@@ -17,11 +17,14 @@ public class ArchiveSpectra {
 
     private final MZTabFile mzTabFile;
 
+    private final File    source;
+
     private final List<File> mgfFiles;
 
-    public ArchiveSpectra(MZTabFile mzTabFile) {
+    public ArchiveSpectra(MZTabFile mzTabFile, File source) {
         this.mzTabFile = mzTabFile;
-        this.mgfFiles = new ArrayList<File>();
+        this.mgfFiles = new ArrayList<>();
+        this.source = source;
     }
 
     public MZTabFile getMzTabFile() {
@@ -34,6 +37,10 @@ public class ArchiveSpectra {
 
     public void addMgfFile(File mgfFile) {
         this.mgfFiles.add(mgfFile);
+    }
+
+    public File getSource(){
+        return this.source;
     }
 
 }
