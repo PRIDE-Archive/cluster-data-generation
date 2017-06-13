@@ -8,4 +8,4 @@ MEMORY_LIMIT=$2
 shift 2
 JOB_PARAMETERS=$*
 
-java -Xmx${MEMORY_LIMIT} ${JOB_PARAMETERS} > ${LOG_FILE} 2>&1
+/nfs/pride/work/java/jdk1.8.0_65/bin/java -Xmx${MEMORY_LIMIT} ${JOB_PARAMETERS} > ${LOG_FILE} 2>&1

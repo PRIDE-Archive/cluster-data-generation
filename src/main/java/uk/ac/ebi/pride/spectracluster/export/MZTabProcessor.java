@@ -1,22 +1,26 @@
 package uk.ac.ebi.pride.spectracluster.export;
 
-import de.mpc.pia.intermediate.*;
+import de.mpc.pia.intermediate.Accession;
 import de.mpc.pia.intermediate.Modification;
 import de.mpc.pia.intermediate.compiler.PIACompiler;
 import de.mpc.pia.intermediate.compiler.PIASimpleCompiler;
 import de.mpc.pia.intermediate.compiler.parser.InputFileParserFactory;
 import de.mpc.pia.modeller.PIAModeller;
 import de.mpc.pia.modeller.psm.ReportPSM;
+import de.mpc.pia.modeller.psm.ReportPSMSet;
 import de.mpc.pia.modeller.report.filter.AbstractFilter;
 import de.mpc.pia.modeller.report.filter.FilterComparator;
 import de.mpc.pia.modeller.report.filter.impl.PSMScoreFilter;
+import de.mpc.pia.modeller.score.ScoreModel;
 import de.mpc.pia.modeller.score.ScoreModelEnum;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.log4j.Logger;
 import uk.ac.ebi.jmzidml.model.mzidml.SpectraData;
 import uk.ac.ebi.pride.jmztab.model.*;
 import uk.ac.ebi.pride.spectracluster.archive.ArchiveSpectra;
 import uk.ac.ebi.pride.spectracluster.io.MGFSpectrumAppender;
 import uk.ac.ebi.pride.spectracluster.io.ParserUtilities;
+import uk.ac.ebi.pride.spectracluster.mztab.CVTermConstant;
 import uk.ac.ebi.pride.spectracluster.mztab.FDRFilter;
 import uk.ac.ebi.pride.spectracluster.mztab.IDFilterName;
 import uk.ac.ebi.pride.spectracluster.mztab.IFilter;
@@ -33,6 +37,8 @@ import java.util.stream.Collectors;
  * @date 22/05/2014
  */
 public class MZTabProcessor {
+
+    private static final Logger LOGGER = Logger.getLogger(MZTabProcessor.class);
 
     private final Map<String, Protein> idToProtein = new HashMap<>();
     private final Map<ReportPSM, String> psmToSpectrum = new HashMap<>();  // For different PSMs, they could have the same spectra reference
@@ -56,8 +62,13 @@ public class MZTabProcessor {
         if(archiveSpectra.getMzTabFile() == null){
             return;
         }
+
         PIAModeller modeller = computeFDRPSMLevel(th.getSource());
-        if(!modeller.getPSMModeller().getAllFilesHaveFDRCalculated()){
+        if(!modeller.getPSMModeller().getAllFilesHaveFDRCalculated() || modeller.getPSMModeller().getFileFDRData().get(fileID).getNrFDRGoodDecoys() == 0){
+            LOGGER.info("ERROR | FDR | INFORMATION about FDR NOT AVAILABLE for: " + th.getSource().getName());
+            for(ReportPSMSet idSet: modeller.getPSMModeller().getReportPSMSets().values())
+                for (Accession acc: idSet.getAccessions())
+                    LOGGER.info("ERROR | FDR | Protein Accession: " + acc.getAccession());
             return;
         }
         addMzTabHandler(th, modeller);
@@ -80,6 +91,7 @@ public class MZTabProcessor {
         piaModeller.getPSMModeller().setAllDecoyPattern("searchengine");
         piaModeller.getPSMModeller().setAllTopIdentifications(0);
 
+
         // calculate peptide FDR
         piaModeller.getPeptideModeller().calculateFDR(fileID);
 
@@ -98,12 +110,11 @@ public class MZTabProcessor {
         return taxonomyIds;
     }
 
-    public int handleCorrespondingMGFs(IFunction<ISpectrum, ISpectrum> filters, Appendable out) {
-        int totalWritten = archiveSpectra.getMgfFiles().stream().mapToInt(run -> handleMFGFile(run, filters, out)).sum();
-        return totalWritten;
+    public int handleCorrespondingMGFs(IFunction<ISpectrum, ISpectrum> filters, Appendable out) throws IllegalStateException {
+        return archiveSpectra.getMgfFiles().stream().mapToInt(run -> handleMFGFile(run, filters, out)).sum();
     }
 
-    protected int handleMFGFile(File file, IFunction<ISpectrum, ISpectrum> filters, Appendable out) {
+    protected int handleMFGFile(File file, IFunction<ISpectrum, ISpectrum> filters, Appendable out) throws IllegalStateException{
         int totalWritten = 0;
         try {
             LineNumberReader rdr = new LineNumberReader(new FileReader(file));
@@ -119,7 +130,7 @@ public class MZTabProcessor {
         return totalWritten;
     }
 
-    protected List<ReportPSM> getPSM(String spectrumId) {
+    protected List getPSM(String spectrumId) throws IllegalStateException{
 
         String[] parts = spectrumId.split(";");
         if (parts.length < 3)
@@ -133,14 +144,13 @@ public class MZTabProcessor {
 
         String spectrumRef = msRun.getReference() + ":" + parts[2];
 
-        List psms = psmToSpectrum.entrySet().parallelStream()
+        return psmToSpectrum.entrySet().parallelStream()
                 .filter(psm -> psm.getValue().equals(spectrumRef))
                 .map(psm -> psm.getKey())
                 .collect(Collectors.toCollection(ArrayList<ReportPSM>::new));
-        return psms;
     }
 
-    protected boolean processPSM(ISpectrum spectrum, IFunction<ISpectrum, ISpectrum> filters, Appendable out) {
+    protected boolean processPSM(ISpectrum spectrum, IFunction<ISpectrum, ISpectrum> filters, Appendable out) throws IllegalStateException{
         final String id = spectrum.getId();
 
         if (!getTaxonomyId().isEmpty()) {
@@ -159,8 +169,12 @@ public class MZTabProcessor {
             }
 
             String decoyInformation = combineDecoyInformation(peptides);
-           if(decoyInformation != null)
+            if(decoyInformation != null)
                spectrum.setProperty(KnownProperties.DECOY_KEY, decoyInformation);
+
+            String combineScoresInformation = combinePeptideScores(peptides);
+            if(combineScoresInformation != null)
+                spectrum.setProperty(KnownProperties.CONSENSUS_PEPTIDE_SCORE, combineScoresInformation);
 
             // TODO: disabled protein accession to avoid causing problem in clustering process, this can be enabled in the future
 //            String proteinAccession = peptides.getAccession();
@@ -181,6 +195,17 @@ public class MZTabProcessor {
         }
 
         return false;
+    }
+
+    private String combinePeptideScores(List<ReportPSM> peptides) {
+        StringBuilder peptideScore = new StringBuilder();
+
+        for (ReportPSM psm : peptides) {
+            peptideScore.append(ScoreModelEnum.PSM_LEVEL_COMBINED_FDR_SCORE.getShortName()).append("=").append(psm.getFDRScore().getValue());
+            peptideScore.append(";");
+        }
+        return peptideScore.substring(0, peptideScore.length() - 1).replaceAll("NO-INFO", "");
+
     }
 
     private String combineSpecies(Collection<String> taxonomyIds) {
@@ -209,12 +234,28 @@ public class MZTabProcessor {
         for (ReportPSM psm : psms) {
             Map<Integer, Modification> mods = psm.getModifications();
             if (mods != null && !mods.isEmpty()) {
-                modifications.append(mods.toString()).append(";");
+                for (Map.Entry entry: mods.entrySet()){
+                    Modification mod = (Modification)entry.getValue();
+                    Integer key = (Integer) entry.getKey();
+                    modifications.append(key);
+                    if(mod.getProbability() != null && mod.getProbability().size()>0){
+                        for(ScoreModel score: mod.getProbability()){
+                            if(score != null && CVTermConstant.getCVTermConstant(score.getAccession()) != null)
+                                modifications.append("[")
+                                        .append(CVTermConstant.getCVTermConstant(score.getAccession()).getName())
+                                        .append("=").append(score.getValue())
+                                        .append("]");
+                        }
+                    }
+                    modifications.append("-").append(mod.getAccession());
+                    modifications.append(",");
+                }
+                modifications = new StringBuilder(modifications.substring(0,modifications.length() -1));
+                modifications.append(";");
             } else {
                 modifications.append("NO-MOD;");
             }
         }
-
         return modifications.substring(0, modifications.length() - 1).replaceAll("NO-MOD", "");
     }
 
@@ -223,9 +264,9 @@ public class MZTabProcessor {
 
         for (ReportPSM psm : psms) {
             if (psm.getIsDecoy())
-                decoyInformation.append("1").append(";");
+                decoyInformation.append("decoy:true").append(";");
             else
-                decoyInformation.append("NO-INFO;");
+                decoyInformation.append("decoy:false;");
         }
         return decoyInformation.substring(0, decoyInformation.length() - 1).replaceAll("NO-INFO", "");
     }
@@ -266,7 +307,7 @@ public class MZTabProcessor {
         for(Map.Entry entry: modeller.getSpectraData().entrySet()){
             spectraIdList.put(entry.getKey().toString(), ((SpectraData) entry.getValue()).getName());
         }
-        List<ReportPSM> reportPSMS = null;
+        List<ReportPSM> reportPSMS;
         List<AbstractFilter> filters = new ArrayList<>();
         if(idPredicates != null && idPredicates.size() > 0 && modeller != null){
             if(idPredicates.containsKey(IDFilterName.PSM_FDR_FILTER.getName())){
@@ -275,7 +316,7 @@ public class MZTabProcessor {
                 }
         }
         reportPSMS =  modeller.getPSMModeller().getFilteredReportPSMs(fileID, filters);
-        System.out.print(reportPSMS.size());
+        LOGGER.info("NUMBER OF PSMs: " + reportPSMS.size());
 
         for (ReportPSM psM : reportPSMS) {
             // spectraRefs = psM.getSourceID();

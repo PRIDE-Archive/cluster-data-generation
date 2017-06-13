@@ -6,7 +6,7 @@
 
     <groupId>uk.ac.ebi.pride.spectracluster</groupId>
     <artifactId>spectra-filter-archive</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
 
     <licenses>
         <license>
@@ -41,9 +41,19 @@
         <spectra-cluster.version>1.0.11-SNAPSHOT</spectra-cluster.version>
         <junit.version>4.11</junit.version>
         <mockito-all.version>1.9.5</mockito-all.version>
+        <pia.version>1.3.1</pia.version>
+        <xercesImpl.version>2.11.0</xercesImpl.version>
+        <log4j.version>1.2.17</log4j.version>
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -85,7 +95,13 @@
         <dependency>
             <groupId>de.mpc.pia</groupId>
             <artifactId>pia</artifactId>
-            <version>1.3.0</version>
+            <version>${pia.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <version>${xercesImpl.version}</version>
         </dependency>
 
     </dependencies>
@@ -119,7 +135,7 @@
                         <include>**/*Tests.java</include>
                         <include>**/*Test.java</include>
                     </includes>
-                    <skipTests>false</skipTests>
+                    <skipTests>true</skipTests>
                     <junitArtifactName>junit:junit</junitArtifactName>
                 </configuration>
             </plugin>

@@ -42,8 +42,8 @@ public class ExporterTest {
 
     @Before
     public void setUp() throws Exception {
-       folderInternal = new File("/Users/yperez");
-       folderOutput   = new File("/Users/yperez");
+       folderInternal = new File(ExporterTest.class.getClassLoader().getResource("example/").toURI());
+       folderOutput   = new File(ExporterTest.class.getClassLoader().getResource("example/").toURI());
        filterFile     = new File(ExporterTest.class.getClassLoader().getResource("filter.xml").toURI());
     }
 

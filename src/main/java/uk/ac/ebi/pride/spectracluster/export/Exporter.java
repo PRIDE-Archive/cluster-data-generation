@@ -67,8 +67,15 @@ public class Exporter {
                     }
 
                     // export spectra
+
+                    if(mzTab.getName().equalsIgnoreCase("F1_20150223_Agilent5_PG_incl_list_Trypsin_B[Node_08].scored.pride.mztab"))
+                        System.out.println("F1_20150223_Agilent5_PG_incl_list_Trypsin_B\\[Node_08\\].scored.pride.mztab");
                     MZTabProcessor processor = new MZTabProcessor(idPredicates, spec);
-                    processor.handleCorrespondingMGFs(filter, out);
+                    try {
+                        processor.handleCorrespondingMGFs(filter, out);
+                    }catch (IllegalStateException e){
+                        System.err.println("Bad mzTab file " + mzTab);
+                    }
 
                     out.flush();
                 }
@@ -120,6 +127,7 @@ public class Exporter {
      */
     private ArchiveSpectra buildArchiveSpectra(File mzTab, File inputPath) throws IOException {
         // parse mztab object
+
         MZTabFileParser mzTabFileParser = new MZTabFileParser(mzTab, System.out);
         MZTabFile mzTabFile = mzTabFileParser.getMZTabFile();
 
