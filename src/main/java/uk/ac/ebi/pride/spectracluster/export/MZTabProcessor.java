@@ -1,6 +1,5 @@
 package uk.ac.ebi.pride.spectracluster.export;
 
-import de.mpc.pia.intermediate.Accession;
 import de.mpc.pia.intermediate.Modification;
 import de.mpc.pia.intermediate.compiler.PIACompiler;
 import de.mpc.pia.intermediate.compiler.PIASimpleCompiler;
@@ -64,11 +63,16 @@ public class MZTabProcessor {
         }
 
         PIAModeller modeller = computeFDRPSMLevel(th.getSource());
+
+        if(modeller == null){
+            LOGGER.error("ERROR | SPECTRUM INFORMATION | PSM NOT AVAILABLE | " + th.getSource().getName());
+            return;
+        }
+
         if(!modeller.getPSMModeller().getAllFilesHaveFDRCalculated() || modeller.getPSMModeller().getFileFDRData().get(fileID).getNrFDRGoodDecoys() == 0){
-            LOGGER.info("ERROR | FDR | INFORMATION about FDR NOT AVAILABLE for: " + th.getSource().getName());
+            LOGGER.error("ERROR | FDR | INFORMATION about FDR NOT AVAILABLE for: " + th.getSource().getName());
             for(ReportPSMSet idSet: modeller.getPSMModeller().getReportPSMSets().values())
-                for (Accession acc: idSet.getAccessions())
-                    LOGGER.info("ERROR | FDR | Protein Accession: " + acc.getAccession());
+                LOGGER.error("ERROR | FDR | " + idSet.toString());
             return;
         }
         addMzTabHandler(th, modeller);
@@ -76,32 +80,36 @@ public class MZTabProcessor {
     }
 
     private PIAModeller computeFDRPSMLevel(File mzTabFile) throws IOException {
+        PIAModeller piaModeller = null;
+        try{
+            PIACompiler piaCompiler = new PIASimpleCompiler();
+            piaCompiler.getDataFromFile(mzTabFile.getName(), mzTabFile.getAbsolutePath(),null, InputFileParserFactory.InputFileTypes.MZTAB_INPUT.getFileTypeShort());
+            piaCompiler.buildClusterList();
+            piaCompiler.buildIntermediateStructure();
 
-        PIACompiler piaCompiler = new PIASimpleCompiler();
-        piaCompiler.getDataFromFile(mzTabFile.getName(), mzTabFile.getAbsolutePath(),null, InputFileParserFactory.InputFileTypes.MZTAB_INPUT.getFileTypeShort());
-        piaCompiler.buildClusterList();
-        piaCompiler.buildIntermediateStructure();
+            if(piaCompiler.getAllPeptideSpectrumMatcheIDs() != null && !piaCompiler.getAllPeptideSpectrumMatcheIDs().isEmpty()){
+                File inferenceTempFile = File.createTempFile(mzTabFile.getName(), ".tmp");
+                piaCompiler.writeOutXML(inferenceTempFile);
+                piaCompiler.finish();
+                piaModeller = new PIAModeller(inferenceTempFile.getAbsolutePath());
+                piaModeller.setCreatePSMSets(true);
 
-        File inferenceTempFile = File.createTempFile(mzTabFile.getName(), ".tmp");
-        piaCompiler.writeOutXML(inferenceTempFile);
-        piaCompiler.finish();
-        PIAModeller piaModeller = new PIAModeller(inferenceTempFile.getAbsolutePath());
-        piaModeller.setCreatePSMSets(true);
+                piaModeller.getPSMModeller().setAllDecoyPattern("searchengine");
+                piaModeller.getPSMModeller().setAllTopIdentifications(0);
 
-        piaModeller.getPSMModeller().setAllDecoyPattern("searchengine");
-        piaModeller.getPSMModeller().setAllTopIdentifications(0);
+                // calculate peptide FDR
+                piaModeller.getPeptideModeller().calculateFDR(fileID);
 
+                // calculate FDR on PSM level
+                piaModeller.getPSMModeller().calculateAllFDR();
+                piaModeller.getPSMModeller().calculateCombinedFDRScore();
 
-        // calculate peptide FDR
-        piaModeller.getPeptideModeller().calculateFDR(fileID);
-
-        // calculate FDR on PSM level
-        piaModeller.getPSMModeller().calculateAllFDR();
-        piaModeller.getPSMModeller().calculateCombinedFDRScore();
-
-        if(inferenceTempFile.exists())
-            inferenceTempFile.deleteOnExit();
-
+                if(inferenceTempFile.exists())
+                    inferenceTempFile.deleteOnExit();
+            }
+        }catch (IllegalArgumentException e){
+            LOGGER.error("ERROR | SPECTRUM INFORMATION | THE SEARCH ENGINE SCORE IS NOT SUPPORTED | " + e.getMessage());
+        }
         return piaModeller;
 
     }

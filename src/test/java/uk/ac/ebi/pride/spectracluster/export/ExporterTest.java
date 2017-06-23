@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 import uk.ac.ebi.pride.spectracluster.filters.IdentificationPredicateParser;
 import uk.ac.ebi.pride.spectracluster.filters.SpectrumPredicateParser;
-import uk.ac.ebi.pride.spectracluster.filters.SpectrumPredicateParserTest;
 import uk.ac.ebi.pride.spectracluster.mztab.IFilter;
 import uk.ac.ebi.pride.spectracluster.spectrum.ISpectrum;
 import uk.ac.ebi.pride.spectracluster.util.function.Functions;
@@ -13,8 +12,6 @@ import uk.ac.ebi.pride.spectracluster.util.function.spectrum.RemoveSpectrumEmpty
 import uk.ac.ebi.pride.spectracluster.util.predicate.IPredicate;
 
 import java.io.File;
-import java.net.URL;
-import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.*;
@@ -37,12 +34,14 @@ import static org.junit.Assert.*;
 public class ExporterTest {
 
     private File folderInternal;
+    private File folderInternalEmpty;
     private File folderOutput;
     private File filterFile;
 
     @Before
     public void setUp() throws Exception {
        folderInternal = new File(ExporterTest.class.getClassLoader().getResource("example/").toURI());
+       folderInternalEmpty = new File(ExporterTest.class.getClassLoader().getResource("exampleempty/").toURI());
        folderOutput   = new File(ExporterTest.class.getClassLoader().getResource("example/").toURI());
        filterFile     = new File(ExporterTest.class.getClassLoader().getResource("filter.xml").toURI());
     }
@@ -63,6 +62,26 @@ public class ExporterTest {
 
         Exporter exp = new Exporter(condition, idFilters);
         exp.export(folderInternal, folderOutput);
+        System.out.println("exported " + folderOutput);
+    }
+
+
+    @Test
+    public void exportEmpty() throws Exception {
+
+
+        System.out.println("Output to: " + folderOutput.getAbsolutePath());
+
+        // parse all the filters
+        IPredicate<ISpectrum> predicate = SpectrumPredicateParser.parse(filterFile);
+        Map<String, IFilter> idFilters = IdentificationPredicateParser.parse(filterFile);
+
+        // add function to remove empty peak lists
+        RemoveSpectrumEmptyPeakFunction removeEmptyPeakFunction = new RemoveSpectrumEmptyPeakFunction();
+        IFunction<ISpectrum, ISpectrum> condition = Functions.condition(removeEmptyPeakFunction, predicate);
+
+        Exporter exp = new Exporter(condition, idFilters);
+        exp.export(folderInternalEmpty, folderOutput);
         System.out.println("exported " + folderOutput);
     }
 

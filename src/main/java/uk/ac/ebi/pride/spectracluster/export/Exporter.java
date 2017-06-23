@@ -67,9 +67,6 @@ public class Exporter {
                     }
 
                     // export spectra
-
-                    if(mzTab.getName().equalsIgnoreCase("F1_20150223_Agilent5_PG_incl_list_Trypsin_B[Node_08].scored.pride.mztab"))
-                        System.out.println("F1_20150223_Agilent5_PG_incl_list_Trypsin_B\\[Node_08\\].scored.pride.mztab");
                     MZTabProcessor processor = new MZTabProcessor(idPredicates, spec);
                     try {
                         processor.handleCorrespondingMGFs(filter, out);
@@ -81,8 +78,11 @@ public class Exporter {
                 }
             }
         } finally {
-            if (out != null)
+            if (out != null){
                 out.close();
+                if(outFile.length() == 0)
+                    outFile.deleteOnExit();
+            }
         }
     }
 
