@@ -11,7 +11,7 @@ JOB_NAME="PRIDE-CLUSTER-ARCHIVE-IMPORT"
 # the job parameters that are going to be passed on to the job (build below)
 JOB_PARAMETERS=""
 # memory limit
-MEMORY_LIMIT=100000
+MEMORY_LIMIT=60000
 JOB_EMAIL="pride-report@ebi.ac.uk"
 # Log file name
 NOW=$(date +"%m-%d-%Y")
