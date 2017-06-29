@@ -8288,3 +8288,74 @@
 	pattern s.*
 	fdrThreshold 0.01" (de.mpc.pia.modeller.score.FDRData:394)
 [29-Jun-2017 11:21:34 - INFO] "NUMBER OF PSMs: 2033" (uk.ac.ebi.pride.spectracluster.export.MZTabProcessor:336)
+[29-Jun-2017 14:59:55 - INFO] "'/Users/yperez/IdeaProjects/github-repo/pride-cluster/Spectra-Cluster/spectra-filter-archive/target/test-classes/example/internal/PRIDE_Exp_Complete_Ac_20955.pride.mztab' should be a MzTab File file" (de.mpc.pia.intermediate.compiler.parser.InputFileParserFactory:383)
+[29-Jun-2017 14:59:59 - INFO] "Initializing unimod parser..." (de.mpc.pia.intermediate.compiler.PIACompiler:206)
+[29-Jun-2017 15:00:01 - INFO] "unimod parser initialized..." (de.mpc.pia.intermediate.compiler.PIACompiler:208)
+[29-Jun-2017 15:00:01 - WARN] "specificity of modifications not yet implemented!! (for Acetylation)" (de.mpc.pia.tools.obo.PsiModParser:280)
+[29-Jun-2017 15:00:01 - WARN] "specificity of modifications not yet implemented!! (for Acetylation)" (de.mpc.pia.tools.obo.PsiModParser:280)
+[29-Jun-2017 15:00:01 - WARN] "specificity of modifications not yet implemented!! (for Oxidation or Hydroxylation)" (de.mpc.pia.tools.obo.PsiModParser:280)
+[29-Jun-2017 15:00:01 - INFO] "Initializing PRIDE ModReader parser..." (de.mpc.pia.intermediate.compiler.PIACompiler:236)
+[29-Jun-2017 15:00:03 - INFO] "inserted new: 
+	1830 peptides
+	2033 peptide spectrum matches
+	538 accessions" (de.mpc.pia.intermediate.compiler.parser.MzTabParser:237)
+[29-Jun-2017 15:00:03 - INFO] "have now: 
+	1830 peptides
+	2033 peptide spectrum matches
+	538 accessions" (de.mpc.pia.intermediate.compiler.PIACompiler:263)
+[29-Jun-2017 15:00:03 - INFO] "start sorting clusters" (de.mpc.pia.intermediate.compiler.PIACompiler:678)
+[29-Jun-2017 15:00:03 - INFO] "clusters sorted: 537" (de.mpc.pia.intermediate.compiler.PIACompiler:705)
+[29-Jun-2017 15:00:03 - INFO] "Using 4 threads." (de.mpc.pia.intermediate.compiler.PIACompiler:787)
+[29-Jun-2017 15:00:03 - INFO] " <thread 2 has no more work after 52 clusters> " (de.mpc.pia.intermediate.compiler.CompilerWorkerThread:76)
+[29-Jun-2017 15:00:03 - INFO] " <thread 1 has no more work after 151 clusters> " (de.mpc.pia.intermediate.compiler.CompilerWorkerThread:76)
+[29-Jun-2017 15:00:03 - INFO] " <thread 4 has no more work after 164 clusters> " (de.mpc.pia.intermediate.compiler.CompilerWorkerThread:76)
+[29-Jun-2017 15:00:03 - INFO] " <thread 3 has no more work after 170 clusters> " (de.mpc.pia.intermediate.compiler.CompilerWorkerThread:76)
+[29-Jun-2017 15:00:03 - INFO] "Writing PIA XML file to /var/folders/hm/w90zk0x90sv25st_pm8xdw940000gq/T/PRIDE_Exp_Complete_Ac_20955.pride.mztab7109656745627106507.tmp" (de.mpc.pia.intermediate.compiler.PIACompiler:921)
+[29-Jun-2017 15:00:03 - INFO] "Stream open, writing PIA XML" (de.mpc.pia.intermediate.compiler.PIACompiler:945)
+[29-Jun-2017 15:00:03 - WARN] "MzIdentML Configuration file: jar:file:/Users/yperez/.m2/repository/uk/ac/ebi/pride/jmztab-modular-converters/3.0.7/jmztab-modular-converters-3.0.7.jar!/MzIdentMLElement.cfg.xml" (uk.ac.ebi.jmzidml.MzIdentMLElement:1100)
+[29-Jun-2017 15:00:04 - INFO] "Writing of PIA XML file finished." (de.mpc.pia.intermediate.compiler.PIACompiler:999)
+[29-Jun-2017 15:00:04 - INFO] "start loading file /var/folders/hm/w90zk0x90sv25st_pm8xdw940000gq/T/PRIDE_Exp_Complete_Ac_20955.pride.mztab7109656745627106507.tmp" (de.mpc.pia.modeller.PIAModeller:199)
+[29-Jun-2017 15:00:04 - INFO] "loadIntermediate started..." (de.mpc.pia.modeller.PIAModeller:332)
+[29-Jun-2017 15:00:04 - WARN] "no progress array given, creating one. But no externalsupervision possible" (de.mpc.pia.modeller.PIAModeller:336)
+[29-Jun-2017 15:00:04 - INFO] "Starting parse..." (de.mpc.pia.modeller.PIAModeller:355)
+[29-Jun-2017 15:00:04 - INFO] "filesList" (de.mpc.pia.intermediate.xmlhandler.PIAIntermediateJAXBHandler:279)
+[29-Jun-2017 15:00:05 - INFO] "Inputs" (de.mpc.pia.intermediate.xmlhandler.PIAIntermediateJAXBHandler:284)
+[29-Jun-2017 15:00:05 - INFO] "AnalysisSoftwareList" (de.mpc.pia.intermediate.xmlhandler.PIAIntermediateJAXBHandler:289)
+[29-Jun-2017 15:00:05 - INFO] "spectraList" (de.mpc.pia.intermediate.xmlhandler.PIAIntermediateJAXBHandler:294)
+[29-Jun-2017 15:00:05 - INFO] "accessionsList" (de.mpc.pia.intermediate.xmlhandler.PIAIntermediateJAXBHandler:298)
+[29-Jun-2017 15:00:05 - INFO] "peptidesList" (de.mpc.pia.intermediate.xmlhandler.PIAIntermediateJAXBHandler:302)
+[29-Jun-2017 15:00:05 - INFO] "groupsList" (de.mpc.pia.intermediate.xmlhandler.PIAIntermediateJAXBHandler:306)
+[29-Jun-2017 15:00:05 - INFO] "/var/folders/hm/w90zk0x90sv25st_pm8xdw940000gq/T/PRIDE_Exp_Complete_Ac_20955.pride.mztab7109656745627106507.tmp successfully parsed.
+	1 files
+	537 groups
+	538 accessions
+	1830 peptides
+	2033 peptide spectrum matches
+	537 trees" (de.mpc.pia.modeller.PIAModeller:360)
+[29-Jun-2017 15:00:05 - INFO] "loadIntermediate done." (de.mpc.pia.modeller.PIAModeller:368)
+[29-Jun-2017 15:00:05 - INFO] "setting spectra uniquenesses" (de.mpc.pia.modeller.PIAModeller:403)
+[29-Jun-2017 15:00:05 - INFO] "spectra uniquenesses set." (de.mpc.pia.modeller.PIAModeller:409)
+[29-Jun-2017 15:00:05 - INFO] "createReportPSMsFromGroups started..." (de.mpc.pia.modeller.PSMModeller:310)
+[29-Jun-2017 15:00:06 - INFO] "createReportPSMSets done" (de.mpc.pia.modeller.PSMModeller:606)
+[29-Jun-2017 15:00:06 - INFO] "createReportPSMsFromGroups done." (de.mpc.pia.modeller.PSMModeller:569)
+[29-Jun-2017 15:00:06 - INFO] "createReportPSMSets done" (de.mpc.pia.modeller.PSMModeller:606)
+[29-Jun-2017 15:00:06 - INFO] "set the score for peptide FDR calculation for fileID=1: mascot_score" (de.mpc.pia.modeller.PeptideModeller:658)
+[29-Jun-2017 15:00:06 - INFO] "Inferring peptides for 1 considerModifications=false" (de.mpc.pia.modeller.PeptideModeller:155)
+[29-Jun-2017 15:00:06 - INFO] "Inferred 1830 peptides for 1" (de.mpc.pia.modeller.PeptideModeller:186)
+[29-Jun-2017 15:00:06 - INFO] "calculating FDR in FDRData with mascot_score
+	strategy searchengine
+	pattern s.*
+	fdrThreshold 0.01" (de.mpc.pia.modeller.score.FDRData:394)
+[29-Jun-2017 15:00:06 - INFO] "set the score for FDR calculation for fileID=1: mascot_score" (de.mpc.pia.modeller.PSMModeller:1143)
+[29-Jun-2017 15:00:06 - INFO] "updateDecoyStates 1" (de.mpc.pia.modeller.PSMModeller:1085)
+[29-Jun-2017 15:00:06 - INFO] "calculating FDR in FDRData with mascot_score
+	strategy searchengine
+	pattern s.*
+	fdrThreshold 0.01" (de.mpc.pia.modeller.score.FDRData:394)
+[29-Jun-2017 15:00:06 - INFO] "updateDecoyStates 0" (de.mpc.pia.modeller.PSMModeller:1085)
+[29-Jun-2017 15:00:06 - INFO] "Calculation of Combined FDR Score for 1" (de.mpc.pia.modeller.PSMModeller:1383)
+[29-Jun-2017 15:00:06 - INFO] "calculating FDR in FDRData with average_fdr_score
+	strategy searchengine
+	pattern s.*
+	fdrThreshold 0.01" (de.mpc.pia.modeller.score.FDRData:394)
+[29-Jun-2017 15:00:06 - INFO] "NUMBER OF PSMs: 2033" (uk.ac.ebi.pride.spectracluster.export.MZTabProcessor:336)

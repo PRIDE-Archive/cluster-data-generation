@@ -181,11 +181,11 @@ public class MZTabProcessor {
 
             String decoyInformation = combineDecoyInformation(peptides);
             if(decoyInformation != null)
-               spectrum.setProperty(KnownProperties.DECOY_KEY, decoyInformation);
+               spectrum.setProperty(KnownProperties.PSM_DECOY_STATUS, decoyInformation);
 
             String combineScoresInformation = combinePeptideScores(peptides);
             if(combineScoresInformation != null)
-                spectrum.setProperty(KnownProperties.CONSENSUS_PEPTIDE_SCORE, combineScoresInformation);
+                spectrum.setProperty(KnownProperties.PSM_FDR_SCORES, combineScoresInformation);
 
             // TODO: disabled protein accession to avoid causing problem in clustering process, this can be enabled in the future
 //            String proteinAccession = peptides.getAccession();
