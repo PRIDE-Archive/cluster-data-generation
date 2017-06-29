@@ -161,6 +161,9 @@ public class MZTabProcessor {
     protected boolean processPSM(ISpectrum spectrum, IFunction<ISpectrum, ISpectrum> filters, Appendable out) throws IllegalStateException{
         final String id = spectrum.getId();
 
+
+
+
         if (!getTaxonomyId().isEmpty()) {
             String species = combineSpecies(taxonomyIds);
             spectrum.setProperty(KnownProperties.TAXONOMY_KEY, species);
@@ -197,12 +200,18 @@ public class MZTabProcessor {
 
         ISpectrum filteredSpectrum = filters.apply(spectrum);
 
-        if (filteredSpectrum != null) {
+        if (filteredSpectrum != null && validateSpectrum(spectrum)) {
             MGFSpectrumAppender.INSTANCE.appendSpectrum(out, spectrum);
             return true;
         }
 
         return false;
+    }
+
+    private boolean validateSpectrum(ISpectrum spectrum) {
+        if(spectrum.getPrecursorCharge() < 0)
+            return false;
+        return true;
     }
 
     private String combinePeptideScores(List<ReportPSM> peptides) {
