@@ -7,4 +7,5 @@
     <entry key="precursor.mz.range">200-5000</entry>
     <entry key="psm.decoy.filter">0.01</entry>
     <entry key="unidentified.spectrum">true</entry>
+    <entry key="identified.spectrum">true</entry>
 </properties>
