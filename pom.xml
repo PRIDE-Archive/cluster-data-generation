@@ -41,7 +41,7 @@
         <spectra-cluster.version>1.0.11-SNAPSHOT</spectra-cluster.version>
         <junit.version>4.11</junit.version>
         <mockito-all.version>1.9.5</mockito-all.version>
-        <pia.version>1.3.1</pia.version>
+        <pia.version>1.3.4-SNAPSHOT</pia.version>
         <xercesImpl.version>2.11.0</xercesImpl.version>
         <log4j.version>1.2.17</log4j.version>
     </properties>
