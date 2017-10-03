@@ -31,24 +31,31 @@ public class Exporter {
     public static final String MGF_SUFFIX         = ".mgf";
     public static final String INTERNAL_DIRECTORY = "internal";
 
-    private final IFunction<ISpectrum, ISpectrum> filter;
+    private final IFunction<ISpectrum, ISpectrum> spectrumFilter;
 
     private final Map<String, IFilter> idPredicates;
 
-    public Exporter(IFunction<ISpectrum, ISpectrum> filter) {
-        this.filter = filter;
+    public Exporter(IFunction<ISpectrum, ISpectrum> spectrumFilter) {
+        this.spectrumFilter = spectrumFilter;
         this.idPredicates = null;
     }
 
-    public Exporter(IFunction<ISpectrum, ISpectrum> filter, Map<String, IFilter> idPredicates){
-        this.filter = filter;
+    public Exporter(IFunction<ISpectrum, ISpectrum> spectrumFilter, Map<String, IFilter> idPredicates){
+        this.spectrumFilter = spectrumFilter;
         this.idPredicates = idPredicates;
     }
 
+    /**
+     * Convert the input from a input directory (mztab + mgf) into and enriched mgf file format containing
+     * the spectra and the identified sequence.
+     * @param inputDirectory input directory with the mztab + mgf files.
+     * @param outputDirectory output directory to write the enriched mgf.
+     * @throws IOException
+     */
     public void export(File inputDirectory, File outputDirectory) throws IOException {
         // output file
-        File outFile = buildOutputFile(outputDirectory, inputDirectory);
 
+        File outFile = buildOutputFile(outputDirectory, inputDirectory);
 
         PrintWriter out = null;
         try {
@@ -66,10 +73,9 @@ public class Exporter {
                         continue;
                     }
 
-                    // export spectra
                     MZTabProcessor processor = new MZTabProcessor(idPredicates, spec);
                     try {
-                        processor.handleCorrespondingMGFs(filter, out);
+                        processor.handleCorrespondingMGFs(spectrumFilter, out);
                     }catch (IllegalStateException e){
                         System.err.println("Bad mzTab file " + mzTab);
                     }

@@ -39,12 +39,12 @@ public class MZTabProcessor {
 
     private static final Logger LOGGER = Logger.getLogger(MZTabProcessor.class);
 
-    private final Map<String, Protein> idToProtein = new HashMap<>();
+    private final Map<String, Protein>   idToProtein = new HashMap<>();
     private final Map<ReportPSM, String> psmToSpectrum = new HashMap<>();  // For different PSMs, they could have the same spectra reference
-    private final Map<String, MsRun> fileToMsRun = new HashMap<>();
-    private final ArchiveSpectra archiveSpectra;
-    private final Collection<String> taxonomyIds = new HashSet<>();
-    private final Map<String, IFilter> idPredicates;
+    private final Map<String, MsRun>     fileToMsRun = new HashMap<>();
+    private final ArchiveSpectra         archiveSpectra;
+    private final Collection<String>     taxonomyIds = new HashSet<>();
+    private final Map<String, IFilter>   idPredicates;
     private final Long fileID = 1L;
 
     public MZTabProcessor(ArchiveSpectra th) {
@@ -79,6 +79,14 @@ public class MZTabProcessor {
 
     }
 
+    /**
+     * Compute the FDR at PSM level for each mzTab file. The input of the file is an mzTab file and
+     * a PIAModeller is returned containing the FDR objects.
+     *
+     * @param mzTabFile the mztab file submitted.
+     * @return PIAModeller object with the FDR calculations.
+     * @throws IOException
+     */
     private PIAModeller computeFDRPSMLevel(File mzTabFile) throws IOException {
         PIAModeller piaModeller = null;
         try{
@@ -160,9 +168,6 @@ public class MZTabProcessor {
 
     protected boolean processPSM(ISpectrum spectrum, IFunction<ISpectrum, ISpectrum> filters, Appendable out) throws IllegalStateException{
         final String id = spectrum.getId();
-
-
-
 
         if (!getTaxonomyId().isEmpty()) {
             String species = combineSpecies(taxonomyIds);
