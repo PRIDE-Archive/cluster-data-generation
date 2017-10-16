@@ -77,19 +77,19 @@ public class Exporter {
                         System.err.println("Bad mzTab file " + mzTab);
                         continue;
                     }
-                    MZTabProcessor processor = new MZTabProcessor(idPredicates, spec);
-                    if(!splitOuput){
-                        out = new PrintWriter(new BufferedWriter(new FileWriter(output)), false);
-                    }else{
-                        File outputMzTabFile = buildOutputFile(output, processor.getAssayId());
-                        out = new PrintWriter(new BufferedWriter(new FileWriter(outputMzTabFile)), false);
-                    }
-                    try {
-                        processor.handleCorrespondingMGFs(spectrumFilter, out);
-                    }catch (IllegalStateException e){
+                    try{
+                        MZTabProcessor processor = new MZTabProcessor(idPredicates, spec);
+                        if(!splitOuput){
+                            out = new PrintWriter(new BufferedWriter(new FileWriter(output)), false);
+                        }else {
+                            File outputMzTabFile = buildOutputFile(output, processor.getAssayId());
+                            out = new PrintWriter(new BufferedWriter(new FileWriter(outputMzTabFile)), false);
+                            processor.handleCorrespondingMGFs(spectrumFilter, out);
+                            out.flush();
+                        }
+                    }catch (Exception e){
                         System.err.println("Bad mzTab file " + mzTab);
                     }
-                    out.flush();
                 }
             }
         } finally {
