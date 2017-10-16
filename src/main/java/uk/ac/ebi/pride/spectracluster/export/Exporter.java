@@ -216,7 +216,6 @@ public class Exporter {
         </properties>
      */
     public static void main(String[] args) throws IOException, ParseException {
-        int index = 0;
 
         File outputDirectory;
         IPredicate<ISpectrum> predicate;
@@ -226,8 +225,8 @@ public class Exporter {
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse( options, args);
 
-        if(cmd.hasOption("output-path") && cmd.hasOption("config")){
-            String outputPathName = cmd.getOptionValue("output-path");
+        if(cmd.hasOption("output-folder") && cmd.hasOption("config") && cmd.hasOption("input-folder")){
+            String outputPathName = cmd.getOptionValue("output-folder");
             outputDirectory = new File(outputPathName);
             System.out.println("Output to: " + outputDirectory.getAbsolutePath());
 
@@ -242,13 +241,11 @@ public class Exporter {
             RemoveSpectrumEmptyPeakFunction removeEmptyPeakFunction = new RemoveSpectrumEmptyPeakFunction();
             IFunction<ISpectrum, ISpectrum> condition = Functions.condition(removeEmptyPeakFunction, predicate);
 
-            for (; index < args.length; index++) {
-                String arg = args[index];
-                File dir = new File(arg);
-                Exporter exp = new Exporter(condition);
-                exp.export(dir, outputDirectory, splitOutput);
-                System.out.println("exported " + dir);
-            }
+            String inputFolder = cmd.getOptionValue("input-folder");
+            File dir = new File(inputFolder);
+            Exporter exp = new Exporter(condition);
+            exp.export(dir, outputDirectory, splitOutput);
+            System.out.println("exported " + dir);
 
         }else{
             HelpFormatter formatter = new HelpFormatter();
@@ -258,11 +255,17 @@ public class Exporter {
 
     }
 
+    /**
+     * Return the list of options for the commandline tool
+     * @return Options
+     */
+
     public static Options initOptions(){
         Options options = new Options();
         options.addOption("output-path", true, "Output path where all projects will be exported");
         options.addOption("config", true, "Config file to filter the spectra from the project");
         options.addOption("split", false, "Split the output into Project Folders, <PXD00XXXXX>/PXD-AssayID");
+        options.addOption("input-folder", true, "Input folder that contains the original files in PRIDE Path");
         return options;
     }
 }
