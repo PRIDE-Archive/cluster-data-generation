@@ -16,8 +16,7 @@ package uk.ac.ebi.pride.spectracluster.mztab;
 public enum IDFilterName {
 
     PSM_FDR_FILTER("psm.decoy.filter"),
-    PEPTIDE_FDR_FILTER("peptide.decoy.filter")
-    ;
+    PEPTIDE_FDR_FILTER("peptide.decoy.filter");
 
     private String name;
 

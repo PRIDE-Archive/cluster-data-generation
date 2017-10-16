@@ -26,17 +26,21 @@ public final class SpectrumPredicateParser {
 
         List<IPredicate<ISpectrum>> predicates = new ArrayList<>();
 
+        CombinedIdentifiedPredicate combinedIdentifiedPredicate = new CombinedIdentifiedPredicate();
+
         // filter by identified spectrum
         String filterIdentifiedSpectrum = properties.getProperty("identified.spectrum");
-        if (filterIdentifiedSpectrum != null && "true".equalsIgnoreCase(filterIdentifiedSpectrum)) {
-            predicates.add(new IdentifiedPredicate());
+        if (!(filterIdentifiedSpectrum != null || "false".equalsIgnoreCase(filterIdentifiedSpectrum))) {
+            combinedIdentifiedPredicate.setIdentified(false);
         }
 
         // filter by identified spectrum
         String filterUnidentifiedSpectrum = properties.getProperty("unidentified.spectrum");
-        if (filterUnidentifiedSpectrum != null && "true".equalsIgnoreCase(filterUnidentifiedSpectrum)) {
-            predicates.add(new UnidentifiedPredicate());
+        if (!(filterUnidentifiedSpectrum != null || "false".equalsIgnoreCase(filterUnidentifiedSpectrum))) {
+            combinedIdentifiedPredicate.setUnidentified(false);
         }
+
+        predicates.add(combinedIdentifiedPredicate);
 
         // filter by taxonomy id
         String filterByTaxonomy = properties.getProperty("taxonomy");

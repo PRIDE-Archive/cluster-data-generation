@@ -4,6 +4,7 @@ import de.mpc.pia.intermediate.Modification;
 import de.mpc.pia.intermediate.compiler.PIACompiler;
 import de.mpc.pia.intermediate.compiler.PIASimpleCompiler;
 import de.mpc.pia.intermediate.compiler.parser.InputFileParserFactory;
+import de.mpc.pia.intermediate.compiler.parser.MzTabParser;
 import de.mpc.pia.modeller.PIAModeller;
 import de.mpc.pia.modeller.psm.ReportPSM;
 import de.mpc.pia.modeller.psm.ReportPSMSet;
@@ -16,6 +17,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 import uk.ac.ebi.jmzidml.model.mzidml.SpectraData;
 import uk.ac.ebi.pride.jmztab.model.*;
+import uk.ac.ebi.pride.jmztab.utils.MZTabFileParser;
 import uk.ac.ebi.pride.spectracluster.archive.ArchiveSpectra;
 import uk.ac.ebi.pride.spectracluster.io.MGFSpectrumAppender;
 import uk.ac.ebi.pride.spectracluster.io.ParserUtilities;
@@ -47,6 +49,8 @@ public class MZTabProcessor {
     private final Map<String, IFilter>   idPredicates;
     private final Long fileID = 1L;
 
+    private Metadata metadata = new Metadata(); // We need to parse the corresponding metadata to see the Assay information.
+
     public MZTabProcessor(ArchiveSpectra th) {
         archiveSpectra = th;
         idPredicates = new HashMap<>();
@@ -61,6 +65,9 @@ public class MZTabProcessor {
         if(archiveSpectra.getMzTabFile() == null){
             return;
         }
+
+        MZTabFileParser mzTabParser = new MZTabFileParser(th.getSource(), new FileOutputStream(th.getSource().getAbsolutePath() + "errors.out"));
+        metadata = mzTabParser.getMZTabFile().getMetadata();
 
         PIAModeller modeller = computeFDRPSMLevel(th.getSource());
 
@@ -88,6 +95,7 @@ public class MZTabProcessor {
      * @throws IOException
      */
     private PIAModeller computeFDRPSMLevel(File mzTabFile) throws IOException {
+
         PIAModeller piaModeller = null;
         try{
             PIACompiler piaCompiler = new PIASimpleCompiler();
@@ -358,4 +366,18 @@ public class MZTabProcessor {
             idToProtein.put(accession, protein);
         }
     }
+
+    /**
+     * This function return the mztab id for the mzTab file in the form of a key-value pair
+     * PXD003534-61487
+     *
+     * @return the ID of the file Project-Assay.
+      */
+    public String getAssayId(){
+        if(metadata != null){
+            return metadata.getMZTabID();
+        }
+        return null;
+    }
+
 }

@@ -1,5 +1,9 @@
 package uk.ac.ebi.pride.spectracluster.filters;
 
+import uk.ac.ebi.pride.spectracluster.spectrum.ISpectrum;
+import uk.ac.ebi.pride.spectracluster.spectrum.KnownProperties;
+import uk.ac.ebi.pride.spectracluster.util.predicate.IPredicate;
+
 /**
  * This code is licensed under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
@@ -13,5 +17,30 @@ package uk.ac.ebi.pride.spectracluster.filters;
  * <p>
  * Created by ypriverol (ypriverol@gmail.com) on 03/10/2017.
  */
-public class CombinedIdentifiedPredicate {
+public class CombinedIdentifiedPredicate implements IPredicate<ISpectrum> {
+
+    private boolean identified = true;
+    private boolean unidentified = true;
+
+    public CombinedIdentifiedPredicate(){
+    }
+
+    public CombinedIdentifiedPredicate(boolean identified, boolean unidentified){
+        this.identified = identified;
+        this.unidentified = true;
+    }
+
+    public void setIdentified(boolean identified) {
+        this.identified = identified;
+    }
+
+    public void setUnidentified(boolean unidentified) {
+        this.unidentified = unidentified;
+    }
+
+    @Override
+    public boolean apply(ISpectrum spectrum) {
+        return (spectrum.getProperty(KnownProperties.IDENTIFIED_PEPTIDE_KEY) != null && identified) || (spectrum.getProperty(KnownProperties.IDENTIFIED_PEPTIDE_KEY) == null && unidentified);
+    }
+
 }

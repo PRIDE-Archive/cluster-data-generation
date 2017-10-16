@@ -13,13 +13,14 @@ import uk.ac.ebi.pride.spectracluster.util.function.Functions;
 import uk.ac.ebi.pride.spectracluster.util.function.IFunction;
 import uk.ac.ebi.pride.spectracluster.util.function.spectrum.RemoveSpectrumEmptyPeakFunction;
 import uk.ac.ebi.pride.spectracluster.util.predicate.IPredicate;
+import org.apache.commons.cli.*;
 
 import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * Export spectra from PRIDE Archive to MGF files
+ * Export spectra from PRIDE Archive to MGF files. This Script take a folder to export the data.
  *
  * @author Steve Lewis
  * @date 21/05/2014
@@ -52,19 +53,23 @@ public class Exporter {
      * @param outputDirectory output directory to write the enriched mgf.
      * @throws IOException
      */
-    public void export(File inputDirectory, File outputDirectory) throws IOException {
+    public void export(File inputDirectory, File outputDirectory, Boolean splitOuput) throws IOException {
         // output file
 
-        File outFile = buildOutputFile(outputDirectory, inputDirectory);
+        File output;
+
+        if(splitOuput)
+            output = buildFolderOutput(outputDirectory, inputDirectory);
+        else
+            output = buildOutputFile(outputDirectory, inputDirectory);
 
         PrintWriter out = null;
         try {
             // find all the PRIDE generated mzTab files
             File projectInternalPath = new File(inputDirectory, INTERNAL_DIRECTORY);
             List<File> files = readMZTabFiles(inputDirectory);
-            if (!files.isEmpty()) {
-                out = new PrintWriter(new BufferedWriter(new FileWriter(outFile)), false);
 
+            if (!files.isEmpty()) {
                 for (File mzTab : files) {
                     // map the relationship between mzTab file and its mgf files
                     ArchiveSpectra spec = buildArchiveSpectra(mzTab, projectInternalPath);
@@ -72,23 +77,23 @@ public class Exporter {
                         System.err.println("Bad mzTab file " + mzTab);
                         continue;
                     }
-
                     MZTabProcessor processor = new MZTabProcessor(idPredicates, spec);
+                    if(!splitOuput){
+                        out = new PrintWriter(new BufferedWriter(new FileWriter(output)), false);
+                    }else{
+                        File outputMzTabFile = buildOutputFile(output, processor.getAssayId());
+                        out = new PrintWriter(new BufferedWriter(new FileWriter(outputMzTabFile)), false);
+                    }
                     try {
                         processor.handleCorrespondingMGFs(spectrumFilter, out);
                     }catch (IllegalStateException e){
                         System.err.println("Bad mzTab file " + mzTab);
                     }
-
                     out.flush();
                 }
             }
         } finally {
-            if (out != null){
-                out.close();
-                if(outFile.length() == 0)
-                    outFile.deleteOnExit();
-            }
+
         }
     }
 
@@ -109,18 +114,52 @@ public class Exporter {
         return ret;
     }
 
+
     /**
-     * Build output file
-     *
-     * @param directory
+     * Returns for a given File for a fileOutput and and inputDirectory.
+     * @param inputDirectory Input directory
      * @return given a project
      */
-    private File buildOutputFile(File baseDirectory, File directory) {
-        if (!baseDirectory.exists() && !baseDirectory.mkdirs())
+    private File buildOutputFile(File outputDirectory, File inputDirectory) {
+        if (!outputDirectory.exists() && !outputDirectory.mkdirs())
             throw new IllegalStateException("bad base directory");
 
-        String child = directory.getName() + MGF_SUFFIX;
-        return new File(baseDirectory, child);
+        String child = inputDirectory.getName() + MGF_SUFFIX;
+        return new File(outputDirectory, child);
+    }
+
+    /**
+     *
+     * @param inputFileName that will be used.
+     * @return given a project
+     */
+    private File buildOutputFile(File outputDirectory, String inputFileName) {
+        if (!outputDirectory.exists() && !outputDirectory.mkdirs())
+            throw new IllegalStateException("bad base directory");
+
+        String child = inputFileName + MGF_SUFFIX;
+        return new File(outputDirectory, child);
+    }
+
+    /**
+     * Build the directories by Submissions PX including all the files inside
+     * @param outputDirectory output folder, where to put all the mgf files.
+     * @param inputDirectory input file for the project
+     * @return return the new folder.
+     */
+    private File buildFolderOutput(File outputDirectory, File inputDirectory){
+        if (!outputDirectory.exists() && !outputDirectory.mkdirs())
+            throw new IllegalStateException("Bad base directory");
+
+        String child = inputDirectory.getName();
+        File outputFolder = new File(outputDirectory, child);
+
+        if(!outputFolder.mkdir() && !outputFolder.exists()){
+            throw new IllegalStateException("Bad base directory");
+        }
+
+        return outputFolder;
+
     }
 
     /**
@@ -176,25 +215,54 @@ public class Exporter {
             <entry key="with.precursors">true</entry>
         </properties>
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ParseException {
         int index = 0;
-        File outputDirectory = new File(args[index++]);
-        System.out.println("Output to: " + outputDirectory.getAbsolutePath());
 
-        // parse all the filters
-        File filtersFile = new File(args[index++]);
-        IPredicate<ISpectrum> predicate = SpectrumPredicateParser.parse(filtersFile);
+        File outputDirectory;
+        IPredicate<ISpectrum> predicate;
+        Boolean splitOutput = false;
 
-        // add function to remove empty peak lists
-        RemoveSpectrumEmptyPeakFunction removeEmptyPeakFunction = new RemoveSpectrumEmptyPeakFunction();
-        IFunction<ISpectrum, ISpectrum> condition = Functions.condition(removeEmptyPeakFunction, predicate);
+        Options options = initOptions();
+        CommandLineParser parser = new DefaultParser();
+        CommandLine cmd = parser.parse( options, args);
 
-        for (; index < args.length; index++) {
-            String arg = args[index];
-            File dir = new File(arg);
-            Exporter exp = new Exporter(condition);
-            exp.export(dir, outputDirectory);
-            System.out.println("exported " + dir);
+        if(cmd.hasOption("output-path") && cmd.hasOption("config")){
+            String outputPathName = cmd.getOptionValue("output-path");
+            outputDirectory = new File(outputPathName);
+            System.out.println("Output to: " + outputDirectory.getAbsolutePath());
+
+            String filterFileName = cmd.getOptionValue("config");
+            File filtersFile = new File(filterFileName);
+            predicate = SpectrumPredicateParser.parse(filtersFile);
+
+            if(cmd.hasOption("split")){
+                splitOutput = true;
+            }
+
+            RemoveSpectrumEmptyPeakFunction removeEmptyPeakFunction = new RemoveSpectrumEmptyPeakFunction();
+            IFunction<ISpectrum, ISpectrum> condition = Functions.condition(removeEmptyPeakFunction, predicate);
+
+            for (; index < args.length; index++) {
+                String arg = args[index];
+                File dir = new File(arg);
+                Exporter exp = new Exporter(condition);
+                exp.export(dir, outputDirectory, splitOutput);
+                System.out.println("exported " + dir);
+            }
+
+        }else{
+            HelpFormatter formatter = new HelpFormatter();
+            formatter.printHelp( "ant", options );
         }
+
+
+    }
+
+    public static Options initOptions(){
+        Options options = new Options();
+        options.addOption("output-path", true, "Output path where all projects will be exported");
+        options.addOption("config", true, "Config file to filter the spectra from the project");
+        options.addOption("split", false, "Split the output into Project Folders, <PXD00XXXXX>/PXD-AssayID");
+        return options;
     }
 }
