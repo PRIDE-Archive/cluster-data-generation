@@ -28,4 +28,4 @@ printUsage() {
 
 ##### RUN it on the production LSF cluster
 ## this is not queued in the PRIDE LSF submission group, this is submitted as regular job as it is independent of any other job
-bsub -M ${MEMORY_LIMIT} -R "rusage[mem=${MEMORY_LIMIT}]" -q production-rh7 -g /pride_cluster_archive_import -u ${JOB_EMAIL} -J ${JOB_NAME}-${NOW}-${LOG_FILE_NAME} ./runJava.sh ./log/${LOG_FILE_NAME}-${NOW}.log ${MEMORY_LIMIT}m -jar ${project.build.finalName}.jar -output ${OUTPUT_PATH} -config ${FILTER_XML} -input ${INPUT_PATH}
+bsub -M ${MEMORY_LIMIT} -R "rusage[mem=${MEMORY_LIMIT}]" -q production-rh7 -g /pride_cluster_archive_import -u ${JOB_EMAIL} -J ${JOB_NAME}-${NOW}-${LOG_FILE_NAME} ./runJava.sh ./log/${LOG_FILE_NAME}-${NOW}.log ${MEMORY_LIMIT}m -jar ${project.build.finalName}.jar -o ${OUTPUT_PATH} -c ${FILTER_XML} -i ${INPUT_PATH}

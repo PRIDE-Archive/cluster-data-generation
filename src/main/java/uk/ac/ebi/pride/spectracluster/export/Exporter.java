@@ -225,23 +225,23 @@ public class Exporter {
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse( options, args);
 
-        if(cmd.hasOption("output-folder") && cmd.hasOption("config") && cmd.hasOption("input-folder")){
-            String outputPathName = cmd.getOptionValue("output-folder");
+        if(cmd.hasOption("o") && cmd.hasOption("c") && cmd.hasOption("i")){
+            String outputPathName = cmd.getOptionValue("o");
             outputDirectory = new File(outputPathName);
             System.out.println("Output to: " + outputDirectory.getAbsolutePath());
 
-            String filterFileName = cmd.getOptionValue("config");
+            String filterFileName = cmd.getOptionValue("c");
             File filtersFile = new File(filterFileName);
             predicate = SpectrumPredicateParser.parse(filtersFile);
 
-            if(cmd.hasOption("split")){
+            if(cmd.hasOption("s")){
                 splitOutput = true;
             }
 
             RemoveSpectrumEmptyPeakFunction removeEmptyPeakFunction = new RemoveSpectrumEmptyPeakFunction();
             IFunction<ISpectrum, ISpectrum> condition = Functions.condition(removeEmptyPeakFunction, predicate);
 
-            String inputFolder = cmd.getOptionValue("input-folder");
+            String inputFolder = cmd.getOptionValue("i");
             File dir = new File(inputFolder);
             Exporter exp = new Exporter(condition);
             exp.export(dir, outputDirectory, splitOutput);
@@ -262,10 +262,10 @@ public class Exporter {
 
     public static Options initOptions(){
         Options options = new Options();
-        options.addOption("output-path", true, "Output path where all projects will be exported");
-        options.addOption("config", true, "Config file to filter the spectra from the project");
-        options.addOption("split", false, "Split the output into Project Folders, <PXD00XXXXX>/PXD-AssayID");
-        options.addOption("input-folder", true, "Input folder that contains the original files in PRIDE Path");
+        options.addOption("o", "output-folder", true, "Output path where all projects will be exported");
+        options.addOption("c", "config", true, "Config file to filter the spectra from the project");
+        options.addOption("s", "split-assay", false, "Split the output into Project Folders, <PXD00XXXXX>/PXD-AssayID");
+        options.addOption("i", "input-folder", true, "Input folder that contains the original files in PRIDE Path");
         return options;
     }
 }
