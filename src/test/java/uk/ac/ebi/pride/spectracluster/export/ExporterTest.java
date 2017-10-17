@@ -38,6 +38,7 @@ public class ExporterTest {
     private File folderOutput;
     private File filterFile;
     private File filterUnidentifedFile;
+    private File folderInternalnoFDR;
 
     @Before
     public void setUp() throws Exception {
@@ -46,11 +47,11 @@ public class ExporterTest {
        folderOutput   = new File(ExporterTest.class.getClassLoader().getResource("example/").toURI());
        filterFile     = new File(ExporterTest.class.getClassLoader().getResource("filter.xml").toURI());
        filterUnidentifedFile = new File(ExporterTest.class.getClassLoader().getResource("filter_unidentified.xml").toURI());
+       folderInternalnoFDR = new File(ExporterTest.class.getClassLoader().getResource("noFDR").toURI());
     }
 
     @Test
     public void export() throws Exception {
-
 
         System.out.println("Output to: " + folderOutput.getAbsolutePath());
 
@@ -82,6 +83,24 @@ public class ExporterTest {
 
         Exporter exp = new Exporter(condition, idFilters);
         exp.export(folderInternal, folderOutput, true);
+        System.out.println("exported " + folderOutput);
+    }
+
+    @Test
+    public void exportSplitnoFDR() throws Exception {
+
+        System.out.println("Output to: " + folderOutput.getAbsolutePath());
+
+        // parse all the filters
+        IPredicate<ISpectrum> predicate = SpectrumPredicateParser.parse(filterUnidentifedFile);
+        Map<String, IFilter> idFilters = IdentificationPredicateParser.parse(filterUnidentifedFile);
+
+        // add function to remove empty peak lists
+        RemoveSpectrumEmptyPeakFunction removeEmptyPeakFunction = new RemoveSpectrumEmptyPeakFunction();
+        IFunction<ISpectrum, ISpectrum> condition = Functions.condition(removeEmptyPeakFunction, predicate);
+
+        Exporter exp = new Exporter(condition, idFilters);
+        exp.export(folderInternalnoFDR, folderOutput, true);
         System.out.println("exported " + folderOutput);
     }
 

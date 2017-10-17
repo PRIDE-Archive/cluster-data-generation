@@ -1,6 +1,7 @@
 package uk.ac.ebi.pride.spectracluster.export;
 
 import org.apache.commons.io.FilenameUtils;
+import org.apache.log4j.Logger;
 import uk.ac.ebi.pride.jmztab.model.MZTabFile;
 import uk.ac.ebi.pride.jmztab.model.MsRun;
 import uk.ac.ebi.pride.jmztab.utils.MZTabFileParser;
@@ -35,6 +36,8 @@ public class Exporter {
     private final IFunction<ISpectrum, ISpectrum> spectrumFilter;
 
     private final Map<String, IFilter> idPredicates;
+
+    private static final Logger LOGGER = Logger.getLogger(MZTabProcessor.class);
 
     public Exporter(IFunction<ISpectrum, ISpectrum> spectrumFilter) {
         this.spectrumFilter = spectrumFilter;
@@ -79,16 +82,21 @@ public class Exporter {
                     }
                     try{
                         MZTabProcessor processor = new MZTabProcessor(idPredicates, spec);
+                        try{
+                            processor.proccessPSMs();
+                        }catch (IOException | IllegalArgumentException exception){
+                            LOGGER.error("The current mztab can't provide Peptide|FDR information " + exception.getMessage());
+                        }
                         if(!splitOuput){
                             out = new PrintWriter(new BufferedWriter(new FileWriter(output)), false);
                         }else {
                             File outputMzTabFile = buildOutputFile(output, processor.getAssayId());
                             out = new PrintWriter(new BufferedWriter(new FileWriter(outputMzTabFile)), false);
-                            processor.handleCorrespondingMGFs(spectrumFilter, out);
-                            out.flush();
                         }
-                    }catch (Exception e){
-                        System.err.println("Bad mzTab file " + mzTab);
+                        processor.handleCorrespondingMGFs(spectrumFilter, out);
+                        out.flush();
+                    }catch (Exception exception){
+                        LOGGER.error("The mzTab is not correct, or valid" + exception.getMessage());
                     }
                 }
             }

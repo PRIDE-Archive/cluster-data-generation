@@ -61,28 +61,34 @@ public class MZTabProcessor {
 
     public MZTabProcessor(Map<String, IFilter> idPredicates, ArchiveSpectra th) throws IOException {
         archiveSpectra = th;
-        this.idPredicates   = idPredicates;
-        if(archiveSpectra.getMzTabFile() == null){
+        this.idPredicates = idPredicates;
+        if (archiveSpectra.getMzTabFile() == null) {
             return;
         }
 
         MZTabFileParser mzTabParser = new MZTabFileParser(th.getSource(), new FileOutputStream(th.getSource().getAbsolutePath() + "errors.out"));
         metadata = mzTabParser.getMZTabFile().getMetadata();
+    }
 
-        PIAModeller modeller = computeFDRPSMLevel(th.getSource());
+    /**
+     * This method process the file adding all PSMs information.
+     */
+    public void proccessPSMs() throws IOException{
+
+        PIAModeller modeller = computeFDRPSMLevel(archiveSpectra.getSource());
 
         if(modeller == null){
-            LOGGER.error("ERROR | SPECTRUM INFORMATION | PSM NOT AVAILABLE | " + th.getSource().getName());
+            LOGGER.error("ERROR | SPECTRUM INFORMATION | PSM NOT AVAILABLE | " + archiveSpectra.getSource().getName());
             return;
         }
 
         if(!modeller.getPSMModeller().getAllFilesHaveFDRCalculated() || modeller.getPSMModeller().getFileFDRData().get(fileID).getNrFDRGoodDecoys() == 0){
-            LOGGER.error("ERROR | FDR | INFORMATION about FDR NOT AVAILABLE for: " + th.getSource().getName());
+            LOGGER.error("ERROR | FDR | INFORMATION about FDR NOT AVAILABLE for: " + archiveSpectra.getSource().getName());
             for(ReportPSMSet idSet: modeller.getPSMModeller().getReportPSMSets().values())
                 LOGGER.error("ERROR | FDR | " + idSet.toString());
             return;
         }
-        addMzTabHandler(th, modeller);
+        addMzTabHandler(archiveSpectra, modeller);
 
     }
 
@@ -182,25 +188,26 @@ public class MZTabProcessor {
             spectrum.setProperty(KnownProperties.TAXONOMY_KEY, species);
         }
 
-        List<ReportPSM> peptides = getPSM(id);
-        if (!peptides.isEmpty()) {
-            String sequence = combinePeptideSequences(peptides);
-            spectrum.setProperty(KnownProperties.IDENTIFIED_PEPTIDE_KEY, sequence);
+        try{
+            List<ReportPSM> peptides = getPSM(id);
+            if (!peptides.isEmpty()) {
+                String sequence = combinePeptideSequences(peptides);
+                spectrum.setProperty(KnownProperties.IDENTIFIED_PEPTIDE_KEY, sequence);
 
-            String modifications = combineModifications(peptides);
-            if (modifications != null) {
-                spectrum.setProperty(KnownProperties.MODIFICATION_KEY, modifications);
-            }
+                String modifications = combineModifications(peptides);
+                if (modifications != null) {
+                    spectrum.setProperty(KnownProperties.MODIFICATION_KEY, modifications);
+                }
 
-            String decoyInformation = combineDecoyInformation(peptides);
-            if(decoyInformation != null)
-               spectrum.setProperty(KnownProperties.PSM_DECOY_STATUS, decoyInformation);
+                String decoyInformation = combineDecoyInformation(peptides);
+                if(decoyInformation != null)
+                    spectrum.setProperty(KnownProperties.PSM_DECOY_STATUS, decoyInformation);
 
-            String combineScoresInformation = combinePeptideScores(peptides);
-            if(combineScoresInformation != null)
-                spectrum.setProperty(KnownProperties.PSM_FDR_SCORES, combineScoresInformation);
+                String combineScoresInformation = combinePeptideScores(peptides);
+                if(combineScoresInformation != null)
+                    spectrum.setProperty(KnownProperties.PSM_FDR_SCORES, combineScoresInformation);
 
-            // TODO: disabled protein accession to avoid causing problem in clustering process, this can be enabled in the future
+                // TODO: disabled protein accession to avoid causing problem in clustering process, this can be enabled in the future
 //            String proteinAccession = peptides.getAccession();
 //            if (proteinAccession != null) {
 //                Protein protein = idToProtein.get(proteinAccession);
@@ -209,6 +216,9 @@ public class MZTabProcessor {
 //                    spectrum.setProperty(KnownProperties.PROTEIN_KEY, database + ":" + proteinAccession);
 //                }
 //            }
+            }
+        }catch( IllegalStateException exception){
+            LOGGER.info("The Spectrum: " + id + " can't be found in the mzTab");
         }
 
         ISpectrum filteredSpectrum = filters.apply(spectrum);
