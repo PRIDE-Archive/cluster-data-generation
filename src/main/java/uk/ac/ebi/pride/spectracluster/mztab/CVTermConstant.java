@@ -1,6 +1,7 @@
 package uk.ac.ebi.pride.spectracluster.mztab;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -18,7 +19,7 @@ import java.util.List;
  */
 public enum CVTermConstant {
 
-    PHOSPHO_PROBABILITY_SCORE("probability", Arrays.asList("MS:1001971"));
+    PHOSPHO_PROBABILITY_SCORE("probability", Collections.singletonList("MS:1001971"));
 
     String name;
 

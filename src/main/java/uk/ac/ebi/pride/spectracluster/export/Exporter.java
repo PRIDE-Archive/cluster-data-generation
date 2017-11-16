@@ -87,9 +87,12 @@ public class Exporter {
                         }catch (IOException | IllegalArgumentException exception){
                             LOGGER.error("The current mztab can't provide Peptide|FDR information " + exception.getMessage());
                         }
-                        if(!splitOuput){
-                            out = new PrintWriter(new BufferedWriter(new FileWriter(output)), false);
-                        }else {
+                        if(!splitOuput)
+                            if(out == null)
+                                out = new PrintWriter(new BufferedWriter(new FileWriter(output)), false);
+                            else
+                                out = new PrintWriter(new BufferedWriter(new FileWriter(output, true)), false);
+                        else {
                             File outputMzTabFile = buildOutputFile(output, processor.getAssayId());
                             out = new PrintWriter(new BufferedWriter(new FileWriter(outputMzTabFile)), false);
                         }

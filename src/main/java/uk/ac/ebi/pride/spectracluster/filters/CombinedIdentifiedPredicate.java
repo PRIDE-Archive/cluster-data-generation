@@ -25,7 +25,7 @@ public class CombinedIdentifiedPredicate implements IPredicate<ISpectrum> {
     public CombinedIdentifiedPredicate(){
     }
 
-    public CombinedIdentifiedPredicate(boolean identified, boolean unidentified){
+    public CombinedIdentifiedPredicate(boolean identified){
         this.identified = identified;
         this.unidentified = true;
     }

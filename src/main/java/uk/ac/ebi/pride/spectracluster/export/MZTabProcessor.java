@@ -4,7 +4,6 @@ import de.mpc.pia.intermediate.Modification;
 import de.mpc.pia.intermediate.compiler.PIACompiler;
 import de.mpc.pia.intermediate.compiler.PIASimpleCompiler;
 import de.mpc.pia.intermediate.compiler.parser.InputFileParserFactory;
-import de.mpc.pia.intermediate.compiler.parser.MzTabParser;
 import de.mpc.pia.modeller.PIAModeller;
 import de.mpc.pia.modeller.psm.ReportPSM;
 import de.mpc.pia.modeller.psm.ReportPSMSet;
@@ -160,7 +159,7 @@ public class MZTabProcessor {
         return totalWritten;
     }
 
-    protected List getPSM(String spectrumId) throws IllegalStateException{
+    protected List<ReportPSM> getPSM(String spectrumId) throws IllegalStateException{
 
         String[] parts = spectrumId.split(";");
         if (parts.length < 3)
@@ -176,7 +175,7 @@ public class MZTabProcessor {
 
         return psmToSpectrum.entrySet().parallelStream()
                 .filter(psm -> psm.getValue().equals(spectrumRef))
-                .map(psm -> psm.getKey())
+                .map(Map.Entry::getKey)
                 .collect(Collectors.toCollection(ArrayList<ReportPSM>::new));
     }
 
@@ -232,16 +231,14 @@ public class MZTabProcessor {
     }
 
     private boolean validateSpectrum(ISpectrum spectrum) {
-        if(spectrum.getPrecursorCharge() < 0)
-            return false;
-        return true;
+        return spectrum.getPrecursorCharge() >= 0;
     }
 
     private String combinePeptideScores(List<ReportPSM> peptides) {
         StringBuilder peptideScore = new StringBuilder();
 
         for (ReportPSM psm : peptides) {
-            peptideScore.append(ScoreModelEnum.PSM_LEVEL_COMBINED_FDR_SCORE.getShortName()).append("=").append(psm.getFDRScore().getValue());
+            peptideScore.append(ScoreModelEnum.PSM_LEVEL_COMBINED_FDR_SCORE.getShortName()).append(":").append(psm.getFDRScore().getValue());
             peptideScore.append(";");
         }
         return peptideScore.substring(0, peptideScore.length() - 1).replaceAll("NO-INFO", "");
