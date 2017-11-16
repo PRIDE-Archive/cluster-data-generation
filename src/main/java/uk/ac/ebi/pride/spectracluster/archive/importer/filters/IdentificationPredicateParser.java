@@ -1,8 +1,8 @@
-package uk.ac.ebi.pride.spectracluster.filters;
+package uk.ac.ebi.pride.spectracluster.archive.importer.filters;
 
-import uk.ac.ebi.pride.spectracluster.mztab.FDRFilter;
-import uk.ac.ebi.pride.spectracluster.mztab.IDFilterName;
-import uk.ac.ebi.pride.spectracluster.mztab.IFilter;
+import uk.ac.ebi.pride.spectracluster.utilities.mztab.FDRFilter;
+import uk.ac.ebi.pride.spectracluster.utilities.mztab.IDFilterName;
+import uk.ac.ebi.pride.spectracluster.utilities.mztab.IFilter;
 
 import java.io.File;
 import java.io.FileInputStream;

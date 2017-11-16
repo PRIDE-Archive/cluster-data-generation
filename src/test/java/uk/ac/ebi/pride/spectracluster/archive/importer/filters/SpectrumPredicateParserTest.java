@@ -1,4 +1,4 @@
-package uk.ac.ebi.pride.spectracluster.filters;
+package uk.ac.ebi.pride.spectracluster.archive.importer.filters;
 
 import org.junit.Before;
 import uk.ac.ebi.pride.spectracluster.spectrum.IPeak;

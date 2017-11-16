@@ -1,6 +1,5 @@
-package uk.ac.ebi.pride.spectracluster.mztab;
+package uk.ac.ebi.pride.spectracluster.utilities.mztab;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 

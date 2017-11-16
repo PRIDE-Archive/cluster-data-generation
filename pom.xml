@@ -179,14 +179,14 @@
                         <exclude>**/test</exclude>
                         <exclude>**/test/*.class</exclude>
                     </excludes>
-                    <archive>
-                        <manifest>
-                            <mainClass>uk.ac.ebi.pride.spectracluster.export.Exporter</mainClass>
-                            <addClasspath>true</addClasspath>
-                            <classpathPrefix>lib</classpathPrefix>
-                            <useUniqueVersions>false</useUniqueVersions>
-                        </manifest>
-                    </archive>
+                    <!--<archive>-->
+                        <!--<manifest>-->
+                            <!--<mainClass>uk.ac.ebi.pride.spectracluster.export.ImportFromArchiveCLI</mainClass>-->
+                            <!--<addClasspath>true</addClasspath>-->
+                            <!--<classpathPrefix>lib</classpathPrefix>-->
+                            <!--<useUniqueVersions>false</useUniqueVersions>-->
+                        <!--</manifest>-->
+                    <!--</archive>-->
                 </configuration>
             </plugin>
 

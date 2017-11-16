@@ -2,9 +2,9 @@ package uk.ac.ebi.pride.spectracluster.export;
 
 import org.junit.Before;
 import org.junit.Test;
-import uk.ac.ebi.pride.spectracluster.filters.IdentificationPredicateParser;
-import uk.ac.ebi.pride.spectracluster.filters.SpectrumPredicateParser;
-import uk.ac.ebi.pride.spectracluster.mztab.IFilter;
+import uk.ac.ebi.pride.spectracluster.archive.importer.filters.IdentificationPredicateParser;
+import uk.ac.ebi.pride.spectracluster.archive.importer.filters.SpectrumPredicateParser;
+import uk.ac.ebi.pride.spectracluster.utilities.mztab.IFilter;
 import uk.ac.ebi.pride.spectracluster.spectrum.ISpectrum;
 import uk.ac.ebi.pride.spectracluster.util.function.Functions;
 import uk.ac.ebi.pride.spectracluster.util.function.IFunction;
@@ -13,8 +13,6 @@ import uk.ac.ebi.pride.spectracluster.util.predicate.IPredicate;
 
 import java.io.File;
 import java.util.Map;
-
-import static org.junit.Assert.*;
 
 /**
  * This code is licensed under the Apache License, Version 2.0 (the
@@ -31,7 +29,7 @@ import static org.junit.Assert.*;
  * <p>
  * Created by ypriverol (ypriverol@gmail.com) on 20/04/2017.
  */
-public class ExporterTest {
+public class ImportFromArchiveCLITest {
 
     private File folderInternal;
     private File folderInternalEmpty;
@@ -42,12 +40,12 @@ public class ExporterTest {
 
     @Before
     public void setUp() throws Exception {
-       folderInternal = new File(ExporterTest.class.getClassLoader().getResource("example/").toURI());
-       folderInternalEmpty = new File(ExporterTest.class.getClassLoader().getResource("exampleempty/").toURI());
-       folderOutput   = new File(ExporterTest.class.getClassLoader().getResource("example/").toURI());
-       filterFile     = new File(ExporterTest.class.getClassLoader().getResource("filter.xml").toURI());
-       filterUnidentifedFile = new File(ExporterTest.class.getClassLoader().getResource("filter_unidentified.xml").toURI());
-       folderInternalnoFDR = new File(ExporterTest.class.getClassLoader().getResource("noFDR").toURI());
+       folderInternal = new File(ImportFromArchiveCLITest.class.getClassLoader().getResource("example/").toURI());
+       folderInternalEmpty = new File(ImportFromArchiveCLITest.class.getClassLoader().getResource("exampleempty/").toURI());
+       folderOutput   = new File(ImportFromArchiveCLITest.class.getClassLoader().getResource("example/").toURI());
+       filterFile     = new File(ImportFromArchiveCLITest.class.getClassLoader().getResource("filter.xml").toURI());
+       filterUnidentifedFile = new File(ImportFromArchiveCLITest.class.getClassLoader().getResource("filter_unidentified.xml").toURI());
+       folderInternalnoFDR = new File(ImportFromArchiveCLITest.class.getClassLoader().getResource("noFDR").toURI());
     }
 
     @Test
@@ -63,7 +61,7 @@ public class ExporterTest {
         RemoveSpectrumEmptyPeakFunction removeEmptyPeakFunction = new RemoveSpectrumEmptyPeakFunction();
         IFunction<ISpectrum, ISpectrum> condition = Functions.condition(removeEmptyPeakFunction, predicate);
 
-        Exporter exp = new Exporter(condition, idFilters);
+        uk.ac.ebi.pride.spectracluster.export.ImportFromArchiveCLI exp = new uk.ac.ebi.pride.spectracluster.export.ImportFromArchiveCLI(condition, idFilters);
         exp.export(folderInternal, folderOutput, false);
         System.out.println("exported " + folderOutput);
     }
@@ -81,7 +79,7 @@ public class ExporterTest {
         RemoveSpectrumEmptyPeakFunction removeEmptyPeakFunction = new RemoveSpectrumEmptyPeakFunction();
         IFunction<ISpectrum, ISpectrum> condition = Functions.condition(removeEmptyPeakFunction, predicate);
 
-        Exporter exp = new Exporter(condition, idFilters);
+        uk.ac.ebi.pride.spectracluster.export.ImportFromArchiveCLI exp = new uk.ac.ebi.pride.spectracluster.export.ImportFromArchiveCLI(condition, idFilters);
         exp.export(folderInternal, folderOutput, true);
         System.out.println("exported " + folderOutput);
     }
@@ -99,7 +97,7 @@ public class ExporterTest {
         RemoveSpectrumEmptyPeakFunction removeEmptyPeakFunction = new RemoveSpectrumEmptyPeakFunction();
         IFunction<ISpectrum, ISpectrum> condition = Functions.condition(removeEmptyPeakFunction, predicate);
 
-        Exporter exp = new Exporter(condition, idFilters);
+        uk.ac.ebi.pride.spectracluster.export.ImportFromArchiveCLI exp = new uk.ac.ebi.pride.spectracluster.export.ImportFromArchiveCLI(condition, idFilters);
         exp.export(folderInternalnoFDR, folderOutput, true);
         System.out.println("exported " + folderOutput);
     }
@@ -118,7 +116,7 @@ public class ExporterTest {
         RemoveSpectrumEmptyPeakFunction removeEmptyPeakFunction = new RemoveSpectrumEmptyPeakFunction();
         IFunction<ISpectrum, ISpectrum> condition = Functions.condition(removeEmptyPeakFunction, predicate);
 
-        Exporter exp = new Exporter(condition, idFilters);
+        uk.ac.ebi.pride.spectracluster.export.ImportFromArchiveCLI exp = new uk.ac.ebi.pride.spectracluster.export.ImportFromArchiveCLI(condition, idFilters);
         exp.export(folderInternal, folderOutput, false);
         System.out.println("exported " + folderOutput);
     }
@@ -138,7 +136,7 @@ public class ExporterTest {
         RemoveSpectrumEmptyPeakFunction removeEmptyPeakFunction = new RemoveSpectrumEmptyPeakFunction();
         IFunction<ISpectrum, ISpectrum> condition = Functions.condition(removeEmptyPeakFunction, predicate);
 
-        Exporter exp = new Exporter(condition, idFilters);
+        uk.ac.ebi.pride.spectracluster.export.ImportFromArchiveCLI exp = new uk.ac.ebi.pride.spectracluster.export.ImportFromArchiveCLI(condition, idFilters);
         exp.export(folderInternalEmpty, folderOutput, false);
         System.out.println("exported " + folderOutput);
     }

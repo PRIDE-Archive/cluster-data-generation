@@ -6,5 +6,5 @@ FILTER_XML=$2
 JOB_FILE=$3
 
 while read p; do
-    ./runExportBigMem.sh ${OUTPUT_PATH} ${FILTER_XML} $p
+    runExportBigMem.sh ${OUTPUT_PATH} ${FILTER_XML} $p
 done < ${JOB_FILE}

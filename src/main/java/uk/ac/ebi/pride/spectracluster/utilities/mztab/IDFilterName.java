@@ -1,4 +1,4 @@
-package uk.ac.ebi.pride.spectracluster.mztab;
+package uk.ac.ebi.pride.spectracluster.utilities.mztab;
 
 /**
  * This code is licensed under the Apache License, Version 2.0 (the
@@ -13,15 +13,22 @@ package uk.ac.ebi.pride.spectracluster.mztab;
  * <p>
  * Created by ypriverol (ypriverol@gmail.com) on 02/05/2017.
  */
-public class LengthFilter implements IFilter {
+public enum IDFilterName {
 
-    public Integer length;
+    PSM_FDR_FILTER("psm.decoy.filter"),
+    PEPTIDE_FDR_FILTER("peptide.decoy.filter");
 
-    public Integer getLength() {
-        return length;
+    private String name;
+
+    IDFilterName(String name) {
+        this.name = name;
     }
 
-    public void setLength(Integer length) {
-        this.length = length;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

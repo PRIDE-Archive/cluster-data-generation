@@ -1,4 +1,4 @@
-package uk.ac.ebi.pride.spectracluster.export;
+package uk.ac.ebi.pride.spectracluster.cli;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
@@ -6,9 +6,11 @@ import uk.ac.ebi.pride.jmztab.model.MZTabFile;
 import uk.ac.ebi.pride.jmztab.model.MsRun;
 import uk.ac.ebi.pride.jmztab.utils.MZTabFileParser;
 import uk.ac.ebi.pride.jmztab.utils.errors.MZTabErrorList;
-import uk.ac.ebi.pride.spectracluster.archive.ArchiveSpectra;
-import uk.ac.ebi.pride.spectracluster.filters.SpectrumPredicateParser;
-import uk.ac.ebi.pride.spectracluster.mztab.IFilter;
+import uk.ac.ebi.pride.spectracluster.archive.importer.process.ArchiveSpectra;
+import uk.ac.ebi.pride.spectracluster.archive.importer.filters.SpectrumPredicateParser;
+import uk.ac.ebi.pride.spectracluster.archive.importer.process.MZTabProcessor;
+import uk.ac.ebi.pride.spectracluster.utilities.FileTypes;
+import uk.ac.ebi.pride.spectracluster.utilities.mztab.IFilter;
 import uk.ac.ebi.pride.spectracluster.spectrum.ISpectrum;
 import uk.ac.ebi.pride.spectracluster.util.function.Functions;
 import uk.ac.ebi.pride.spectracluster.util.function.IFunction;
@@ -21,17 +23,11 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * Export spectra from PRIDE Archive to MGF files. This Script take a folder to export the data.
+ * Export spectra from PRIDE Archive to MGF files. This Script take a folder to cli the data.
  *
- * @author Steve Lewis
- * @date 21/05/2014
+ * @author Yasset Perez-Riverol
  */
-public class Exporter {
-
-    public static final String PRIDE_MZTAB_SUFFIX = ".pride.mztab";
-    public static final String PRIDE_MGF_SUFFIX   = ".pride.mgf";
-    public static final String MGF_SUFFIX         = ".mgf";
-    public static final String INTERNAL_DIRECTORY = "internal";
+public class ImportFromArchiveCLI {
 
     private final IFunction<ISpectrum, ISpectrum> spectrumFilter;
 
@@ -39,12 +35,12 @@ public class Exporter {
 
     private static final Logger LOGGER = Logger.getLogger(MZTabProcessor.class);
 
-    public Exporter(IFunction<ISpectrum, ISpectrum> spectrumFilter) {
+    public ImportFromArchiveCLI(IFunction<ISpectrum, ISpectrum> spectrumFilter) {
         this.spectrumFilter = spectrumFilter;
         this.idPredicates = null;
     }
 
-    public Exporter(IFunction<ISpectrum, ISpectrum> spectrumFilter, Map<String, IFilter> idPredicates){
+    public ImportFromArchiveCLI(IFunction<ISpectrum, ISpectrum> spectrumFilter, Map<String, IFilter> idPredicates){
         this.spectrumFilter = spectrumFilter;
         this.idPredicates = idPredicates;
     }
@@ -69,7 +65,7 @@ public class Exporter {
         PrintWriter out = null;
         try {
             // find all the PRIDE generated mzTab files
-            File projectInternalPath = new File(inputDirectory, INTERNAL_DIRECTORY);
+            File projectInternalPath = new File(inputDirectory, FileTypes.INTERNAL_DIRECTORY);
             List<File> files = readMZTabFiles(inputDirectory);
 
             if (!files.isEmpty()) {
@@ -110,7 +106,7 @@ public class Exporter {
 
     private List<File> readMZTabFiles(final File pFile1) {
 
-        File projectInternalPath = new File(pFile1, INTERNAL_DIRECTORY);
+        File projectInternalPath = new File(pFile1, FileTypes.INTERNAL_DIRECTORY);
         List<File> ret = new ArrayList<>();
         if (!projectInternalPath.exists()) {
             return ret;
@@ -121,7 +117,7 @@ public class Exporter {
             return ret;
 
         // searching for mztab file
-        ret = Arrays.stream(files).filter(mzTab -> mzTab.getName().endsWith(PRIDE_MZTAB_SUFFIX)).collect(Collectors.toList());
+        ret = Arrays.stream(files).filter(mzTab -> mzTab.getName().endsWith(FileTypes.PRIDE_MZTAB_SUFFIX)).collect(Collectors.toList());
         return ret;
     }
 
@@ -135,7 +131,7 @@ public class Exporter {
         if (!outputDirectory.exists() && !outputDirectory.mkdirs())
             throw new IllegalStateException("bad base directory");
 
-        String child = inputDirectory.getName() + MGF_SUFFIX;
+        String child = inputDirectory.getName() + FileTypes.MGF_SUFFIX;
         return new File(outputDirectory, child);
     }
 
@@ -148,7 +144,7 @@ public class Exporter {
         if (!outputDirectory.exists() && !outputDirectory.mkdirs())
             throw new IllegalStateException("bad base directory");
 
-        String child = inputFileName + MGF_SUFFIX;
+        String child = inputFileName + FileTypes.MGF_SUFFIX;
         return new File(outputDirectory, child);
     }
 
@@ -200,7 +196,7 @@ public class Exporter {
                 String msRunFileName = FilenameUtils.getName(msRunFile);
                 String msRunFileNameWithoutExtension = FilenameUtils.removeExtension(msRunFileName);
 
-                String mgfFileName = msRunFileNameWithoutExtension + PRIDE_MGF_SUFFIX;
+                String mgfFileName = msRunFileNameWithoutExtension + FileTypes.PRIDE_MGF_SUFFIX;
                 File mgfFile = new File(inputPath, mgfFileName);
                 if (mgfFile.exists()) {
                     spectra.addMgfFile(mgfFile);
@@ -254,7 +250,7 @@ public class Exporter {
 
             String inputFolder = cmd.getOptionValue("i");
             File dir = new File(inputFolder);
-            Exporter exp = new Exporter(condition);
+            ImportFromArchiveCLI exp = new ImportFromArchiveCLI(condition);
             exp.export(dir, outputDirectory, splitOutput);
             System.out.println("exported " + dir);
 

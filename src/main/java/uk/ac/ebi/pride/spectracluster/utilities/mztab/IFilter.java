@@ -1,4 +1,4 @@
-package uk.ac.ebi.pride.spectracluster.mztab;
+package uk.ac.ebi.pride.spectracluster.utilities.mztab;
 
 /**
  * This code is licensed under the Apache License, Version 2.0 (the
