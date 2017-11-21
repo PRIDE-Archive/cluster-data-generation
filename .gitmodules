@@ -1,0 +1,7 @@
+[submodule "pride-parameters"]
+	path = pride-parameters
+	url = git@github.com:/PRIDE-Toolsuite/PRIDEParametersExtractor.git
+[submodule "pride-asa-pipeline"]
+	path = pride-asa-pipeline
+	url = https://github.com/PRIDE-Toolsuite/pride-asa-pipeline.git
+	branch = PRIDE_reprocessing

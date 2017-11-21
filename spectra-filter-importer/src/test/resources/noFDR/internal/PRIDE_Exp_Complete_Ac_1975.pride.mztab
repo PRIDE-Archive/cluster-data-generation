@@ -1,0 +1,63 @@
+MTD	mzTab-version	1.0
+MTD	mzTab-mode	Complete
+MTD	mzTab-type	Identification
+MTD	mzTab-ID	PRD000020-1975
+MTD	title	HLPP_EPP_1_RZengLabSIBS_Dig_SCXLC_RPLC_LTQ
+MTD	description	Not available
+MTD	sample_processing[1]	[PRIDE, PRIDE:0000024, Enzyme digestion, Trypsin]
+MTD	sample_processing[2]	[PRIDE, PRIDE:0000022, Separation, SCXLC]
+MTD	sample_processing[3]	[PRIDE, PRIDE:0000022, Separation, Trap]
+MTD	sample_processing[4]	[PRIDE, PRIDE:0000022, Separation, RPLC]
+MTD	sample_processing[5]	[PRIDE, PRIDE:0000027, Mass spectrometry, LTQ]
+MTD	sample_processing[6]	[PRIDE, PRIDE:0000044, Search algorithm, TurboSequest v2.7]
+MTD	instrument[1]-name	[MS, MS:1000031, instrument model, LTQ]
+MTD	instrument[1]-source	[PSI, PSI:1000008, IonizationType, ESI]
+MTD	instrument[1]-analyzer[1]	[PSI, PSI:1000082, AnalyzerType, QIT]
+MTD	instrument[1]-detector	[PSI, PSI:1000108, DetectorType, Conversion Dynode Electron Multiplier]
+MTD	software[1]	[MS, MS:1001456, analysis software, Xcalibur v1.3 SR1 SP2]
+MTD	protein_search_engine_score[1]	[MS, MS:1001163, SEQUEST:consensus score, ]
+MTD	psm_search_engine_score[1]	[PRIDE, PRIDE:0000012, Delta Cn, ]
+MTD	psm_search_engine_score[2]	[PRIDE, PRIDE:0000013, X correlation, ]
+MTD	contact[1]-name	LeiDou
+MTD	contact[1]-affiliation	Beijng Proteome Research Center
+MTD	contact[1]-email	doulei@hupo.org.cn
+MTD	uri[1]	http://www.ebi.ac.uk/pride/archive/assays/1975
+MTD	fixed_mod[1]	[MS, MS:1002453, No fixed modifications searched, ]
+MTD	variable_mod[1]	[MS, MS:1002454, No variable modifications searched, ]
+MTD	ms_run[1]-format	[MS, MS:1000564, PSI mzData file, ]
+MTD	ms_run[1]-location	file:/PRIDE_Exp_Complete_Ac_1975.xml
+MTD	ms_run[1]-id_format	[MS, MS:1000777, spectrum identifier nativeID format, ]
+MTD	sample[1]-species[1]	[NEWT, 9606, Homo sapiens (Human), ]
+MTD	sample[1]-tissue[1]	[BTO, BTO:0000759, liver, ]
+MTD	sample[1]-description	HLPP_French_Liver
+MTD	sample[1]-custom[1]	[PRIDE, PRIDE:0000018, Disease free, ]
+MTD	sample[1]-custom[2]	[, , source, tissue lysate]
+MTD	assay[1]-sample_ref	sample[1]
+MTD	assay[1]-ms_run_ref	ms_run[1]
+MTD	custom[1]	[, , Date of export, Thu Mar 19 16:04:30 GMT 2015]
+MTD	custom[2]	[, , Original converted file, /nfs/pride/prod/archive/2007/03/PRD000020/internal/PRIDE_Exp_Complete_Ac_1975.xml]
+MTD	custom[3]	[, , Project title, HUPO Liver Proteome Project]
+
+COM	Only variable modifications can be reported when the original source is a PRIDE XML file
+
+PRH	accession	description	taxid	species	database	database_version	search_engine	best_search_engine_score[1]	search_engine_score[1]_ms_run[1]	num_psms_ms_run[1]	num_peptides_distinct_ms_run[1]	num_peptides_unique_ms_run[1]	ambiguity_members	modifications	protein_coverage	opt_global_cv_PRIDE:0000303_Decoy_hit	opt_global_num_merge_proteins	opt_global_duplicated_proteins_search_engines	opt_global_duplicated_proteins_best_search_engines_score	opt_global_duplicated_proteins_search_engines_scores	opt_global_duplicated_proteins_had_quantification
+PRT	IPI00007188.4	null	null	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.0	0.0	7	3	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00291467.6	null	null	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.0	0.0	6	2	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00748750.1	null	null	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.0	0.0	1	1	null	null	null	0.0	0	1	null	null	null	0
+
+PSH	sequence	PSM_ID	accession	unique	database	database_version	search_engine	search_engine_score[1]	search_engine_score[2]	modifications	retention_time	charge	exp_mass_to_charge	calc_mass_to_charge	spectra_ref	pre	post	start	end	opt_global_cv_MS:1002217_decoy_peptide
+PSM	DFLAGGVAAAISK	18602	IPI00007188.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2213	2.187	null	null	-1	1222.25	-1217.6529699999999	ms_run[1]:spectrum=18602	null	null	null	null	0
+PSM	GMGGAFVLVLYDEJK	18603	IPI00007188.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1241	2.2544	null	null	-1	1614.28	-1609.8299499999998	ms_run[1]:spectrum=18603	null	null	null	null	0
+PSM	YFPTQALNFAFK	18604	IPI00007188.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4651	2.5672	null	null	-1	1447.28	-1444.7264900000002	ms_run[1]:spectrum=18604	null	null	null	null	0
+PSM	YFPTQALNFAFK	18605	IPI00007188.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.405	2.608	null	null	-1	1448.4	-1444.7264900000002	ms_run[1]:spectrum=18605	null	null	null	null	0
+PSM	YFPTQALNFAFK	18606	IPI00007188.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3295	2.3321	null	null	-1	1449.41	-1444.7264900000002	ms_run[1]:spectrum=18606	null	null	null	null	0
+PSM	YFPTQALNFAFK	18607	IPI00007188.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3635	2.5692	null	null	-1	1445.89	-1444.7264900000002	ms_run[1]:spectrum=18607	null	null	null	null	0
+PSM	YFPTQALNFAFK	18608	IPI00007188.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4474	2.3139	null	null	-1	1447.59	-1444.7264900000002	ms_run[1]:spectrum=18608	null	null	null	null	0
+PSM	DFLAGGVAAAISK	18602	IPI00748750.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2213	2.187	null	null	-1	1222.25	-1217.6529699999999	ms_run[1]:spectrum=18602	null	null	null	null	0
+PSM	GMGGAFVLVLYDEJK	18603	IPI00291467.6	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1241	2.2544	null	null	-1	1614.28	-1609.8299499999998	ms_run[1]:spectrum=18603	null	null	null	null	0
+PSM	YFPTQALNFAFK	18604	IPI00291467.6	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4651	2.5672	null	null	-1	1447.28	-1444.7264900000002	ms_run[1]:spectrum=18604	null	null	null	null	0
+PSM	YFPTQALNFAFK	18605	IPI00291467.6	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.405	2.608	null	null	-1	1448.4	-1444.7264900000002	ms_run[1]:spectrum=18605	null	null	null	null	0
+PSM	YFPTQALNFAFK	18606	IPI00291467.6	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3295	2.3321	null	null	-1	1449.41	-1444.7264900000002	ms_run[1]:spectrum=18606	null	null	null	null	0
+PSM	YFPTQALNFAFK	18607	IPI00291467.6	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3635	2.5692	null	null	-1	1445.89	-1444.7264900000002	ms_run[1]:spectrum=18607	null	null	null	null	0
+PSM	YFPTQALNFAFK	18608	IPI00291467.6	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4474	2.3139	null	null	-1	1447.59	-1444.7264900000002	ms_run[1]:spectrum=18608	null	null	null	null	0
+
