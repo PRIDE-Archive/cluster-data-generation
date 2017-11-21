@@ -69,10 +69,6 @@ public class ArchiveExtractParameterTool {
 
     private static void handleCommand(CommandLine cmd, Options options) throws FileNotFoundException, SubmissionFileException {
 
-        String type = "";
-        File input = null;
-        File output = null;
-        boolean saveMGF = false;
 
         if(!(cmd.hasOption("i") || !cmd.hasOption("o"))){
             HelpFormatter formatter = new HelpFormatter();
@@ -115,7 +111,7 @@ public class ArchiveExtractParameterTool {
                                 try{
                                     PrideMzIDParameterExtractor extractor = new PrideMzIDParameterExtractor(inputFile, peakFiles, new File(outputFolder));
                                     extractor.analyze();
-                                }catch (ParameterExtractionException e){
+                                }catch (Exception e){
                                     LOGGER.error("Error in File -- " + inputFile + " -- Message Error -- " + e.getMessage());
                                 }
 
