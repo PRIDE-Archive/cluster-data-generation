@@ -20,4 +20,5 @@ public class FileTypes {
     public static final String MGF_SUFFIX         = ".mgf";
     public static final String INTERNAL_DIRECTORY = "internal";
     public static final String SUBMISSION_DIRECTORY = "submission";
+    public static final String SUBMISSION_FILE      = "submission.px";
 }

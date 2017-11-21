@@ -1,0 +1,412 @@
+MTD	mzTab-version	1.0
+MTD	mzTab-mode	Complete
+MTD	mzTab-type	Identification
+MTD	mzTab-ID	PRD000020-1960
+MTD	title	HLPP_EPP_1_RZengLabSIBS_Dig_SCXLC_RPLC_LTQ
+MTD	description	Not available
+MTD	sample_processing[1]	[PRIDE, PRIDE:0000024, Enzyme digestion, Trypsin]
+MTD	sample_processing[2]	[PRIDE, PRIDE:0000022, Separation, SCXLC]
+MTD	sample_processing[3]	[PRIDE, PRIDE:0000022, Separation, Trap]
+MTD	sample_processing[4]	[PRIDE, PRIDE:0000022, Separation, RPLC]
+MTD	sample_processing[5]	[PRIDE, PRIDE:0000027, Mass spectrometry, LTQ]
+MTD	sample_processing[6]	[PRIDE, PRIDE:0000044, Search algorithm, TurboSequest v2.7]
+MTD	instrument[1]-name	[MS, MS:1000031, instrument model, LTQ]
+MTD	instrument[1]-source	[PSI, PSI:1000008, IonizationType, ESI]
+MTD	instrument[1]-analyzer[1]	[PSI, PSI:1000082, AnalyzerType, QIT]
+MTD	instrument[1]-detector	[PSI, PSI:1000108, DetectorType, Conversion Dynode Electron Multiplier]
+MTD	software[1]	[MS, MS:1001456, analysis software, Xcalibur v1.3 SR1 SP2]
+MTD	protein_search_engine_score[1]	[MS, MS:1001163, SEQUEST:consensus score, ]
+MTD	psm_search_engine_score[1]	[PRIDE, PRIDE:0000012, Delta Cn, ]
+MTD	psm_search_engine_score[2]	[PRIDE, PRIDE:0000013, X correlation, ]
+MTD	contact[1]-name	LeiDou
+MTD	contact[1]-affiliation	Beijng Proteome Research Center
+MTD	contact[1]-email	doulei@hupo.org.cn
+MTD	uri[1]	http://www.ebi.ac.uk/pride/archive/assays/1960
+MTD	fixed_mod[1]	[MS, MS:1002453, No fixed modifications searched, ]
+MTD	variable_mod[1]	[MS, MS:1002454, No variable modifications searched, ]
+MTD	ms_run[1]-format	[MS, MS:1000564, PSI mzData file, ]
+MTD	ms_run[1]-location	file:/PRIDE_Exp_Complete_Ac_1960.xml
+MTD	ms_run[1]-id_format	[MS, MS:1000777, spectrum identifier nativeID format, ]
+MTD	sample[1]-species[1]	[NEWT, 9606, Homo sapiens (Human), ]
+MTD	sample[1]-tissue[1]	[BTO, BTO:0000759, liver, ]
+MTD	sample[1]-description	HLPP_French_Liver
+MTD	sample[1]-custom[1]	[PRIDE, PRIDE:0000018, Disease free, ]
+MTD	sample[1]-custom[2]	[, , source, tissue lysate]
+MTD	assay[1]-sample_ref	sample[1]
+MTD	assay[1]-ms_run_ref	ms_run[1]
+MTD	custom[1]	[, , Date of export, Thu Mar 19 15:58:28 GMT 2015]
+MTD	custom[2]	[, , Original converted file, /nfs/pride/prod/archive/2007/03/PRD000020/internal/PRIDE_Exp_Complete_Ac_1960.xml]
+MTD	custom[3]	[, , Project title, HUPO Liver Proteome Project]
+
+COM	Only variable modifications can be reported when the original source is a PRIDE XML file
+
+PRH	accession	description	taxid	species	database	database_version	search_engine	best_search_engine_score[1]	search_engine_score[1]_ms_run[1]	num_psms_ms_run[1]	num_peptides_distinct_ms_run[1]	num_peptides_unique_ms_run[1]	ambiguity_members	modifications	protein_coverage	opt_global_cv_PRIDE:0000303_Decoy_hit	opt_global_num_merge_proteins	opt_global_duplicated_proteins_search_engines	opt_global_duplicated_proteins_best_search_engines_score	opt_global_duplicated_proteins_search_engines_scores	opt_global_duplicated_proteins_had_quantification
+PRT	IPI00011200.4	null	null	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.0	0.0	27	7	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00016801.1	null	null	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.0	0.0	154	16	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00304962.2	null	null	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.0	0.0	14	1	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00737281.2	null	null	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.0	0.0	72	4	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00783680.1	null	null	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.0	0.0	94	5	null	null	null	0.0	0	1	null	null	null	0
+
+PSH	sequence	PSM_ID	accession	unique	database	database_version	search_engine	search_engine_score[1]	search_engine_score[2]	modifications	retention_time	charge	exp_mass_to_charge	calc_mass_to_charge	spectra_ref	pre	post	start	end	opt_global_cv_MS:1002217_decoy_peptide
+PSM	AKPYEGSILEADCDILIPAASEK	8905	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4679	5.5929	null	null	-1	2490.42	-2431.2066099999993	ms_run[1]:spectrum=8905	null	null	null	null	0
+PSM	AKPYEGSILEADCDILIPAASEK	8906	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4582	5.2942	null	null	-1	2492.14	-2431.2066099999993	ms_run[1]:spectrum=8906	null	null	null	null	0
+PSM	ALASLMTYK	8907	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2315	2.3454	null	null	-1	998.19	-995.5235700000001	ms_run[1]:spectrum=8907	null	null	null	null	0
+PSM	CAVVDVPFGGAK	8908	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2408	2.5702	null	null	-1	1222.46	-1160.5773700000002	ms_run[1]:spectrum=8908	null	null	null	null	0
+PSM	CAVVDVPFGGAK	8909	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2906	2.316	null	null	-1	1221.67	-1160.5773700000002	ms_run[1]:spectrum=8909	null	null	null	null	0
+PSM	CAVVDVPFGGAK	8910	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3218	2.7089	null	null	-1	1221.22	-1160.5773700000002	ms_run[1]:spectrum=8910	null	null	null	null	0
+PSM	CAVVDVPFGGAK	8911	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1322	2.2497	null	null	-1	1222.19	-1160.5773700000002	ms_run[1]:spectrum=8911	null	null	null	null	0
+PSM	CAVVDVPFGGAK	8912	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2841	2.4501	null	null	-1	1221.54	-1160.5773700000002	ms_run[1]:spectrum=8912	null	null	null	null	0
+PSM	CIAVGESDGSIWNPDGIDPK	8913	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5291	5.2071	null	null	-1	2131.01	-2070.9442	ms_run[1]:spectrum=8913	null	null	null	null	0
+PSM	CIAVGESDGSIWNPDGIDPK	8914	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5466	5.3288	null	null	-1	2131.36	-2070.9442	ms_run[1]:spectrum=8914	null	null	null	null	0
+PSM	CIAVGESDGSIWNPDGIDPK	8915	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5898	5.2303	null	null	-1	2130.52	-2070.9442	ms_run[1]:spectrum=8915	null	null	null	null	0
+PSM	CIAVGESDGSIWNPDGIDPK	8916	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5376	5.0061	null	null	-1	2131.37	-2070.9442	ms_run[1]:spectrum=8916	null	null	null	null	0
+PSM	CIAVGESDGSIWNPDGIDPK	8917	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5343	4.1232	null	null	-1	2132.92	-2070.9442	ms_run[1]:spectrum=8917	null	null	null	null	0
+PSM	CIAVGESDGSIWNPDGIDPK	8918	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5355	4.8445	null	null	-1	2130.61	-2070.9442	ms_run[1]:spectrum=8918	null	null	null	null	0
+PSM	CIAVGESDGSIWNPDGIDPK	8919	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4627	4.2842	null	null	-1	2132.78	-2070.9442	ms_run[1]:spectrum=8919	null	null	null	null	0
+PSM	DDGSWEVIEGYR	8920	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5127	3.1845	null	null	-1	1425.43	-1423.6129700000001	ms_run[1]:spectrum=8920	null	null	null	null	0
+PSM	DDGSWEVIEGYR	8921	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2779	2.6688	null	null	-1	1428.22	-1423.6129700000001	ms_run[1]:spectrum=8921	null	null	null	null	0
+PSM	DDGSWEVIEGYR	8922	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1337	3.0541	null	null	-1	1425.37	-1423.6129700000001	ms_run[1]:spectrum=8922	null	null	null	null	0
+PSM	DDGSWEVIEGYR	8923	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1775	2.7503	null	null	-1	1425.52	-1423.6129700000001	ms_run[1]:spectrum=8923	null	null	null	null	0
+PSM	DDGSWEVIEGYR	8924	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2779	2.9155	null	null	-1	1424.63	-1423.6129700000001	ms_run[1]:spectrum=8924	null	null	null	null	0
+PSM	DDGSWEVIEGYR	8925	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1455	2.2781	null	null	-1	1425.41	-1423.6129700000001	ms_run[1]:spectrum=8925	null	null	null	null	0
+PSM	DDGSWEVIEGYR	8926	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2841	2.5401	null	null	-1	1425.97	-1423.6129700000001	ms_run[1]:spectrum=8926	null	null	null	null	0
+PSM	DDGSWEVIEGYR	8927	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3363	2.6292	null	null	-1	1426.0	-1423.6129700000001	ms_run[1]:spectrum=8927	null	null	null	null	0
+PSM	DDGSWEVIEGYR	8928	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1699	2.2074	null	null	-1	1428.16	-1423.6129700000001	ms_run[1]:spectrum=8928	null	null	null	null	0
+PSM	DDGSWEVIEGYR	8929	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2602	2.6092	null	null	-1	1428.32	-1423.6129700000001	ms_run[1]:spectrum=8929	null	null	null	null	0
+PSM	DIVHSGLAYTMER	8930	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2314	2.2414	null	null	-1	1492.49	-1489.7109200000002	ms_run[1]:spectrum=8930	null	null	null	null	0
+PSM	DSNYHLLMSVQESLER	8931	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4462	4.3704	null	null	-1	1923.88	-1918.8968900000002	ms_run[1]:spectrum=8931	null	null	null	null	0
+PSM	DSNYHLLMSVQESLER	8932	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.346	3.4875	null	null	-1	1920.88	-1918.8968900000002	ms_run[1]:spectrum=8932	null	null	null	null	0
+PSM	GFIGPGIDVPAPDMSTGER	8933	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4347	3.5082	null	null	-1	1917.24	-1913.9066900000003	ms_run[1]:spectrum=8933	null	null	null	null	0
+PSM	GFIGPGIDVPAPDMSTGER	8934	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4738	3.4634	null	null	-1	1915.28	-1913.9066900000003	ms_run[1]:spectrum=8934	null	null	null	null	0
+PSM	GFIGPGIDVPAPDMSTGER	8935	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4034	3.5448	null	null	-1	1917.48	-1913.9066900000003	ms_run[1]:spectrum=8935	null	null	null	null	0
+PSM	GFIGPGIDVPAPDMSTGER	8936	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3563	3.4219	null	null	-1	1916.49	-1913.9066900000003	ms_run[1]:spectrum=8936	null	null	null	null	0
+PSM	GFIGPGIDVPAPDMSTGER	8937	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4819	3.8098	null	null	-1	1917.69	-1913.9066900000003	ms_run[1]:spectrum=8937	null	null	null	null	0
+PSM	GFIGPGIDVPAPDMSTGER	8938	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4603	4.1275	null	null	-1	1917.5	-1913.9066900000003	ms_run[1]:spectrum=8938	null	null	null	null	0
+PSM	GFIGPGIDVPAPDMSTGER	8939	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5119	3.7337	null	null	-1	1916.36	-1913.9066900000003	ms_run[1]:spectrum=8939	null	null	null	null	0
+PSM	GFIGPGIDVPAPDMSTGER	8940	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3753	3.4454	null	null	-1	1917.72	-1913.9066900000003	ms_run[1]:spectrum=8940	null	null	null	null	0
+PSM	HGGTIPIVPTAEFQDR	8941	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4904	3.6649	null	null	-1	1738.22	-1735.8767200000002	ms_run[1]:spectrum=8941	null	null	null	null	0
+PSM	HGGTIPIVPTAEFQDR	8942	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4984	3.812	null	null	-1	1739.52	-1735.8767200000002	ms_run[1]:spectrum=8942	null	null	null	null	0
+PSM	HGGTIPIVPTAEFQDR	8943	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5451	3.8558	null	null	-1	1738.37	-1735.8767200000002	ms_run[1]:spectrum=8943	null	null	null	null	0
+PSM	HGGTIPIVPTAEFQDR	8944	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2573	2.4761	null	null	-1	1739.75	-1735.8767200000002	ms_run[1]:spectrum=8944	null	null	null	null	0
+PSM	HGGTIPIVPTAEFQDR	8945	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.553	3.8903	null	null	-1	1738.67	-1735.8767200000002	ms_run[1]:spectrum=8945	null	null	null	null	0
+PSM	HGGTIPIVPTAEFQDR	8946	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4195	2.8367	null	null	-1	1737.63	-1735.8767200000002	ms_run[1]:spectrum=8946	null	null	null	null	0
+PSM	HGGTIPIVPTAEFQDR	8947	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4464	3.3359	null	null	-1	1738.72	-1735.8767200000002	ms_run[1]:spectrum=8947	null	null	null	null	0
+PSM	HGGTIPIVPTAEFQDR	8948	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3839	2.7606	null	null	-1	1737.45	-1735.8767200000002	ms_run[1]:spectrum=8948	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8949	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5608	4.1368	null	null	-1	1583.74	-1581.776	ms_run[1]:spectrum=8949	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8950	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4167	3.5472	null	null	-1	1585.11	-1581.776	ms_run[1]:spectrum=8950	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8951	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3782	3.4514	null	null	-1	1584.69	-1581.776	ms_run[1]:spectrum=8951	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8952	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5428	5.1441	null	null	-1	1584.91	-1581.776	ms_run[1]:spectrum=8952	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8953	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3083	3.241	null	null	-1	1584.69	-1581.776	ms_run[1]:spectrum=8953	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8954	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2253	2.6135	null	null	-1	1584.92	-1581.776	ms_run[1]:spectrum=8954	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8955	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3241	2.9553	null	null	-1	1586.69	-1581.776	ms_run[1]:spectrum=8955	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8956	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2335	2.7217	null	null	-1	1586.49	-1581.776	ms_run[1]:spectrum=8956	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8957	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5652	4.6683	null	null	-1	1583.66	-1581.776	ms_run[1]:spectrum=8957	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8958	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5514	5.0825	null	null	-1	1584.46	-1581.776	ms_run[1]:spectrum=8958	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8959	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2535	3.3937	null	null	-1	1584.45	-1581.776	ms_run[1]:spectrum=8959	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8960	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4241	4.2697	null	null	-1	1584.28	-1581.776	ms_run[1]:spectrum=8960	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8961	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3308	2.993	null	null	-1	1585.3	-1581.776	ms_run[1]:spectrum=8961	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8962	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5704	4.9325	null	null	-1	1583.57	-1581.776	ms_run[1]:spectrum=8962	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8963	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5436	4.4589	null	null	-1	1584.3	-1581.776	ms_run[1]:spectrum=8963	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8964	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.42	2.991	null	null	-1	1584.94	-1581.776	ms_run[1]:spectrum=8964	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8965	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4122	4.2842	null	null	-1	1584.38	-1581.776	ms_run[1]:spectrum=8965	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8966	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3714	3.9395	null	null	-1	1585.04	-1581.776	ms_run[1]:spectrum=8966	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8967	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3633	3.3331	null	null	-1	1583.98	-1581.776	ms_run[1]:spectrum=8967	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8968	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3393	2.6274	null	null	-1	1584.31	-1581.776	ms_run[1]:spectrum=8968	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8969	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.459	2.9599	null	null	-1	1584.63	-1581.776	ms_run[1]:spectrum=8969	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8970	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.129	2.3428	null	null	-1	1586.18	-1581.776	ms_run[1]:spectrum=8970	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8971	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2449	3.284	null	null	-1	1585.14	-1581.776	ms_run[1]:spectrum=8971	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8972	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1085	2.6503	null	null	-1	1586.67	-1581.776	ms_run[1]:spectrum=8972	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8973	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2725	3.7194	null	null	-1	1584.43	-1581.776	ms_run[1]:spectrum=8973	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8974	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1681	3.4198	null	null	-1	1584.37	-1581.776	ms_run[1]:spectrum=8974	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8975	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2578	3.1603	null	null	-1	1584.24	-1581.776	ms_run[1]:spectrum=8975	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8976	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.364	3.9816	null	null	-1	1584.47	-1581.776	ms_run[1]:spectrum=8976	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8977	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4805	4.4747	null	null	-1	1583.84	-1581.776	ms_run[1]:spectrum=8977	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8978	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.368	4.1021	null	null	-1	1584.08	-1581.776	ms_run[1]:spectrum=8978	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8979	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4379	4.5419	null	null	-1	1583.61	-1581.776	ms_run[1]:spectrum=8979	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8980	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5405	4.5766	null	null	-1	1586.02	-1581.776	ms_run[1]:spectrum=8980	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8981	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3896	4.1855	null	null	-1	1582.9	-1581.776	ms_run[1]:spectrum=8981	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8982	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1862	3.7599	null	null	-1	1582.46	-1581.776	ms_run[1]:spectrum=8982	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8983	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5275	4.8369	null	null	-1	1586.68	-1581.776	ms_run[1]:spectrum=8983	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8984	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3572	3.6843	null	null	-1	1582.39	-1581.776	ms_run[1]:spectrum=8984	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8985	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4228	3.6975	null	null	-1	1582.63	-1581.776	ms_run[1]:spectrum=8985	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8986	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5423	4.9364	null	null	-1	1586.65	-1581.776	ms_run[1]:spectrum=8986	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8987	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4199	3.7868	null	null	-1	1583.26	-1581.776	ms_run[1]:spectrum=8987	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8988	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4135	3.0995	null	null	-1	1586.63	-1581.776	ms_run[1]:spectrum=8988	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8989	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1457	3.7847	null	null	-1	1584.27	-1581.776	ms_run[1]:spectrum=8989	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8990	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3498	3.2781	null	null	-1	1583.78	-1581.776	ms_run[1]:spectrum=8990	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8991	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.18	2.7384	null	null	-1	1584.2	-1581.776	ms_run[1]:spectrum=8991	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8992	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5016	4.1691	null	null	-1	1584.56	-1581.776	ms_run[1]:spectrum=8992	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8993	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4569	3.5738	null	null	-1	1584.64	-1581.776	ms_run[1]:spectrum=8993	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8994	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5371	2.8708	null	null	-1	1583.54	-1581.776	ms_run[1]:spectrum=8994	null	null	null	null	0
+PSM	LQHGSILGFPK	8995	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2425	2.4939	null	null	-1	1197.45	-1194.6634900000001	ms_run[1]:spectrum=8995	null	null	null	null	0
+PSM	LQHGSILGFPK	8996	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2921	2.1817	null	null	-1	1197.22	-1194.6634900000001	ms_run[1]:spectrum=8996	null	null	null	null	0
+PSM	LQHGSILGFPK	8997	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2531	2.3598	null	null	-1	1196.51	-1194.6634900000001	ms_run[1]:spectrum=8997	null	null	null	null	0
+PSM	LQHGSILGFPK	8998	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2433	2.3855	null	null	-1	1196.38	-1194.6634900000001	ms_run[1]:spectrum=8998	null	null	null	null	0
+PSM	LQHGSILGFPK	8999	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1407	2.2942	null	null	-1	1199.54	-1194.6634900000001	ms_run[1]:spectrum=8999	null	null	null	null	0
+PSM	LQHGSILGFPK	9000	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2483	2.7758	null	null	-1	1199.4	-1194.6634900000001	ms_run[1]:spectrum=9000	null	null	null	null	0
+PSM	LQHGSILGFPK	9001	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3265	2.5833	null	null	-1	1196.23	-1194.6634900000001	ms_run[1]:spectrum=9001	null	null	null	null	0
+PSM	LQHGSILGFPK	9002	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1332	2.3545	null	null	-1	1197.42	-1194.6634900000001	ms_run[1]:spectrum=9002	null	null	null	null	0
+PSM	LQHGSILGFPK	9003	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.0966	2.3148	null	null	-1	1197.25	-1194.6634900000001	ms_run[1]:spectrum=9003	null	null	null	null	0
+PSM	MVEGFFDR	9004	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2519	2.7277	null	null	-1	1002.26	-998.4405599999999	ms_run[1]:spectrum=9004	null	null	null	null	0
+PSM	MVEGFFDR	9005	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1714	2.5525	null	null	-1	1002.39	-998.4405599999999	ms_run[1]:spectrum=9005	null	null	null	null	0
+PSM	MVEGFFDR	9006	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1748	2.2075	null	null	-1	1002.14	-998.4405599999999	ms_run[1]:spectrum=9006	null	null	null	null	0
+PSM	TAAYVNAIEK	9007	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4159	3.151	null	null	-1	1081.28	-1077.5580300000001	ms_run[1]:spectrum=9007	null	null	null	null	0
+PSM	TAAYVNAIEK	9008	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2352	2.1949	null	null	-1	1080.24	-1077.5580300000001	ms_run[1]:spectrum=9008	null	null	null	null	0
+PSM	TAAYVNAIEK	9009	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5003	3.0033	null	null	-1	1082.38	-1077.5580300000001	ms_run[1]:spectrum=9009	null	null	null	null	0
+PSM	TAAYVNAIEK	9010	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4674	3.0018	null	null	-1	1082.22	-1077.5580300000001	ms_run[1]:spectrum=9010	null	null	null	null	0
+PSM	TAAYVNAIEK	9011	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3807	2.8067	null	null	-1	1082.3	-1077.5580300000001	ms_run[1]:spectrum=9011	null	null	null	null	0
+PSM	TAAYVNAIEK	9012	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2176	2.4617	null	null	-1	1081.16	-1077.5580300000001	ms_run[1]:spectrum=9012	null	null	null	null	0
+PSM	TAAYVNAIEK	9013	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3869	2.3066	null	null	-1	1081.28	-1077.5580300000001	ms_run[1]:spectrum=9013	null	null	null	null	0
+PSM	TAAYVNAIEK	9014	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2998	2.4202	null	null	-1	1080.62	-1077.5580300000001	ms_run[1]:spectrum=9014	null	null	null	null	0
+PSM	TAAYVNAIEK	9015	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2786	2.3874	null	null	-1	1080.81	-1077.5580300000001	ms_run[1]:spectrum=9015	null	null	null	null	0
+PSM	TAAYVNAIEK	9016	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.331	2.4303	null	null	-1	1082.37	-1077.5580300000001	ms_run[1]:spectrum=9016	null	null	null	null	0
+PSM	TAAYVNAIEK	9017	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3365	2.3415	null	null	-1	1082.25	-1077.5580300000001	ms_run[1]:spectrum=9017	null	null	null	null	0
+PSM	TAAYVNAIEK	9018	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2767	2.3522	null	null	-1	1082.44	-1077.5580300000001	ms_run[1]:spectrum=9018	null	null	null	null	0
+PSM	TAAYVNAIEK	9019	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4223	2.709	null	null	-1	1080.01	-1077.5580300000001	ms_run[1]:spectrum=9019	null	null	null	null	0
+PSM	TAAYVNAIEK	9020	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3126	2.2559	null	null	-1	1079.85	-1077.5580300000001	ms_run[1]:spectrum=9020	null	null	null	null	0
+PSM	TAAYVNAIEK	9021	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3561	2.4961	null	null	-1	1081.27	-1077.5580300000001	ms_run[1]:spectrum=9021	null	null	null	null	0
+PSM	TAAYVNAIEK	9022	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2899	2.1826	null	null	-1	1078.05	-1077.5580300000001	ms_run[1]:spectrum=9022	null	null	null	null	0
+PSM	TAAYVNAIEK	9023	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2617	2.4569	null	null	-1	1080.42	-1077.5580300000001	ms_run[1]:spectrum=9023	null	null	null	null	0
+PSM	TAAYVNAIEK	9024	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3429	2.4078	null	null	-1	1081.14	-1077.5580300000001	ms_run[1]:spectrum=9024	null	null	null	null	0
+PSM	TAAYVNAIEK	9025	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3864	2.663	null	null	-1	1080.21	-1077.5580300000001	ms_run[1]:spectrum=9025	null	null	null	null	0
+PSM	TFVVQGFGNVGLHSMR	9026	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.0818	2.4553	null	null	-1	1748.65	-1746.87496	ms_run[1]:spectrum=9026	null	null	null	null	0
+PSM	TFVVQGFGNVGLHSMR	9027	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3952	2.6034	null	null	-1	1748.91	-1746.87496	ms_run[1]:spectrum=9027	null	null	null	null	0
+PSM	YSTDVSVDEVK	9028	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3666	2.6963	null	null	-1	1243.12	-1239.57447	ms_run[1]:spectrum=9028	null	null	null	null	0
+PSM	YSTDVSVDEVK	9029	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1196	2.6197	null	null	-1	1242.19	-1239.57447	ms_run[1]:spectrum=9029	null	null	null	null	0
+PSM	YSTDVSVDEVK	9030	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3936	2.5998	null	null	-1	1241.8	-1239.57447	ms_run[1]:spectrum=9030	null	null	null	null	0
+PSM	YSTDVSVDEVK	9031	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2242	2.4194	null	null	-1	1242.31	-1239.57447	ms_run[1]:spectrum=9031	null	null	null	null	0
+PSM	YSTDVSVDEVK	9032	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3495	2.304	null	null	-1	1241.86	-1239.57447	ms_run[1]:spectrum=9032	null	null	null	null	0
+PSM	YSTDVSVDEVK	9033	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4053	2.3225	null	null	-1	1241.9	-1239.57447	ms_run[1]:spectrum=9033	null	null	null	null	0
+PSM	YSTDVSVDEVK	9034	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3062	2.4844	null	null	-1	1242.34	-1239.57447	ms_run[1]:spectrum=9034	null	null	null	null	0
+PSM	YSTDVSVDEVK	9035	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4829	2.8047	null	null	-1	1242.15	-1239.57447	ms_run[1]:spectrum=9035	null	null	null	null	0
+PSM	YSTDVSVDEVK	9036	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4598	2.4534	null	null	-1	1242.26	-1239.57447	ms_run[1]:spectrum=9036	null	null	null	null	0
+PSM	YSTDVSVDEVK	9037	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.29	2.4576	null	null	-1	1244.09	-1239.57447	ms_run[1]:spectrum=9037	null	null	null	null	0
+PSM	YSTDVSVDEVK	9038	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4942	2.6906	null	null	-1	1243.26	-1239.57447	ms_run[1]:spectrum=9038	null	null	null	null	0
+PSM	YSTDVSVDEVK	9039	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4485	2.5946	null	null	-1	1242.19	-1239.57447	ms_run[1]:spectrum=9039	null	null	null	null	0
+PSM	YSTDVSVDEVK	9040	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4588	3.0194	null	null	-1	1243.36	-1239.57447	ms_run[1]:spectrum=9040	null	null	null	null	0
+PSM	YSTDVSVDEVK	9041	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4709	2.5765	null	null	-1	1241.38	-1239.57447	ms_run[1]:spectrum=9041	null	null	null	null	0
+PSM	YSTDVSVDEVK	9042	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5044	2.9506	null	null	-1	1244.52	-1239.57447	ms_run[1]:spectrum=9042	null	null	null	null	0
+PSM	YSTDVSVDEVK	9043	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3221	2.5929	null	null	-1	1241.75	-1239.57447	ms_run[1]:spectrum=9043	null	null	null	null	0
+PSM	YSTDVSVDEVK	9044	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.448	2.8433	null	null	-1	1242.28	-1239.57447	ms_run[1]:spectrum=9044	null	null	null	null	0
+PSM	YSTDVSVDEVK	9045	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4296	2.3133	null	null	-1	1241.45	-1239.57447	ms_run[1]:spectrum=9045	null	null	null	null	0
+PSM	AKPYEGSILEADCDILIPAASEK	9046	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2388	3.6628	null	null	-1	2490.59	-2431.2066099999993	ms_run[1]:spectrum=9046	null	null	null	null	0
+PSM	AKPYEGSILEADCDILIPAASEK	9047	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3068	3.1762	null	null	-1	2493.12	-2431.2066099999993	ms_run[1]:spectrum=9047	null	null	null	null	0
+PSM	AKPYEGSILEADCDILIPAASEK	9048	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1865	2.9733	null	null	-1	2491.53	-2431.2066099999993	ms_run[1]:spectrum=9048	null	null	null	null	0
+PSM	AKPYEGSILEADCDILIPAASEK	9049	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.19	3.0609	null	null	-1	2492.63	-2431.2066099999993	ms_run[1]:spectrum=9049	null	null	null	null	0
+PSM	AKPYEGSILEADCDILIPAASEK	9050	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2898	3.9302	null	null	-1	2491.62	-2431.2066099999993	ms_run[1]:spectrum=9050	null	null	null	null	0
+PSM	AKPYEGSILEADCDILIPAASEK	9051	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2837	3.2271	null	null	-1	2490.83	-2431.2066099999993	ms_run[1]:spectrum=9051	null	null	null	null	0
+PSM	AKPYEGSILEADCDILIPAASEK	9052	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1122	3.3333	null	null	-1	2491.42	-2431.2066099999993	ms_run[1]:spectrum=9052	null	null	null	null	0
+PSM	AKPYEGSILEADCDILIPAASEK	9053	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.0985	3.0769	null	null	-1	2491.29	-2431.2066099999993	ms_run[1]:spectrum=9053	null	null	null	null	0
+PSM	IIKPCNHVLSLSFPIR	9054	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3851	3.0199	null	null	-1	1893.96	-1835.03654	ms_run[1]:spectrum=9054	null	null	null	null	0
+PSM	IIKPCNHVLSLSFPIR	9055	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3121	3.4615	null	null	-1	1895.49	-1835.03654	ms_run[1]:spectrum=9055	null	null	null	null	0
+PSM	IIKPCNHVLSLSFPIR	9056	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3719	3.6058	null	null	-1	1895.42	-1835.03654	ms_run[1]:spectrum=9056	null	null	null	null	0
+PSM	IIKPCNHVLSLSFPIR	9057	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4393	3.4704	null	null	-1	1896.04	-1835.03654	ms_run[1]:spectrum=9057	null	null	null	null	0
+PSM	IIKPCNHVLSLSFPIR	9058	IPI00016801.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2151	3.1139	null	null	-1	1894.92	-1835.03654	ms_run[1]:spectrum=9058	null	null	null	null	0
+PSM	AKPYEGSILEADCDILIPAASEK	8905	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4679	5.5929	null	null	-1	2490.42	-2431.2066099999993	ms_run[1]:spectrum=8905	null	null	null	null	0
+PSM	AKPYEGSILEADCDILIPAASEK	8906	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4582	5.2942	null	null	-1	2492.14	-2431.2066099999993	ms_run[1]:spectrum=8906	null	null	null	null	0
+PSM	CIAVGESDGSIWNPDGIDPK	8913	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5291	5.2071	null	null	-1	2131.01	-2070.9442	ms_run[1]:spectrum=8913	null	null	null	null	0
+PSM	CIAVGESDGSIWNPDGIDPK	8914	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5466	5.3288	null	null	-1	2131.36	-2070.9442	ms_run[1]:spectrum=8914	null	null	null	null	0
+PSM	CIAVGESDGSIWNPDGIDPK	8915	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5898	5.2303	null	null	-1	2130.52	-2070.9442	ms_run[1]:spectrum=8915	null	null	null	null	0
+PSM	CIAVGESDGSIWNPDGIDPK	8916	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5376	5.0061	null	null	-1	2131.37	-2070.9442	ms_run[1]:spectrum=8916	null	null	null	null	0
+PSM	CIAVGESDGSIWNPDGIDPK	8917	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5343	4.1232	null	null	-1	2132.92	-2070.9442	ms_run[1]:spectrum=8917	null	null	null	null	0
+PSM	CIAVGESDGSIWNPDGIDPK	8918	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5355	4.8445	null	null	-1	2130.61	-2070.9442	ms_run[1]:spectrum=8918	null	null	null	null	0
+PSM	CIAVGESDGSIWNPDGIDPK	8919	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4627	4.2842	null	null	-1	2132.78	-2070.9442	ms_run[1]:spectrum=8919	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8949	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5608	4.1368	null	null	-1	1583.74	-1581.776	ms_run[1]:spectrum=8949	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8950	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4167	3.5472	null	null	-1	1585.11	-1581.776	ms_run[1]:spectrum=8950	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8951	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3782	3.4514	null	null	-1	1584.69	-1581.776	ms_run[1]:spectrum=8951	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8952	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5428	5.1441	null	null	-1	1584.91	-1581.776	ms_run[1]:spectrum=8952	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8953	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3083	3.241	null	null	-1	1584.69	-1581.776	ms_run[1]:spectrum=8953	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8954	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2253	2.6135	null	null	-1	1584.92	-1581.776	ms_run[1]:spectrum=8954	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8955	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3241	2.9553	null	null	-1	1586.69	-1581.776	ms_run[1]:spectrum=8955	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8956	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2335	2.7217	null	null	-1	1586.49	-1581.776	ms_run[1]:spectrum=8956	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8957	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5652	4.6683	null	null	-1	1583.66	-1581.776	ms_run[1]:spectrum=8957	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8958	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5514	5.0825	null	null	-1	1584.46	-1581.776	ms_run[1]:spectrum=8958	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8959	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2535	3.3937	null	null	-1	1584.45	-1581.776	ms_run[1]:spectrum=8959	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8960	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4241	4.2697	null	null	-1	1584.28	-1581.776	ms_run[1]:spectrum=8960	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8961	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3308	2.993	null	null	-1	1585.3	-1581.776	ms_run[1]:spectrum=8961	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8962	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5704	4.9325	null	null	-1	1583.57	-1581.776	ms_run[1]:spectrum=8962	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8963	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5436	4.4589	null	null	-1	1584.3	-1581.776	ms_run[1]:spectrum=8963	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8964	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.42	2.991	null	null	-1	1584.94	-1581.776	ms_run[1]:spectrum=8964	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8965	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4122	4.2842	null	null	-1	1584.38	-1581.776	ms_run[1]:spectrum=8965	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8966	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3714	3.9395	null	null	-1	1585.04	-1581.776	ms_run[1]:spectrum=8966	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8967	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3633	3.3331	null	null	-1	1583.98	-1581.776	ms_run[1]:spectrum=8967	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8968	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3393	2.6274	null	null	-1	1584.31	-1581.776	ms_run[1]:spectrum=8968	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8969	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.459	2.9599	null	null	-1	1584.63	-1581.776	ms_run[1]:spectrum=8969	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8970	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.129	2.3428	null	null	-1	1586.18	-1581.776	ms_run[1]:spectrum=8970	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8971	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2449	3.284	null	null	-1	1585.14	-1581.776	ms_run[1]:spectrum=8971	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8972	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1085	2.6503	null	null	-1	1586.67	-1581.776	ms_run[1]:spectrum=8972	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8973	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2725	3.7194	null	null	-1	1584.43	-1581.776	ms_run[1]:spectrum=8973	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8974	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1681	3.4198	null	null	-1	1584.37	-1581.776	ms_run[1]:spectrum=8974	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8975	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2578	3.1603	null	null	-1	1584.24	-1581.776	ms_run[1]:spectrum=8975	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8976	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.364	3.9816	null	null	-1	1584.47	-1581.776	ms_run[1]:spectrum=8976	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8977	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4805	4.4747	null	null	-1	1583.84	-1581.776	ms_run[1]:spectrum=8977	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8978	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.368	4.1021	null	null	-1	1584.08	-1581.776	ms_run[1]:spectrum=8978	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8979	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4379	4.5419	null	null	-1	1583.61	-1581.776	ms_run[1]:spectrum=8979	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8980	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5405	4.5766	null	null	-1	1586.02	-1581.776	ms_run[1]:spectrum=8980	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8981	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3896	4.1855	null	null	-1	1582.9	-1581.776	ms_run[1]:spectrum=8981	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8982	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1862	3.7599	null	null	-1	1582.46	-1581.776	ms_run[1]:spectrum=8982	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8983	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5275	4.8369	null	null	-1	1586.68	-1581.776	ms_run[1]:spectrum=8983	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8984	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3572	3.6843	null	null	-1	1582.39	-1581.776	ms_run[1]:spectrum=8984	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8985	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4228	3.6975	null	null	-1	1582.63	-1581.776	ms_run[1]:spectrum=8985	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8986	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5423	4.9364	null	null	-1	1586.65	-1581.776	ms_run[1]:spectrum=8986	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8987	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4199	3.7868	null	null	-1	1583.26	-1581.776	ms_run[1]:spectrum=8987	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8988	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4135	3.0995	null	null	-1	1586.63	-1581.776	ms_run[1]:spectrum=8988	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8989	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1457	3.7847	null	null	-1	1584.27	-1581.776	ms_run[1]:spectrum=8989	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8990	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3498	3.2781	null	null	-1	1583.78	-1581.776	ms_run[1]:spectrum=8990	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8991	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.18	2.7384	null	null	-1	1584.2	-1581.776	ms_run[1]:spectrum=8991	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8992	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5016	4.1691	null	null	-1	1584.56	-1581.776	ms_run[1]:spectrum=8992	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8993	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4569	3.5738	null	null	-1	1584.64	-1581.776	ms_run[1]:spectrum=8993	null	null	null	null	0
+PSM	IIAEGANGPTTPEADK	8994	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5371	2.8708	null	null	-1	1583.54	-1581.776	ms_run[1]:spectrum=8994	null	null	null	null	0
+PSM	LQHGSILGFPK	8995	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2425	2.4939	null	null	-1	1197.45	-1194.6634900000001	ms_run[1]:spectrum=8995	null	null	null	null	0
+PSM	LQHGSILGFPK	8996	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2921	2.1817	null	null	-1	1197.22	-1194.6634900000001	ms_run[1]:spectrum=8996	null	null	null	null	0
+PSM	LQHGSILGFPK	8997	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2531	2.3598	null	null	-1	1196.51	-1194.6634900000001	ms_run[1]:spectrum=8997	null	null	null	null	0
+PSM	LQHGSILGFPK	8998	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2433	2.3855	null	null	-1	1196.38	-1194.6634900000001	ms_run[1]:spectrum=8998	null	null	null	null	0
+PSM	LQHGSILGFPK	8999	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1407	2.2942	null	null	-1	1199.54	-1194.6634900000001	ms_run[1]:spectrum=8999	null	null	null	null	0
+PSM	LQHGSILGFPK	9000	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2483	2.7758	null	null	-1	1199.4	-1194.6634900000001	ms_run[1]:spectrum=9000	null	null	null	null	0
+PSM	LQHGSILGFPK	9001	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3265	2.5833	null	null	-1	1196.23	-1194.6634900000001	ms_run[1]:spectrum=9001	null	null	null	null	0
+PSM	LQHGSILGFPK	9002	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1332	2.3545	null	null	-1	1197.42	-1194.6634900000001	ms_run[1]:spectrum=9002	null	null	null	null	0
+PSM	LQHGSILGFPK	9003	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.0966	2.3148	null	null	-1	1197.25	-1194.6634900000001	ms_run[1]:spectrum=9003	null	null	null	null	0
+PSM	AKPYEGSILEADCDILIPAASEK	9046	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2388	3.6628	null	null	-1	2490.59	-2431.2066099999993	ms_run[1]:spectrum=9046	null	null	null	null	0
+PSM	AKPYEGSILEADCDILIPAASEK	9047	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3068	3.1762	null	null	-1	2493.12	-2431.2066099999993	ms_run[1]:spectrum=9047	null	null	null	null	0
+PSM	AKPYEGSILEADCDILIPAASEK	9048	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1865	2.9733	null	null	-1	2491.53	-2431.2066099999993	ms_run[1]:spectrum=9048	null	null	null	null	0
+PSM	AKPYEGSILEADCDILIPAASEK	9049	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.19	3.0609	null	null	-1	2492.63	-2431.2066099999993	ms_run[1]:spectrum=9049	null	null	null	null	0
+PSM	AKPYEGSILEADCDILIPAASEK	9050	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2898	3.9302	null	null	-1	2491.62	-2431.2066099999993	ms_run[1]:spectrum=9050	null	null	null	null	0
+PSM	AKPYEGSILEADCDILIPAASEK	9051	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2837	3.2271	null	null	-1	2490.83	-2431.2066099999993	ms_run[1]:spectrum=9051	null	null	null	null	0
+PSM	AKPYEGSILEADCDILIPAASEK	9052	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1122	3.3333	null	null	-1	2491.42	-2431.2066099999993	ms_run[1]:spectrum=9052	null	null	null	null	0
+PSM	AKPYEGSILEADCDILIPAASEK	9053	IPI00737281.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.0985	3.0769	null	null	-1	2491.29	-2431.2066099999993	ms_run[1]:spectrum=9053	null	null	null	null	0
+PSM	DGVADVSIEDSVISLSGDHCIIGR	9059	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.369	3.4178	null	null	-1	2514.46	-2455.17744	ms_run[1]:spectrum=9059	null	null	null	null	0
+PSM	DGVADVSIEDSVISLSGDHCIIGR	9060	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5553	4.3989	null	null	-1	2514.88	-2455.17744	ms_run[1]:spectrum=9060	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9061	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4426	4.0065	null	null	-1	1503.1	-1499.7494	ms_run[1]:spectrum=9061	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9062	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4548	4.1687	null	null	-1	1503.19	-1499.7494	ms_run[1]:spectrum=9062	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9063	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.462	3.7505	null	null	-1	1502.29	-1499.7494	ms_run[1]:spectrum=9063	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9064	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4893	3.6548	null	null	-1	1504.1	-1499.7494	ms_run[1]:spectrum=9064	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9065	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3958	3.1723	null	null	-1	1504.59	-1499.7494	ms_run[1]:spectrum=9065	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9066	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3255	3.0338	null	null	-1	1503.39	-1499.7494	ms_run[1]:spectrum=9066	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9067	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3093	2.4193	null	null	-1	1503.06	-1499.7494	ms_run[1]:spectrum=9067	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9068	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2107	2.3327	null	null	-1	1503.97	-1499.7494	ms_run[1]:spectrum=9068	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9069	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1319	2.2362	null	null	-1	1504.43	-1499.7494	ms_run[1]:spectrum=9069	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9070	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2683	2.6614	null	null	-1	1502.28	-1499.7494	ms_run[1]:spectrum=9070	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9071	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1584	2.2691	null	null	-1	1502.67	-1499.7494	ms_run[1]:spectrum=9071	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9072	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.251	3.0851	null	null	-1	1503.51	-1499.7494	ms_run[1]:spectrum=9072	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9073	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.0918	2.2715	null	null	-1	1503.24	-1499.7494	ms_run[1]:spectrum=9073	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9074	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2616	3.3413	null	null	-1	1502.36	-1499.7494	ms_run[1]:spectrum=9074	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9075	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2155	2.3931	null	null	-1	1500.39	-1499.7494	ms_run[1]:spectrum=9075	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9076	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2112	2.502	null	null	-1	1501.8	-1499.7494	ms_run[1]:spectrum=9076	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9077	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2565	2.9958	null	null	-1	1503.91	-1499.7494	ms_run[1]:spectrum=9077	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9078	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.134	2.3736	null	null	-1	1502.44	-1499.7494	ms_run[1]:spectrum=9078	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9079	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3451	2.9664	null	null	-1	1503.07	-1499.7494	ms_run[1]:spectrum=9079	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9080	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3812	3.0575	null	null	-1	1501.6	-1499.7494	ms_run[1]:spectrum=9080	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9081	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4729	3.7468	null	null	-1	1503.22	-1499.7494	ms_run[1]:spectrum=9081	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9082	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1097	2.1833	null	null	-1	1502.56	-1499.7494	ms_run[1]:spectrum=9082	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9083	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4275	3.7487	null	null	-1	1502.41	-1499.7494	ms_run[1]:spectrum=9083	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9084	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4605	3.4946	null	null	-1	1501.56	-1499.7494	ms_run[1]:spectrum=9084	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9085	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4139	4.3386	null	null	-1	1504.63	-1499.7494	ms_run[1]:spectrum=9085	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9086	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4154	3.8672	null	null	-1	1501.53	-1499.7494	ms_run[1]:spectrum=9086	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9087	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2283	2.9319	null	null	-1	1503.59	-1499.7494	ms_run[1]:spectrum=9087	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9088	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3135	3.129	null	null	-1	1503.18	-1499.7494	ms_run[1]:spectrum=9088	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9089	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3799	4.3313	null	null	-1	1501.65	-1499.7494	ms_run[1]:spectrum=9089	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9090	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.38	3.9876	null	null	-1	1501.71	-1499.7494	ms_run[1]:spectrum=9090	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9091	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3133	3.3511	null	null	-1	1502.75	-1499.7494	ms_run[1]:spectrum=9091	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9092	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4222	3.3213	null	null	-1	1502.88	-1499.7494	ms_run[1]:spectrum=9092	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9093	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4311	4.1787	null	null	-1	1501.45	-1499.7494	ms_run[1]:spectrum=9093	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9094	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4045	3.526	null	null	-1	1503.3	-1499.7494	ms_run[1]:spectrum=9094	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9095	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3683	2.6644	null	null	-1	1503.39	-1499.7494	ms_run[1]:spectrum=9095	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9096	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3256	2.5862	null	null	-1	1502.37	-1499.7494	ms_run[1]:spectrum=9096	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9097	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3498	3.3921	null	null	-1	1502.21	-1499.7494	ms_run[1]:spectrum=9097	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9098	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2634	2.959	null	null	-1	1504.04	-1499.7494	ms_run[1]:spectrum=9098	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9099	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2333	2.4156	null	null	-1	1503.85	-1499.7494	ms_run[1]:spectrum=9099	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9100	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3875	3.2078	null	null	-1	1501.69	-1499.7494	ms_run[1]:spectrum=9100	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9101	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2339	2.9072	null	null	-1	1501.6	-1499.7494	ms_run[1]:spectrum=9101	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9102	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2456	2.6064	null	null	-1	1501.76	-1499.7494	ms_run[1]:spectrum=9102	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9103	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2611	2.5423	null	null	-1	1503.42	-1499.7494	ms_run[1]:spectrum=9103	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9104	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3596	3.1115	null	null	-1	1502.08	-1499.7494	ms_run[1]:spectrum=9104	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9105	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3846	3.9709	null	null	-1	1502.48	-1499.7494	ms_run[1]:spectrum=9105	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9106	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.381	2.6979	null	null	-1	1500.23	-1499.7494	ms_run[1]:spectrum=9106	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9107	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3442	3.1459	null	null	-1	1503.52	-1499.7494	ms_run[1]:spectrum=9107	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9108	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4108	3.0998	null	null	-1	1501.71	-1499.7494	ms_run[1]:spectrum=9108	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9109	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4671	3.5168	null	null	-1	1501.83	-1499.7494	ms_run[1]:spectrum=9109	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9110	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4655	4.2371	null	null	-1	1502.37	-1499.7494	ms_run[1]:spectrum=9110	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9111	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4248	3.9543	null	null	-1	1502.39	-1499.7494	ms_run[1]:spectrum=9111	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9112	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4329	3.3703	null	null	-1	1502.26	-1499.7494	ms_run[1]:spectrum=9112	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9113	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4254	3.7471	null	null	-1	1503.45	-1499.7494	ms_run[1]:spectrum=9113	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9114	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1983	2.5947	null	null	-1	1503.68	-1499.7494	ms_run[1]:spectrum=9114	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9115	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1675	2.7845	null	null	-1	1503.88	-1499.7494	ms_run[1]:spectrum=9115	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9116	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.33	3.1952	null	null	-1	1504.53	-1499.7494	ms_run[1]:spectrum=9116	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9117	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3228	3.1849	null	null	-1	1503.2	-1499.7494	ms_run[1]:spectrum=9117	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9118	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3275	3.014	null	null	-1	1503.53	-1499.7494	ms_run[1]:spectrum=9118	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9119	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4498	3.502	null	null	-1	1504.57	-1499.7494	ms_run[1]:spectrum=9119	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9120	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3688	3.8039	null	null	-1	1503.81	-1499.7494	ms_run[1]:spectrum=9120	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9121	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.317	2.7666	null	null	-1	1503.55	-1499.7494	ms_run[1]:spectrum=9121	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9122	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3271	3.0543	null	null	-1	1502.34	-1499.7494	ms_run[1]:spectrum=9122	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9123	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3199	2.7968	null	null	-1	1502.26	-1499.7494	ms_run[1]:spectrum=9123	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9124	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2605	2.8307	null	null	-1	1502.48	-1499.7494	ms_run[1]:spectrum=9124	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9125	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3049	3.2648	null	null	-1	1504.64	-1499.7494	ms_run[1]:spectrum=9125	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9126	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4526	2.6404	null	null	-1	1501.57	-1499.7494	ms_run[1]:spectrum=9126	null	null	null	null	0
+PSM	GDGPVQGIINFEQK	9127	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1179	2.261	null	null	-1	1502.48	-1499.7494	ms_run[1]:spectrum=9127	null	null	null	null	0
+PSM	HVGDLGNVTADK	9128	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4543	2.6512	null	null	-1	1225.77	-1223.60201	ms_run[1]:spectrum=9128	null	null	null	null	0
+PSM	HVGDLGNVTADK	9129	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5053	3.209	null	null	-1	1225.65	-1223.60201	ms_run[1]:spectrum=9129	null	null	null	null	0
+PSM	HVGDLGNVTADK	9130	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4898	2.8875	null	null	-1	1225.84	-1223.60201	ms_run[1]:spectrum=9130	null	null	null	null	0
+PSM	HVGDLGNVTADK	9131	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5803	2.8072	null	null	-1	1225.55	-1223.60201	ms_run[1]:spectrum=9131	null	null	null	null	0
+PSM	HVGDLGNVTADK	9132	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4761	2.8055	null	null	-1	1225.62	-1223.60201	ms_run[1]:spectrum=9132	null	null	null	null	0
+PSM	HVGDLGNVTADK	9133	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4831	2.872	null	null	-1	1225.69	-1223.60201	ms_run[1]:spectrum=9133	null	null	null	null	0
+PSM	HVGDLGNVTADK	9134	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4755	3.3385	null	null	-1	1226.4	-1223.60201	ms_run[1]:spectrum=9134	null	null	null	null	0
+PSM	HVGDLGNVTADK	9135	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5235	2.8468	null	null	-1	1225.76	-1223.60201	ms_run[1]:spectrum=9135	null	null	null	null	0
+PSM	HVGDLGNVTADK	9136	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4933	2.8871	null	null	-1	1225.55	-1223.60201	ms_run[1]:spectrum=9136	null	null	null	null	0
+PSM	HVGDLGNVTADK	9137	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4661	2.5572	null	null	-1	1226.01	-1223.60201	ms_run[1]:spectrum=9137	null	null	null	null	0
+PSM	HVGDLGNVTADK	9138	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.505	2.5571	null	null	-1	1225.55	-1223.60201	ms_run[1]:spectrum=9138	null	null	null	null	0
+PSM	HVGDLGNVTADK	9139	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4263	2.4166	null	null	-1	1226.29	-1223.60201	ms_run[1]:spectrum=9139	null	null	null	null	0
+PSM	HVGDLGNVTADK	9140	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4008	2.3523	null	null	-1	1225.57	-1223.60201	ms_run[1]:spectrum=9140	null	null	null	null	0
+PSM	HVGDLGNVTADK	9141	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3856	2.9946	null	null	-1	1226.28	-1223.60201	ms_run[1]:spectrum=9141	null	null	null	null	0
+PSM	HVGDLGNVTADK	9142	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4767	2.9394	null	null	-1	1225.63	-1223.60201	ms_run[1]:spectrum=9142	null	null	null	null	0
+PSM	HVGDLGNVTADK	9143	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3279	2.4447	null	null	-1	1225.88	-1223.60201	ms_run[1]:spectrum=9143	null	null	null	null	0
+PSM	HVGDLGNVTADK	9144	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3985	2.4474	null	null	-1	1225.59	-1223.60201	ms_run[1]:spectrum=9144	null	null	null	null	0
+PSM	HVGDLGNVTADK	9145	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5668	2.5196	null	null	-1	1226.13	-1223.60201	ms_run[1]:spectrum=9145	null	null	null	null	0
+PSM	HVGDLGNVTADK	9146	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4634	2.2431	null	null	-1	1226.51	-1223.60201	ms_run[1]:spectrum=9146	null	null	null	null	0
+PSM	AVCVLKGDGPVQGIINFEQK	9147	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3164	3.106	null	null	-1	2173.77	-2113.11154	ms_run[1]:spectrum=9147	null	null	null	null	0
+PSM	DGVADVSIEDSVISLSGDHCIIGR	9148	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3744	3.7702	null	null	-1	2516.35	-2455.17744	ms_run[1]:spectrum=9148	null	null	null	null	0
+PSM	DGVADVSIEDSVISLSGDHCIIGR	9149	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3465	3.509	null	null	-1	2517.12	-2455.17744	ms_run[1]:spectrum=9149	null	null	null	null	0
+PSM	DGVADVSIEDSVISLSGDHCIIGR	9150	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2484	3.4865	null	null	-1	2516.46	-2455.17744	ms_run[1]:spectrum=9150	null	null	null	null	0
+PSM	DGVADVSIEDSVISLSGDHCIIGR	9151	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3793	3.392	null	null	-1	2515.21	-2455.17744	ms_run[1]:spectrum=9151	null	null	null	null	0
+PSM	GLTEGLHGFHVHEFGDNTAGCTSAGPHFNPLSR	9152	IPI00783680.1	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5302	5.8551	null	null	-1	3521.2	-3460.5880800000004	ms_run[1]:spectrum=9152	null	null	null	null	0
+PSM	GETGPSGPVGPAGAVGPR	9153	IPI00304962.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2541	3.6665	null	null	-1	1563.54	-1560.7769900000003	ms_run[1]:spectrum=9153	null	null	null	null	0
+PSM	GETGPSGPVGPAGAVGPR	9154	IPI00304962.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4117	3.3297	null	null	-1	1563.95	-1560.7769900000003	ms_run[1]:spectrum=9154	null	null	null	null	0
+PSM	GETGPSGPVGPAGAVGPR	9155	IPI00304962.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4032	3.6923	null	null	-1	1564.49	-1560.7769900000003	ms_run[1]:spectrum=9155	null	null	null	null	0
+PSM	GETGPSGPVGPAGAVGPR	9156	IPI00304962.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4009	3.6255	null	null	-1	1563.5	-1560.7769900000003	ms_run[1]:spectrum=9156	null	null	null	null	0
+PSM	GETGPSGPVGPAGAVGPR	9157	IPI00304962.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.262	3.7352	null	null	-1	1562.64	-1560.7769900000003	ms_run[1]:spectrum=9157	null	null	null	null	0
+PSM	GETGPSGPVGPAGAVGPR	9158	IPI00304962.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3098	4.0518	null	null	-1	1564.44	-1560.7769900000003	ms_run[1]:spectrum=9158	null	null	null	null	0
+PSM	GETGPSGPVGPAGAVGPR	9159	IPI00304962.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.233	3.6031	null	null	-1	1563.59	-1560.7769900000003	ms_run[1]:spectrum=9159	null	null	null	null	0
+PSM	GETGPSGPVGPAGAVGPR	9160	IPI00304962.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2047	3.5979	null	null	-1	1562.73	-1560.7769900000003	ms_run[1]:spectrum=9160	null	null	null	null	0
+PSM	GETGPSGPVGPAGAVGPR	9161	IPI00304962.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2622	3.721	null	null	-1	1564.96	-1560.7769900000003	ms_run[1]:spectrum=9161	null	null	null	null	0
+PSM	GETGPSGPVGPAGAVGPR	9162	IPI00304962.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.118	3.628	null	null	-1	1562.46	-1560.7769900000003	ms_run[1]:spectrum=9162	null	null	null	null	0
+PSM	GETGPSGPVGPAGAVGPR	9163	IPI00304962.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2403	3.2805	null	null	-1	1562.5	-1560.7769900000003	ms_run[1]:spectrum=9163	null	null	null	null	0
+PSM	GETGPSGPVGPAGAVGPR	9164	IPI00304962.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2904	3.7697	null	null	-1	1562.19	-1560.7769900000003	ms_run[1]:spectrum=9164	null	null	null	null	0
+PSM	GETGPSGPVGPAGAVGPR	9165	IPI00304962.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2697	3.2749	null	null	-1	1564.41	-1560.7769900000003	ms_run[1]:spectrum=9165	null	null	null	null	0
+PSM	GETGPSGPVGPAGAVGPR	9166	IPI00304962.2	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1309	3.2347	null	null	-1	1564.68	-1560.7769900000003	ms_run[1]:spectrum=9166	null	null	null	null	0
+PSM	AGTGVDNVDLEAATR	9167	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.0917	2.5461	null	null	-1	1490.59	-1486.71374	ms_run[1]:spectrum=9167	null	null	null	null	0
+PSM	AGTGVDNVDLEAATR	9168	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2231	3.2086	null	null	-1	1489.88	-1486.71374	ms_run[1]:spectrum=9168	null	null	null	null	0
+PSM	AGTGVDNVDLEAATR	9169	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.0964	2.5661	null	null	-1	1489.57	-1486.71374	ms_run[1]:spectrum=9169	null	null	null	null	0
+PSM	AGTGVDNVDLEAATR	9170	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2921	3.3053	null	null	-1	1490.18	-1486.71374	ms_run[1]:spectrum=9170	null	null	null	null	0
+PSM	AGTGVDNVDLEAATR	9171	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2507	3.4784	null	null	-1	1490.47	-1486.71374	ms_run[1]:spectrum=9171	null	null	null	null	0
+PSM	AGTGVDNVDLEAATR	9172	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2389	3.0128	null	null	-1	1490.44	-1486.71374	ms_run[1]:spectrum=9172	null	null	null	null	0
+PSM	GGIVDEGALLR	9173	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2614	2.6965	null	null	-1	1098.16	-1097.5954600000002	ms_run[1]:spectrum=9173	null	null	null	null	0
+PSM	GGIVDEGALLR	9174	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2159	2.5776	null	null	-1	1101.45	-1097.5954600000002	ms_run[1]:spectrum=9174	null	null	null	null	0
+PSM	GGIVDEGALLR	9175	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1158	2.4745	null	null	-1	1099.87	-1097.5954600000002	ms_run[1]:spectrum=9175	null	null	null	null	0
+PSM	GTIQVITQGTSLK	9176	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1395	2.345	null	null	-1	1347.56	-1343.75344	ms_run[1]:spectrum=9176	null	null	null	null	0
+PSM	GTIQVITQGTSLK	9177	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3037	2.7959	null	null	-1	1346.36	-1343.75344	ms_run[1]:spectrum=9177	null	null	null	null	0
+PSM	GTIQVITQGTSLK	9178	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3482	3.3706	null	null	-1	1346.26	-1343.75344	ms_run[1]:spectrum=9178	null	null	null	null	0
+PSM	GTIQVITQGTSLK	9179	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4303	3.4244	null	null	-1	1346.29	-1343.75344	ms_run[1]:spectrum=9179	null	null	null	null	0
+PSM	GTIQVITQGTSLK	9180	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3158	2.5058	null	null	-1	1346.13	-1343.75344	ms_run[1]:spectrum=9180	null	null	null	null	0
+PSM	GTIQVITQGTSLK	9181	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.5159	2.3564	null	null	-1	1346.65	-1343.75344	ms_run[1]:spectrum=9181	null	null	null	null	0
+PSM	GTIQVITQGTSLK	9182	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2723	2.9575	null	null	-1	1346.21	-1343.75344	ms_run[1]:spectrum=9182	null	null	null	null	0
+PSM	GTIQVITQGTSLK	9183	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3401	2.7499	null	null	-1	1346.44	-1343.75344	ms_run[1]:spectrum=9183	null	null	null	null	0
+PSM	GTIQVITQGTSLK	9184	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1797	2.4509	null	null	-1	1346.02	-1343.75344	ms_run[1]:spectrum=9184	null	null	null	null	0
+PSM	NAGNCLSPAVIVGLLK	9185	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3622	3.3803	null	null	-1	1626.54	-1566.8677399999997	ms_run[1]:spectrum=9185	null	null	null	null	0
+PSM	NAGNCLSPAVIVGLLK	9186	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.442	3.8472	null	null	-1	1627.37	-1566.8677399999997	ms_run[1]:spectrum=9186	null	null	null	null	0
+PSM	NAGNCLSPAVIVGLLK	9187	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1495	2.4577	null	null	-1	1627.59	-1566.8677399999997	ms_run[1]:spectrum=9187	null	null	null	null	0
+PSM	NAGNCLSPAVIVGLLK	9188	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3962	3.2922	null	null	-1	1627.7	-1566.8677399999997	ms_run[1]:spectrum=9188	null	null	null	null	0
+PSM	NAGNCLSPAVIVGLLK	9189	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.3524	2.4042	null	null	-1	1627.06	-1566.8677399999997	ms_run[1]:spectrum=9189	null	null	null	null	0
+PSM	DRALVDHENVISCPHLGASTKEAQSR	9190	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.1325	3.003	null	null	-1	2890.48	-2831.38582	ms_run[1]:spectrum=9190	null	null	null	null	0
+PSM	EELIAELQDCEGLIVR	9191	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4093	3.5549	null	null	-1	1887.4	-1827.9162000000001	ms_run[1]:spectrum=9191	null	null	null	null	0
+PSM	EELIAELQDCEGLIVR	9192	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.2228	2.3179	null	null	-1	1887.59	-1827.9162000000001	ms_run[1]:spectrum=9192	null	null	null	null	0
+PSM	VLISDSLDPCCR	9193	IPI00011200.4	null	IPI_Human	3.22	[MS, MS:1001208, SEQUEST, ]	0.4279	2.9254	null	null	-1	1434.66	-1318.6135200000003	ms_run[1]:spectrum=9193	null	null	null	null	0
+

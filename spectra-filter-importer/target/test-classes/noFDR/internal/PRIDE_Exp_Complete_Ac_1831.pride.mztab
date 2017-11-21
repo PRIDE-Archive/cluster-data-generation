@@ -1,0 +1,1023 @@
+MTD	mzTab-version	1.0
+MTD	mzTab-mode	Complete
+MTD	mzTab-type	Identification
+MTD	mzTab-ID	PRD000020-1831
+MTD	title	HFL_HeQianLabBIRM_YingWT_GEL2D_Dig_ABI4700
+MTD	description	Not available
+MTD	sample_processing[1]	[PRIDE, PRIDE:0000022, Separation, Gel2D]
+MTD	sample_processing[2]	[PRIDE, PRIDE:0000024, Enzyme digestion, Trypsin]
+MTD	sample_processing[3]	[PRIDE, PRIDE:0000027, Mass spectrometry, ABI4700]
+MTD	sample_processing[4]	[PRIDE, PRIDE:0000044, Search algorithm, GPS]
+MTD	instrument[1]-name	[MS, MS:1000031, instrument model, ABI4700]
+MTD	instrument[1]-source	[PSI, PSI:1000075, Ionization Type, MALDI]
+MTD	instrument[1]-analyzer[1]	[PSI, PSI:1000010, Analyzer Type, TOF_TOF]
+MTD	instrument[1]-detector	[PSI, PSI:1000114, Detector Type, Microchannel Plate]
+MTD	software[1]	[MS, MS:1001456, analysis software, 4700 Explorer vV2.0]
+MTD	protein_search_engine_score[1]	[MS, MS:1001171, Mascot:score, ]
+MTD	psm_search_engine_score[1]	[MS, MS:1001153, search engine specific score, ]
+MTD	contact[1]-name	LeiDou
+MTD	contact[1]-affiliation	Beijng Proteome Research Center
+MTD	contact[1]-email	doulei@hupo.org.cn
+MTD	uri[1]	http://www.ebi.ac.uk/pride/archive/assays/1831
+MTD	fixed_mod[1]	[MS, MS:1002453, No fixed modifications searched, ]
+MTD	variable_mod[1]	[MS, MS:1002454, No variable modifications searched, ]
+MTD	ms_run[1]-format	[MS, MS:1000564, PSI mzData file, ]
+MTD	ms_run[1]-location	file:/PRIDE_Exp_Complete_Ac_1831.xml
+MTD	ms_run[1]-id_format	[MS, MS:1000777, spectrum identifier nativeID format, ]
+MTD	sample[1]-species[1]	[NEWT, 9606, Homo sapiens (Human), ]
+MTD	sample[1]-tissue[1]	[BTO, BTO:0000759, liver, ]
+MTD	sample[1]-description	HLPP_French_Liver
+MTD	sample[1]-custom[1]	[GO, GO:0005737, cytoplasm, ]
+MTD	sample[1]-custom[2]	[MeSH, D008099, Liver, ]
+MTD	sample[1]-custom[3]	[MeSH, D003593, Cytoplasm, ]
+MTD	sample[1]-custom[4]	[PRIDE, PRIDE:0000018, Disease free, ]
+MTD	assay[1]-sample_ref	sample[1]
+MTD	assay[1]-ms_run_ref	ms_run[1]
+MTD	custom[1]	[, , Date of export, Thu Mar 19 16:15:57 GMT 2015]
+MTD	custom[2]	[, , Original converted file, /nfs/pride/prod/archive/2007/03/PRD000020/internal/PRIDE_Exp_Complete_Ac_1831.xml]
+MTD	custom[3]	[, , Project title, HUPO Liver Proteome Project]
+
+COM	Only variable modifications can be reported when the original source is a PRIDE XML file
+
+PRH	accession	description	taxid	species	database	database_version	search_engine	best_search_engine_score[1]	search_engine_score[1]_ms_run[1]	num_psms_ms_run[1]	num_peptides_distinct_ms_run[1]	num_peptides_unique_ms_run[1]	ambiguity_members	modifications	protein_coverage	opt_global_cv_PRIDE:0000303_Decoy_hit	opt_global_num_merge_proteins	opt_global_duplicated_proteins_search_engines	opt_global_duplicated_proteins_best_search_engines_score	opt_global_duplicated_proteins_search_engines_scores	opt_global_duplicated_proteins_had_quantification
+PRT	IPI00000388.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	60.0	60.0	13	12	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00001744.3	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	68.0	68.0	13	13	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00003865.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	69.0	69.0	7	7	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00003949.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	71.0	71.0	8	8	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00007702.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	0.0	0.0	2	2	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00007765.2	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	106.0	106.0	9	9	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00008603.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	0.0	0.0	2	2	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00008753.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	61.0	61.0	7	4	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00010290.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	72.0	72.0	5	5	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00015180.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	59.0	59.0	16	16	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00021428.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	0.0	0.0	2	2	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00021841.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	64.0	64.0	7	7	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00022434.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	61.0	61.0	11	11	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00024919.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	0.0	0.0	2	2	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00025461.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	63.0	63.0	6	4	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00027350.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	139.0	139.0	9	9	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00029699.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	0.0	0.0	1	1	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00030809.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	83.0	83.0	8	7	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00165360.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	148.0	148.0	11	11	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00166768.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	0.0	0.0	1	1	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00167850.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	64.0	64.0	11	11	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00167901.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	111.0	111.0	16	16	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00169419.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	73.0	73.0	14	14	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00179330.2	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	76.0	76.0	6	6	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00180948.3	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	60.0	60.0	11	11	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00185859.2	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	0.0	0.0	1	1	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00186290.3	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	0.0	0.0	2	2	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00215942.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	70.0	70.0	31	31	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00215943.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	0.0	0.0	1	1	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00216298.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	0.0	0.0	1	1	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00216975.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	139.0	139.0	20	18	null	null	null	0.0	0	2	[MS, MS:1001207, Mascot, ]	[MS, MS:1001171, Mascot:score, 139.0]	[MS, MS:1001171, Mascot:score, 139.0]	0
+PRT	IPI00217471.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	0.0	0.0	1	1	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00217980.3	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	83.0	83.0	15	15	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00219029.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	0.0	0.0	2	2	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00219219.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	99.0	99.0	8	7	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00220706.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	73.0	73.0	25	21	null	null	null	0.0	0	4	[MS, MS:1001207, Mascot, ];[MS, MS:1001207, Mascot, ];[MS, MS:1001207, Mascot, ]	[MS, MS:1001171, Mascot:score, 60.0];[MS, MS:1001171, Mascot:score, 60.0];[MS, MS:1001171, Mascot:score, 107.0]	[MS, MS:1001171, Mascot:score, 60.0];[MS, MS:1001171, Mascot:score, 60.0];[MS, MS:1001171, Mascot:score, 107.0]	0
+PRT	IPI00220927.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	60.0	60.0	12	12	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00221218.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	59.0	59.0	23	23	null	null	null	0.0	0	2	[MS, MS:1001207, Mascot, ]	[MS, MS:1001171, Mascot:score, 65.0]	[MS, MS:1001171, Mascot:score, 65.0]	0
+PRT	IPI00245171.4	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	64.0	64.0	11	10	null	null	null	0.0	0	2	[MS, MS:1001207, Mascot, ]	[MS, MS:1001171, Mascot:score, 64.0]	[MS, MS:1001171, Mascot:score, 64.0]	0
+PRT	IPI00298306.3	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	61.0	61.0	23	22	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00299571.2	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	160.0	160.0	5	5	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00306589.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	74.0	74.0	6	6	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00328163.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	0.0	0.0	1	1	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00328207.6	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	68.0	68.0	13	13	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00328348.2	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	91.0	91.0	20	14	null	null	null	0.0	0	2	[MS, MS:1001207, Mascot, ]	[MS, MS:1001171, Mascot:score, 91.0]	[MS, MS:1001171, Mascot:score, 91.0]	0
+PRT	IPI00328753.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	128.0	128.0	25	25	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00328807.3	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	136.0	136.0	14	14	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00329351.3	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	123.0	123.0	18	18	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00329789.5	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	65.0	65.0	12	12	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00332720.2	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	0.0	0.0	4	2	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00332749.3	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	60.0	60.0	12	12	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00333412.3	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	59.0	59.0	8	8	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00336044.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	69.0	69.0	13	13	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00337838.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	93.0	93.0	7	7	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00373938.2	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	74.0	74.0	13	13	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00375400.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	106.0	106.0	15	15	null	null	null	0.0	0	2	[MS, MS:1001207, Mascot, ]	[MS, MS:1001171, Mascot:score, 134.0]	[MS, MS:1001171, Mascot:score, 134.0]	0
+PRT	IPI00375499.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	82.0	82.0	58	58	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00382950.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	60.0	60.0	5	5	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00383331.2	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	0.0	0.0	2	1	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00385996.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	63.0	63.0	12	12	null	null	null	0.0	0	2	[MS, MS:1001207, Mascot, ]	[MS, MS:1001171, Mascot:score, 0.0]	[MS, MS:1001171, Mascot:score, 0.0]	0
+PRT	IPI00386621.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	64.0	64.0	5	5	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00387164.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	166.0	166.0	7	6	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00397531.2	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	0.0	0.0	1	1	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00397808.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	0.0	0.0	2	2	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00401004.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	61.0	61.0	7	7	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00401768.2	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	73.0	73.0	13	12	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00401984.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	84.0	84.0	14	14	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00410357.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	62.0	62.0	65	65	null	null	null	0.0	0	5	[MS, MS:1001207, Mascot, ];[MS, MS:1001207, Mascot, ];[MS, MS:1001207, Mascot, ];[MS, MS:1001207, Mascot, ]	[MS, MS:1001171, Mascot:score, 61.0];[MS, MS:1001171, Mascot:score, 64.0];[MS, MS:1001171, Mascot:score, 73.0];[MS, MS:1001171, Mascot:score, 71.0]	[MS, MS:1001171, Mascot:score, 61.0];[MS, MS:1001171, Mascot:score, 64.0];[MS, MS:1001171, Mascot:score, 73.0];[MS, MS:1001171, Mascot:score, 71.0]	0
+PRT	IPI00411378.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	93.0	93.0	19	16	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00411655.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	61.0	61.0	14	14	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00412445.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	73.0	73.0	28	26	null	null	null	0.0	0	2	[MS, MS:1001207, Mascot, ]	[MS, MS:1001171, Mascot:score, 65.0]	[MS, MS:1001171, Mascot:score, 65.0]	0
+PRT	IPI00412451.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	69.0	69.0	15	15	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00413431.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	63.0	63.0	12	11	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00413490.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	77.0	77.0	14	12	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00413498.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	61.0	61.0	11	11	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00414079.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	68.0	68.0	11	11	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00414153.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	66.0	66.0	13	13	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00414566.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	65.0	65.0	10	10	null	null	null	0.0	0	1	null	null	null	0
+PRT	IPI00414835.1	null	null	null	IPI_Human	2.33	[MS, MS:1001207, Mascot, ]	0.0	0.0	1	1	null	null	null	0.0	0	1	null	null	null	0
+
+PSH	sequence	PSM_ID	accession	unique	database	database_version	search_engine	search_engine_score[1]	modifications	retention_time	charge	exp_mass_to_charge	calc_mass_to_charge	spectra_ref	pre	post	start	end	opt_global_cv_MS:1002217_decoy_peptide
+PSM	QAGDPGEPR	1599	IPI00015180.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1599	null	null	939	947	0
+PSM	EAQARVLR	1599	IPI00015180.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1599	null	null	686	693	0
+PSM	QEAICLVK	1599	IPI00015180.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1599	null	null	87	94	0
+PSM	QELIESISR	1599	IPI00015180.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1599	null	null	1438	1446	0
+PSM	GAPELPREGR	1599	IPI00015180.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1599	null	null	1000	1009	0
+PSM	GVCKPSEFDK	1599	IPI00015180.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1599	null	null	1478	1487	0
+PSM	NEIQMHRAK	1599	IPI00015180.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1599	null	null	632	640	0
+PSM	LGTFAEYQASWK	1599	IPI00015180.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1599	null	null	870	881	0
+PSM	DRCTSPPGLSYMK	1599	IPI00015180.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1599	null	null	1293	1305	0
+PSM	LSCFPPRVPGDSGK	1599	IPI00015180.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1599	null	null	265	278	0
+PSM	TTSLGDSLNAHSAAEK	1599	IPI00015180.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1599	null	null	845	860	0
+PSM	LGTFAEYQASWKEQR	1599	IPI00015180.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1599	null	null	870	884	0
+PSM	QSLACPAEPPALPHGLEK	1599	IPI00015180.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1599	null	null	1227	1244	0
+PSM	ADTSSAENILYTVGLWEAPR	1599	IPI00015180.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1599	null	null	227	247	0
+PSM	RDSAYGSFSTSSSTPDHTLSK	1599	IPI00015180.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1599	null	null	206	227	0
+PSM	LTDKPPLLIQDEDSTRIER	1599	IPI00015180.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1599	null	null	1181	1199	0
+PSM	IHTGEKPY	1561	IPI00412451.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	806	813	0
+PSM	AFNISTTLTK	1561	IPI00412451.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	317	326	0
+PSM	CGHDNLQLRK	1561	IPI00412451.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	74	83	0
+PSM	CNECGKSFQK	1561	IPI00412451.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	143	152	0
+PSM	KIHTGEKPYK	1561	IPI00412451.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	413	422	0
+PSM	RIHTGEKPFK	1561	IPI00412451.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	721	730	0
+PSM	IHTGDKPYKCK	1561	IPI00412451.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	470	480	0
+PSM	AFNSSTNLTAHK	1561	IPI00412451.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	429	440	0
+PSM	AFTSSTTLTKHR	1561	IPI00412451.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	737	748	0
+PSM	YEKCGHDNLQLR	1561	IPI00412451.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	71	82	0
+PSM	TFRQSANLYVHR	1561	IPI00412451.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	597	608	0
+PSM	GRSFGWSTNLNEYK	1561	IPI00412451.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	651	664	0
+PSM	IHTGEKPYTCGECGK	1561	IPI00412451.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	778	792	0
+PSM	GIHAGEKPYTCEERGK	1561	IPI00412451.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	161	176	0
+PSM	IHTGEKPFKCLECGK	1561	IPI00412451.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	722	736	0
+PSM	VLTSLGDAIK	1569	IPI00030809.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	61	70	0
+PSM	LHVDPENFK	1569	IPI00030809.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	90	98	0
+PSM	LLVVYPWTQR	1569	IPI00030809.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	25	34	0
+PSM	VNVEDAGGETLGR	1569	IPI00030809.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	12	24	0
+PSM	GTFAQLSELHCDK	1569	IPI00030809.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	77	89	0
+PSM	EFTPEVQASWQK	1569	IPI00030809.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	115	126	0
+PSM	GTFAQLSELHCDK	1569	IPI00030809.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	77	89	0
+PSM	LLGNVLVTVLAIHFGK	1569	IPI00030809.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	99	114	0
+PSM	HQRTHSR	1511	IPI00000388.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1511	null	null	381	387	0
+PSM	ERPFVCYK	1511	IPI00000388.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1511	null	null	612	619	0
+PSM	ERPFVCYK	1511	IPI00000388.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1511	null	null	612	619	0
+PSM	ECGKVFIQR	1511	IPI00000388.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1511	null	null	339	347	0
+PSM	CSECGKAFTSK	1511	IPI00000388.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1511	null	null	561	571	0
+PSM	GFSQNSTLIIHQK	1511	IPI00000388.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1511	null	null	399	411	0
+PSM	AFVQKSELITHQR	1511	IPI00000388.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1511	null	null	623	635	0
+PSM	IHTGERQYACSECGK	1511	IPI00000388.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1511	null	null	412	426	0
+PSM	LSVYLTDHTGDIPCICK	1511	IPI00000388.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1511	null	null	322	338	0
+PSM	IHSGQKSYVCIECGQAFIQK	1511	IPI00000388.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1511	null	null	440	460	0
+PSM	IHTGERPYVCSECGKAFNNR	1511	IPI00000388.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1511	null	null	664	684	0
+PSM	VHQRIHTGERPYVCSECGK	1511	IPI00000388.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1511	null	null	660	679	0
+PSM	AFMPQLKLSVYLTDHTGDIPCICK	1511	IPI00000388.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1511	null	null	315	339	0
+PSM	LVVNLLQLSK	1719	IPI00298306.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1719	null	null	1647	1656	0
+PSM	NLSRLFPGWK	1719	IPI00298306.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1719	null	null	3044	3053	0
+PSM	ETATKVYDMLK	1719	IPI00298306.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1719	null	null	1313	1323	0
+PSM	CLTEVALCQDKR	1719	IPI00298306.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1719	null	null	458	469	0
+PSM	KGINIPADQPITK	1719	IPI00298306.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1719	null	null	2643	2655	0
+PSM	IASGFFLRLLTSK	1719	IPI00298306.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1719	null	null	798	810	0
+PSM	SLVLNDLLICCR	1719	IPI00298306.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1719	null	null	2	13	0
+PSM	ILPTPETVPFRLTR	1719	IPI00298306.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1719	null	null	2899	2912	0
+PSM	ANSLMQCAGESITLFK	1719	IPI00298306.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1719	null	null	749	764	0
+PSM	YRPNDFSAFQCQKK	1719	IPI00298306.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1719	null	null	2791	2804	0
+PSM	YRPNDFSAFQCQKK	1719	IPI00298306.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1719	null	null	2791	2804	0
+PSM	SVLLTLIAVVLSCSPICEK	1719	IPI00298306.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1719	null	null	1152	1170	0
+PSM	SLVLNDLLICCRQLEHDR	1719	IPI00298306.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1719	null	null	2	19	0
+PSM	QDAVMQQVFQMCNTLLQR	1719	IPI00298306.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1719	null	null	2724	2742	0
+PSM	GCCSQTDGLNSKFLDFFSK	1719	IPI00298306.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1719	null	null	197	216	0
+PSM	KSVLLTLIAVVLSCSPICEK	1719	IPI00298306.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1719	null	null	1151	1171	0
+PSM	SIGEPDSLYGCGGGKMLQPITR	1719	IPI00298306.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1719	null	null	2011	2033	0
+PSM	LDASCAANNPSLKLTYTECLR	1719	IPI00298306.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1719	null	null	2319	2340	0
+PSM	GVEEGTVLSVGGQVNLLIQQAIDPK	1719	IPI00298306.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1719	null	null	3019	3044	0
+PSM	AQEGMREMSHSAENPETLDEIYNR	1719	IPI00298306.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1719	null	null	1127	1151	0
+PSM	YEVFMDVCQNFQPVFRYFCMEK	1719	IPI00298306.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1719	null	null	2817	2839	0
+PSM	VCGNWLAETCLENPAVIMQTYLEK	1719	IPI00298306.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1719	null	null	2340	2364	0
+PSM	ELPGEEYPLPMEDVLELLKPLSNVCSLYR	1719	IPI00298306.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1719	null	null	953	982	0
+PSM	LLVVYPWTQR	1518	IPI00332720.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1518	null	null	25	34	0
+PSM	LLVVYPWTQR	1641	IPI00332720.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1641	null	null	25	34	0
+PSM	LLVVYPWTQR	1649	IPI00332720.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1649	null	null	25	34	0
+PSM	VNVEDAGGETLGR	1650	IPI00332720.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1650	null	null	12	24	0
+PSM	VTDCRDTGSSR	1525	IPI00029699.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1525	null	null	106	116	0
+PSM	TDEGIAYR	1724	IPI00027350.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1724	null	null	120	127	0
+PSM	IGKPAPDFK	1724	IPI00027350.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1724	null	null	8	16	0
+PSM	ATAVVDGAFK	1724	IPI00027350.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1724	null	null	17	26	0
+PSM	LSEDYGVLK	1724	IPI00027350.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1724	null	null	111	119	0
+PSM	RLSEDYGVLK	1724	IPI00027350.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1724	null	null	110	119	0
+PSM	QITVNDLPVGR	1724	IPI00027350.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1724	null	null	140	150	0
+PSM	EGGLGPLNIPLLADVTR	1724	IPI00027350.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1724	null	null	93	109	0
+PSM	KEGGLGPLNIPLLADVTR	1724	IPI00027350.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1724	null	null	92	109	0
+PSM	LGCEVLGVSVDSQFTHLAWINTPR	1724	IPI00027350.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1724	null	null	68	92	0
+PSM	LHVDPENFR	1569	IPI00382950.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	97	105	0
+PSM	LLVVYPWTQR	1569	IPI00382950.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	32	41	0
+PSM	VNVDEVGGEALGR	1569	IPI00382950.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	19	31	0
+PSM	VLGAFSDGLAHLDNLK	1569	IPI00382950.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	68	83	0
+PSM	KVLGAFSDGLAHLDNLK	1569	IPI00382950.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	67	83	0
+PSM	IAVAAQNCYK	1595	IPI00328807.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1595	null	null	59	68	0
+PSM	SNVSDAVAQSTR	1595	IPI00328807.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1595	null	null	194	205	0
+PSM	LDEREAGITEK	1595	IPI00328807.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1595	null	null	131	141	0
+PSM	VIADNVKDWSK	1595	IPI00328807.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1595	null	null	149	159	0
+PSM	IIYGGSVTGATCK	1595	IPI00328807.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1595	null	null	206	218	0
+PSM	QSLGELIGTLNAAK	1595	IPI00328807.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1595	null	null	19	32	0
+PSM	HVFGESDELIGQK	1595	IPI00328807.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1595	null	null	100	112	0
+PSM	TATPQQAQEVHEK	1595	IPI00328807.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1595	null	null	175	187	0
+PSM	DCGATWVVLGHSER	1595	IPI00328807.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1595	null	null	85	98	0
+PSM	VVLAYEPVWAIGTGK	1595	IPI00328807.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1595	null	null	160	174	0
+PSM	RHVFGESDELIGQK	1595	IPI00328807.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1595	null	null	99	112	0
+PSM	VAHALAEGLGVIACIGEK	1595	IPI00328807.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1595	null	null	113	130	0
+PSM	VPADTEVVCAPPTAYIDFAR	1595	IPI00328807.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1595	null	null	33	53	0
+PSM	ELASQPDVDGFLVGGASLKPEFVDIINAK	1595	IPI00328807.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1595	null	null	219	248	0
+PSM	SSICTECGK	1725	IPI00217980.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1725	null	null	353	361	0
+PSM	MPASWTSPQK	1725	IPI00217980.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1725	null	null	1	10	0
+PSM	SQLQVHQRVHTR	1725	IPI00217980.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1725	null	null	311	322	0
+PSM	GFPYNSDLSIHEK	1725	IPI00217980.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1725	null	null	222	234	0
+PSM	AFTNRSNLITHQK	1725	IPI00217980.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1725	null	null	474	486	0
+PSM	HHECTDCGKAFTQK	1725	IPI00217980.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1725	null	null	241	254	0
+PSM	IHTGEKPYVCAECGK	1725	IPI00217980.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1725	null	null	711	725	0
+PSM	IHTGEKPYVCNKCGK	1725	IPI00217980.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1725	null	null	459	473	0
+PSM	VFSNNSNLITHEKIQSR	1725	IPI00217980.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1725	null	null	334	350	0
+PSM	AFVQKPEFITHQKTHMR	1725	IPI00217980.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1725	null	null	166	182	0
+PSM	THTGEKPYICSECGKTFR	1725	IPI00217980.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1725	null	null	655	672	0
+PSM	IHTGEKPYECSDCGKSFTK	1725	IPI00217980.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1725	null	null	683	702	0
+PSM	IHTGEKPYVCAECGKAFSNR	1725	IPI00217980.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1725	null	null	711	731	0
+PSM	IHTGERSYICIECGQAFIQK	1725	IPI00217980.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1725	null	null	263	283	0
+PSM	IHSGEKPYECNNCGKSFISK	1725	IPI00217980.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1725	null	null	291	311	0
+PSM	EGIPPDQQR	1516	IPI00306589.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	186	194	0
+PSM	ESTLHLVLR	1516	IPI00306589.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	216	224	0
+PSM	TLSDYNIQK	1516	IPI00306589.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	207	215	0
+PSM	IQDKEGIPPDQQR	1516	IPI00306589.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	182	194	0
+PSM	TITLEVEPSDTIENVK	1516	IPI00306589.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	164	179	0
+PSM	TITLEVEPSDTIENVKAK	1516	IPI00306589.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	164	181	0
+PSM	ISEFTLEK	1503	IPI00333412.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1503	null	null	1	8	0
+PSM	SHTGEKPYQCK	1503	IPI00333412.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1503	null	null	115	125	0
+PSM	IHTGEKPYECK	1503	IPI00333412.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1503	null	null	143	153	0
+PSM	RIHTGEKPYECK	1503	IPI00333412.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1503	null	null	142	153	0
+PSM	SHTGEKPYQCKECGK	1503	IPI00333412.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1503	null	null	115	129	0
+PSM	VHTGEKPYQCSQCSK	1503	IPI00333412.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1503	null	null	199	213	0
+PSM	VCGKAFLLSSCLVQHQR	1503	IPI00333412.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1503	null	null	154	170	0
+PSM	AFLLSSCLVQHQRIHTGEK	1503	IPI00333412.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1503	null	null	158	177	0
+PSM	STYVTEVR	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	1221	1228	0
+PSM	VQLQEAER	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	488	495	0
+PSM	EEELNAIR	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	762	769	0
+PSM	EHNVFQNK	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	386	393	0
+PSM	VQELQNLLK	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	862	870	0
+PSM	FKDFLLSLK	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	284	292	0
+PSM	LQQEEVQKK	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	469	477	0
+PSM	QTEDSLASER	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	618	627	0
+PSM	WEEVQSYIR	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	497	505	0
+PSM	AQQSLELIQSK	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	1286	1296	0
+PSM	QQQVEAVELEAK	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	1062	1073	0
+PSM	SVEELLEAELLK	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	812	823	0
+PSM	AHVQEVAQHNLK	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	909	920	0
+PSM	ALKEEIGNVQLEK	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	840	852	0
+PSM	GELTTLIHQLQEK	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	325	337	0
+PSM	TAEHEAAQQDLQSK	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	508	521	0
+PSM	LLEEQLQHEISNK	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	684	696	0
+PSM	TVEELLETGLIQVATK	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	746	761	0
+PSM	EASSASQFEELEIVLK	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	921	936	0
+PSM	LQALANEQAAAAHELEK	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	654	670	0
+PSM	EVIDLLKPDQVEGIQK	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	250	265	0
+PSM	QNDQVSFASLVEELKK	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	786	801	0
+PSM	VSVPSNLSYGEWLHGFEK	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	1083	1101	0
+PSM	QQNYQQASSFPPHEELLK	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	982	1000	0
+PSM	AQIQQFHSQIAAQTSASVLAEELHK	1549	IPI00328753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1549	null	null	583	608	0
+PSM	EKHYECK	1520	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	131	137	0
+PSM	TFISLENFR	1520	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	515	523	0
+PSM	VHTGEKPYKCK	1520	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	444	454	0
+PSM	IHTGEKPYECK	1520	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	304	314	0
+PSM	IHTGEKPYKCK	1520	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	416	426	0
+PSM	IHTGEKPYECK	1520	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	43	53	0
+PSM	IHTGEKPYECK	1520	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	304	314	0
+PSM	QCGKAFSCSSSIR	1520	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	315	327	0
+PSM	CGKTFNYPLDLK	1520	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	484	495	0
+PSM	ALSCSSSLRVHER	1520	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	291	303	0
+PSM	RIHTGEKPYECK	1520	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	42	53	0
+PSM	AFSCSSSIRVHER	1520	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	319	331	0
+PSM	AHTGVKPYECKECGK	1520	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	15	29	0
+PSM	THERTHTGEKPYECK	1520	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	552	566	0
+PSM	IHTGEKPYELKPYECTICGK	1520	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	183	203	0
+PSM	TFISLENFR	1627	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	515	523	0
+PSM	SHTGEKPYKCK	1627	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	248	258	0
+PSM	QCGKAFISSTAIR	1627	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	54	66	0
+PSM	AFSCSSYIRIHK	1627	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	571	582	0
+PSM	ALSCSSSLRVHER	1627	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	291	303	0
+PSM	AFRSATQLQMHR	1627	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	170	181	0
+PSM	SFSARPAFRVHVR	1627	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	431	443	0
+PSM	VHVRVHTGEKPYK	1627	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	440	452	0
+PSM	VHERIHTGEKPYK	1627	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	384	396	0
+PSM	ECAKTFISLENFR	1627	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	511	523	0
+PSM	AHTGVKPYECKECGK	1627	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	15	29	0
+PSM	VHERTHTGEKPYACK	1627	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	328	342	0
+PSM	THERTHTGEKPYECK	1627	IPI00412445.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	552	566	0
+PSM	TDEGIAYR	1543	IPI00375400.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1543	null	null	69	76	0
+PSM	ATAVVDGAFK	1543	IPI00375400.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1543	null	null	17	26	0
+PSM	LSEDYGVLK	1543	IPI00375400.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1543	null	null	60	68	0
+PSM	RLSEDYGVLK	1543	IPI00375400.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1543	null	null	59	68	0
+PSM	QITVNDLPVGR	1543	IPI00375400.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1543	null	null	89	99	0
+PSM	EGGLGPLNIPLLADVTR	1543	IPI00375400.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1543	null	null	42	58	0
+PSM	KEGGLGPLNIPLLADVTR	1543	IPI00375400.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1543	null	null	41	58	0
+PSM	SYELPDGQVITIGNER	1726	IPI00021428.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1726	null	null	241	256	0
+PSM	AGFAGDDAPR	1565	IPI00021428.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1565	null	null	21	30	0
+PSM	LHVDPENFK	1569	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	97	105	0
+PSM	LLVVYPWTQR	1569	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	32	41	0
+PSM	VNVEDAGGETLGR	1569	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	19	31	0
+PSM	GTFAQLSELHCDK	1569	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	84	96	0
+PSM	EFTPEVQASWQK	1569	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	122	133	0
+PSM	GTFAQLSELHCDK	1569	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	84	96	0
+PSM	LLGNVLVTVLAIHFGK	1569	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	106	121	0
+PSM	AQLDPAFIK	1559	IPI00165360.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1559	null	null	156	164	0
+PSM	RFQVVDSR	1559	IPI00165360.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1559	null	null	177	184	0
+PSM	FRGTEPEPR	1559	IPI00165360.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1559	null	null	189	197	0
+PSM	ARPEDVISEGR	1559	IPI00165360.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1559	null	null	283	293	0
+PSM	ALVSAQWVAEALR	1559	IPI00165360.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1559	null	null	9	21	0
+PSM	TYEDIKENLESR	1559	IPI00165360.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1559	null	null	165	176	0
+PSM	AFGHHAVSLLDGGLR	1559	IPI00165360.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1559	null	null	119	133	0
+PSM	AGQPLQLLDASWYLPK	1559	IPI00165360.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1559	null	null	25	40	0
+PSM	HIPGAAFFDIDQCSDR	1559	IPI00165360.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1559	null	null	53	68	0
+PSM	LGVGAATHVVIYDASDQGLYSAPR	1559	IPI00165360.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1559	null	null	89	113	0
+PSM	DGIEPGHIPGTVNIPFTDFLSQEGLEK	1559	IPI00165360.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1559	null	null	198	225	0
+PSM	CSNLTRHLR	1663	IPI00167901.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	434	442	0
+PSM	AFNKCSNLTR	1663	IPI00167901.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	430	439	0
+PSM	IHTGEKPFECK	1663	IPI00167901.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	219	229	0
+PSM	IHTGEKPYDCK	1663	IPI00167901.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	359	369	0
+PSM	KPYECKECGK	1663	IPI00167901.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	252	261	0
+PSM	IHTGEKPYECK	1663	IPI00167901.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	331	341	0
+PSM	IHIGEKSYECK	1663	IPI00167901.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	191	201	0
+PSM	EVYEIELCQR	1663	IPI00167901.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	93	102	0
+PSM	IHTGEKPYNCK	1663	IPI00167901.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	443	453	0
+PSM	ECGKAFTQSSQLR	1663	IPI00167901.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	370	382	0
+PSM	KEVYEIELCQR	1663	IPI00167901.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	92	102	0
+PSM	AFTQSSKLVQHQR	1663	IPI00167901.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	318	330	0
+PSM	IHTGEKPFECKECGK	1663	IPI00167901.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	219	233	0
+PSM	IHTGEKPYECKECGK	1663	IPI00167901.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	331	345	0
+PSM	ECGKAFSCSSYLSQHQR	1663	IPI00167901.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	230	246	0
+PSM	ECGKAFSYCSNLIDHQR	1663	IPI00167901.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	258	274	0
+PSM	HEFIHMGKK	1531	IPI00413431.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	368	376	0
+PSM	IHTREKPYK	1531	IPI00413431.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	539	547	0
+PSM	KPYKCEECGK	1531	IPI00413431.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	460	469	0
+PSM	VFHKFSNSNR	1531	IPI00413431.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	162	171	0
+PSM	KPYKCEECGK	1531	IPI00413431.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	460	469	0
+PSM	AFNHSATLSSHK	1531	IPI00413431.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	582	593	0
+PSM	AFNQFSTLITHK	1531	IPI00413431.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	190	201	0
+PSM	IHSGEKPYECDK	1531	IPI00413431.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	595	606	0
+PSM	ECGKAFNHSATLSSHK	1531	IPI00413431.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	578	593	0
+PSM	CEECGKAFNQSSTLTK	1531	IPI00413431.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	296	311	0
+PSM	KIHTGEKPYVCEECGK	1531	IPI00413431.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	314	329	0
+PSM	KIHTGEKPYICEECGK	1531	IPI00413431.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	202	217	0
+PSM	HIYLLPSGR	1727	IPI00219029.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1727	null	null	379	387	0
+PSM	APPSVFAEVPQAQPVLVFK	1728	IPI00219029.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1728	null	null	2	21	0
+PSM	TFISLENFR	1514	IPI00414153.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1514	null	null	492	500	0
+PSM	THTGEKPYACK	1514	IPI00414153.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1514	null	null	309	319	0
+PSM	ECEKAFSYLK	1514	IPI00414153.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1514	null	null	208	217	0
+PSM	CKQCGKPFSYR	1514	IPI00414153.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1514	null	null	114	124	0
+PSM	LYRDVMLETYR	1514	IPI00414153.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1514	null	null	27	37	0
+PSM	TAGVKPYECTICGK	1514	IPI00414153.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1514	null	null	166	179	0
+PSM	SFSARPAFRVHVR	1514	IPI00414153.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1514	null	null	408	420	0
+PSM	ECAKTFISLENFR	1514	IPI00414153.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1514	null	null	488	500	0
+PSM	AFIFPSFLRVHER	1514	IPI00414153.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1514	null	null	352	364	0
+PSM	NLASVVNPCECSVCGK	1514	IPI00414153.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1514	null	null	38	53	0
+PSM	QCGKTFIYHQPFQR	1514	IPI00414153.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1514	null	null	236	249	0
+PSM	HMRSHTGYELFEKPYK	1514	IPI00414153.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1514	null	null	190	205	0
+PSM	CGKTFSTLTENFSPNLSVTK	1514	IPI00414153.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1514	null	null	145	165	0
+PSM	SIEALLEAGQAR	1648	IPI00414835.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1648	null	null	526	537	0
+PSM	KPHSDGGSR	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	13601	13609	0
+PSM	ADSDNWVR	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	13325	13332	0
+PSM	AKLELAAAPK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	6687	6696	0
+PSM	IDHYIVQK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	15282	15289	0
+PSM	KPVSEVGDGR	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	22673	22682	0
+PSM	MEVTGLEEGK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	7341	7350	0
+PSM	ITGYIVERR	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	20494	20502	0
+PSM	SNGKYTITSR	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	2262	2271	0
+PSM	QGSQVRLQVR	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	117	126	0
+PSM	VLAKNAAGVISK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	22711	22722	0
+PSM	VTGYLIEMQK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	23759	23768	0
+PSM	VPCLECNYK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	22588	22596	0
+PSM	TKSTITLDWK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	9002	9011	0
+PSM	SRSPTPPSIAAK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	263	274	0
+PSM	ILGYIVEYQK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	10839	10848	0
+PSM	YVITATNSCGSK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	8869	8880	0
+PSM	CDPPVISNITK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	13186	13196	0
+PSM	VTKDPIHPYTK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	10755	10765	0
+PSM	SAPRESRPVIVK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	14741	14752	0
+PSM	SVKAPTVKPSETR	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	812	824	0
+PSM	ATGNPNPDIVWLK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	1533	1545	0
+PSM	STDFATSLSVKDAVR	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	16289	16303	0
+PSM	EDQGEYSFVIDGKK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	2285	2298	0
+PSM	CSSTSFKLIDLSEK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	21114	21127	0
+PSM	QEQIQVTHGKVDVGK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	637	651	0
+PSM	TVTNLECVVTGLQQGK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	11156	11171	0
+PSM	CLQDQNTYTLVIDK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	4481	4494	0
+PSM	DVWMPVTSASAKTTCK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	10652	10667	0
+PSM	CTVTPLTEGSLYVFR	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	7837	7851	0
+PSM	IDGGQYILRASNVAGSK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	17386	17402	0
+PSM	VLEADPYFTVKLHDK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	5353	5367	0
+PSM	NFPSHTVYVRAGSNLK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	20175	20190	0
+PSM	EFLCINGSIHFQPLK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	3959	3973	0
+PSM	GLPDLCYLAKENSNFR	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	13681	13696	0
+PSM	EVTEITEIEEEYEISK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	25935	25950	0
+PSM	AEFVCSISKESFPVQWK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	6264	6280	0
+PSM	VSAENAAGLSEPSPPSAYQK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	16506	16526	0
+PSM	EEHSDNVVMPPDQIIESK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	4172	4189	0
+PSM	VMAENEYGIGEPTETTEPVK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	14636	14656	0
+PSM	LAWALIEDKCEAQSYTAIK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	21792	21811	0
+PSM	FGIDQKTVELDVADVPDPPR	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	24802	24822	0
+PSM	EEHSDNVVMPPDQIIESKR	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	4172	4191	0
+PSM	QREVTEITEIEEEYEISK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	25933	25950	0
+PSM	IMAVNKYGVGEPLESEPVVAK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	16406	16427	0
+PSM	TVTAEKITLLWRPPADDGGAK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	20672	20693	0
+PSM	VTGYPQPKVNWYLNGQLIR	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	1818	1837	0
+PSM	DILEAPEIDLDVALRTSVIAK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	20959	20980	0
+PSM	ACDTVFKPGPPGNPRVLDTSR	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	15444	15465	0
+PSM	ALDPLHPPGPPKDLHHVDVDK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	11098	11119	0
+PSM	IQQGAKTSLQEEMDSFSGSQK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	4324	4345	0
+PSM	IRIYAMNSEGLGEPALVPGTPK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	15524	15546	0
+PSM	ETSRLSWTQVSTEVQALNYK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	18538	18558	0
+PSM	TSVLCKWEPPLDDGGSEIINYTLEK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	8511	8536	0
+PSM	MCLLNWSDPEDDGGSEITGFIIERK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	8907	8932	0
+PSM	EYIFRVAAENMYGVGEPVQASPITAK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	7547	7573	0
+PSM	NKFGCGPPVEIGPILAVDPLGPPTSPER	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	8968	8996	0
+PSM	NLANIEVSETDTIKLVCEVSKPGAEVIWYK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	6163	6193	0
+PSM	AGSSPPSKPTEYVTARMPVDPPGKPEVIDVTK	1485	IPI00375499.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	12867	12899	0
+PSM	NSSGLTVHKR	1528	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1528	null	null	562	571	0
+PSM	GIHLGEKPYK	1528	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1528	null	null	291	300	0
+PSM	KPYRCNECGK	1528	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1528	null	null	632	641	0
+PSM	EKPFGCDECGK	1528	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1528	null	null	324	334	0
+PSM	RLHTGEKPYK	1528	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1528	null	null	263	272	0
+PSM	AFRNSSGLTVHK	1528	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1528	null	null	559	570	0
+PSM	SFNYSSALEQHKR	1528	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1528	null	null	307	319	0
+PSM	SYSSLINHKSTHSGEK	1528	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1528	null	null	2	17	0
+PSM	IHTREKPFGCDECGK	1528	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1528	null	null	320	334	0
+PSM	GIHLGEKPYKCSYCEK	1528	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1528	null	null	291	306	0
+PSM	AYISHSSLINHKSVHQGK	1528	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1528	null	null	587	604	0
+PSM	TIHTGERPYVCDVCGKTFR	1528	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1528	null	null	235	254	0
+PSM	SCCSCCPVGCAK	1506	IPI00025461.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1506	null	null	32	43	0
+PSM	SCCSCCPVGCAK	1506	IPI00025461.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1506	null	null	32	43	0
+PSM	KSCCSCCPVGCAK	1506	IPI00025461.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1506	null	null	31	43	0
+PSM	KSCCSCCPVGCAK	1506	IPI00025461.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1506	null	null	31	43	0
+PSM	DPNCSCATGGSCTCAGSCKCK	1506	IPI00025461.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1506	null	null	2	23	0
+PSM	SCCSCCPVGCAKCAQGCVCK	1506	IPI00025461.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1506	null	null	32	52	0
+PSM	LHVDPENFR	1569	IPI00245171.4	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	97	105	0
+PSM	LLVVYPWTQR	1569	IPI00245171.4	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	32	41	0
+PSM	VVAGVANALAHKYH	1569	IPI00245171.4	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	134	147	0
+PSM	VLGAFSDGLAHLDNLK	1569	IPI00245171.4	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	68	83	0
+PSM	KVLGAFSDGLAHLDNLK	1569	IPI00245171.4	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	67	83	0
+PSM	LHVDPENFR	1569	IPI00245171.4	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	97	105	0
+PSM	LLVVYPWTQR	1569	IPI00245171.4	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	32	41	0
+PSM	VVAGVANALAHKYH	1569	IPI00245171.4	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	134	147	0
+PSM	VLGAFSDGLAHLDNLK	1569	IPI00245171.4	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	68	83	0
+PSM	KVLGAFSDGLAHLDNLK	1569	IPI00245171.4	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	67	83	0
+PSM	LLVVYPWTQR	1569	IPI00245171.4	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1569	null	null	32	41	0
+PSM	AAVLQQVLER	1535	IPI00385996.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1535	null	null	2	11	0
+PSM	NCLVGQGLVVK	1535	IPI00385996.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1535	null	null	362	372	0
+PSM	GCWQREPQQR	1535	IPI00385996.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1535	null	null	469	478	0
+PSM	WMPPESILYRK	1535	IPI00385996.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1535	null	null	400	410	0
+PSM	ACPPEVYAIMRGCWQR	1535	IPI00385996.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1535	null	null	458	473	0
+PSM	TMLPIRWMPPESILYR	1535	IPI00385996.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1535	null	null	394	409	0
+PSM	NCLVGQGLVVKIGDFGMSR	1535	IPI00385996.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1535	null	null	362	381	0
+PSM	DVHARLQALAQAPPVYLDVLG	1535	IPI00385996.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1535	null	null	483	504	0
+PSM	QPWYQLSNTEAIDCITQG	1535	IPI00385996.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1535	null	null	433	450	0
+PSM	QPWYQLSNTEAIDCITQGR	1535	IPI00385996.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1535	null	null	433	452	0
+PSM	LQGHIIENPQYFSDACVHHIKR	1535	IPI00385996.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1535	null	null	193	215	0
+PSM	NSNLARHQR	1540	IPI00167850.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1540	null	null	272	280	0
+PSM	ECVRSVNTGR	1540	IPI00167850.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1540	null	null	99	108	0
+PSM	CSECDKVFNR	1540	IPI00167850.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1540	null	null	262	271	0
+PSM	MLCDEEAQKR	1540	IPI00167850.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1540	null	null	1	10	0
+PSM	HQRIHTGEKPHK	1540	IPI00167850.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1540	null	null	278	289	0
+PSM	SCVLGSNAENKPIK	1540	IPI00167850.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1540	null	null	109	122	0
+PSM	IHTGERPYKCNACGK	1540	IPI00167850.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1540	null	null	421	435	0
+PSM	CNECGKVFSLLSYLAR	1540	IPI00167850.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1540	null	null	346	361	0
+PSM	CNACGKVFNQNPHLSR	1540	IPI00167850.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1540	null	null	430	445	0
+PSM	NLVFLGICLPDLSIISMLK	1540	IPI00167850.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1540	null	null	59	77	0
+PSM	NSHLVEHWRIHTGQKPYK	1540	IPI00167850.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1540	null	null	244	262	0
+PSM	LLVVYPWTQR	1518	IPI00383331.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1518	null	null	32	41	0
+PSM	LLVVYPWTQR	1641	IPI00383331.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1641	null	null	32	41	0
+PSM	HQRIHTGK	1663	IPI00373938.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	305	312	0
+PSM	ECGKAFGSR	1663	IPI00373938.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	515	523	0
+PSM	LYECEECRK	1663	IPI00373938.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	454	462	0
+PSM	IHTGEKPYDCK	1663	IPI00373938.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	504	514	0
+PSM	KPYECKECGK	1663	IPI00373938.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	313	322	0
+PSM	IHTGEKPYECK	1663	IPI00373938.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	392	402	0
+PSM	YCSNLNDHQR	1663	IPI00373938.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	354	363	0
+PSM	ECGKAFTQHSR	1663	IPI00373938.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	403	413	0
+PSM	MHTGEKPYECK	1663	IPI00373938.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	420	430	0
+PSM	GLCSDLESMCETK	1663	IPI00373938.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	206	218	0
+PSM	IHTGEKPYECKECGK	1663	IPI00373938.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	392	406	0
+PSM	DLGGEIFWSPGELAQVCK	1663	IPI00373938.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	1	19	0
+PSM	ECGKAFSCSSYFSQHQR	1663	IPI00373938.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	319	335	0
+PSM	DYGVLLEGSGLALR	1586	IPI00024919.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1586	null	null	171	184	0
+PSM	HLSVNDLPVGR	1587	IPI00024919.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1587	null	null	197	207	0
+PSM	FLNRNLR	1530	IPI00220927.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	3	9	0
+PSM	SRLNEHQR	1530	IPI00220927.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	276	283	0
+PSM	SYLCSECGK	1530	IPI00220927.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	458	466	0
+PSM	SYICSECGKGFTGK	1530	IPI00220927.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	346	359	0
+PSM	GFTVKSMLIIHQR	1530	IPI00220927.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	467	479	0
+PSM	NHTVEKSYLCSECGK	1530	IPI00220927.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	452	466	0
+PSM	THEIEKNHVCSECGK	1530	IPI00220927.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	228	242	0
+PSM	THTGEKPFVCSECRK	1530	IPI00220927.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	648	662	0
+PSM	VHTGEKPYGCTLCAKVFSR	1530	IPI00220927.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	256	275	0
+PSM	THTGEKPYICNECGKGFPGK	1530	IPI00220927.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	312	332	0
+PSM	THTGEKPYTCSECGKGFPLK	1530	IPI00220927.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	480	500	0
+PSM	LIVHQRTHTGEKPFVCSECR	1530	IPI00220927.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	642	662	0
+PSM	EGIPPDQQR	1501	IPI00387164.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1501	null	null	345	353	0
+PSM	ESTLHLVLR	1501	IPI00387164.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1501	null	null	375	383	0
+PSM	TLSDYNIQK	1501	IPI00387164.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1501	null	null	366	374	0
+PSM	TLSDYNIQK	1501	IPI00387164.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1501	null	null	55	63	0
+PSM	TITLEVEPSDTIENVK	1501	IPI00387164.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1501	null	null	286	301	0
+PSM	TITLEVEPSDTIENVKAK	1501	IPI00387164.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1501	null	null	286	303	0
+PSM	TLSDYNIQKESTLHLVLR	1501	IPI00387164.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1501	null	null	366	383	0
+PSM	AYLPVNESFGFTADLR	1729	IPI00186290.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1729	null	null	810	825	0
+PSM	EGIPALDNFLDK	1730	IPI00186290.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1730	null	null	870	881	0
+PSM	LHVDPENFK	1609	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1609	null	null	97	105	0
+PSM	LLVVYPWTQR	1609	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1609	null	null	32	41	0
+PSM	VNVEDAGGETLGR	1609	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1609	null	null	19	31	0
+PSM	GTFAQLSELHCDK	1609	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1609	null	null	84	96	0
+PSM	LLGNVLVTVLAIHFGK	1609	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1609	null	null	106	121	0
+PSM	LHVDPENFK	1609	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1609	null	null	97	105	0
+PSM	LLVVYPWTQR	1609	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1609	null	null	32	41	0
+PSM	VNVEDAGGETLGR	1609	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1609	null	null	19	31	0
+PSM	GTFAQLSELHCDK	1609	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1609	null	null	84	96	0
+PSM	LLGNVLVTVLAIHFGK	1609	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1609	null	null	106	121	0
+PSM	LLVVYPWTQR	1609	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1609	null	null	32	41	0
+PSM	LLVVYPWTQR	1609	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1609	null	null	32	41	0
+PSM	LLVVYPWTQR	1609	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1609	null	null	32	41	0
+PSM	HIAEEADR	1485	IPI00216975.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	153	160	0
+PSM	TIDDLEEK	1485	IPI00216975.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	252	259	0
+PSM	CGDLEEELK	1485	IPI00216975.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	190	198	0
+PSM	LVILEGELER	1485	IPI00216975.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	169	178	0
+PSM	EDKYEEEIK	1485	IPI00216975.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	218	226	0
+PSM	IQLVEEELDR	1485	IPI00216975.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	92	101	0
+PSM	KLVILEGELER	1485	IPI00216975.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	168	178	0
+PSM	RIQLVEEELDR	1485	IPI00216975.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	91	101	0
+PSM	EENVGLHQTLDQTLNELNCI	1485	IPI00216975.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	265	285	0
+PSM	HIAEEADR	1485	IPI00216975.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	153	160	0
+PSM	TIDDLEEK	1485	IPI00216975.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	252	259	0
+PSM	CGDLEEELK	1485	IPI00216975.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	190	198	0
+PSM	LVILEGELER	1485	IPI00216975.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	169	178	0
+PSM	EDKYEEEIK	1485	IPI00216975.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	218	226	0
+PSM	IQLVEEELDR	1485	IPI00216975.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	92	101	0
+PSM	KLVILEGELER	1485	IPI00216975.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	168	178	0
+PSM	RIQLVEEELDR	1485	IPI00216975.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	91	101	0
+PSM	EENVGLHQTLDQTLNELNCI	1485	IPI00216975.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	265	285	0
+PSM	LVILEGELER	1485	IPI00216975.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	169	178	0
+PSM	IQLVEEELDR	1485	IPI00216975.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1485	null	null	92	101	0
+PSM	RLHTGEKPYK	1731	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1731	null	null	263	272	0
+PSM	TFSNSSGLRVHK	1731	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1731	null	null	83	94	0
+PSM	AFFSSRTLISHK	1731	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1731	null	null	503	514	0
+PSM	SFNYSSVLDQHK	1731	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1731	null	null	27	38	0
+PSM	SFNYSSALEQHKR	1731	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1731	null	null	307	319	0
+PSM	LHTGEKPYKCDVCGK	1731	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1731	null	null	264	278	0
+PSM	VHLGEKPYKCDVCEK	1731	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1731	null	null	404	418	0
+PSM	SYSSLINHKSTHSGEK	1731	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1731	null	null	2	17	0
+PSM	CDVCGKAFSYSSGLAVHK	1731	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1731	null	null	189	207	0
+PSM	CVECGKSFSYSSLLSQHK	1731	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1731	null	null	525	543	0
+PSM	TIHTGERPYVCDVCGKTFR	1731	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1731	null	null	235	254	0
+PSM	CDVCEKSFNYTSLLSQHR	1731	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1731	null	null	413	431	0
+PSM	QIDVAIKVLK	1657	IPI00329789.5	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1657	null	null	363	372	0
+PSM	LAGMADGLFLLR	1657	IPI00329789.5	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1657	null	null	26	37	0
+PSM	NVLLVNRHYAK	1657	IPI00329789.5	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1657	null	null	466	476	0
+PSM	YLEEKNFVHR	1657	IPI00329789.5	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1657	null	null	451	460	0
+PSM	GPEVMAFIEQGKR	1657	IPI00329789.5	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1657	null	null	554	566	0
+PSM	PDPAAHLPFFYGSISR	1657	IPI00329789.5	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1657	null	null	2	17	0
+PSM	LAGMADGLFLLRQCLR	1657	IPI00329789.5	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1657	null	null	26	41	0
+PSM	WEDRPDFLTVEQRMR	1657	IPI00329789.5	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1657	null	null	589	603	0
+PSM	DNLLIADIELGCGNFGSVR	1657	IPI00329789.5	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1657	null	null	335	354	0
+PSM	QCLRSLGGYVLSLVHDVR	1657	IPI00329789.5	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1657	null	null	38	56	0
+PSM	EEIPVSNVAELLHQVSMGMK	1657	IPI00329789.5	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1657	null	null	431	451	0
+PSM	AHCGPAELCEFYSRDPDGLPCNLR	1657	IPI00329789.5	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1657	null	null	76	100	0
+PSM	CDKSFSQQR	1491	IPI00336044.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1491	null	null	559	567	0
+PSM	SSFVIEHQR	1491	IPI00336044.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1491	null	null	174	182	0
+PSM	CHKCEECGK	1491	IPI00336044.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1491	null	null	133	141	0
+PSM	SFSQLCNLIR	1491	IPI00336044.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1491	null	null	506	515	0
+PSM	ETFELVGRLDK	1491	IPI00336044.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1491	null	null	85	95	0
+PSM	ESLTQEQRMFR	1491	IPI00336044.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1491	null	null	107	117	0
+PSM	THTGEKPYHCTK	1491	IPI00336044.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1491	null	null	267	278	0
+PSM	IHTGEKPFLCIECGK	1491	IPI00336044.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1491	null	null	323	337	0
+PSM	IHTGEKPYLCTVCGK	1491	IPI00336044.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1491	null	null	463	477	0
+PSM	ISLIQHQKLHTAWMQ	1491	IPI00336044.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1491	null	null	598	612	0
+PSM	VHTGEKPFQCNECGKSFSR	1491	IPI00336044.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1491	null	null	155	174	0
+PSM	SFSQQRSLVNHQMIHAEVK	1491	IPI00336044.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1491	null	null	562	581	0
+PSM	SHLIEHQRTHTGEKPYHCTK	1491	IPI00336044.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1491	null	null	259	279	0
+PSM	MVNHFIAEFK	1701	IPI00003865.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1701	null	null	237	246	0
+PSM	MKEIAEAYLGK	1701	IPI00003865.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1701	null	null	127	137	0
+PSM	FEELNADLFR	1701	IPI00003865.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1701	null	null	302	311	0
+PSM	ARFEELNADLFR	1701	IPI00003865.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1701	null	null	300	311	0
+PSM	SKGPAVGIDLGTTYSCVGVFQHGK	1701	IPI00003865.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1701	null	null	2	26	0
+PSM	NVLIFDLGGGTFDVSILTIEDGIFEVK	1701	IPI00003865.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1701	null	null	194	221	0
+PSM	TLSSSTQASIEIDSLYEGIDFYTSITR	1701	IPI00003865.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1701	null	null	273	300	0
+PSM	AAPIPQGFSCLSR	1732	IPI00185859.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1732	null	null	2	14	0
+PSM	GHFTEEDK	1663	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	2	9	0
+PSM	ATITSLWGK	1663	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	10	18	0
+PSM	LLVVYPWTQR	1663	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	32	41	0
+PSM	VNVEDAGGETLGR	1663	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	19	31	0
+PSM	FFDSFGNLSSASAIMGNPK	1663	IPI00220706.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1663	null	null	42	61	0
+PSM	FQNALLVR	1733	IPI00022434.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1733	null	null	427	434	0
+PSM	LDELRDEGK	1733	IPI00022434.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1733	null	null	206	214	0
+PSM	HPDYSVVLLLR	1733	IPI00022434.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1733	null	null	362	372	0
+PSM	YICENQDSISSK	1733	IPI00022434.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1733	null	null	287	298	0
+PSM	RHPDYSVVLLLR	1733	IPI00022434.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1733	null	null	361	372	0
+PSM	KVPQVSTPTLVEVSR	1733	IPI00022434.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1733	null	null	438	452	0
+PSM	QEPERNECFLQHK	1733	IPI00022434.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1733	null	null	118	130	0
+PSM	AVMDDFAAFVEKCCK	1733	IPI00022434.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1733	null	null	570	584	0
+PSM	VFDEFKPLVEEPQNLIK	1733	IPI00022434.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1733	null	null	397	413	0
+PSM	VHTECCHGDLLECADDR	1733	IPI00022434.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1733	null	null	265	281	0
+PSM	NYAEAKDVFLGMFLYEYAR	1733	IPI00022434.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1733	null	null	342	361	0
+PSM	GSFSEQGINEFLR	1529	IPI00299571.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1529	null	null	375	387	0
+PSM	GSTAPVGGGAFPTIVER	1529	IPI00299571.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1529	null	null	394	410	0
+PSM	VKLAAVDATVNQVLASR	1529	IPI00299571.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1529	null	null	216	232	0
+PSM	DGELPVEDDIDLSDVELDDLGK	1529	IPI00299571.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1529	null	null	417	439	0
+PSM	DGELPVEDDIDLSDVELDDLGKDEL	1529	IPI00299571.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1529	null	null	417	442	0
+PSM	GVSEIVQNGK	1734	IPI00010290.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1734	null	null	37	46	0
+PSM	TVVQLEGDNK	1734	IPI00010290.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1734	null	null	81	90	0
+PSM	AIGLPEELIQK	1734	IPI00010290.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1734	null	null	21	31	0
+PSM	HFKFTITAGSK	1734	IPI00010290.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1734	null	null	47	57	0
+PSM	YQLQSQENFEAFMK	1734	IPI00010290.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1734	null	null	7	20	0
+PSM	NNAGLKVHR	1710	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1710	null	null	254	262	0
+PSM	QPYNCECGK	1710	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1710	null	null	605	613	0
+PSM	NSSGLTVHKR	1710	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1710	null	null	562	571	0
+PSM	RTYEGGNALDGGR	1710	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1710	null	null	677	689	0
+PSM	SYSSLINHKSTHSGEK	1710	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1710	null	null	2	17	0
+PSM	SVHPGEKPFKCDECEK	1710	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1710	null	null	375	390	0
+PSM	RIHTGEKPYECDICGK	1710	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1710	null	null	67	82	0
+PSM	VHLGEKPYKCDVCEK	1710	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1710	null	null	404	418	0
+PSM	RIHTGEKPYECDECGK	1710	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1710	null	null	571	586	0
+PSM	GIHLGEKPYKCSYCEK	1710	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1710	null	null	291	306	0
+PSM	CVECGKSFSYSSLLSQHK	1710	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1710	null	null	525	543	0
+PSM	TIHTGERPYVCDVCGKTF	1710	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1710	null	null	235	252	0
+PSM	TIHTGERPYVCDVCGKTFR	1710	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1710	null	null	235	254	0
+PSM	EGIPPDQQR	1516	IPI00337838.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	34	42	0
+PSM	ESTLHLVLR	1516	IPI00337838.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	64	72	0
+PSM	TLSDYNIQK	1516	IPI00337838.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	55	63	0
+PSM	LRGGIIEPSLR	1516	IPI00337838.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	73	83	0
+PSM	IQDKEGIPPDQQR	1516	IPI00337838.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	30	42	0
+PSM	TITLEVEPSDTIENVK	1516	IPI00337838.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	12	27	0
+PSM	TITLEVEPSDTIENVKAK	1516	IPI00337838.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	12	29	0
+PSM	TVTEASGHK	1714	IPI00180948.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1714	null	null	140	148	0
+PSM	SPLIIHQR	1714	IPI00180948.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1714	null	null	316	323	0
+PSM	FHKYDAFK	1714	IPI00180948.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1714	null	null	169	176	0
+PSM	KSQLIVHQR	1714	IPI00180948.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1714	null	null	231	239	0
+PSM	KPYDCGACGK	1714	IPI00180948.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1714	null	null	245	254	0
+PSM	SCVCVTCGKAFAK	1714	IPI00180948.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1714	null	null	218	230	0
+PSM	RHIPNWIYPDR	1714	IPI00180948.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1714	null	null	65	75	0
+PSM	TVTEASGHKYNPLGK	1714	IPI00180948.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1714	null	null	140	154	0
+PSM	IHTGEKPYICTECGKAFSQK	1714	IPI00180948.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1714	null	null	464	484	0
+PSM	DVMLEIYSHLVSMGYPVSKPDVISK	1714	IPI00180948.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1714	null	null	29	54	0
+PSM	KNLKPNIDLPSLIPFDDNQCGNVFR	1714	IPI00180948.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1714	null	null	177	202	0
+PSM	EKPYECDR	1530	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	436	443	0
+PSM	NSSGLTVHKR	1530	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	562	571	0
+PSM	TPHTCDECGK	1530	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	493	502	0
+PSM	RVHLGEKPFK	1530	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	515	524	0
+PSM	AFRNSSGLTVHK	1530	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	559	570	0
+PSM	CDVCGKAYISR	1530	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	273	283	0
+PSM	SFNYRSVLDQHK	1530	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	614	625	0
+PSM	STHPGKTPHTCDECGK	1530	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	487	502	0
+PSM	IHTGEKPYVCDRCGK	1530	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	544	558	0
+PSM	SYSSLINHKSTHSGEK	1530	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	2	17	0
+PSM	IHTREKPFGCDECGK	1530	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	320	334	0
+PSM	AFSYSSGLAVHKSIHPGK	1530	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	195	212	0
+PSM	AYISHSSLINHKSVHQGK	1530	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	587	604	0
+PSM	TIHTGERPYVCDVCGKTFR	1530	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1530	null	null	235	254	0
+PSM	EGIPPDQQR	1516	IPI00179330.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	34	42	0
+PSM	ESTLHLVLR	1516	IPI00179330.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	64	72	0
+PSM	TLSDYNIQK	1516	IPI00179330.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	55	63	0
+PSM	IQDKEGIPPDQQR	1516	IPI00179330.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	30	42	0
+PSM	TITLEVEPSDTIENVK	1516	IPI00179330.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	12	27	0
+PSM	TITLEVEPSDTIENVKAK	1516	IPI00179330.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	12	29	0
+PSM	VEIIANDQGNR	1527	IPI00007702.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1527	null	null	27	37	0
+PSM	TTPSYVAFTDTER	1523	IPI00007702.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1523	null	null	38	50	0
+PSM	EAFSLFDK	1529	IPI00386621.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1529	null	null	15	22	0
+PSM	DTDSEEEIR	1529	IPI00386621.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1529	null	null	79	87	0
+PSM	DGNGYISAAELR	1529	IPI00386621.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1529	null	null	96	107	0
+PSM	VFDKDGNGYISAAELR	1529	IPI00386621.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1529	null	null	92	107	0
+PSM	EAFSLFDKDGDGTITTK	1529	IPI00386621.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1529	null	null	15	31	0
+PSM	IHTREKPYK	1531	IPI00414566.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	321	329	0
+PSM	THDMVAKPPEK	1531	IPI00414566.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	64	74	0
+PSM	RMHIGEKPYK	1531	IPI00414566.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	180	189	0
+PSM	AFSQPSALTIHK	1531	IPI00414566.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	168	179	0
+PSM	EKPYKCEECSK	1531	IPI00414566.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	325	335	0
+PSM	AFSQPSALTIHKR	1531	IPI00414566.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	168	180	0
+PSM	CEECGKAFVWSSTLTR	1531	IPI00414566.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	190	205	0
+PSM	IIHTGEKPYKCDECGK	1531	IPI00414566.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	460	475	0
+PSM	CEECGKAFSQPSALTIHK	1531	IPI00414566.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	162	179	0
+PSM	CDECGKSFIWSSTLFK	1531	IPI00414566.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	470	485	0
+PSM	NMMAACDPR	1735	IPI00413498.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1735	null	null	396	404	0
+PSM	AVAYSGSRIR	1735	IPI00413498.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1735	null	null	51	60	0
+PSM	VSEQFTAMFR	1735	IPI00413498.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1735	null	null	479	488	0
+PSM	INVYYNEASGGR	1735	IPI00413498.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1735	null	null	145	156	0
+PSM	GYLNVGGGRAGSLR	1735	IPI00413498.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1735	null	null	68	81	0
+PSM	FSCRPNPALAMR	1735	IPI00413498.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1735	null	null	89	100	0
+PSM	QGIHRWVHLCGSK	1735	IPI00413498.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1735	null	null	38	50	0
+PSM	AVLVDLEPGTMDSVR	1735	IPI00413498.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1735	null	null	161	175	0
+PSM	EIVLTQIGQCGNQIGAK	1735	IPI00413498.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1735	null	null	101	117	0
+PSM	MSATFIGNNTAIQELFKR	1735	IPI00413498.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1735	null	null	461	478	0
+PSM	FSCRPNPALAMREIVLTQIGQCGNQIGAK	1735	IPI00413498.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1735	null	null	89	118	0
+PSM	AFSCPTYFR	1520	IPI00413490.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	135	143	0
+PSM	THIGEKPYECK	1520	IPI00413490.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	232	242	0
+PSM	THTGEKPYRCK	1520	IPI00413490.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	456	466	0
+PSM	THIGEKPYECK	1520	IPI00413490.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	232	242	0
+PSM	HAHTGKKPYECK	1520	IPI00413490.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	91	102	0
+PSM	THIGEKPYECKR	1520	IPI00413490.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	232	243	0
+PSM	AHVIIHTGARPYK	1520	IPI00413490.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	200	212	0
+PSM	QCGKAFISSSHFR	1520	IPI00413490.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	495	507	0
+PSM	ECGKAFSFLSSFR	1520	IPI00413490.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	159	171	0
+PSM	ECGKAFNSSNSCR	1520	IPI00413490.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	215	227	0
+PSM	ECGKAFFYSASFR	1520	IPI00413490.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	187	199	0
+PSM	SHTGEKPYECKQCGK	1520	IPI00413490.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	344	358	0
+PSM	SHTGEKPYECKQCGK	1520	IPI00413490.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	484	498	0
+PSM	MTHAGQKPYECKQCGK	1520	IPI00413490.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	65	80	0
+PSM	TDEGIAYR	1724	IPI00375400.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1724	null	null	69	76	0
+PSM	IGKPAPDFK	1724	IPI00375400.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1724	null	null	8	16	0
+PSM	ATAVVDGAFK	1724	IPI00375400.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1724	null	null	17	26	0
+PSM	LSEDYGVLK	1724	IPI00375400.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1724	null	null	60	68	0
+PSM	RLSEDYGVLK	1724	IPI00375400.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1724	null	null	59	68	0
+PSM	QITVNDLPVGR	1724	IPI00375400.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1724	null	null	89	99	0
+PSM	EGGLGPLNIPLLADVTR	1724	IPI00375400.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1724	null	null	42	58	0
+PSM	KEGGLGPLNIPLLADVTR	1724	IPI00375400.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1724	null	null	41	58	0
+PSM	TFSNSSGLR	1627	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	83	91	0
+PSM	AFRNNSGLK	1627	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	335	343	0
+PSM	AHECKECGK	1627	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	214	222	0
+PSM	RIHTGEKPYK	1627	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	179	188	0
+PSM	RLHTGEKPYK	1627	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	263	272	0
+PSM	EKPFGCDECGK	1627	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	324	334	0
+PSM	IHTGEKPYVCDR	1627	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	544	555	0
+PSM	TYEGGNALDGGRMR	1627	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	678	691	0
+PSM	IHTGERPYECDVCGK	1627	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	460	474	0
+PSM	SYSSLINHKSTHSGEK	1627	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	2	17	0
+PSM	RIHTGEKPYECDICGK	1627	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	67	82	0
+PSM	IHTGERPYKCEECGK	1627	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	348	362	0
+PSM	RIHTGEKPYECGECGK	1627	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	39	54	0
+PSM	TIHTGERPYVCDVCGKTFR	1627	IPI00410357.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1627	null	null	235	254	0
+PSM	HSARAHER	1561	IPI00401984.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	206	213	0
+PSM	VLSHHSSLNR	1561	IPI00401984.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	79	88	0
+PSM	ECGKPFIYR	1561	IPI00401984.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	197	205	0
+PSM	HYECKLCGK	1561	IPI00401984.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	304	312	0
+PSM	AFSYHCTAQK	1561	IPI00401984.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	285	294	0
+PSM	EWNIEEQYK	1561	IPI00401984.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	17	25	0
+PSM	YHQSAQKHEK	1561	IPI00401984.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	176	185	0
+PSM	THTGEKPYKCK	1561	IPI00401984.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	354	364	0
+PSM	THTGEKPYECK	1561	IPI00401984.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	410	420	0
+PSM	IHTGEKPYECK	1561	IPI00401984.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	438	448	0
+PSM	HEKAHTGEKPYK	1561	IPI00401984.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	183	194	0
+PSM	CKECGKPFIYR	1561	IPI00401984.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	195	205	0
+PSM	CQEYGEKPYKCK	1561	IPI00401984.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	101	112	0
+PSM	LCESKEGSHGGEGFSQIANLSLNK	1561	IPI00401984.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	39	63	0
+PSM	DAGQISGLNVLR	1504	IPI00007765.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1504	null	null	207	218	0
+PSM	VQQTVQDLFGR	1504	IPI00007765.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1504	null	null	395	405	0
+PSM	AQFEGIVTDLIR	1504	IPI00007765.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1504	null	null	349	360	0
+PSM	LLGQFTLIGIPPAPR	1504	IPI00007765.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1504	null	null	499	513	0
+PSM	NAVITVPAYFNDSQR	1504	IPI00007765.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1504	null	null	188	202	0
+PSM	SQVFSTAADGQTQVEIK	1504	IPI00007765.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1504	null	null	469	485	0
+PSM	STNGDTFLGGEDFDQALLR	1504	IPI00007765.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1504	null	null	266	285	0
+PSM	VIAVYDLGGGTFDISILEIQK	1504	IPI00007765.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1504	null	null	239	260	0
+PSM	GVPQIEVTFDIDANGIVHVSAK	1504	IPI00007765.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1504	null	null	514	536	0
+PSM	TAFQEALDAAGDK	1736	IPI00216298.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1736	null	null	9	21	0
+PSM	IGIEIIKR	1598	IPI00329351.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1598	null	null	465	472	0
+PSM	VTDALNATR	1598	IPI00329351.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1598	null	null	423	431	0
+PSM	APGFGDNRK	1598	IPI00329351.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1598	null	null	304	312	0
+PSM	NAGVEGSLIVEK	1598	IPI00329351.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1598	null	null	484	495	0
+PSM	VGGTSDVEVNEK	1598	IPI00329351.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1598	null	null	408	419	0
+PSM	TVIIEQSWGSPK	1598	IPI00329351.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1598	null	null	61	72	0
+PSM	VGGTSDVEVNEKK	1598	IPI00329351.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1598	null	null	408	420	0
+PSM	GYISPYFINTSK	1598	IPI00329351.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1598	null	null	224	235	0
+PSM	CEFQDAYVLLSEK	1598	IPI00329351.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1598	null	null	239	251	0
+PSM	AAVEEGIVLGGGCALLR	1598	IPI00329351.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1598	null	null	432	448	0
+PSM	CIPALDSLTPANEDQK	1598	IPI00329351.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1598	null	null	449	464	0
+PSM	ISSIQSIVPALEIANAHR	1598	IPI00329351.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1598	null	null	253	270	0
+PSM	IQEIIEQLDVTTSEYEK	1598	IPI00329351.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1598	null	null	373	389	0
+PSM	KISSIQSIVPALEIANAHR	1598	IPI00329351.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1598	null	null	252	270	0
+PSM	IQEIIEQLDVTTSEYEKEK	1598	IPI00329351.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1598	null	null	373	391	0
+PSM	KPLVIIAEDVDGEALSTLV	1598	IPI00329351.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1598	null	null	271	289	0
+PSM	KPLVIIAEDVDGEALSTLVLNR	1598	IPI00329351.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1598	null	null	271	293	0
+PSM	TALLDAAGVASLLTTAEVVVTEIPKEEK	1598	IPI00329351.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1598	null	null	529	557	0
+PSM	CKECDCGK	1486	IPI00401768.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	483	490	0
+PSM	CKECDCGK	1486	IPI00401768.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	483	490	0
+PSM	YKCEECGK	1486	IPI00401768.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	538	545	0
+PSM	EQPYKCEK	1486	IPI00401768.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	310	317	0
+PSM	IHNGEKPYK	1486	IPI00401768.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	334	342	0
+PSM	CRHENLLLR	1486	IPI00401768.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	107	115	0
+PSM	CEECGKAFNR	1486	IPI00401768.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	343	352	0
+PSM	HNQCLTTSHSK	1486	IPI00401768.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	134	144	0
+PSM	AFNQSSTLTIHK	1486	IPI00401768.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	377	388	0
+PSM	LFCILSHLAQHKK	1486	IPI00401768.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	182	194	0
+PSM	GYNRHNQCLTTSHSK	1486	IPI00401768.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	130	144	0
+PSM	ECGKLFCILSHLAQHK	1486	IPI00401768.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	178	193	0
+PSM	IHTGEKPYECEECGKAFNR	1486	IPI00401768.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	446	465	0
+PSM	CFTSGRNLR	1664	IPI00411655.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1664	null	null	859	867	0
+PSM	LSSVLSAHHR	1664	IPI00411655.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1664	null	null	999	1008	0
+PSM	IHTGMKPYECK	1664	IPI00411655.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1664	null	null	1009	1019	0
+PSM	FHTGEKPFECK	1664	IPI00411655.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1664	null	null	646	656	0
+PSM	TFSCSSNIVQHVK	1664	IPI00411655.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1664	null	null	172	184	0
+PSM	AFNRGSNLIQHQK	1664	IPI00411655.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1664	null	null	325	337	0
+PSM	IHTGEKPFECKECGK	1664	IPI00411655.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1664	null	null	758	772	0
+PSM	IHTGEKPYQCEECGK	1664	IPI00411655.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1664	null	null	872	886	0
+PSM	SSNLTQHQSIHAGVKPYQCK	1664	IPI00411655.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1664	null	null	301	321	0
+PSM	SSNLIQHQSIHADVKPYECK	1664	IPI00411655.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1664	null	null	441	461	0
+PSM	VHQRIHTGEKPYQCEECGK	1664	IPI00411655.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1664	null	null	868	887	0
+PSM	DVAIDFSQEEWECLQPDQR	1664	IPI00411655.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1664	null	null	16	35	0
+PSM	IHTGEKPYQCEECGKAFSHSSNLK	1664	IPI00411655.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1664	null	null	872	896	0
+PSM	YFSCGSNLIQHQSIHTGEKPYKCK	1664	IPI00411655.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1664	null	null	213	237	0
+PSM	EGIPPDQQR	1677	IPI00397808.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1677	null	null	75	83	0
+PSM	ESTLHLVLR	1681	IPI00397808.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1681	null	null	105	113	0
+PSM	FSHLTTHKR	1561	IPI00001744.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	420	428	0
+PSM	CGCENLQLR	1561	IPI00001744.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	117	125	0
+PSM	NYFQKVILR	1561	IPI00001744.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	104	112	0
+PSM	IIHTGEKPYK	1561	IPI00001744.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	456	465	0
+PSM	IFQCDKYVK	1561	IPI00001744.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	155	163	0
+PSM	MIHTGEKPYK	1561	IPI00001744.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	512	521	0
+PSM	FSNSNRHTIR	1561	IPI00001744.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	168	177	0
+PSM	IHSGEKPYKCK	1561	IPI00001744.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	205	215	0
+PSM	AFKQSSTLTTHK	1561	IPI00001744.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	388	399	0
+PSM	AFNRLSHLTTHK	1561	IPI00001744.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	248	259	0
+PSM	SFCMLSHLAQHK	1561	IPI00001744.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	192	203	0
+PSM	CEECGKAFNQSSTLSK	1561	IPI00001744.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	466	481	0
+PSM	LYKPESCNNACDNIAKISK	1561	IPI00001744.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	547	566	0
+PSM	SQNRGGSEFK	1503	IPI00401004.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1503	null	null	104	113	0
+PSM	ASSRYLELHR	1503	IPI00401004.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1503	null	null	94	103	0
+PSM	YLELHRSQNR	1503	IPI00401004.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1503	null	null	98	107	0
+PSM	DKGVCQGWHCVK	1503	IPI00401004.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1503	null	null	43	54	0
+PSM	VQLTVPSFTAWLR	1503	IPI00401004.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1503	null	null	12	24	0
+PSM	SLSQHPATQTPRPQAR	1503	IPI00401004.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1503	null	null	78	93	0
+PSM	GRIPGQPLQPQPLGPYLR	1503	IPI00401004.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1503	null	null	60	78	0
+PSM	AVFVDLEPTVIDEVR	1588	IPI00166768.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1588	null	null	65	79	0
+PSM	SYKCDECGK	1662	IPI00221218.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1662	null	null	413	421	0
+PSM	ETFELVGRLDK	1662	IPI00221218.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1662	null	null	57	67	0
+PSM	QCGKSFSQLCNLIR	1662	IPI00221218.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1662	null	null	474	487	0
+PSM	ECGKSFSQLCNLTR	1662	IPI00221218.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1662	null	null	334	347	0
+PSM	IHTGDKPHKCEECGK	1662	IPI00221218.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1662	null	null	351	365	0
+PSM	IHTGEKPYLCTVCGK	1662	IPI00221218.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1662	null	null	435	449	0
+PSM	ISLIQHQKLHTAWMQ	1662	IPI00221218.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1662	null	null	570	584	0
+PSM	IHTGEKPYLCTVCGKSFSR	1662	IPI00221218.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1662	null	null	435	454	0
+PSM	VHTGEKPFQCNECGKSFSR	1662	IPI00221218.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1662	null	null	127	146	0
+PSM	SFSQQRSLVNHQMIHAEVK	1662	IPI00221218.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1662	null	null	534	553	0
+PSM	SHLIEHQRTHTGEKPYHCTK	1662	IPI00221218.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1662	null	null	231	251	0
+PSM	CAQGCICK	1506	IPI00008753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1506	null	null	44	51	0
+PSM	CAQGCICK	1506	IPI00008753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1506	null	null	44	51	0
+PSM	SCCSCCPVGCAK	1506	IPI00008753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1506	null	null	32	43	0
+PSM	SCCSCCPVGCAK	1506	IPI00008753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1506	null	null	32	43	0
+PSM	KSCCSCCPVGCAK	1506	IPI00008753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1506	null	null	31	43	0
+PSM	KSCCSCCPVGCAK	1506	IPI00008753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1506	null	null	31	43	0
+PSM	MDPNCSCSPVGSCACAGSCKCK	1506	IPI00008753.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1506	null	null	1	23	0
+PSM	GCWQREPQQR	1737	IPI00385996.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1737	null	null	469	478	0
+PSM	VQMEELSK	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	2262	2269	0
+PSM	LLEAAAQSTK	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	4490	4499	0
+PSM	QRELEQLGR	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	1226	1234	0
+PSM	GLVLREHGIR	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	3481	3490	0
+PSM	AQFEQLKDGK	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	3353	3362	0
+PSM	CVEDPETGLR	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	3557	3566	0
+PSM	FAKQYINAIK	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	1298	1307	0
+PSM	RVVIVDPETGK	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	4167	4177	0
+PSM	ELEQLGRQLR	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	1228	1237	0
+PSM	MQAVQEATRLK	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	2343	2353	0
+PSM	EKMQAVQEATR	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	2341	2351	0
+PSM	RGYFDEEMNR	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	2859	2868	0
+PSM	LLSAERAVTGYR	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	3788	3799	0
+PSM	AVTGYRDPYSGR	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	3459	3470	0
+PSM	QQSDHDAERLR	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	2466	2476	0
+PSM	KGWLYYEAGQR	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	4403	4413	0
+PSM	EEAAVDAQQQKR	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	1432	1443	0
+PSM	LEDLLQDAQDEK	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	787	798	0
+PSM	NLIDRSALDQYR	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	4239	4250	0
+PSM	SEFERLECLQR	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	413	423	0
+PSM	SLQEEHVAVAQLR	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	1622	1634	0
+PSM	DIRLQLEACETR	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	1018	1029	0
+PSM	RYASGSSASLGGPESAVA	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	4557	4575	0
+PSM	DPYSGRTISLFQAMK	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	3465	3479	0
+PSM	SIITYVSSLYDAMPR	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	277	291	0
+PSM	LRSLESLHSFVAAATK	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	639	654	0
+PSM	RQEQIQAMPLADSQAVR	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	1256	1272	0
+PSM	QLAEGTAQQRLAAEQELIR	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	1726	1745	0
+PSM	CRPDQLTGLSLLPLSEKAAR	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	3226	3246	0
+PSM	NLQKFLEGTSCIAGVFVDATK	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	3951	3972	0
+PSM	TLKPEEQRQALHSLELHYQAFLR	1718	IPI00215942.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1718	null	null	943	966	0
+PSM	RHEMVEESPGR	1494	IPI00397531.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1494	null	null	66	76	0
+PSM	LPDGYEFK	1738	IPI00219219.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1738	null	null	101	108	0
+PSM	DGGAWGTEQR	1738	IPI00219219.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1738	null	null	65	74	0
+PSM	DSNNLCLHFNPR	1738	IPI00219219.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1738	null	null	38	49	0
+PSM	DSNNLCLHFNPR	1738	IPI00219219.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1738	null	null	38	49	0
+PSM	FNAHGDANTIVCNSK	1738	IPI00219219.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1738	null	null	50	64	0
+PSM	FPNRLNLEAINYMAADGDFK	1738	IPI00219219.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1738	null	null	109	129	0
+PSM	SFVLNLGKDSNNLCLHFNPR	1738	IPI00219219.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1738	null	null	30	50	0
+PSM	EAVFPFQPGSVAEVCITFDQANLTVK	1738	IPI00219219.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1738	null	null	75	101	0
+PSM	NYELLKILTK	1514	IPI00414079.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1514	null	null	369	378	0
+PSM	YDDEDISEDIK	1514	IPI00414079.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1514	null	null	308	318	0
+PSM	QEYALAMIQCK	1514	IPI00414079.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1514	null	null	285	295	0
+PSM	VLKQLENLEQQK	1514	IPI00414079.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1514	null	null	296	307	0
+PSM	NTAWPYFLPMLNR	1514	IPI00414079.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1514	null	null	120	132	0
+PSM	QEYALAMIQCKVLK	1514	IPI00414079.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1514	null	null	285	298	0
+PSM	YNIIPVLSDILQESVK	1514	IPI00414079.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1514	null	null	245	260	0
+PSM	CSKNTAWPYFLPMLNR	1514	IPI00414079.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1514	null	null	117	132	0
+PSM	RYNIIPVLSDILQESVK	1514	IPI00414079.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1514	null	null	244	260	0
+PSM	SPEEKQEMLQTEGSQCAK	1514	IPI00414079.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1514	null	null	58	76	0
+PSM	CGFQLQYQMIFSIWLLAFSPQMCEHLR	1514	IPI00414079.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1514	null	null	217	244	0
+PSM	EGIPPDQQR	1516	IPI00328348.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	47	55	0
+PSM	ESTLHLVLR	1516	IPI00328348.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	77	85	0
+PSM	TLSDYNIQK	1516	IPI00328348.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	68	76	0
+PSM	LRGGIIEPSLR	1516	IPI00328348.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	86	96	0
+PSM	IQDKEGIPPDQQR	1516	IPI00328348.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	43	55	0
+PSM	TITLEVEPSDTIENVK	1516	IPI00328348.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	25	40	0
+PSM	TITLEVEPSDTIENVKAK	1516	IPI00328348.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	25	42	0
+PSM	EGIPPDQQR	1516	IPI00328348.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	47	55	0
+PSM	ESTLHLVLR	1516	IPI00328348.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	77	85	0
+PSM	TLSDYNIQK	1516	IPI00328348.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	68	76	0
+PSM	LRGGIIEPSLR	1516	IPI00328348.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	86	96	0
+PSM	IQDKEGIPPDQQR	1516	IPI00328348.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	43	55	0
+PSM	TITLEVEPSDTIENVK	1516	IPI00328348.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	25	40	0
+PSM	TITLEVEPSDTIENVKAK	1516	IPI00328348.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	25	42	0
+PSM	EGIPPDQQR	1516	IPI00328348.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	47	55	0
+PSM	EGIPPDQQR	1516	IPI00328348.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	47	55	0
+PSM	EGIPPDQQR	1516	IPI00328348.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	47	55	0
+PSM	EGIPPDQQR	1516	IPI00328348.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	47	55	0
+PSM	ESTLHLVLR	1516	IPI00328348.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	77	85	0
+PSM	TITLEVEPSDTIENVK	1516	IPI00328348.2	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1516	null	null	25	40	0
+PSM	LLVVYPWTQR	1641	IPI00217471.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1641	null	null	32	41	0
+PSM	AVFVDLEPTVIDEVR	1588	IPI00328163.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1588	null	null	65	79	0
+PSM	AFSHFGNLK	1520	IPI00411378.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	651	659	0
+PSM	KAFSHFGNLK	1520	IPI00411378.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	650	659	0
+PSM	IHTGEKPYDCK	1520	IPI00411378.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	270	280	0
+PSM	IHTGEKPYECK	1520	IPI00411378.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	664	674	0
+PSM	THTGVKPYECK	1520	IPI00411378.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	522	532	0
+PSM	CGKAFSFPSSFR	1520	IPI00411378.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	254	265	0
+PSM	THTGEKMHECK	1520	IPI00411378.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	720	730	0
+PSM	IHTGEKPYKCK	1520	IPI00411378.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	242	252	0
+PSM	IHTGEKPYECK	1520	IPI00411378.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	410	420	0
+PSM	IHTGEKPYECK	1520	IPI00411378.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	664	674	0
+PSM	QCGKAFSCSSSIR	1520	IPI00411378.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	477	489	0
+PSM	QCGKAFSCSSSVR	1520	IPI00411378.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	505	517	0
+PSM	AFSCSSSVRIHER	1520	IPI00411378.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	369	381	0
+PSM	NEIIPSLSQLENK	1520	IPI00411378.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	47	59	0
+PSM	AFSCFTYLSQHR	1520	IPI00411378.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	623	634	0
+PSM	QCGKAFSCSSSFR	1520	IPI00411378.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	449	461	0
+PSM	THSGEKPYECKQCGK	1520	IPI00411378.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	186	200	0
+PSM	THSGEKPYECKQCGK	1520	IPI00411378.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	186	200	0
+PSM	MHERTHTGVKPYECK	1520	IPI00411378.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1520	null	null	518	532	0
+PSM	EPWNMKR	1561	IPI00328207.6	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	92	98	0
+PSM	IFPCDKYVK	1561	IPI00328207.6	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	175	183	0
+PSM	IIHTGEKPYK	1561	IPI00328207.6	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	448	457	0
+PSM	CEHENLQLR	1561	IPI00328207.6	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	137	145	0
+PSM	MIHTGEKPYK	1561	IPI00328207.6	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	420	429	0
+PSM	RIHTGEKPFK	1561	IPI00328207.6	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	252	261	0
+PSM	VFHKFLNANR	1561	IPI00328207.6	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	184	193	0
+PSM	QDPVTCLEQEK	1561	IPI00328207.6	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	81	91	0
+PSM	AFKQSSTLTTHK	1561	IPI00328207.6	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	268	279	0
+PSM	AFSQSSILTTHKR	1561	IPI00328207.6	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	464	476	0
+PSM	IHTGEKPYKCEVCGK	1561	IPI00328207.6	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	393	407	0
+PSM	CGKSFCMLLHLSQHK	1561	IPI00328207.6	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	209	223	0
+PSM	VHKEGYNELNQCLTTTQSK	1561	IPI00328207.6	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1561	null	null	156	175	0
+PSM	EQRTHQEK	1486	IPI00169419.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	765	772	0
+PSM	ILSAGESSHR	1486	IPI00169419.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	105	114	0
+PSM	SSNLIIHQR	1486	IPI00169419.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	153	161	0
+PSM	TYECKECEK	1486	IPI00169419.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	140	148	0
+PSM	LEECEKTFSK	1486	IPI00169419.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	749	758	0
+PSM	QIHSGGNPYECK	1486	IPI00169419.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	217	228	0
+PSM	IHSGEKPYECK	1486	IPI00169419.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	523	533	0
+PSM	LHSGEKPYECK	1486	IPI00169419.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	715	725	0
+PSM	AFSQRSHLATHQK	1486	IPI00169419.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	674	686	0
+PSM	AFRQHSHLTEHQR	1486	IPI00169419.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	317	329	0
+PSM	HHRIHSGEKPCVCSK	1486	IPI00169419.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	436	450	0
+PSM	IHTGEKPLKCNECEK	1486	IPI00169419.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	302	316	0
+PSM	HHRVHTGEKPYECSECGK	1486	IPI00169419.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	464	482	0
+PSM	HHRIHTGEKPYECSECGK	1486	IPI00169419.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1486	null	null	656	674	0
+PSM	ARAHVDALR	1531	IPI00021841.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	176	184	0
+PSM	DLATVYVDVLK	1531	IPI00021841.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	37	47	0
+PSM	VQPYLDDFQK	1531	IPI00021841.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	121	130	0
+PSM	DYVSQFEGSALGK	1531	IPI00021841.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	52	64	0
+PSM	VKDLATVYVDVLK	1531	IPI00021841.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	35	47	0
+PSM	LLDNWDSVTSTFSK	1531	IPI00021841.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	70	83	0
+PSM	EQLGPVTQEFWDNLEK	1531	IPI00021841.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1531	null	null	86	101	0
+PSM	QQSDHDAERLR	1513	IPI00215943.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1513	null	null	2462	2472	0
+PSM	WSPALQIR	1739	IPI00003949.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1739	null	null	95	102	0
+PSM	IYHPNVDK	1739	IPI00003949.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1739	null	null	75	82	0
+PSM	AEPDESNAR	1739	IPI00003949.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1739	null	null	25	33	0
+PSM	LLAEPVPGIK	1739	IPI00003949.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1739	null	null	15	24	0
+PSM	TNEAQAIETAR	1739	IPI00003949.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1739	null	null	131	141	0
+PSM	LELFLPEEYPMAAPKVR	1739	IPI00003949.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1739	null	null	54	70	0
+PSM	LLAEPVPGIKAEPDESNAR	1739	IPI00003949.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1739	null	null	15	34	0
+PSM	YFHVVIAGPQDSPFEGGTFK	1739	IPI00003949.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1739	null	null	34	54	0
+PSM	SSFVIEHQR	1539	IPI00221218.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1539	null	null	146	154	0
+PSM	ETFELVGRLDK	1539	IPI00221218.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1539	null	null	57	67	0
+PSM	ESLTQEQRMFR	1539	IPI00221218.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1539	null	null	79	89	0
+PSM	AFSRSSGLIQHQR	1539	IPI00221218.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1539	null	null	366	378	0
+PSM	SFSRNSLLVEHQR	1539	IPI00221218.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1539	null	null	254	266	0
+PSM	QCGKSFSQLCNLIR	1539	IPI00221218.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1539	null	null	474	487	0
+PSM	ECGKSFSQLCNLTR	1539	IPI00221218.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1539	null	null	334	347	0
+PSM	IHTGEKPYLCTVCGK	1539	IPI00221218.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1539	null	null	435	449	0
+PSM	ISLIQHQKLHTAWMQ	1539	IPI00221218.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1539	null	null	570	584	0
+PSM	VHTGEKPFQCNECGKSFSR	1539	IPI00221218.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1539	null	null	127	146	0
+PSM	SFSQQRSLVNHQMIHAEVK	1539	IPI00221218.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1539	null	null	534	553	0
+PSM	SHLIEHQRTHTGEKPYHCTK	1539	IPI00221218.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1539	null	null	231	251	0
+PSM	SYELPDGQVITIGNER	1726	IPI00008603.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1726	null	null	241	256	0
+PSM	AGFAGDDAPR	1565	IPI00008603.1	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1565	null	null	21	30	0
+PSM	LPYVCSECGK	1657	IPI00332749.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1657	null	null	556	565	0
+PSM	AFYYSSSFTR	1657	IPI00332749.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1657	null	null	256	265	0
+PSM	CSECGKCFSCK	1657	IPI00332749.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1657	null	null	503	513	0
+PSM	THTGEKPFECK	1657	IPI00332749.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1657	null	null	185	195	0
+PSM	IHTGDKPYECK	1657	IPI00332749.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1657	null	null	45	55	0
+PSM	SSFIQHNMTHTR	1657	IPI00332749.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1657	null	null	65	76	0
+PSM	THSGQKPLECKECAK	1657	IPI00332749.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1657	null	null	241	255	0
+PSM	ECAKAFYYSSSFTR	1657	IPI00332749.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1657	null	null	252	265	0
+PSM	VHMGLKPYGCSECGK	1657	IPI00332749.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1657	null	null	381	395	0
+PSM	HNRTHSGQKPLECK	1657	IPI00332749.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1657	null	null	238	251	0
+PSM	IHTGEKPYVCRECGK	1657	IPI00332749.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1657	null	null	269	283	0
+PSM	IHTGEKPYECGECGKAFTHR	1657	IPI00332749.3	null	IPI_Human	2.33	null	null	null	null	-1	-1.0	-1.0	ms_run[1]:spectrum=1657	null	null	157	177	0
+
