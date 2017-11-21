@@ -1,11 +1,15 @@
 package uk.ac.ebi.pride.cluster.tools;
 
 
+import com.compomics.pride_asa_pipeline.model.ParameterExtractionException;
 import com.compomics.pridesearchparameterextractor.cmd.PrideSearchparameterExtractor;
+import com.compomics.pridesearchparameterextractor.extraction.impl.PrideMzIDParameterExtractor;
 import org.apache.commons.cli.*;
 import org.apache.log4j.Logger;
+import uk.ac.ebi.pride.archive.dataprovider.file.ProjectFileType;
 import uk.ac.ebi.pride.data.exception.SubmissionFileException;
 import uk.ac.ebi.pride.data.io.SubmissionFileParser;
+import uk.ac.ebi.pride.data.model.DataFile;
 import uk.ac.ebi.pride.data.model.Submission;
 import uk.ac.ebi.pride.data.util.MassSpecFileFormat;
 import uk.ac.ebi.pride.spectracluster.utilities.FileTypes;
@@ -14,6 +18,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.BinaryOperator;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * This code is licensed under the Apache License, Version 2.0 (the
@@ -40,13 +51,9 @@ public class ArchiveExtractParameterTool {
         //parse the command
         CommandLineParser parser = new BasicParser();
 
-        try {
-            if (args.length == 0) {
-                help(options);
-            } else {
-                CommandLine cmd = parser.parse(options, args);
-                handleCommand(cmd, options);
-            }
+        try{
+            CommandLine cmd = parser.parse(options, args);
+            handleCommand(cmd, options);
         } catch (FileNotFoundException | ParseException | SubmissionFileException ex) {
             LOGGER.error(ex);
         }
@@ -65,7 +72,6 @@ public class ArchiveExtractParameterTool {
         String type = "";
         File input = null;
         File output = null;
-        List<File> peakFiles = null;
         boolean saveMGF = false;
 
         if(!(cmd.hasOption("i") || !cmd.hasOption("o"))){
@@ -74,16 +80,51 @@ public class ArchiveExtractParameterTool {
         }
 
         String inputProjectFolder = cmd.getOptionValue("i");
-        String inputOutputFolder  = cmd.getOptionValue("o");
+        String outputFolder  = cmd.getOptionValue("o");
 
         File projectInternalPath = new File(inputProjectFolder, FileTypes.INTERNAL_DIRECTORY);
 
         Submission submission = SubmissionFileParser.parse(new File(projectInternalPath, FileTypes.SUBMISSION_FILE));
 
-        submission.getDataFiles().stream().filter( file -> file.getFileFormat() == MassSpecFileFormat.MZIDENTML).forEach(
-                file -> {
-                    System.out.println();
-                }
+        submission.getDataFiles().stream()
+                .filter( file -> file.getFileType() == ProjectFileType.RESULT &&
+                        (FileTypes.isTypeFile(file.getFileName(), FileTypes.COMPRESS_MZIDENTML) || (FileTypes.isTypeFile(file.getFileName(), FileTypes.COMPRESS_PRIDE))))
+                .forEach(
+                        file -> {
+
+                            // Processing File
+                            File inputFile = new File(projectInternalPath, FileTypes.removeGzip(file.getFileName()));
+                            String assayNumber = file.getAssayAccession();
+
+                            LOGGER.info("Processing Assay -- " + assayNumber + " -- Following file -- " + inputFile.getAbsolutePath());
+
+
+                            // Process an mzIdentml
+                            if(FileTypes.isTypeFile(file.getFileName(), FileTypes.COMPRESS_MZIDENTML)){
+
+                                List<File> peakFiles = new ArrayList<>();
+
+                                // List of files associated with the mzIdentML
+                                retrieveListPeakFileNames(file).stream().forEach( fileName -> {
+                                    File peakFile = new File(projectInternalPath, fileName);
+                                    if(peakFile.exists()){
+                                        peakFiles.add(peakFile);
+                                    }
+                                });
+
+                                try{
+                                    PrideMzIDParameterExtractor extractor = new PrideMzIDParameterExtractor(inputFile, peakFiles, new File(outputFolder));
+                                    extractor.analyze();
+                                }catch (ParameterExtractionException e){
+                                    LOGGER.error("Error in File -- " + inputFile + " -- Message Error -- " + e.getMessage());
+                                }
+
+                            }else{  // Process a PRIDE XML
+
+                            }
+
+
+                        }
         );
 //
 //            if (!cmd.hasOption("type")) {
@@ -143,10 +184,19 @@ public class ArchiveExtractParameterTool {
 //        }
     }
 
-    private static void help(Options options) {
-        // This prints out some help
-        HelpFormatter formater = new HelpFormatter();
-        formater.printHelp("Main", options);
-        System.exit(0);
+    /**
+     * This function retrieve the List of mgf files for an specific mzIdentML
+     * @param file MziDentML File
+     * @return List of file Names
+     */
+    private static List<String> retrieveListPeakFileNames(DataFile file) {
+
+        List<String> fileNames = new ArrayList<>();
+        List<DataFile> fileMapping = file.getFileMappings();
+        fileNames = fileMapping.stream()
+                .filter( fileMap -> fileMap.getFileType() == ProjectFileType.PEAK)
+                .map(fileMap -> FileTypes.removeGzip(fileMap.getFileName()))
+                .collect(Collectors.toList());
+        return fileNames;
     }
 }
