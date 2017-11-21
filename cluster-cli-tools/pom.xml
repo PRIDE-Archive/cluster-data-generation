@@ -11,15 +11,11 @@
 
     <properties>
         <commons.cli.version>1.4</commons.cli.version>
-        <commons-io.version>2.4</commons-io.version>
-        <jmztab.version>3.0.7-SNAPSHOT</jmztab.version>
         <spectra-cluster.version>1.0.11-SNAPSHOT</spectra-cluster.version>
-        <junit.version>4.11</junit.version>
-        <mockito-all.version>1.9.5</mockito-all.version>
-        <pia.version>1.3.5-SNAPSHOT</pia.version>
-        <xercesImpl.version>2.11.0</xercesImpl.version>
         <log4j.version>1.2.17</log4j.version>
         <spectra-filter-archive.version>1.0.2-SNAPSHOT</spectra-filter-archive.version>
+        <paramters-extractor.version>0.0.1-SNAPSHOT</paramters-extractor.version>
+        <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
@@ -43,9 +39,32 @@
             <artifactId>spectra-filter-archive</artifactId>
             <version>${spectra-filter-archive.version}</version>
         </dependency>
+        <dependency>
+            <groupId>uk.ac.ebi.pride.toolsuite</groupId>
+            <artifactId>PRIDESearchparameterExtractor</artifactId>
+            <version>${paramters-extractor.version}</version>
+        </dependency>
 
 
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+                <inherited>true</inherited>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <showDeprecation>true</showDeprecation>
+                    <debug>true</debug>
+                </configuration>
+            </plugin>
+        </plugins>
+
+    </build>
 
 
     
