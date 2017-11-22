@@ -103,7 +103,7 @@ public class ArchiveExtractParameterTool {
                                 String fileName = resolveOutputPath(outputFolder, file.getAssayAccession(), inputProjectFolder);
 
                                 try{
-                                    PrideMzIDParameterExtractor extractor = new PrideMzIDParameterExtractor(inputFile, peakFiles, fileName, false);
+                                    PrideMzIDParameterExtractor extractor = new PrideMzIDParameterExtractor(inputFile, peakFiles, fileName, false, false);
                                     extractor.analyze();
                                 }catch (Exception e){
                                     LOGGER.error("Error in File -- " + inputFile + " -- Message Error -- " + e.getMessage());
@@ -174,6 +174,15 @@ public class ArchiveExtractParameterTool {
 //        }
     }
 
+    /**
+     * This method resolve the parameters output. The method will take the latest folder to construct
+     * a parameter file path like PX000-AssayId.parm
+     *
+     * @param outputFolder path to the output folder
+     * @param assayAccession accession
+     * @param inputFile input file
+     * @return returnPath
+     */
     private static String resolveOutputPath(String outputFolder, String assayAccession, String inputFile) {
         String[] inputproject = inputFile.split("/");
         String finalFolder = "";
