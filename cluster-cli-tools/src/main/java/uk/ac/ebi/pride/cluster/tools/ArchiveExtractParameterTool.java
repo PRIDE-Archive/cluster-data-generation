@@ -1,7 +1,6 @@
 package uk.ac.ebi.pride.cluster.tools;
 
 
-import com.compomics.pride_asa_pipeline.model.ParameterExtractionException;
 import com.compomics.pridesearchparameterextractor.cmd.PrideSearchparameterExtractor;
 import com.compomics.pridesearchparameterextractor.extraction.impl.PrideMzIDParameterExtractor;
 import org.apache.commons.cli.*;
@@ -11,19 +10,12 @@ import uk.ac.ebi.pride.data.exception.SubmissionFileException;
 import uk.ac.ebi.pride.data.io.SubmissionFileParser;
 import uk.ac.ebi.pride.data.model.DataFile;
 import uk.ac.ebi.pride.data.model.Submission;
-import uk.ac.ebi.pride.data.util.MassSpecFileFormat;
 import uk.ac.ebi.pride.spectracluster.utilities.FileTypes;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.BinaryOperator;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 /**
@@ -108,8 +100,10 @@ public class ArchiveExtractParameterTool {
                                     }
                                 });
 
+                                String fileName = resolveOutputPath(outputFolder, file.getAssayAccession(), inputProjectFolder);
+
                                 try{
-                                    PrideMzIDParameterExtractor extractor = new PrideMzIDParameterExtractor(inputFile, peakFiles, new File(outputFolder));
+                                    PrideMzIDParameterExtractor extractor = new PrideMzIDParameterExtractor(inputFile, peakFiles, fileName);
                                     extractor.analyze();
                                 }catch (Exception e){
                                     LOGGER.error("Error in File -- " + inputFile + " -- Message Error -- " + e.getMessage());
@@ -178,6 +172,16 @@ public class ArchiveExtractParameterTool {
 //        } catch (ParameterExtractionException ex) {
 //            LOGGER.error(ex);
 //        }
+    }
+
+    private static String resolveOutputPath(String outputFolder, String assayAccession, String inputFile) {
+        String[] inputproject = inputFile.split("/");
+        String finalFolder = "";
+        for(String idFolder: inputproject){
+            if(idFolder.length() > 0)
+                finalFolder = idFolder;
+        }
+        return outputFolder + "/" + finalFolder + "-" + assayAccession + FileTypes.PARAM_FILE;
     }
 
     /**

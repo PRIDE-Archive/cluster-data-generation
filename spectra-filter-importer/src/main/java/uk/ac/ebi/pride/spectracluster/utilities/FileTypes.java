@@ -26,6 +26,7 @@ public class FileTypes {
     public static final String INTERNAL_DIRECTORY = "internal";
     public static final String SUBMISSION_DIRECTORY = "submission";
     public static final String SUBMISSION_FILE      = "submission.px";
+    public static final String PARAM_FILE = ".par";
 
     /**
      * This function check if one file name ends with an specific fileType
