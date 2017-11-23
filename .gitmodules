@@ -8,3 +8,9 @@
 [submodule "searchgui"]
 	path = searchgui
 	url = git@github.com:PRIDE-Toolsuite/searchgui.git
+[submodule "denovogui"]
+	path = denovogui
+	url = git@github.com:PRIDE-Toolsuite/denovogui
+[submodule "peptide-shaker"]
+	path = peptide-shaker
+	url = git@github.com:PRIDE-Toolsuite/peptide-shaker
