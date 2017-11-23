@@ -1,0 +1,138 @@
+package uk.ac.eb.pride.cluster.reanalysis.processsteps;
+
+import com.compomics.software.autoupdater.HeadlessFileDAO;
+import com.compomics.util.experiment.identification.identification_parameters.SearchParameters;
+import com.compomics.util.gui.waiting.waitinghandlers.WaitingHandlerCLIImpl;
+import org.apache.log4j.Logger;
+import uk.ac.eb.pride.cluster.reanalysis.checkpoints.SearchGUICheckpoints;
+import uk.ac.eb.pride.cluster.reanalysis.control.engine.callback.CallbackNotifier;
+import uk.ac.eb.pride.cluster.reanalysis.control.runtime.diagnostics.memory.MemoryWarningSystem;
+import uk.ac.eb.pride.cluster.reanalysis.control.util.JarLookupService;
+import uk.ac.eb.pride.cluster.reanalysis.model.enums.AllowedSearchGUIParams;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.PladipusProcessingException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedPladipusException;
+import uk.ac.eb.pride.cluster.reanalysis.model.processing.ProcessingStep;
+
+import javax.xml.stream.XMLStreamException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.channels.FileChannel;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.compomics.software.autoupdater.DownloadLatestZipFromRepo.downloadLatestZipFromRepo;
+
+/**
+ *
+ * @author Kenneth Verheggen
+ */
+public class SearchGUIStep extends ProcessingStep {
+
+    private static final Logger LOGGER = Logger.getLogger(SearchGUIStep.class);
+    private static final File temp_searchGUI_output = new File(System.getProperty("user.home") + "/pladipus/temp/search/SearchGUI");
+
+    public SearchGUIStep() {
+
+    }
+
+    private List<String> constructArguments() throws IOException, XMLStreamException, URISyntaxException, UnspecifiedPladipusException {
+        File searchGuiJar = getJar();
+        ArrayList<String> cmdArgs = new ArrayList<>();
+        cmdArgs.add("java");
+        cmdArgs.add("-Xmx" + MemoryWarningSystem.getAllowedRam() + "M");
+        cmdArgs.add("-cp");
+        cmdArgs.add(searchGuiJar.getAbsolutePath());
+        cmdArgs.add("eu.isas.searchgui.cmd.SearchCLI");
+        if (!parameters.containsKey("output_data")) {
+
+        }
+        for (AllowedSearchGUIParams aParameter : AllowedSearchGUIParams.values()) {
+            if (parameters.containsKey(aParameter.getId())) {
+                cmdArgs.add("-" + aParameter.getId());
+                cmdArgs.add(parameters.get(aParameter.getId()));
+            } else if (aParameter.isMandatory()) {
+                throw new IllegalArgumentException("Missing mandatory parameter : " + aParameter.id);
+            }
+        }
+        return cmdArgs;
+    }
+
+    @Override
+    public boolean doAction() throws PladipusProcessingException, UnspecifiedPladipusException {
+        try {
+            File parameterFile = new File(parameters.get("id_params"));
+            File fastaFile = new File(parameters.get("fasta_file"));
+            File real_outputFolder = new File(parameters.get("output_folder"));
+            //update the fasta
+            SearchParameters identificationParameters = SearchParameters.getIdentificationParameters(parameterFile);
+            identificationParameters.setFastaFile(fastaFile);
+            SearchParameters.saveIdentificationParameters(identificationParameters, parameterFile);
+
+            if (temp_searchGUI_output.exists()) {
+                temp_searchGUI_output.delete();
+            }
+            temp_searchGUI_output.mkdirs();
+
+            LOGGER.info("Starting SearchGUI...");
+            //use this variable if you'd run peptideshaker following this classs
+
+            parameters.put("output_folder", temp_searchGUI_output.getAbsolutePath());
+            //add callback notifier for more detailed printouts of the processing
+            CallbackNotifier callbackNotifier = getCallbackNotifier();
+            startProcess(getJar(), constructArguments());
+            //storing intermediate results
+            LOGGER.debug("Storing results in " + real_outputFolder);
+            real_outputFolder.mkdirs();
+            File outputFile = new File(real_outputFolder, "searchgui_out.zip");
+            File tempOutput = new File(temp_searchGUI_output, "searchgui_out.zip");
+            //copy as a stream?
+            if (!outputFile.exists()) {
+                outputFile.createNewFile();
+            }
+            try (FileChannel source = new FileInputStream(tempOutput).getChannel();
+                    FileChannel destination = new FileOutputStream(outputFile).getChannel()) {
+                destination.transferFrom(source, 0, source.size());
+            }
+            //  FileUtils.copyDirectory(temp_searchGUI_output, real_outputFolder);
+            //in case of future peptideShaker searches :
+            parameters.put("identification_files", temp_searchGUI_output.getAbsolutePath());
+            parameters.put("out", real_outputFolder.getAbsolutePath() + "/" + parameterFile.getName() + ".cps");
+            parameters.put("output_folder", real_outputFolder.getAbsolutePath());
+            return true;
+        } catch (IOException | ClassNotFoundException | XMLStreamException | URISyntaxException ex) {
+            throw new PladipusProcessingException(ex);
+        }
+    }
+
+    public File getJar() throws IOException, XMLStreamException, URISyntaxException, UnspecifiedPladipusException {
+        //check if this is possible in another way...
+        File toolFolder = new File(System.getProperties().getProperty("user.home") + "/pladipus/tools");
+        toolFolder.mkdirs();
+        //check if searchGUI already exists?
+        File temp = new File(toolFolder, "SearchGUI");
+        if (!temp.exists()) {
+            LOGGER.info("Downloading latest SearchGUI version...");
+            URL jarRepository = new URL("http", "genesis.ugent.be", new StringBuilder().append("/maven2/").toString());
+            downloadLatestZipFromRepo(temp, "SearchGUI", "eu.isas.searchgui", "SearchGUI", null, null, jarRepository, false, false, new HeadlessFileDAO(), new WaitingHandlerCLIImpl());
+        }
+        return JarLookupService.lookupFile("SearchGUI-.*.jar", temp);
+    }
+
+    public boolean aVersionExistsLocal() {
+        //TODO insert installer code here in case searchGUI was not included????
+        return true;
+    }
+
+    @Override
+    public String getDescription() {
+        return "Running SearchGUI";
+    }
+    
+        public static void main(String[] args) {
+        ProcessingStep.main(args);
+    }
+}

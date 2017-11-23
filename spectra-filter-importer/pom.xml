@@ -175,7 +175,7 @@
                     </excludes>
                     <!--<archive>-->
                         <!--<manifest>-->
-                            <!--<mainClass>uk.ac.ebi.pride.spectracluster.expArchiveExportereCLI</mainClass>-->
+                            <!--<mainClass>uk.ac.ebi.prclusterster.expArchiveExportereCLI</mainClass>-->
                             <!--<addClasspath>true</addClasspath>-->
                             <!--<classpathPrefix>lib</classpathPrefix>-->
                             <!--<useUniqueVersions>false</useUniqueVersions>-->
