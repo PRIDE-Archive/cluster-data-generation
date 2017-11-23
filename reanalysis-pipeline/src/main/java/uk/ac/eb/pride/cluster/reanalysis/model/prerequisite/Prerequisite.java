@@ -30,10 +30,7 @@ public class Prerequisite {
 
     }
 
-    /**
-     *
-     * @returns the prerequisiteparameters for this prerequisite
-     */
+
     public ArrayList<PrerequisiteParameter> getPrerequisiteList() {
         return prerequisiteList;
     }

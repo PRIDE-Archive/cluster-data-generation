@@ -8,8 +8,8 @@ import com.compomics.util.experiment.identification.identification_parameters.Se
 import com.compomics.util.preferences.IdentificationParameters;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.PladipusProcessingException;
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedPladipusException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.ProcessingException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedException;
 import uk.ac.eb.pride.cluster.reanalysis.model.processing.ProcessingStep;
 import uk.ac.eb.pride.cluster.reanalysis.util.PladipusFileDownloadingService;
 
@@ -41,7 +41,7 @@ public class WebServiceSearchSetupStep extends ProcessingStep {
     }
 
     @Override
-    public boolean doAction() throws PladipusProcessingException {
+    public boolean doAction() throws ProcessingException {
         if (!parameters.containsKey("skip_cleaning") && tempResources.exists()) {
             LOGGER.info("Cleaning up resources : ");
             for (File aFile : tempResources.listFiles()) {
@@ -53,7 +53,7 @@ public class WebServiceSearchSetupStep extends ProcessingStep {
                         try {
                             FileUtils.deleteDirectory(aFile);
                         } catch (IOException ex) {
-                            throw new PladipusProcessingException(ex);
+                            throw new ProcessingException(ex);
                         }
                     }
                 }
@@ -64,7 +64,7 @@ public class WebServiceSearchSetupStep extends ProcessingStep {
         try {
             initialiseInputFiles();
         } catch (Exception ex) {
-            throw new PladipusProcessingException(ex);
+            throw new ProcessingException(ex);
         }
         return true;
     }
@@ -160,7 +160,7 @@ public class WebServiceSearchSetupStep extends ProcessingStep {
         return "Initialisation of the search process";
     }
 
-    public IdentificationParameters updateAlgorithmSettings(SearchParameters searchParameters, File fasta) throws IOException, XMLStreamException, URISyntaxException, UnspecifiedPladipusException {
+    public IdentificationParameters updateAlgorithmSettings(SearchParameters searchParameters, File fasta) throws IOException, XMLStreamException, URISyntaxException, UnspecifiedException {
         System.out.println("Updating the algorithm settings and setting the fasta file...");
         searchParameters.setFastaFile(fasta);
         SpeciesFactory.getInstance().initiate(new SearchGUIStep().getJar().getParentFile().getAbsolutePath());

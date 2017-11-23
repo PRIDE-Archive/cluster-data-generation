@@ -7,9 +7,9 @@ package uk.ac.eb.pride.cluster.reanalysis.model.processing;
 
 import uk.ac.eb.pride.cluster.reanalysis.control.engine.ProcessingEngine;
 import uk.ac.eb.pride.cluster.reanalysis.control.engine.callback.CallbackNotifier;
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.PladipusProcessingException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.ProcessingException;
 import uk.ac.eb.pride.cluster.reanalysis.model.exception.ProcessStepInitialisationException;
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedPladipusException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedException;
 
 import java.io.File;
 import java.io.IOException;
@@ -131,7 +131,7 @@ public abstract class ProcessingStep implements ProcessingExecutable, AutoClosea
             }
             step.setParameters(parameters);
             step.doAction();
-        } catch (UnspecifiedPladipusException | PladipusProcessingException | ClassNotFoundException | ProcessStepInitialisationException | IOException ex) {
+        } catch (UnspecifiedException | ProcessingException | ClassNotFoundException | ProcessStepInitialisationException | IOException ex) {
             Logger.getLogger(ProcessingStep.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

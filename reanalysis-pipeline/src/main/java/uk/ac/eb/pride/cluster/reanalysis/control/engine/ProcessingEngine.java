@@ -7,7 +7,6 @@ import uk.ac.eb.pride.cluster.reanalysis.model.exception.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -156,7 +155,7 @@ public class ProcessingEngine implements Callable {
 //     * @return a boolean indicating wether the job was succesfull;
 //     * @throws Exception
 //     */
-//    public boolean runJob(ProcessingJob aJob) throws PladipusProcessingException {
+//    public boolean runJob(ProcessingJob aJob) throws ProcessingException {
 //        for (ProcessingStep aStep : aJob) {
 //            try {
 //                aStep.getCallbackNotifier().onNotification(aStep.getDescription(), false);
@@ -164,7 +163,7 @@ public class ProcessingEngine implements Callable {
 //                aStep.getCallbackNotifier().onNotification(aStep.getDescription(), true);
 //            } catch (Exception e) {
 //                //     e.printStackTrace();
-//                throw new PladipusProcessingException(e);
+//                throw new ProcessingException(e);
 //            }
 //        }
 //        LOGGER.info("Done !");
@@ -179,7 +178,7 @@ public class ProcessingEngine implements Callable {
 //     * @return a boolean indicating wether the job was succesfull;
 //     * @throws
 //       */
-//    public boolean runJob(ProcessingJob aJobMessage) throws PladipusProcessingException, ProcessStepInitialisationException, PladipusTrafficException, XMLInterpreterException {
+//    public boolean runJob(ProcessingJob aJobMessage) throws ProcessingException, ProcessStepInitialisationException, PladipusTrafficException, XMLInterpreterException {
 //        try {
 //            return runJob(XMLJobInterpreter.getInstance().convertXMLtoJob(aJobMessage));
 //        } catch (IOException | ParserConfigurationException | SAXException ex) {
@@ -190,12 +189,12 @@ public class ProcessingEngine implements Callable {
 //    }
 
     @Override
-    public Object call() throws UnspecifiedPladipusException {
+    public Object call() throws UnspecifiedException {
         try {
            // return runJob(currentMessage);
             return null;
         } catch (Throwable e) {
-            throw new UnspecifiedPladipusException(e);
+            throw new UnspecifiedException(e);
         }
     }
 

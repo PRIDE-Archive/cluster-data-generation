@@ -9,7 +9,6 @@ import org.apache.commons.cli.*;
 import org.apache.log4j.Logger;
 
 import java.io.File;
-import java.util.Arrays;
 
 /**
  *
@@ -34,7 +33,7 @@ public class CLIRunner {
             if (line.hasOption("fasta")) {
                 fasta = line.getOptionValue("fasta");
             } else {
-                LOGGER.error("Fasta is a mandatory parameter.");
+                LOGGER.error("Reanalysis Pipeline -- Fasta is a mandatory parameter. -- ");
                 isValidCLI = false;
             }
 

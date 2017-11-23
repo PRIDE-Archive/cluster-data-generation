@@ -3,7 +3,7 @@ package uk.ac.eb.pride.cluster.reanalysis.processsteps;
 
 
 import org.apache.commons.io.FileUtils;
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedPladipusException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedException;
 import uk.ac.eb.pride.cluster.reanalysis.model.processing.ProcessingStep;
 import uk.ac.eb.pride.cluster.reanalysis.util.PladipusFileDownloadingService;
 
@@ -26,7 +26,7 @@ public class DenovoGUISetupStep extends ProcessingStep {
     }
 
     @Override
-    public boolean doAction() throws UnspecifiedPladipusException {
+    public boolean doAction() throws UnspecifiedException {
         System.out.println("Running " + this.getClass().getName());
         try {
         if (tempResources.exists()) {
@@ -44,7 +44,7 @@ public class DenovoGUISetupStep extends ProcessingStep {
         }
         initialiseInputFiles();
     } catch (IOException e){
-           throw new UnspecifiedPladipusException(e);
+           throw new UnspecifiedException(e);
         }
         return true;
     }

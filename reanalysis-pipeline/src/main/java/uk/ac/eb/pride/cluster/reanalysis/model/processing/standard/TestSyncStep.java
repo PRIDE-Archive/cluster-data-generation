@@ -7,7 +7,7 @@ package uk.ac.eb.pride.cluster.reanalysis.model.processing.standard;
 
 
 import org.apache.log4j.Logger;
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.PladipusProcessingException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.ProcessingException;
 import uk.ac.eb.pride.cluster.reanalysis.model.processing.ProcessingStep;
 
 import java.text.DateFormat;
@@ -25,7 +25,7 @@ public class TestSyncStep extends ProcessingStep {
     private static final Logger LOGGER = Logger.getLogger(TestSyncStep.class);
 
     @Override
-    public boolean doAction() throws PladipusProcessingException {
+    public boolean doAction() throws ProcessingException {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Calendar cal = Calendar.getInstance();
         System.out.println("Instruction executred at " + dateFormat.format(cal.getTime()));

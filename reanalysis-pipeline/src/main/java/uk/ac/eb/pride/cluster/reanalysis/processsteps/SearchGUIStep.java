@@ -4,13 +4,12 @@ import com.compomics.software.autoupdater.HeadlessFileDAO;
 import com.compomics.util.experiment.identification.identification_parameters.SearchParameters;
 import com.compomics.util.gui.waiting.waitinghandlers.WaitingHandlerCLIImpl;
 import org.apache.log4j.Logger;
-import uk.ac.eb.pride.cluster.reanalysis.checkpoints.SearchGUICheckpoints;
 import uk.ac.eb.pride.cluster.reanalysis.control.engine.callback.CallbackNotifier;
 import uk.ac.eb.pride.cluster.reanalysis.control.runtime.diagnostics.memory.MemoryWarningSystem;
 import uk.ac.eb.pride.cluster.reanalysis.control.util.JarLookupService;
 import uk.ac.eb.pride.cluster.reanalysis.model.enums.AllowedSearchGUIParams;
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.PladipusProcessingException;
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedPladipusException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.ProcessingException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedException;
 import uk.ac.eb.pride.cluster.reanalysis.model.processing.ProcessingStep;
 
 import javax.xml.stream.XMLStreamException;
@@ -39,7 +38,7 @@ public class SearchGUIStep extends ProcessingStep {
 
     }
 
-    private List<String> constructArguments() throws IOException, XMLStreamException, URISyntaxException, UnspecifiedPladipusException {
+    private List<String> constructArguments() throws IOException, XMLStreamException, URISyntaxException, UnspecifiedException {
         File searchGuiJar = getJar();
         ArrayList<String> cmdArgs = new ArrayList<>();
         cmdArgs.add("java");
@@ -62,7 +61,7 @@ public class SearchGUIStep extends ProcessingStep {
     }
 
     @Override
-    public boolean doAction() throws PladipusProcessingException, UnspecifiedPladipusException {
+    public boolean doAction() throws ProcessingException, UnspecifiedException {
         try {
             File parameterFile = new File(parameters.get("id_params"));
             File fastaFile = new File(parameters.get("fasta_file"));
@@ -104,11 +103,11 @@ public class SearchGUIStep extends ProcessingStep {
             parameters.put("output_folder", real_outputFolder.getAbsolutePath());
             return true;
         } catch (IOException | ClassNotFoundException | XMLStreamException | URISyntaxException ex) {
-            throw new PladipusProcessingException(ex);
+            throw new ProcessingException(ex);
         }
     }
 
-    public File getJar() throws IOException, XMLStreamException, URISyntaxException, UnspecifiedPladipusException {
+    public File getJar() throws IOException, XMLStreamException, URISyntaxException, UnspecifiedException {
         //check if this is possible in another way...
         File toolFolder = new File(System.getProperties().getProperty("user.home") + "/pladipus/tools");
         toolFolder.mkdirs();

@@ -4,17 +4,17 @@ package uk.ac.eb.pride.cluster.reanalysis.model.exception;
  *
  * @author Kenneth Verheggen
  */
-public class UnspecifiedPladipusException extends Exception {
+public class UnspecifiedException extends Exception {
 
-    public UnspecifiedPladipusException(String msg) {
+    public UnspecifiedException(String msg) {
         super(msg);
     }
 
-    public UnspecifiedPladipusException(Exception e) {
+    public UnspecifiedException(Exception e) {
         super(e);
     }
 
-    public UnspecifiedPladipusException(Throwable e) {
+    public UnspecifiedException(Throwable e) {
         super(e);
     }
 

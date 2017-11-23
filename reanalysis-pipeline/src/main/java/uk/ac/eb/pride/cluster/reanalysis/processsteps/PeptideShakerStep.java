@@ -9,8 +9,8 @@ import uk.ac.eb.pride.cluster.reanalysis.control.runtime.diagnostics.memory.Memo
 import uk.ac.eb.pride.cluster.reanalysis.control.util.JarLookupService;
 import uk.ac.eb.pride.cluster.reanalysis.model.enums.AllowedPeptideShakerFollowUpParams;
 import uk.ac.eb.pride.cluster.reanalysis.model.enums.AllowedPeptideShakerParams;
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.PladipusProcessingException;
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedPladipusException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.ProcessingException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedException;
 import uk.ac.eb.pride.cluster.reanalysis.model.processing.ProcessingStep;
 
 import javax.xml.stream.XMLStreamException;
@@ -41,7 +41,7 @@ public class PeptideShakerStep extends ProcessingStep {
 
     }
 
-    private List<String> constructArguments() throws IOException, XMLStreamException, URISyntaxException, UnspecifiedPladipusException {
+    private List<String> constructArguments() throws IOException, XMLStreamException, URISyntaxException, UnspecifiedException {
         File peptideShakerJar = getJar();
         ArrayList<String> cmdArgs = new ArrayList<>();
         cmdArgs.add("java");
@@ -99,7 +99,7 @@ public class PeptideShakerStep extends ProcessingStep {
     }
 
     @Override
-    public boolean doAction() throws PladipusProcessingException, UnspecifiedPladipusException {
+    public boolean doAction() throws ProcessingException, UnspecifiedException {
         try {
             LOGGER.info("Running Peptide Shaker");
             File peptideShakerJar = getJar();
@@ -153,10 +153,10 @@ public class PeptideShakerStep extends ProcessingStep {
             }
             return true;
         } catch (IOException | XMLStreamException | URISyntaxException ex) {
-            throw new PladipusProcessingException(ex);
+            throw new ProcessingException(ex);
         } catch (Exception ex) {
 
-            throw new UnspecifiedPladipusException(ex);
+            throw new UnspecifiedException(ex);
         }
     }
 
@@ -170,7 +170,7 @@ public class PeptideShakerStep extends ProcessingStep {
         }
     }
 
-    public File getJar() throws IOException, XMLStreamException, URISyntaxException, UnspecifiedPladipusException {
+    public File getJar() throws IOException, XMLStreamException, URISyntaxException, UnspecifiedException {
         File temp = new File(parameters.getOrDefault("ps_folder", System.getProperty("user.home") + "/pladipus/tools/PeptideShaker"));
         if (!temp.exists()) {
             LOGGER.info("Downloading latest PeptideShaker version...");

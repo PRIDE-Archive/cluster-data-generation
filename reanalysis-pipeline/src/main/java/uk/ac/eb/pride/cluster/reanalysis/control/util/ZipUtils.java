@@ -3,7 +3,7 @@ package uk.ac.eb.pride.cluster.reanalysis.control.util;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedPladipusException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedException;
 
 import java.io.*;
 import java.util.Enumeration;
@@ -108,7 +108,7 @@ public class ZipUtils {
     /**
      * Zips an entire folder in one go
      */
-    static public void zipFolder(File inputFolder, File zipFile) throws UnspecifiedPladipusException, IOException {
+    static public void zipFolder(File inputFolder, File zipFile) throws UnspecifiedException, IOException {
         if (zipFile.exists()) {
             zipFile.delete();
         }
@@ -121,7 +121,7 @@ public class ZipUtils {
     }
 
     static private void addFileToZip(String path, String srcFile, ZipOutputStream zip)
-            throws UnspecifiedPladipusException, FileNotFoundException, IOException {
+            throws UnspecifiedException, FileNotFoundException, IOException {
         File folder = new File(srcFile);
         if (folder.isDirectory()) {
             addFolderToZip(path, srcFile, zip);
@@ -137,7 +137,7 @@ public class ZipUtils {
     }
 
     static private void addFolderToZip(String path, String srcFolder, ZipOutputStream zip)
-            throws UnspecifiedPladipusException, IOException {
+            throws UnspecifiedException, IOException {
         File folder = new File(srcFolder);
 
         for (String fileName : folder.list()) {

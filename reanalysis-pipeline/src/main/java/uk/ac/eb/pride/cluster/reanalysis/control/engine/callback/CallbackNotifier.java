@@ -4,7 +4,6 @@ import org.apache.log4j.Logger;
 import uk.ac.eb.pride.cluster.reanalysis.model.feedback.Checkpoint;
 
 
-import java.sql.SQLException;
 import java.util.Collection;
 import java.util.HashSet;
 

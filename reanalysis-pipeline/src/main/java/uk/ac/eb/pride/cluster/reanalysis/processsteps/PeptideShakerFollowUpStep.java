@@ -6,8 +6,8 @@ import uk.ac.eb.pride.cluster.reanalysis.checkpoints.PeptideShakerReportCheckPoi
 import uk.ac.eb.pride.cluster.reanalysis.control.engine.callback.CallbackNotifier;
 import uk.ac.eb.pride.cluster.reanalysis.control.util.ZipUtils;
 import uk.ac.eb.pride.cluster.reanalysis.model.enums.AllowedPeptideShakerFollowUpParams;
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.PladipusProcessingException;
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedPladipusException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.ProcessingException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedException;
 import uk.ac.eb.pride.cluster.reanalysis.model.feedback.Checkpoint;
 
 import javax.xml.stream.XMLStreamException;
@@ -33,7 +33,7 @@ public class PeptideShakerFollowUpStep extends PeptideShakerStep {
 
     }
 
-    private List<String> constructArguments() throws IOException, XMLStreamException, URISyntaxException, UnspecifiedPladipusException {
+    private List<String> constructArguments() throws IOException, XMLStreamException, URISyntaxException, UnspecifiedException {
         if (temp_peptideshaker_output.exists()) {
             FileUtils.deleteDirectory(temp_peptideshaker_output);
         }
@@ -58,7 +58,7 @@ public class PeptideShakerFollowUpStep extends PeptideShakerStep {
     }
 
     @Override
-    public boolean doAction() throws PladipusProcessingException, UnspecifiedPladipusException {
+    public boolean doAction() throws ProcessingException, UnspecifiedException {
         try {
             List<String> constructArguments = constructArguments();
             File peptideShakerJar = getJar();
@@ -72,7 +72,7 @@ public class PeptideShakerFollowUpStep extends PeptideShakerStep {
             cleanupAndSave();
             return true;
         } catch (IOException | XMLStreamException | URISyntaxException ex) {
-            throw new PladipusProcessingException(ex);
+            throw new ProcessingException(ex);
         }
     }
 

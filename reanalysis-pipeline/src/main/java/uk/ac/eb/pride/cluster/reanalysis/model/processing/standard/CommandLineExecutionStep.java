@@ -2,7 +2,7 @@ package uk.ac.eb.pride.cluster.reanalysis.model.processing.standard;
 
 
 import org.apache.log4j.Logger;
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.PladipusProcessingException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.ProcessingException;
 import uk.ac.eb.pride.cluster.reanalysis.model.processing.ProcessingStep;
 
 import java.io.File;
@@ -23,7 +23,7 @@ public class CommandLineExecutionStep extends ProcessingStep {
     private String[] args;
 
     @Override
-    public boolean doAction() throws PladipusProcessingException {
+    public boolean doAction() throws ProcessingException {
         String executable = System.getProperty("user.home");
         if (parameters != null) {
             executable = parameters.getOrDefault("executable", executable);

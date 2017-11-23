@@ -53,16 +53,13 @@ public class MemoryWarningSystem {
         MemoryWarningSystem.setPercentageUsageThreshold(usageThreshold);
         MemoryMXBean mbean = ManagementFactory.getMemoryMXBean();
         NotificationEmitter emitter = (NotificationEmitter) mbean;
-        emitter.addNotificationListener(new NotificationListener() {
-            @Override
-            public void handleNotification(Notification n, Object hb) {
-                if (n.getType().equals(
-                        MemoryNotificationInfo.MEMORY_THRESHOLD_EXCEEDED)) {
-                    long maxMemory = tenuredGenPool.getUsage().getMax();
-                    long usedMemory = tenuredGenPool.getUsage().getUsed();
-                    for (MemoryListener listener : listeners) {
-                        listener.checkMemoryUsage(usedMemory, maxMemory);
-                    }
+        emitter.addNotificationListener((n, hb) -> {
+            if (n.getType().equals(
+                    MemoryNotificationInfo.MEMORY_THRESHOLD_EXCEEDED)) {
+                long maxMemory = tenuredGenPool.getUsage().getMax();
+                long usedMemory = tenuredGenPool.getUsage().getUsed();
+                for (MemoryListener listener : listeners) {
+                    listener.checkMemoryUsage(usedMemory, maxMemory);
                 }
             }
         }, null, null);

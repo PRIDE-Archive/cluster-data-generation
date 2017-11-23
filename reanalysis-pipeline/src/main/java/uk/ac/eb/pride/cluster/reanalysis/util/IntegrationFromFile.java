@@ -9,8 +9,8 @@ package uk.ac.eb.pride.cluster.reanalysis.util;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import uk.ac.eb.pride.cluster.reanalysis.control.util.ZipUtils;
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.PladipusProcessingException;
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedPladipusException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.ProcessingException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedException;
 import uk.ac.eb.pride.cluster.reanalysis.processsteps.PeptideShakerStep;
 import uk.ac.eb.pride.cluster.reanalysis.processsteps.SearchGUIStep;
 import uk.ac.eb.pride.cluster.reanalysis.processsteps.SearchSetupStep;
@@ -75,7 +75,7 @@ public class IntegrationFromFile {
             }
             //do the steps in tandem?
 
-        } catch (PladipusProcessingException | UnspecifiedPladipusException ex) {
+        } catch (ProcessingException | UnspecifiedException ex) {
             ex.printStackTrace();
         } finally {
 
@@ -91,7 +91,7 @@ public class IntegrationFromFile {
                     if (zippedFolder.exists()) {
                         FileUtils.deleteQuietly(reportFolder);
                     }
-                } catch (UnspecifiedPladipusException | IOException ex) {
+                } catch (UnspecifiedException | IOException ex) {
                     LOGGER.error(ex);
                 }
             }

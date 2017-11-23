@@ -4,8 +4,8 @@ package uk.ac.eb.pride.cluster.reanalysis.processsteps;
 import uk.ac.eb.pride.cluster.reanalysis.checkpoints.PeptideShakerReportCheckPoints;
 import uk.ac.eb.pride.cluster.reanalysis.control.engine.callback.CallbackNotifier;
 import uk.ac.eb.pride.cluster.reanalysis.model.enums.AllowedPeptideShakerReportParams;
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.PladipusProcessingException;
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedPladipusException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.ProcessingException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedException;
 import uk.ac.eb.pride.cluster.reanalysis.model.feedback.Checkpoint;
 
 import javax.xml.stream.XMLStreamException;
@@ -25,7 +25,7 @@ public class PeptideShakerReportStep extends PeptideShakerStep {
 
     }
 
-    private List<String> constructArguments() throws IOException, XMLStreamException, URISyntaxException, UnspecifiedPladipusException {
+    private List<String> constructArguments() throws IOException, XMLStreamException, URISyntaxException, UnspecifiedException {
         File peptideShakerJar = getJar();
 
         ArrayList<String> cmdArgs = new ArrayList<>();
@@ -52,7 +52,7 @@ public class PeptideShakerReportStep extends PeptideShakerStep {
     }
 
     @Override
-    public boolean doAction() throws PladipusProcessingException, UnspecifiedPladipusException {
+    public boolean doAction() throws ProcessingException, UnspecifiedException {
         try {
             List<String> constructArguments = constructArguments();
             File peptideShakerJar = getJar();
@@ -64,7 +64,7 @@ public class PeptideShakerReportStep extends PeptideShakerStep {
             startProcess(peptideShakerJar, constructArguments);
             return true;
         } catch (IOException | XMLStreamException | URISyntaxException ex) {
-            throw new PladipusProcessingException(ex);
+            throw new ProcessingException(ex);
         }
     }
 

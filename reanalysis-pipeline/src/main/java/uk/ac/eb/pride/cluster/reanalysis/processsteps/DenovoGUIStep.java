@@ -8,8 +8,8 @@ import uk.ac.eb.pride.cluster.reanalysis.control.engine.ProcessingEngine;
 import uk.ac.eb.pride.cluster.reanalysis.control.util.JarLookupService;
 import uk.ac.eb.pride.cluster.reanalysis.control.util.ZipUtils;
 import uk.ac.eb.pride.cluster.reanalysis.model.enums.AllowedDenovoGUIParams;
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.PladipusProcessingException;
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedPladipusException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.ProcessingException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedException;
 import uk.ac.eb.pride.cluster.reanalysis.model.processing.ProcessingStep;
 import uk.ac.eb.pride.cluster.reanalysis.util.PladipusFileDownloadingService;
 
@@ -31,7 +31,7 @@ public class DenovoGUIStep extends ProcessingStep {
 
     }
 
-    private List<String> constructArguments() throws IOException, UnspecifiedPladipusException {
+    private List<String> constructArguments() throws IOException, UnspecifiedException {
         File deNovoGUIJar = getJar();
         ArrayList<String> cmdArgs = new ArrayList<>();
         cmdArgs.add("java");
@@ -50,7 +50,7 @@ public class DenovoGUIStep extends ProcessingStep {
     }
 
     @Override
-    public boolean doAction() throws UnspecifiedPladipusException,PladipusProcessingException {
+    public boolean doAction() throws UnspecifiedException,ProcessingException {
         LOGGER.info("Running " + this.getClass().getName());
         File parameterFile = new File(parameters.get("id_params"));
         LOGGER.info("Updating parameters...");
@@ -74,14 +74,14 @@ public class DenovoGUIStep extends ProcessingStep {
             //in case of future peptideShaker searches :
             parameters.put("identification_files", temp_deNovoGUI_output.getAbsolutePath());
         } catch (IOException|ClassNotFoundException ioe){
-            UnspecifiedPladipusException ex = new UnspecifiedPladipusException("sumting went rong");
+            UnspecifiedException ex = new UnspecifiedException("sumting went rong");
             ex.addSuppressed(ioe);
             throw ex;
         }
         return true;
     }
 
-    public File getJar() throws IOException,UnspecifiedPladipusException {
+    public File getJar() throws IOException,UnspecifiedException {
         //check if this is possible in another way...
         File toolFolder = new File(System.getProperties().getProperty("user.home") + "/.compomics/pladipus/tools");
         toolFolder.mkdirs();

@@ -1,6 +1,6 @@
 package uk.ac.eb.pride.cluster.reanalysis.util;
 
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.PladipusProcessingException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.ProcessingException;
 import uk.ac.eb.pride.cluster.reanalysis.processsteps.MultipleWebServiceSearchStep;
 
 import java.util.HashMap;
@@ -22,7 +22,7 @@ public class MultipleFastaSearchRunner {
 
     public static String assay = "3";
 
-    public static void main(String[] args) throws PladipusProcessingException {
+    public static void main(String[] args) throws ProcessingException {
         MultipleWebServiceSearchStep.SaveOnGoogleDrive=true;
         HashMap<String, String> parameters = SearchProperties.getInstance().getParameters();
         parameters.put("output_folder", output_folder);

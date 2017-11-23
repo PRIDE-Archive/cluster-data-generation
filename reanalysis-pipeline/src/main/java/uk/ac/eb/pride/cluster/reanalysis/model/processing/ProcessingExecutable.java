@@ -1,7 +1,7 @@
 package uk.ac.eb.pride.cluster.reanalysis.model.processing;
 
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.PladipusProcessingException;
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedPladipusException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.ProcessingException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedException;
 
 import java.util.HashMap;
 
@@ -12,7 +12,7 @@ public interface ProcessingExecutable {
      *
      * @return a boolean to indicate if the process finished correctly
     */
-    boolean doAction() throws UnspecifiedPladipusException,PladipusProcessingException;
+    boolean doAction() throws UnspecifiedException,ProcessingException;
 
     /**
      *

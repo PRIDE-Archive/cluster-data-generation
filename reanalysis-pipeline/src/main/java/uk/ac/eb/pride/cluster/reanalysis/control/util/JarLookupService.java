@@ -6,7 +6,7 @@
 package uk.ac.eb.pride.cluster.reanalysis.control.util;
 
 import org.apache.commons.io.FileUtils;
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedPladipusException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedException;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -25,9 +25,9 @@ public class JarLookupService {
      * @param regex the regex to match the file
      * @param searchRoot the root directory to start te search
      * @return a file matching the regex
-     * @throws UnspecifiedPladipusException
+     * @throws UnspecifiedException
      */
-    public static File lookupFile(String regex, File searchRoot) throws UnspecifiedPladipusException {
+    public static File lookupFile(String regex, File searchRoot) throws UnspecifiedException {
         if (!searchRoot.isDirectory()) {
             throw new IllegalArgumentException(searchRoot + " is no directory.");
         }
@@ -41,9 +41,9 @@ public class JarLookupService {
             }
         }
         if (matchingFiles.size() > 1) {
-            throw new UnspecifiedPladipusException("There are multiple file candidates (" + matchingFiles.size() + "), please ensure only a single version is present and try again");
+            throw new UnspecifiedException("There are multiple file candidates (" + matchingFiles.size() + "), please ensure only a single version is present and try again");
         } else if (matchingFiles.isEmpty()) {
-            throw new UnspecifiedPladipusException("There are no matching files present");
+            throw new UnspecifiedException("There are no matching files present");
         }
         return matchingFiles.get(0);
     }

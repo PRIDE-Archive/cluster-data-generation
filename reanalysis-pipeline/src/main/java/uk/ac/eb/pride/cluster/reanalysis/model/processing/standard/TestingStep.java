@@ -2,7 +2,7 @@ package uk.ac.eb.pride.cluster.reanalysis.model.processing.standard;
 
 
 import org.apache.log4j.Logger;
-import uk.ac.eb.pride.cluster.reanalysis.model.exception.PladipusProcessingException;
+import uk.ac.eb.pride.cluster.reanalysis.model.exception.ProcessingException;
 import uk.ac.eb.pride.cluster.reanalysis.model.processing.ProcessingStep;
 
 /**
@@ -17,7 +17,7 @@ public class TestingStep extends ProcessingStep {
     private static final Logger LOGGER = Logger.getLogger(TestingStep.class);
 
     @Override
-    public boolean doAction() throws PladipusProcessingException {
+    public boolean doAction() throws ProcessingException {
         System.out.println("EXECUTING DUMMY STEP " + System.currentTimeMillis());
         return true;
     }
