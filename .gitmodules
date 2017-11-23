@@ -5,3 +5,6 @@
 	path = pride-asa-pipeline
 	url = https://github.com/PRIDE-Toolsuite/pride-asa-pipeline.git
 	branch = PRIDE_reprocessing
+[submodule "searchgui"]
+	path = searchgui
+	url = git@github.com:PRIDE-Toolsuite/searchgui.git
