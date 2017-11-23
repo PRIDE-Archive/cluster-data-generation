@@ -103,7 +103,7 @@ public class ArchiveExtractParameterTool {
                                 String fileName = resolveOutputPath(outputFolder, file.getAssayAccession(), inputProjectFolder);
 
                                 try{
-                                    PrideMzIDParameterExtractor extractor = new PrideMzIDParameterExtractor(inputFile, peakFiles, fileName, false, false);
+                                    PrideMzIDParameterExtractor extractor = new PrideMzIDParameterExtractor(inputFile, assayNumber, peakFiles, fileName, false, false);
                                     extractor.analyze();
                                 }catch (Exception e){
                                     LOGGER.error("Error in File -- " + inputFile + " -- Message Error -- " + e.getMessage());
