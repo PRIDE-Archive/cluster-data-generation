@@ -41,7 +41,7 @@ public class ArchiveExtractParameterTool {
         // create Options object
         Options options = initOptions();
         //parse the command
-        CommandLineParser parser = new BasicParser();
+        CommandLineParser parser = new DefaultParser();
 
         try{
             CommandLine cmd = parser.parse(options, args);

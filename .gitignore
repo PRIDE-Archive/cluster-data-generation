@@ -1,4 +1,7 @@
 *.iml
 .idea/*
-
+*.out
+*.idea/
+*target/*
 target/*
+*.class
