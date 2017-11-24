@@ -2,16 +2,19 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package uk.ac.eb.pride.cluster.reanalysis.control.runtime.diagnostics.memory;
+package uk.ac.eb.pride.cluster.reanalysis.control.memory;
 
-import org.apache.log4j.Logger;
-
+import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryMXBean;
+import java.lang.management.MemoryNotificationInfo;
+import java.lang.management.MemoryPoolMXBean;
+import java.lang.management.MemoryType;
+import java.util.ArrayList;
+import java.util.Collection;
 import javax.management.Notification;
 import javax.management.NotificationEmitter;
 import javax.management.NotificationListener;
-import java.lang.management.*;
-import java.util.ArrayList;
-import java.util.Collection;
+import org.apache.log4j.Logger;
 
 /**
  * This memory warning system will call the listener when we exceed the
@@ -53,13 +56,16 @@ public class MemoryWarningSystem {
         MemoryWarningSystem.setPercentageUsageThreshold(usageThreshold);
         MemoryMXBean mbean = ManagementFactory.getMemoryMXBean();
         NotificationEmitter emitter = (NotificationEmitter) mbean;
-        emitter.addNotificationListener((n, hb) -> {
-            if (n.getType().equals(
-                    MemoryNotificationInfo.MEMORY_THRESHOLD_EXCEEDED)) {
-                long maxMemory = tenuredGenPool.getUsage().getMax();
-                long usedMemory = tenuredGenPool.getUsage().getUsed();
-                for (MemoryListener listener : listeners) {
-                    listener.checkMemoryUsage(usedMemory, maxMemory);
+        emitter.addNotificationListener(new NotificationListener() {
+            @Override
+            public void handleNotification(Notification n, Object hb) {
+                if (n.getType().equals(
+                        MemoryNotificationInfo.MEMORY_THRESHOLD_EXCEEDED)) {
+                    long maxMemory = tenuredGenPool.getUsage().getMax();
+                    long usedMemory = tenuredGenPool.getUsage().getUsed();
+                    for (MemoryListener listener : listeners) {
+                        listener.checkMemoryUsage(usedMemory, maxMemory);
+                    }
                 }
             }
         }, null, null);

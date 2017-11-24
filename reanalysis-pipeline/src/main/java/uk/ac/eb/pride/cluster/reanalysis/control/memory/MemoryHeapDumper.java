@@ -1,10 +1,9 @@
-package uk.ac.eb.pride.cluster.reanalysis.control.runtime.diagnostics.memory;
+package uk.ac.eb.pride.cluster.reanalysis.control.memory;
 
 import com.sun.management.HotSpotDiagnosticMXBean;
-
-import javax.management.MBeanServer;
 import java.io.File;
 import java.lang.management.ManagementFactory;
+import javax.management.MBeanServer;
 
 public class MemoryHeapDumper {
 

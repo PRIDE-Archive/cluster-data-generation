@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uk.ac.eb.pride.cluster.reanalysis.control.runtime.diagnostics.memory;
+package uk.ac.eb.pride.cluster.reanalysis.control.memory;
 
 /**
  *

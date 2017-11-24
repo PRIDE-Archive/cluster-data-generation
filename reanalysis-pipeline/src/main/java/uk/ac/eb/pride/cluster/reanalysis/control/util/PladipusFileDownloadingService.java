@@ -1,4 +1,4 @@
-package uk.ac.eb.pride.cluster.reanalysis.util;
+package uk.ac.eb.pride.cluster.reanalysis.control.util;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;

@@ -11,6 +11,8 @@ public interface ProcessingExecutable {
      * Executes the executable
      *
      * @return a boolean to indicate if the process finished correctly
+     * @throws uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedException
+     * @throws uk.ac.eb.pride.cluster.reanalysis.model.exception.ProcessingException
     */
     boolean doAction() throws UnspecifiedException,ProcessingException;
 
