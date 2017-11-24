@@ -8,7 +8,7 @@ package uk.ac.eb.pride.cluster.reanalysis.model.enums;
  */
 public enum AllowedPeptideShakerFollowUpParams {
 
-CPS_FILE("in", "PeptideShaker project (.cpsx or .zip file)", true),
+    CPS_FILE("in", "PeptideShaker project (.cpsx or .zip file)", true),
     RECALIBRATION_FOLDER("recalibration_folder", "Output folder for the recalibrated files. (Existing files will be overwritten.)", false),
     RECALIBRATION_MODE("recalibration_mode", "Recalibration type. 0: precursor and fragment ions (default), 1: precursor only, 2: fragment ions only.", false),
     SPECTRUM_FOLDER("spectrum_folder", "Output folder for the spectra. (Existing files will be overwritten.)", false),

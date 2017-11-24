@@ -1,11 +1,9 @@
-package uk.ac.eb.pride.cluster.reanalysis.processsteps;
+package uk.ac.eb.pride.cluster.reanalysis.model.processing.processsteps;
 
 import com.compomics.software.autoupdater.HeadlessFileDAO;
 import com.compomics.util.gui.waiting.waitinghandlers.WaitingHandlerCLIImpl;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
-import uk.ac.eb.pride.cluster.reanalysis.control.engine.callback.CallbackNotifier;
-import uk.ac.eb.pride.cluster.reanalysis.control.runtime.diagnostics.memory.MemoryWarningSystem;
 import uk.ac.eb.pride.cluster.reanalysis.control.util.JarLookupService;
 import uk.ac.eb.pride.cluster.reanalysis.model.enums.AllowedPeptideShakerFollowUpParams;
 import uk.ac.eb.pride.cluster.reanalysis.model.enums.AllowedPeptideShakerParams;
@@ -15,16 +13,16 @@ import uk.ac.eb.pride.cluster.reanalysis.model.processing.ProcessingStep;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.List;
 
+import uk.ac.eb.pride.cluster.reanalysis.control.memory.MemoryWarningSystem;
+import uk.ac.eb.pride.cluster.reanalysis.control.util.Utilities;
 import static com.compomics.software.autoupdater.DownloadLatestZipFromRepo.downloadLatestZipFromRepo;
+import uk.ac.eb.pride.cluster.reanalysis.model.GlobalProcessingProperties;
 
 /**
  *
@@ -32,9 +30,8 @@ import static com.compomics.software.autoupdater.DownloadLatestZipFromRepo.downl
  */
 public class PeptideShakerStep extends ProcessingStep {
 
-    private static final File temp_peptideshaker_output = new File(System.getProperty("user.home") + "/pladipus/temp/search/PeptideShaker");
-
     private static final Logger LOGGER = Logger.getLogger(PeptideShakerStep.class);
+    
     private File temp_peptideshaker_cps;
 
     public PeptideShakerStep() {
@@ -102,23 +99,12 @@ public class PeptideShakerStep extends ProcessingStep {
     public boolean doAction() throws ProcessingException, UnspecifiedException {
         try {
             LOGGER.info("Running Peptide Shaker");
+            //aqcuire the peptide shaker jar
             File peptideShakerJar = getJar();
+            //temporary store the end output location
             File realOutput = new File(parameters.get("output_folder"));
-            File temporaryOutput = new File(temp_peptideshaker_output, realOutput.getName());
-            if (temp_peptideshaker_output.exists()) {
-                for (File aFile : temp_peptideshaker_output.listFiles()) {
-                    try {
-                        if (!aFile.isDirectory()) {
-                            aFile.delete();
-                        } else {
-                            FileUtils.deleteDirectory(aFile);
-                        }
-                    } catch (Exception e) {
-                        LOGGER.warn(e);
-                    }
-                }
-            }
-            temporaryOutput.mkdirs();
+            //check if we are not missing any 
+            cleanUp();
             String experiment = "output";
 
             if (parameters.containsKey("experiment")) {
@@ -135,59 +121,61 @@ public class PeptideShakerStep extends ProcessingStep {
                 replicate = parameters.get("replicate");
             }
 
-            //non sensical
+            File temporaryOutput = new File(GlobalProcessingProperties.TEMP_FOLDER_PEPTIDESHAKER, realOutput.getName());
+            temporaryOutput.mkdirs();
             if (parameters.containsKey("output_folder")) {
-                temp_peptideshaker_cps = new File(temp_peptideshaker_output.getAbsolutePath() + "/" + experiment + "_" + sample + "_" + replicate + ".cpsx");
+                temp_peptideshaker_cps = new File(temporaryOutput, experiment + "_" + sample + "_" + replicate + ".cpsx");
                 parameters.put("out", temp_peptideshaker_cps.getAbsolutePath());
             }
-
+            //generate parameters
             List<String> constructArguments = constructArguments();
-            //add callback notifier for more detailed printouts of the processing
-            CallbackNotifier callbackNotifier = getCallbackNotifier();
+            //start processing with peptideshaker
             startProcess(peptideShakerJar, constructArguments);
 
-            //copy the cps file if done?
+            
+            //if it is required, move the cps file to the "real" output folder
             if (parameters.containsKey("save_cps")) {
-
-                copyFile(temp_peptideshaker_cps, new File(realOutput, temp_peptideshaker_cps.getName()));
+                Utilities.copyFile(temp_peptideshaker_cps, new File(realOutput, temp_peptideshaker_cps.getName()));
             }
+            //delete the local temporary output
+            FileUtils.deleteDirectory(temporaryOutput);
             return true;
         } catch (IOException | XMLStreamException | URISyntaxException ex) {
             throw new ProcessingException(ex);
         } catch (Exception ex) {
-
             throw new UnspecifiedException(ex);
         }
     }
 
-    private static void copyFile(File source, File dest) throws IOException {
-        try (FileChannel sourceChannel = new FileInputStream(source).getChannel();
-                FileChannel destChannel = new FileOutputStream(dest).getChannel();) {
-            LOGGER.info("Storing " + source.getName() + " to " + dest.getAbsolutePath());
-            destChannel.transferFrom(sourceChannel, 0, sourceChannel.size());
-        } catch (IOException e) {
-            LOGGER.error(e);
-        }
-    }
-
     public File getJar() throws IOException, XMLStreamException, URISyntaxException, UnspecifiedException {
-        File temp = new File(parameters.getOrDefault("ps_folder", System.getProperty("user.home") + "/pladipus/tools/PeptideShaker"));
-        if (!temp.exists()) {
+        File peptideShakerToolFolder = GlobalProcessingProperties.TOOL_FOLDER_PEPTIDESHAKER;
+        if (!peptideShakerToolFolder.exists()) {
             LOGGER.info("Downloading latest PeptideShaker version...");
             URL jarRepository = new URL("http", "genesis.ugent.be", new StringBuilder().append("/maven2/").toString());
-            downloadLatestZipFromRepo(temp, "PeptideShaker", "eu.isas.peptideshaker", "PeptideShaker", null, null, jarRepository, false, false, new HeadlessFileDAO(), new WaitingHandlerCLIImpl());
+            downloadLatestZipFromRepo(peptideShakerToolFolder, "PeptideShaker", "eu.isas.peptideshaker", "PeptideShaker", null, null, jarRepository, false, false, new HeadlessFileDAO(), new WaitingHandlerCLIImpl());
         }
-        return JarLookupService.lookupFile("PeptideShaker-.*.jar", temp);
-    }
-
-    public boolean aVersionExistsLocal() {
-        //TODO insert installer code here in case PeptideShaker was not included????
-        return true;
+        return JarLookupService.lookupFile("PeptideShaker-.*.jar", peptideShakerToolFolder);
     }
 
     @Override
     public String getDescription() {
         return "Running PeptideShaker";
+    }
+
+    void cleanUp() {
+        if (GlobalProcessingProperties.TEMP_FOLDER_PEPTIDESHAKER.exists()) {
+            for (File aFile : GlobalProcessingProperties.TEMP_FOLDER_PEPTIDESHAKER.listFiles()) {
+                try {
+                    if (!aFile.isDirectory()) {
+                        aFile.delete();
+                    } else {
+                        FileUtils.deleteDirectory(aFile);
+                    }
+                } catch (Exception e) {
+                    LOGGER.warn(e);
+                }
+            }
+        }
     }
 
     public static void main(String[] args) {

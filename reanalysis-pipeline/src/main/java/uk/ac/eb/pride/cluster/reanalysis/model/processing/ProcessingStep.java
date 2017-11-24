@@ -5,8 +5,6 @@
  */
 package uk.ac.eb.pride.cluster.reanalysis.model.processing;
 
-import uk.ac.eb.pride.cluster.reanalysis.control.engine.ProcessingEngine;
-import uk.ac.eb.pride.cluster.reanalysis.control.engine.callback.CallbackNotifier;
 import uk.ac.eb.pride.cluster.reanalysis.model.exception.ProcessingException;
 import uk.ac.eb.pride.cluster.reanalysis.model.exception.ProcessStepInitialisationException;
 import uk.ac.eb.pride.cluster.reanalysis.model.exception.UnspecifiedException;
@@ -38,17 +36,9 @@ public abstract class ProcessingStep implements ProcessingExecutable, AutoClosea
      */
     private int processingID = -1;
     /**
-     * a notifier for the process proceedings
-     */
-    private CallbackNotifier callbackNotifier;
-    /**
      * a boolean indicating whether the step has finished
      */
     protected boolean isDone = false;
-    /**
-     * The processing engine for subprocesses
-     */
-    private ProcessingEngine processingEngine;
 
     public ProcessingStep() {
 
@@ -77,26 +67,19 @@ public abstract class ProcessingStep implements ProcessingExecutable, AutoClosea
 
     public void setProcessingID(int processingID) {
         this.processingID = processingID;
-        this.callbackNotifier = new CallbackNotifier(processingID);
     }
 
-    public CallbackNotifier getCallbackNotifier() {
-        if (callbackNotifier == null) {
-            callbackNotifier = new CallbackNotifier();
-        }
-        return callbackNotifier;
-    }
+    public void startProcess(File executable, List<String> constructArguments) throws IOException {
+        StringBuilder cmdBuilder = new StringBuilder();
+        for(String arg:constructArguments){
+            cmdBuilder.append(arg).append(" ");
+        }       
+        ProcessBuilder pb = new ProcessBuilder(cmdBuilder.substring(0, cmdBuilder.length()-1))
+                .inheritIO()
+                .directory(executable.getParentFile());
+        pb.start();
 
-    public void startProcess(File executable, List<String> constructArguments) {
-        processingEngine = new ProcessingEngine();
-        processingEngine.startProcess(executable, constructArguments, getCallbackNotifier());
     }
-
-    public void startProcess(File executable, String[] constructArguments) {
-        processingEngine = new ProcessingEngine();
-        processingEngine.startProcess(executable, constructArguments, getCallbackNotifier());
-    }
-
 
     @Override
     public void close() {
