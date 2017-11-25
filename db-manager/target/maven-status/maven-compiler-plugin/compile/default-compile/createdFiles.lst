@@ -1,0 +1,4 @@
+uk/ac/ebi/pride/cluster/dbmanager/uniprot/UniProtDownloadHelper.class
+uk/ac/ebi/pride/cluster/dbmanager/utils/ProgressBarConsole.class
+uk/ac/ebi/pride/cluster/dbmanager/IDatabaseDownload.class
+uk/ac/ebi/pride/cluster/dbmanager/utils/DBManagerUtilities.class

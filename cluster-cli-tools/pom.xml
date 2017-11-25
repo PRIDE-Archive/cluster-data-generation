@@ -18,6 +18,7 @@
         <parameters-extractor.version>0.0.1-SNAPSHOT</parameters-extractor.version>
         <submission-core.px.version>2.0.18</submission-core.px.version>
         <common-math.version>2.2</common-math.version>
+        <web-service-model.version>0.2.13</web-service-model.version>
         <java.version>1.8</java.version>
     </properties>
 
@@ -66,7 +67,7 @@
         <dependency>
             <groupId>uk.ac.ebi.pride.archive</groupId>
             <artifactId>web-service-model</artifactId>
-            <version>0.2.12</version>
+            <version>${web-service-model.version}</version>
         </dependency>
 
 

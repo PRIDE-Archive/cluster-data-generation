@@ -15,7 +15,13 @@
         <module>spectra-filter-importer</module>
         <module>cluster-cli-tools</module>
         <module>reanalysis-pipeline</module>
+        <module>db-manager</module>
     </modules>
+
+
+    <build>
+
+    </build>
 
 
 </project>
