@@ -64,5 +64,15 @@ public class UniProtProteomesDownloadHelper implements IDatabaseDownload{
     @Override
     public void download(File pathFile, String taxonomy) throws IOException {
 
+        if(!pathFile.exists()) {
+            String message = "The provided file output do not exists";
+            LOGGER.error(message);
+            throw new IOException(message);
+        }
+
+        URL url;
+        url = new URL(UNIPROT_URL + "?query=taxonomy:" + taxonomy + "&AND+keyword:"+'"'+"Complete+proteome"+'"'+"&force=yes&format=fasta&include=yes&compress=yes");
+        BufferedOutputStream outputFile = DBManagerUtilities.downloadURL(url, pathFile, taxonomy);
+
     }
 }

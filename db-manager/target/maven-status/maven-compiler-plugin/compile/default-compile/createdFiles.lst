@@ -1,7 +1,6 @@
 uk/ac/ebi/pride/cluster/dbmanager/uniprot/UniProtProteomesDownloadHelper.class
 uk/ac/ebi/pride/cluster/dbmanager/utils/ConstantsURLs.class
 uk/ac/ebi/pride/cluster/dbmanager/IFileDownload.class
-uk/ac/ebi/pride/cluster/dbmanager/contaminants/MaxQuantContaminantHelper.class
 uk/ac/ebi/pride/cluster/dbmanager/utils/ProgressBarConsole.class
 uk/ac/ebi/pride/cluster/dbmanager/IDatabaseDownload.class
 uk/ac/ebi/pride/cluster/dbmanager/utils/DBManagerUtilities.class
