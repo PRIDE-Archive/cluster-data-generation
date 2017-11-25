@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.nio.file.Files;
+import java.nio.file.attribute.FileAttribute;
 
 /**
  * This code is licensed under the Apache License, Version 2.0 (the
@@ -25,14 +26,16 @@ public class UniProtDownloadHelperTest {
     @Test
     public void download() throws Exception {
 
+        File tempFile = File.createTempFile("file", ".gzip");
         UniProtProteomesDownloadHelper uniprotDownloader = new UniProtProteomesDownloadHelper();
-        uniprotDownloader.download(File.createTempFile("file", "zip"), "9606");
+        uniprotDownloader.download(tempFile, "9606");
+        tempFile.deleteOnExit();
     }
 
     @Test
     public void downloadToDirectory() throws Exception {
         UniProtProteomesDownloadHelper uniprotDownloader = new UniProtProteomesDownloadHelper();
-        uniprotDownloader.downloadToDirectory(Files.createTempDirectory("example", null).toFile(), "9606");
+        uniprotDownloader.downloadToDirectory(Files.createTempDirectory("example", FileAttribute).toFile(), "9606");
     }
 
 }
