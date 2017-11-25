@@ -4,6 +4,7 @@ package uk.ac.ebi.pride.cluster.dbmanager.uniprot;
 import org.junit.Test;
 
 import java.io.File;
+import java.nio.file.Files;
 
 /**
  * This code is licensed under the Apache License, Version 2.0 (the
@@ -26,6 +27,12 @@ public class UniProtDownloadHelperTest {
 
         UniProtProteomesDownloadHelper uniprotDownloader = new UniProtProteomesDownloadHelper();
         uniprotDownloader.download(File.createTempFile("file", "zip"), "9606");
+    }
+
+    @Test
+    public void downloadToDirectory() throws Exception {
+        UniProtProteomesDownloadHelper uniprotDownloader = new UniProtProteomesDownloadHelper();
+        uniprotDownloader.downloadToDirectory(Files.createTempDirectory("example", null).toFile(), "9606");
     }
 
 }

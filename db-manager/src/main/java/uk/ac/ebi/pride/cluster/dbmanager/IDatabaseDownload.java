@@ -20,9 +20,9 @@ import java.io.IOException;
 public interface IDatabaseDownload {
 
     //This function dump a set of taxonomies in an specific path
-    void download(File folderPath, String... taxonomies) throws IOException;
+    void download(File folderPath, String  taxonomy) throws IOException;
 
     // This function dump an specific taxonomy into a file.
-    void download(File pathFile, String taxonomy) throws IOException;
+    void downloadToDirectory(File pathFile, String... taxonomy) throws IOException;
 
 }

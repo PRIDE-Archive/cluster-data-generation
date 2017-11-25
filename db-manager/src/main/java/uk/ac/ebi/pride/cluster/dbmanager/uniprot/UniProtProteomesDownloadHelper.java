@@ -42,7 +42,7 @@ public class UniProtProteomesDownloadHelper implements IDatabaseDownload{
      * @throws IOException
      */
     @Override
-    public void download(File folderPath, String ... taxonomies) throws IOException {
+    public void downloadToDirectory(File folderPath, String ... taxonomies) throws IOException {
 
         if(!folderPath.exists() || !folderPath.isDirectory()) {
             String message = "The provided directory do not exists or is not a directory";
@@ -54,13 +54,20 @@ public class UniProtProteomesDownloadHelper implements IDatabaseDownload{
             try {
                 URL url;
                 url = new URL(UNIPROT_URL + "?query=taxonomy:" + taxonomy + "&AND+keyword:"+'"'+"Complete+proteome"+'"'+"&force=yes&format=fasta&include=yes&compress=yes");
-                BufferedOutputStream outputFile = DBManagerUtilities.downloadURL(url, folderPath, taxonomy);
+                BufferedOutputStream outputFile = DBManagerUtilities.downloadURLToDirectory(url, folderPath, taxonomy);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
     }
 
+    /**
+     * This function download a File from URL to specific taxonomy and copy into an specific file name
+     *
+     * @param pathFile pathFile to store the download file
+     * @param taxonomy taxonomy from uniprot
+     * @throws IOException Exception in case of error
+     */
     @Override
     public void download(File pathFile, String taxonomy) throws IOException {
 

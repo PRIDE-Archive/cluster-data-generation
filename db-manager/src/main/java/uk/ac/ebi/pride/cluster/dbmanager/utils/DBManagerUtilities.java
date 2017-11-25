@@ -51,7 +51,7 @@ public class DBManagerUtilities {
      * Different to other methods this method take the url and download to a folder
      * the file with the same name that is provided by the user.
      * @param url URL to download
-     * @param absolutePath absoluted path of the directory
+     * @param absolutePath absolute path of the directory
      * @param taxonomy taxonomy
      * @return
      * @throws IOException
