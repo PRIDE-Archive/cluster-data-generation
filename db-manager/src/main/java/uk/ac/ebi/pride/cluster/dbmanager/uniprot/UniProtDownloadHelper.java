@@ -3,11 +3,13 @@ package uk.ac.ebi.pride.cluster.dbmanager.uniprot;
 
 import org.apache.log4j.Logger;
 import uk.ac.ebi.pride.cluster.dbmanager.IDatabaseDownload;
+import uk.ac.ebi.pride.cluster.dbmanager.utils.DBManagerUtilities;
 import uk.ac.ebi.pride.cluster.dbmanager.utils.ProgressBarConsole;
 
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
 
@@ -32,9 +34,6 @@ public class UniProtDownloadHelper implements IDatabaseDownload{
 
     private String filePath;
 
-    private static final Logger LOGGER = Logger.getLogger(UniProtDownloadHelper.class);
-
-
     /**
      * Download Path for the database.
      * @param filePath
@@ -46,30 +45,13 @@ public class UniProtDownloadHelper implements IDatabaseDownload{
     public void download(String ... taxonomies) throws IOException {
 
         Arrays.asList(taxonomies).parallelStream().forEach(taxonomy -> {
-
             try {
-                URL url = new URL(UNIPROT_URL + "?query=taxonomy:" + taxonomy + "&AND+keyword:"+'"'+"Complete+proteome"+'"'+"&force=yes&format=fasta&include=yes&compress=yes");
-                HttpURLConnection httpConnection = (HttpURLConnection) (url.openConnection());
-
-                java.io.BufferedInputStream in = new java.io.BufferedInputStream(httpConnection.getInputStream());
-                java.io.FileOutputStream fos = new java.io.FileOutputStream(filePath);
-                BufferedOutputStream bout = new BufferedOutputStream(fos, 1024);
-                byte[] data = new byte[1024];
-                long downloadedFileSize = 0;
-                LOGGER.info("Staring Downloading Uniprot Proteome -- " + taxonomy);
-                int x = 0;
-                while ((x = in.read(data, 0, 1024)) >= 0) {
-                    downloadedFileSize += x;
-                    bout.write(data, 0, x);
-                    ProgressBarConsole.updateProgress(downloadedFileSize);
-                }
-                bout.close();
-                in.close();
-
-            } catch ( IOException e) {
-
+                URL url = null;
+                url = new URL(UNIPROT_URL + "?query=taxonomy:" + taxonomy + "&AND+keyword:"+'"'+"Complete+proteome"+'"'+"&force=yes&format=fasta&include=yes&compress=yes");
+                BufferedOutputStream outputFile = DBManagerUtilities.downloadURL(url, filePath, taxonomy);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-
         });
     }
 }

@@ -18,12 +18,18 @@ import java.util.Set;
  */
 public class ProgressBarConsole {
 
+    static int TOTAL_SIZE = 1000000;
+
     static Set<Long> values = new HashSet<>();
 
     public static void updateProgress(double size) {
-        if( Math.round(size/1000000)> 0 && Math.round(size/1000000) % 5 == 0 && !values.contains(Math.round(size/1000000))){
-            values.add(Math.round(size/1000000));
-            System.out.printf(Math.round(size/1000000) + "MB .. ");
+        if(!values.contains(Math.round(size/TOTAL_SIZE))){
+            if(Math.round(size/TOTAL_SIZE) % 5 == 0 && Math.round(size/TOTAL_SIZE) > 0){
+                System.out.print(Math.round(size/TOTAL_SIZE) + "MB .. ");
+            }else if(Math.round(size/TOTAL_SIZE) == 0){
+                System.out.print("Downloading File -- " + Math.round(size/TOTAL_SIZE) + "MB .. ");
+            }
+            values.add(Math.round(size/TOTAL_SIZE));
         }
     }
 }
