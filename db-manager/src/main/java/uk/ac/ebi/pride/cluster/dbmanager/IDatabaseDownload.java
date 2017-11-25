@@ -1,5 +1,6 @@
 package uk.ac.ebi.pride.cluster.dbmanager;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -11,12 +12,17 @@ import java.io.IOException;
  * <p>
  * ==Overview==
  * <p>
- * This class
+ * This Interface control how all the downloader will work. For example, how do
+ * we download an specific taxonomy into a file or folder.
  * <p>
  * Created by ypriverol (ypriverol@gmail.com) on 24/11/2017.
  */
 public interface IDatabaseDownload {
 
-    void download(String... taxonomies) throws IOException;
+    //This function dump a set of taxonomies in an specific path
+    void download(File folderPath, String... taxonomies) throws IOException;
+
+    // This function dump an specific taxonomy into a file.
+    void download(File pathFile, String taxonomy) throws IOException;
 
 }

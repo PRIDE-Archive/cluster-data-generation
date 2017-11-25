@@ -3,6 +3,7 @@ package uk.ac.ebi.pride.cluster.dbmanager.utils;
 import org.apache.log4j.Logger;
 
 import java.io.BufferedOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -24,7 +25,7 @@ public class DBManagerUtilities {
 
     private static final Logger LOGGER = Logger.getLogger(DBManagerUtilities.class);
 
-    public static BufferedOutputStream downloadURL(URL url, String absolutePath, String taxonomy) throws IOException{
+    public static BufferedOutputStream downloadURL(URL url, File absolutePath, String taxonomy) throws IOException{
 
         HttpURLConnection httpConnection = (HttpURLConnection) (url.openConnection());
 
@@ -33,8 +34,8 @@ public class DBManagerUtilities {
         BufferedOutputStream bout = new BufferedOutputStream(fos, 1024);
         byte[] data = new byte[1024];
         long downloadedFileSize = 0;
-        LOGGER.info("Starting Downloading Uniprot Proteome -- " + taxonomy);
-        int x = 0;
+        LOGGER.info("Starting Downloading the Proteome -- " + taxonomy);
+        int x;
         while ((x = in.read(data, 0, 1024)) >= 0) {
             downloadedFileSize += x;
             bout.write(data, 0, x);
@@ -44,6 +45,5 @@ public class DBManagerUtilities {
         in.close();
 
         return bout;
-
     }
 }

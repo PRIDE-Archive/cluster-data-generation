@@ -1,9 +1,10 @@
-package uk.ac.ebi.pride.cluster.dbmanager.uniprot;
-
+package uk.ac.ebi.pride.cluster.dbmanager.contaminants;
 
 import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.*;
 
 /**
  * This code is licensed under the Apache License, Version 2.0 (the
@@ -16,16 +17,14 @@ import java.io.File;
  * <p>
  * This class
  * <p>
- * Created by ypriverol (ypriverol@gmail.com) on 24/11/2017.
+ * Created by ypriverol (ypriverol@gmail.com) on 25/11/2017.
  */
-
-public class UniProtDownloadHelperTest {
+public class MaxQuantContaminantHelperTest {
 
     @Test
     public void download() throws Exception {
-
-        UniProtProteomesDownloadHelper uniprotDownloader = new UniProtProteomesDownloadHelper();
-        uniprotDownloader.download(File.createTempFile("file", "zip"), "9606");
+        MaxQuantContaminantHelper uniprotDownloader = new MaxQuantContaminantHelper();
+        uniprotDownloader.download(File.createTempFile("file", "zip"));
     }
 
 }

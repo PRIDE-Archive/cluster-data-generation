@@ -9,6 +9,8 @@
     <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
 
+    <name>Reanalysis Pipelines using SearchGUI - PeptideShacker</name>
+
 
     <properties>
         <commons.cli.version>1.4</commons.cli.version>

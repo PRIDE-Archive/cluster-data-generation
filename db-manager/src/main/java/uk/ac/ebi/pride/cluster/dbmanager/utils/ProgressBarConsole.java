@@ -12,7 +12,7 @@ import java.util.Set;
  * <p>
  * ==Overview==
  * <p>
- * This class
+ * This class print the progress of Downloading a data file from a public repository.
  * <p>
  * Created by ypriverol (ypriverol@gmail.com) on 24/11/2017.
  */
