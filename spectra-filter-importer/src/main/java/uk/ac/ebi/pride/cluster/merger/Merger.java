@@ -1,4 +1,4 @@
-package uk.ac.ebi.pride.spectracluster.merger;
+package uk.ac.ebi.pride.cluster.merger;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

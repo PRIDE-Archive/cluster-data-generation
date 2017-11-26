@@ -1,4 +1,4 @@
-package uk.ac.ebi.pride.spectracluster.archive.importer.process;
+package uk.ac.ebi.pride.cluster.archive.importer.process;
 
 import uk.ac.ebi.pride.jmztab.model.MZTabFile;
 

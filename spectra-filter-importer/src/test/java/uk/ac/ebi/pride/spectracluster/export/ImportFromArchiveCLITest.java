@@ -2,10 +2,10 @@ package uk.ac.ebi.pride.spectracluster.export;
 
 import org.junit.Before;
 import org.junit.Test;
-import uk.ac.ebi.pride.spectracluster.ArchiveExporter;
-import uk.ac.ebi.pride.spectracluster.archive.importer.filters.IdentificationPredicateParser;
-import uk.ac.ebi.pride.spectracluster.archive.importer.filters.SpectrumPredicateParser;
-import uk.ac.ebi.pride.spectracluster.utilities.mztab.IFilter;
+import uk.ac.ebi.pride.cluster.ArchiveExporter;
+import uk.ac.ebi.pride.cluster.archive.importer.filters.IdentificationPredicateParser;
+import uk.ac.ebi.pride.cluster.archive.importer.filters.SpectrumPredicateParser;
+import uk.ac.ebi.pride.cluster.utilities.mztab.IFilter;
 import uk.ac.ebi.pride.spectracluster.spectrum.ISpectrum;
 import uk.ac.ebi.pride.spectracluster.util.function.Functions;
 import uk.ac.ebi.pride.spectracluster.util.function.IFunction;
@@ -62,7 +62,7 @@ public class ImportFromArchiveCLITest {
         RemoveSpectrumEmptyPeakFunction removeEmptyPeakFunction = new RemoveSpectrumEmptyPeakFunction();
         IFunction<ISpectrum, ISpectrum> condition = Functions.condition(removeEmptyPeakFunction, predicate);
 
-        uk.ac.ebi.pride.spectracluster.ArchiveExporter exp = new uk.ac.ebi.pride.spectracluster.ArchiveExporter(condition, idFilters);
+        ArchiveExporter exp = new ArchiveExporter(condition, idFilters);
         exp.export(folderInternal, folderOutput, false);
         System.out.println("exported " + folderOutput);
     }

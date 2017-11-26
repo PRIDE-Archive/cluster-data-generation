@@ -1,4 +1,4 @@
-package uk.ac.ebi.pride.spectracluster.utilities;
+package uk.ac.ebi.pride.cluster.utilities;
 
 /**
  * This code is licensed under the Apache License, Version 2.0 (the

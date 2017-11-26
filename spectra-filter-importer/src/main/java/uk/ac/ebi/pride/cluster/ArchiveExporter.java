@@ -1,4 +1,4 @@
-package uk.ac.ebi.pride.spectracluster;
+package uk.ac.ebi.pride.cluster;
 
 import org.apache.commons.cli.*;
 import org.apache.commons.io.FilenameUtils;
@@ -7,16 +7,16 @@ import uk.ac.ebi.pride.jmztab.model.MZTabFile;
 import uk.ac.ebi.pride.jmztab.model.MsRun;
 import uk.ac.ebi.pride.jmztab.utils.MZTabFileParser;
 import uk.ac.ebi.pride.jmztab.utils.errors.MZTabErrorList;
-import uk.ac.ebi.pride.spectracluster.archive.importer.filters.SpectrumPredicateParser;
-import uk.ac.ebi.pride.spectracluster.archive.importer.process.ArchiveSpectra;
-import uk.ac.ebi.pride.spectracluster.archive.importer.process.MZTabProcessor;
+import uk.ac.ebi.pride.cluster.archive.importer.filters.SpectrumPredicateParser;
+import uk.ac.ebi.pride.cluster.archive.importer.process.ArchiveSpectra;
+import uk.ac.ebi.pride.cluster.archive.importer.process.MZTabProcessor;
 import uk.ac.ebi.pride.spectracluster.spectrum.ISpectrum;
 import uk.ac.ebi.pride.spectracluster.util.function.Functions;
 import uk.ac.ebi.pride.spectracluster.util.function.IFunction;
 import uk.ac.ebi.pride.spectracluster.util.function.spectrum.RemoveSpectrumEmptyPeakFunction;
 import uk.ac.ebi.pride.spectracluster.util.predicate.IPredicate;
-import uk.ac.ebi.pride.spectracluster.utilities.FileTypes;
-import uk.ac.ebi.pride.spectracluster.utilities.mztab.IFilter;
+import uk.ac.ebi.pride.cluster.utilities.FileTypes;
+import uk.ac.ebi.pride.cluster.utilities.mztab.IFilter;
 
 import java.io.*;
 import java.util.*;

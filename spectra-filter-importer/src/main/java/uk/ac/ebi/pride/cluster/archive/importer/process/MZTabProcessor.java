@@ -1,4 +1,4 @@
-package uk.ac.ebi.pride.spectracluster.archive.importer.process;
+package uk.ac.ebi.pride.cluster.archive.importer.process;
 
 import de.mpc.pia.intermediate.Modification;
 import de.mpc.pia.intermediate.compiler.PIACompiler;
@@ -19,10 +19,10 @@ import uk.ac.ebi.pride.jmztab.model.*;
 import uk.ac.ebi.pride.jmztab.utils.MZTabFileParser;
 import uk.ac.ebi.pride.spectracluster.io.MGFSpectrumAppender;
 import uk.ac.ebi.pride.spectracluster.io.ParserUtilities;
-import uk.ac.ebi.pride.spectracluster.utilities.mztab.CVTermConstant;
-import uk.ac.ebi.pride.spectracluster.utilities.mztab.FDRFilter;
-import uk.ac.ebi.pride.spectracluster.utilities.mztab.IDFilterName;
-import uk.ac.ebi.pride.spectracluster.utilities.mztab.IFilter;
+import uk.ac.ebi.pride.cluster.utilities.mztab.CVTermConstant;
+import uk.ac.ebi.pride.cluster.utilities.mztab.FDRFilter;
+import uk.ac.ebi.pride.cluster.utilities.mztab.IDFilterName;
+import uk.ac.ebi.pride.cluster.utilities.mztab.IFilter;
 import uk.ac.ebi.pride.spectracluster.spectrum.ISpectrum;
 import uk.ac.ebi.pride.spectracluster.spectrum.KnownProperties;
 import uk.ac.ebi.pride.spectracluster.util.function.IFunction;

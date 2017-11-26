@@ -10,7 +10,7 @@ import uk.ac.ebi.pride.data.exception.SubmissionFileException;
 import uk.ac.ebi.pride.data.io.SubmissionFileParser;
 import uk.ac.ebi.pride.data.model.DataFile;
 import uk.ac.ebi.pride.data.model.Submission;
-import uk.ac.ebi.pride.spectracluster.utilities.FileTypes;
+import uk.ac.ebi.pride.cluster.utilities.FileTypes;
 
 import java.io.File;
 import java.io.FileNotFoundException;

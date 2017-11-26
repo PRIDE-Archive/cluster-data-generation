@@ -1,4 +1,4 @@
-package uk.ac.ebi.pride.spectracluster.utilities.mztab;
+package uk.ac.ebi.pride.cluster.utilities.mztab;
 
 import java.util.Collections;
 import java.util.List;

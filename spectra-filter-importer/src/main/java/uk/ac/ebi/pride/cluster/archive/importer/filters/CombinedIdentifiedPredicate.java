@@ -1,4 +1,4 @@
-package uk.ac.ebi.pride.spectracluster.archive.importer.filters;
+package uk.ac.ebi.pride.cluster.archive.importer.filters;
 
 import uk.ac.ebi.pride.spectracluster.spectrum.ISpectrum;
 import uk.ac.ebi.pride.spectracluster.spectrum.KnownProperties;

@@ -19,7 +19,7 @@ import java.util.Arrays;
  * ==Overview==
  * <p>
  * This class allows to download Uniprot databases to specific path by
- * one or multiple taxonomies
+ * one or multiple taxonomies.
  *
  * <p>
  * Created by ypriverol (ypriverol@gmail.com) on 24/11/2017.
