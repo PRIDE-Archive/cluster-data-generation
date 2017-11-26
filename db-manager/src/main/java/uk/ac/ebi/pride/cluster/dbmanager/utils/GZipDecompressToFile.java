@@ -24,7 +24,7 @@ public class GZipDecompressToFile {
     private static final Logger LOGGER = Logger.getLogger(GZipDecompressToFile.class);
 
 
-    public void decompress(File gzipFile, File outputFile) throws IOException {
+    public static void decompress(File gzipFile, File outputFile) throws IOException {
 
         byte[] buffer = new byte[1024];
 
