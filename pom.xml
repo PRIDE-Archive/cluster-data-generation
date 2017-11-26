@@ -7,15 +7,19 @@
     <packaging>pom</packaging>
 
 
-    <name> PRIDE Cluster importer data from multiple resources</name>
+    <name> PRIDE Cluster Data Generation</name>
 
     <modules>
+        <module>searchgui</module>
+        <module>denovogui</module>
+        <module>peptide-shaker</module>
         <module>pride-asa-pipeline</module>
         <module>pride-parameters</module>
         <module>spectra-filter-importer</module>
         <module>cluster-cli-tools</module>
         <module>reanalysis-pipeline</module>
         <module>db-manager</module>
+
     </modules>
 
 

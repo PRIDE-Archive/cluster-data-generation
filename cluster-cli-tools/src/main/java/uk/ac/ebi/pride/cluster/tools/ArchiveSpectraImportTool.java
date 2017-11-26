@@ -1,8 +1,8 @@
 package uk.ac.ebi.pride.cluster.tools;
 
 import org.apache.commons.cli.*;
-import uk.ac.ebi.pride.spectracluster.ArchiveExporter;
-import uk.ac.ebi.pride.spectracluster.archive.importer.filters.SpectrumPredicateParser;
+import uk.ac.ebi.pride.cluster.ArchiveExporter;
+import uk.ac.ebi.pride.cluster.archive.importer.filters.SpectrumPredicateParser;
 import uk.ac.ebi.pride.spectracluster.spectrum.ISpectrum;
 import uk.ac.ebi.pride.spectracluster.util.function.Functions;
 import uk.ac.ebi.pride.spectracluster.util.function.IFunction;

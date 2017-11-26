@@ -7,6 +7,7 @@
     <groupId>uk.ac.ebi.pride.cluster</groupId>
     <artifactId>spectra-filter-archive</artifactId>
     <version>1.0.2-SNAPSHOT</version>
+    <name>Import Spectra from PRIDE Archive</name>
 
     <licenses>
         <license>
