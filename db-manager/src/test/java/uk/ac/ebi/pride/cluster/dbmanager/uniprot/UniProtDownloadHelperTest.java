@@ -6,6 +6,9 @@ import org.junit.Test;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.attribute.FileAttribute;
+import java.nio.file.attribute.PosixFilePermission;
+import java.nio.file.attribute.PosixFilePermissions;
+import java.util.Set;
 
 /**
  * This code is licensed under the Apache License, Version 2.0 (the
@@ -16,7 +19,7 @@ import java.nio.file.attribute.FileAttribute;
  * <p>
  * ==Overview==
  * <p>
- * This class
+ * This class Test the UniProt Download databases.
  * <p>
  * Created by ypriverol (ypriverol@gmail.com) on 24/11/2017.
  */
@@ -34,8 +37,13 @@ public class UniProtDownloadHelperTest {
 
     @Test
     public void downloadToDirectory() throws Exception {
+        Set<PosixFilePermission> perms = PosixFilePermissions.fromString("rwxrwx--x");
+        FileAttribute<Set<PosixFilePermission>> fileAttributes = PosixFilePermissions.asFileAttribute(perms);
+
+        File tempFile = Files.createTempDirectory("example", fileAttributes).toFile();
         UniProtProteomesDownloadHelper uniprotDownloader = new UniProtProteomesDownloadHelper();
-        uniprotDownloader.downloadToDirectory(Files.createTempDirectory("example", FileAttribute).toFile(), "9606");
+        uniprotDownloader.downloadToDirectory(tempFile, "9606");
+        tempFile.deleteOnExit();
     }
 
 }

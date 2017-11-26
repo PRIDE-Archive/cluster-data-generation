@@ -25,7 +25,15 @@ public class DBManagerUtilities {
 
     private static final Logger LOGGER = Logger.getLogger(DBManagerUtilities.class);
 
-    public static BufferedOutputStream downloadURL(URL url, File absolutePath, String taxonomy) throws IOException{
+    /**
+     * Download a file from an URL, the file is bulk into an absolute file path.
+     * @param url URL fo the fhe file that would be download
+     * @param absolutePath absolute path where the file where be bulk.
+     * @param flagInformation flagInformation is used for Logger.
+     * @return Downloaded file.
+     * @throws IOException
+     */
+    public static BufferedOutputStream downloadURL(URL url, File absolutePath, String flagInformation) throws IOException{
 
         HttpURLConnection httpConnection = (HttpURLConnection) (url.openConnection());
 
@@ -34,7 +42,7 @@ public class DBManagerUtilities {
         BufferedOutputStream bout = new BufferedOutputStream(fos, 1024);
         byte[] data = new byte[1024];
         long downloadedFileSize = 0;
-        LOGGER.info("Starting Downloading the Proteome -- " + taxonomy);
+        LOGGER.info("Starting Downloading the Proteome -- " + flagInformation);
         int x;
         while ((x = in.read(data, 0, 1024)) >= 0) {
             downloadedFileSize += x;
@@ -64,14 +72,14 @@ public class DBManagerUtilities {
 
         String fieldValue = httpConnection.getHeaderField("Content-Disposition");
 
-        if (fieldValue == null || ! fieldValue.contains("filename=\""))
+        if (fieldValue == null || ! fieldValue.contains("filename="))
             throw new IOException("The file is not provided in the header, it can't be download with the original provided name.");
 
         if (! absolutePath.exists() || !absolutePath.isDirectory())
             throw new IOException("The file directory path provided do not exists!!");
 
         // parse the file name from the header field
-        String filename = fieldValue.substring(fieldValue.indexOf("filename=\"") + 10, fieldValue.length() - 1);
+        String filename = fieldValue.substring(fieldValue.indexOf("filename=") + 9, fieldValue.length());
 
         java.io.FileOutputStream fos = new java.io.FileOutputStream(absolutePath + File.separator + filename);
         BufferedOutputStream bout = new BufferedOutputStream(fos, 1024);

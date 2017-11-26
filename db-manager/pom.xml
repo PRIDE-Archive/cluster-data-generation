@@ -89,18 +89,6 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
-                <includes>
-                    <include>**/pride-asa-pipeline-core.properties</include>
-                    <include>springXMLConfig.xml</include>
-                </includes>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>false</filtering>
-                <excludes>
-                    <exclude>**/pride-asa-pipeline-core.properties</exclude>
-                    <exclude>springXMLConfig.xml</exclude>
-                </excludes>
             </resource>
         </resources>
 
