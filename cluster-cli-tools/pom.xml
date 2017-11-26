@@ -20,6 +20,7 @@
         <common-math.version>2.2</common-math.version>
         <web-service-model.version>0.2.13</web-service-model.version>
         <db-manager.version>0.0.1-SNAPSHOT</db-manager.version>
+        <archive.repo.version>1.0.1</archive.repo.version>
         <java.version>1.8</java.version>
     </properties>
 
@@ -74,6 +75,12 @@
             <groupId>uk.ac.ebi.pride.cluster-data-generation</groupId>
             <artifactId>db-manager</artifactId>
             <version>${db-manager.version}</version>
+        </dependency>
+        <!-- pride repo -->
+        <dependency>
+            <groupId>uk.ac.ebi.pride.archive</groupId>
+            <artifactId>archive-repo</artifactId>
+            <version>${archive.repo.version}</version>
         </dependency>
     </dependencies>
 
