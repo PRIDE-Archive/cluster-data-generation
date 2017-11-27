@@ -2,13 +2,19 @@ package uk.ac.ebi.pride.cluster.dbmanager.utils;
 
 import com.compomics.util.experiment.biology.Protein;
 import com.compomics.util.experiment.identification.protein_sequences.SequenceFactory;
+import com.compomics.util.protein.Header;
 import org.apache.log4j.Logger;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.IOException;
+import javax.sound.midi.Sequence;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.AbstractMap;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * This code is licensed under the Apache License, Version 2.0 (the
@@ -121,5 +127,62 @@ public class DBManagerUtilities {
         }
 
         return true;
+    }
+
+
+    /**
+     * This method merge to list of proteins coming from a files into one unique List. We should evaluate, if we can do this
+     * in file in the future and not in memory. Because here it can be time consuming.
+     * @param inputFile inputFile
+     * @param fileToAppend append File with new proteins (e.g contaminants)
+     * @return List of proteins.
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public static boolean mergeToFastaFileTemp(File inputFile, File fileToAppend, File resultFile) throws IOException, ClassNotFoundException {
+       final SequenceFactory factory = SequenceFactory.getInstance();
+       factory.loadFastaFile(inputFile);
+       Map<Header, Protein> resultProteins = factory.getAccessions().stream().map(key -> {
+           try {
+               return new AbstractMap.SimpleEntry<>(factory.getHeader(key),factory.getProtein(key));
+           } catch (IOException e) {
+               e.printStackTrace();
+           } catch (InterruptedException e) {
+               e.printStackTrace();
+           }
+           return null;
+       }).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+
+       factory.loadFastaFile(fileToAppend);
+       factory.getAccessions().parallelStream().forEach( appendKey -> {
+           try{
+           if(!resultProteins.entrySet().contains(factory.getHeader(appendKey)))
+               resultProteins.put(factory.getHeader(appendKey), factory.getProtein(appendKey));
+           } catch (IOException e) {
+               e.printStackTrace();
+           } catch (InterruptedException e) {
+               e.printStackTrace();
+           }
+       });
+
+       if(resultProteins != null && resultProteins.size() > 0 ){
+           LOGGER.info("Appending Proteins to the new File -- " + resultFile);
+
+           FileOutputStream fos = new FileOutputStream(resultFile);
+           BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+           resultProteins.forEach( (header, protein) -> {
+               try {
+                   bw.write(header.toString());
+                   bw.newLine();
+                   bw.write(protein.getSequence());
+                   bw.newLine();
+               } catch (IOException e) {
+                   e.printStackTrace();
+               }
+           });
+           bw.close();
+       }
+
+       return true;
     }
 }

@@ -1,4 +1,4 @@
-package uk.ac.ebi.pride.cluster.tools;
+package uk.ac.ebi.pride.cluster.tools.fasta;
 
 import com.compomics.pridesearchparameterextractor.cmd.PrideSearchparameterExtractor;
 import org.apache.commons.cli.*;
@@ -6,12 +6,12 @@ import org.apache.log4j.Logger;
 import uk.ac.ebi.pride.cluster.dbmanager.IDatabaseDownload;
 import uk.ac.ebi.pride.cluster.dbmanager.utils.DBConstants;
 import uk.ac.ebi.pride.cluster.dbmanager.utils.DBManagerUtilities;
+import uk.ac.ebi.pride.cluster.tools.ICommandTool;
 import uk.ac.ebi.pride.cluster.tools.exceptions.ClusterDataImporterException;
 import uk.ac.ebi.pride.cluster.tools.utilities.FileUtilities;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -27,9 +27,9 @@ import java.util.List;
  * <p>
  * Created by ypriverol (ypriverol@gmail.com) on 26/11/2017.
  */
-public class FastaDownloadTool implements ICommandTool{
+public class FastaDownloadTool implements ICommandTool {
 
-    private static final Logger LOGGER = Logger.getLogger(PrideSearchparameterExtractor.class);
+    private static final Logger LOGGER = Logger.getLogger(FastaDownloadTool.class);
 
     public static void main(String[] args) {
 
@@ -52,7 +52,6 @@ public class FastaDownloadTool implements ICommandTool{
         options.addOption("o", "output-folder", true, "The output folder");
         options.addOption("r", "rename", true, "Rename the taxonomy file with the name of the Provider-Taxonomy (uniprot-proteomes-9606.fatsa)");
         options.addOption("d", "decompress", false, "This fucntion detect if the download file is compress and decompressed");
-
         return options;
     }
 
@@ -69,6 +68,7 @@ public class FastaDownloadTool implements ICommandTool{
             if (!cmd.hasOption("o")) {
                 HelpFormatter formatter = new HelpFormatter();
                 formatter.printHelp("ant", options);
+                System.exit(-1);
             }
 
             Boolean decompress = false;

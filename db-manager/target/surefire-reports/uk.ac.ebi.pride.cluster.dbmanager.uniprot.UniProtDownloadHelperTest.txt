@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: uk.ac.ebi.pride.cluster.dbmanager.uniprot.UniProtDownloadHelperTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 108.621 sec
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 126.029 sec
