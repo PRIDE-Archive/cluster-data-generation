@@ -1,5 +1,7 @@
 package uk.ac.ebi.pride.cluster.dbmanager.utils;
 
+import com.compomics.util.experiment.biology.Protein;
+import com.compomics.util.experiment.identification.protein_sequences.SequenceFactory;
 import org.apache.log4j.Logger;
 
 import java.io.BufferedOutputStream;
@@ -96,5 +98,28 @@ public class DBManagerUtilities {
         in.close();
 
         return bout;
+    }
+
+    /**
+     * This utility check the quality of a Fasta File that is correct.
+     * @param fastaFile fasta File
+     * @return status of the fasta file.
+     */
+    public static Boolean checkFastaIntegrity(File fastaFile)  {
+
+        SequenceFactory factory = SequenceFactory.getInstance();
+        try{
+            factory.loadFastaFile(fastaFile);
+            int aminoCount = 0;
+            for(String accession: factory.getAccessions()){
+                aminoCount += factory.getProtein(accession).getLength();
+            }
+            LOGGER.info("Number of AminoAcids for Fasta File -- " + aminoCount);
+        }catch (Exception e){
+            LOGGER.error("Error reading the Fasta File -- " + fastaFile);
+            return false;
+        }
+
+        return true;
     }
 }

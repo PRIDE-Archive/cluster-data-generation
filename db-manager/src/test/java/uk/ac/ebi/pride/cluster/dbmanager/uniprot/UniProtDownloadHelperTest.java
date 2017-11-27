@@ -2,7 +2,6 @@ package uk.ac.ebi.pride.cluster.dbmanager.uniprot;
 
 
 import org.junit.Test;
-import uk.ac.ebi.pride.cluster.dbmanager.utils.GZipDecompressToFile;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -31,10 +30,8 @@ public class UniProtDownloadHelperTest {
     public void download() throws Exception {
 
         File tempFile = File.createTempFile("file", ".gz");
-        File tempFileUncompress =  File.createTempFile("file", ".fasta");
         UniProtProteomesDownloadHelper uniprotDownloader = new UniProtProteomesDownloadHelper();
         uniprotDownloader.download(tempFile, "9606");
-        GZipDecompressToFile.decompress(tempFile, tempFileUncompress);
         tempFile.deleteOnExit();
     }
 

@@ -15,6 +15,7 @@
         <log4j.version>1.2.17</log4j.version>
         <junit.version>4.10</junit.version>
         <java.version>1.8</java.version>
+        <compomics-utilities.version>4.12.0-SNAPSHOT</compomics-utilities.version>
     </properties>
 
     <dependencies>
@@ -30,7 +31,53 @@
             <scope>test</scope>
         </dependency>
 
-    </dependencies>
+        <!-- this is the way searchgui imports the database help -->
+        <dependency>
+            <groupId>com.compomics</groupId>
+            <artifactId>utilities</artifactId>
+            <version>${compomics-utilities.version}</version>
+        <exclusions>
+            <exclusion>
+                <artifactId>commons-math</artifactId>
+                <groupId>commons-math</groupId>
+            </exclusion>
+            <exclusion>
+                <artifactId>servlet-api</artifactId>
+                <groupId>javax.servlet</groupId>
+            </exclusion>
+            <exclusion>
+                <artifactId>swingx</artifactId>
+                <groupId>org.swinglabs</groupId>
+            </exclusion>
+            <exclusion>
+                <artifactId>swing-layout</artifactId>
+                <groupId>org.swinglabs</groupId>
+            </exclusion>
+            <exclusion>
+                <artifactId>batik-all</artifactId>
+                <groupId>batik</groupId>
+            </exclusion>
+            <exclusion>
+                <artifactId>pdf-transcoder</artifactId>
+                <groupId>batik</groupId>
+            </exclusion>
+            <exclusion>
+                <artifactId>jfreechart</artifactId>
+                <groupId>jfree</groupId>
+            </exclusion>
+            <exclusion>
+                <artifactId>xercesImpl</artifactId>
+                <groupId>xerces</groupId>
+            </exclusion>
+            <exclusion>
+                <artifactId>ssj</artifactId>
+                <groupId>umontreal.iro.lecuyer.gof</groupId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+
+
+</dependencies>
 
     <build>
         <plugins>

@@ -3,9 +3,11 @@ package uk.ac.ebi.pride.cluster.tools;
 
 import com.compomics.pridesearchparameterextractor.cmd.PrideSearchparameterExtractor;
 import com.compomics.pridesearchparameterextractor.extraction.impl.PrideMzIDParameterExtractor;
+import com.compomics.pridesearchparameterextractor.extraction.impl.PrideXMLParameterExtractor;
 import org.apache.commons.cli.*;
 import org.apache.log4j.Logger;
 import uk.ac.ebi.pride.archive.dataprovider.file.ProjectFileType;
+import uk.ac.ebi.pride.cluster.tools.exceptions.ClusterDataImporterException;
 import uk.ac.ebi.pride.data.exception.SubmissionFileException;
 import uk.ac.ebi.pride.data.io.SubmissionFileParser;
 import uk.ac.ebi.pride.data.model.DataFile;
@@ -13,7 +15,6 @@ import uk.ac.ebi.pride.data.model.Submission;
 import uk.ac.ebi.pride.cluster.utilities.FileTypes;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,27 +32,24 @@ import java.util.stream.Collectors;
  * <p>
  * Created by ypriverol (ypriverol@gmail.com) on 21/11/2017.
  */
-public class ArchiveExtractParameterTool {
+public class ArchiveExtractParameterTool implements ICommandTool{
 
     private static final Logger LOGGER = Logger.getLogger(PrideSearchparameterExtractor.class);
 
     public static void main(String[] args) {
-        //init log4J
-        //   BasicConfigurator.configure();
-        // create Options object
-        Options options = initOptions();
-        //parse the command
-        CommandLineParser parser = new DefaultParser();
 
-        try{
-            CommandLine cmd = parser.parse(options, args);
-            handleCommand(cmd, options);
-        } catch (FileNotFoundException | ParseException | SubmissionFileException ex) {
-            LOGGER.error(ex);
+        ArchiveExtractParameterTool tool = new ArchiveExtractParameterTool();
+        Options options = tool.initOptions();
+
+        try {
+            tool.runCommand(options, args);
+        } catch (ClusterDataImporterException e) {
+            LOGGER.error("The following Archive Extractor Parameter Tool has failed --" + e.getMessage());
         }
     }
 
-    private static Options initOptions() {
+    @Override
+    public Options initOptions() {
         Options options = new Options();
         options.addOption("i", "input-folder",true, "Project Folder in PRIDE, (e.g /nfs/pride/prod/archive/2017/11/PXD007710)  ");
         options.addOption("o", "output-folder", true, "The output folder");
@@ -59,119 +57,76 @@ public class ArchiveExtractParameterTool {
         return options;
     }
 
-    private static void handleCommand(CommandLine cmd, Options options) throws FileNotFoundException, SubmissionFileException {
+    @Override
+     public void runCommand(Options options, String[] args) throws ClusterDataImporterException {
+
+        //parse the command
+        CommandLineParser parser = new DefaultParser();
+
+        try {
+            CommandLine cmd = parser.parse(options, args);
+            if (!(cmd.hasOption("i") || !cmd.hasOption("o"))) {
+                HelpFormatter formatter = new HelpFormatter();
+                formatter.printHelp("ant", options);
+            }
+
+            String inputProjectFolder = cmd.getOptionValue("i");
+            String outputFolder = cmd.getOptionValue("o");
+
+            File projectInternalPath = new File(inputProjectFolder, FileTypes.INTERNAL_DIRECTORY);
+
+            Submission submission = SubmissionFileParser.parse(new File(projectInternalPath, FileTypes.SUBMISSION_FILE));
+
+            submission.getDataFiles().stream()
+                    .filter(file -> file.getFileType() == ProjectFileType.RESULT &&
+                            (FileTypes.isTypeFile(file.getFileName(), FileTypes.COMPRESS_MZIDENTML) || (FileTypes.isTypeFile(file.getFileName(), FileTypes.COMPRESS_PRIDE))))
+                    .forEach(
+                            file -> {
+
+                                // Processing File
+                                File inputFile = new File(projectInternalPath, FileTypes.removeGzip(file.getFileName()));
+                                String assayNumber = file.getAssayAccession();
+
+                                LOGGER.info("Processing Assay -- " + assayNumber + " -- Following file -- " + inputFile.getAbsolutePath());
 
 
-        if(!(cmd.hasOption("i") || !cmd.hasOption("o"))){
-            HelpFormatter formatter = new HelpFormatter();
-            formatter.printHelp( "ant", options );
-        }
+                                // Process an mzIdentml
+                                if (FileTypes.isTypeFile(file.getFileName(), FileTypes.COMPRESS_MZIDENTML)) {
 
-        String inputProjectFolder = cmd.getOptionValue("i");
-        String outputFolder  = cmd.getOptionValue("o");
+                                    List<File> peakFiles = new ArrayList<>();
 
-        File projectInternalPath = new File(inputProjectFolder, FileTypes.INTERNAL_DIRECTORY);
+                                    // List of files associated with the mzIdentML
+                                    retrieveListPeakFileNames(file).stream().forEach(fileName -> {
+                                        File peakFile = new File(projectInternalPath, fileName);
+                                        if (peakFile.exists()) {
+                                            peakFiles.add(peakFile);
+                                        }
+                                    });
 
-        Submission submission = SubmissionFileParser.parse(new File(projectInternalPath, FileTypes.SUBMISSION_FILE));
+                                    String fileName = resolveOutputPath(outputFolder, file.getAssayAccession(), inputProjectFolder);
 
-        submission.getDataFiles().stream()
-                .filter( file -> file.getFileType() == ProjectFileType.RESULT &&
-                        (FileTypes.isTypeFile(file.getFileName(), FileTypes.COMPRESS_MZIDENTML) || (FileTypes.isTypeFile(file.getFileName(), FileTypes.COMPRESS_PRIDE))))
-                .forEach(
-                        file -> {
-
-                            // Processing File
-                            File inputFile = new File(projectInternalPath, FileTypes.removeGzip(file.getFileName()));
-                            String assayNumber = file.getAssayAccession();
-
-                            LOGGER.info("Processing Assay -- " + assayNumber + " -- Following file -- " + inputFile.getAbsolutePath());
-
-
-                            // Process an mzIdentml
-                            if(FileTypes.isTypeFile(file.getFileName(), FileTypes.COMPRESS_MZIDENTML)){
-
-                                List<File> peakFiles = new ArrayList<>();
-
-                                // List of files associated with the mzIdentML
-                                retrieveListPeakFileNames(file).stream().forEach( fileName -> {
-                                    File peakFile = new File(projectInternalPath, fileName);
-                                    if(peakFile.exists()){
-                                        peakFiles.add(peakFile);
+                                    try {
+                                        PrideMzIDParameterExtractor extractor = new PrideMzIDParameterExtractor(inputFile, assayNumber, peakFiles, fileName, false, false);
+                                        extractor.analyze();
+                                    } catch (Exception e) {
+                                        LOGGER.error("Error in File -- " + inputFile + " -- Message Error -- " + e.getMessage());
                                     }
-                                });
 
-                                String fileName = resolveOutputPath(outputFolder, file.getAssayAccession(), inputProjectFolder);
-
-                                try{
-                                    PrideMzIDParameterExtractor extractor = new PrideMzIDParameterExtractor(inputFile, assayNumber, peakFiles, fileName, false, false);
-                                    extractor.analyze();
-                                }catch (Exception e){
-                                    LOGGER.error("Error in File -- " + inputFile + " -- Message Error -- " + e.getMessage());
+                                } else {  // Process a PRIDE XML
+//
+//                                String fileName = resolveOutputPath(outputFolder, file.getAssayAccession(), inputProjectFolder);
+//
+//                                try{
+//                                    PrideXMLParameterExtractor extractor = new PrideXMLParameterExtractor(inputFile, assayNumber, fileName, false, false);
+//                                    extractor.analyze();
+//                                }catch (Exception e){
+//                                    LOGGER.error("Error in File -- " + inputFile + " -- Message Error -- " + e.getMessage());
+//                                }
                                 }
-
-                            }else{  // Process a PRIDE XML
-
-                            }
-
-
-                        }
-        );
-//
-//            if (!cmd.hasOption("type")) {
-//                LOGGER.error("The type needs to be specified in the command !");
-//                help(options);
-//            } else if (cmd.getOptionValue("type").equalsIgnoreCase("mzid") && !cmd.hasOption("peak_files")) {
-//                throw new IllegalArgumentException("peak_files argument is mandatory in the case of mzid extraction");
-//            } else {
-//                type = cmd.getOptionValue("type");
-//                //Get the input files required
-//                input = new File(cmd.getOptionValue("in"));
-//                if (!input.exists()) {
-//                    throw new FileNotFoundException(input.getAbsolutePath() + " does not exist !");
-//                } else if (type.equalsIgnoreCase("mzid")) {
-//                    //if the type is mzID we need to also get the peakfiles...
-//                    peakFiles = new ArrayList<>();
-//                    String[] peakFilesArg = cmd.getOptionValue("peak_files").split(",");
-//                    for (String peakFileArg : peakFilesArg) {
-//                        File peakFile = new File(peakFileArg.trim());
-//                        if (!peakFile.exists()) {
-//                            throw new FileNotFoundException(peakFile.getAbsolutePath() + " does not exist !");
-//                        } else {
-//                            peakFiles.add(peakFile);
-//                        }
-//                    }
-//                }
-//                //Get the output location and options
-//                output = new File(cmd.getOptionValue("out"));
-//                if (!output.exists()) {
-//                    output.mkdirs();
-//                }
-//                saveMGF = cmd.hasOption("save_mgf");
-//            }
-//        }
-//
-//        //EXECUTE THE EXTRACTION
-//        try {
-//            //get the correct extractor
-//            PrideParameterExtractor extractor;
-//            switch (type) {
-//                case "pridexml":
-//                    extractor = new PrideXMLParameterExtractor(input, output, saveMGF);
-//                    break;
-//                case "mzid":
-//                    extractor = new PrideMzIDParameterExtractor(input, peakFiles, output, saveMGF);
-//                    break;
-//                default:
-//                    throw new IllegalArgumentException("Type needs to be either pridexml or mzid");
-//            }
-//
-//            //run the extractor
-//            if (extractor.analyze()) {
-//                LOGGER.info("The analysis was completed succesfully");
-//            }
-//        } catch (ParameterExtractionException ex) {
-//            LOGGER.error(ex);
-//        }
+                            });
+        }catch (ParseException | SubmissionFileException e){
+            throw new ClusterDataImporterException(e.getMessage(), e);
+        }
     }
 
     /**
