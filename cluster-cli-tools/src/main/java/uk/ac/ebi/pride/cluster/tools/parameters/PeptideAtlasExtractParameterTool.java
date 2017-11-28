@@ -24,7 +24,7 @@ import com.compomics.pridesearchparameterextractor.extraction.impl.*;
  * ==Overview==
  * <p>
  * This class take the experiment folder from peptideAtlas and get the parameters using the
- * original paramters provided by the PeptideAtlas team:
+ * original parameters provided by the PeptideAtlas team:
  *  - _tandem.params
  *  -
  * <p>
@@ -94,10 +94,9 @@ public class PeptideAtlasExtractParameterTool implements ICommandTool{
 
             if(extractor.analyze()){
                 LOGGER.info("Paramters has been extracted successfully from file -- " + configFiles[0]);
-            };
-
-
-
+            }else{
+                LOGGER.info("Parameters from the config file -- " + configFiles[0] + " where not estimated");
+            }
 
         } catch (ParseException e) {
             throw new ClusterDataImporterException("Error parsing the commandline options -- " + e.getMessage(), e);
