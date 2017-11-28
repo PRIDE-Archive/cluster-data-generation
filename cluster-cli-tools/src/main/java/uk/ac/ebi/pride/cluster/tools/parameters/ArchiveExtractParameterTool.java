@@ -1,12 +1,12 @@
-package uk.ac.ebi.pride.cluster.tools;
+package uk.ac.ebi.pride.cluster.tools.parameters;
 
 
 import com.compomics.pridesearchparameterextractor.cmd.PrideSearchparameterExtractor;
 import com.compomics.pridesearchparameterextractor.extraction.impl.PrideMzIDParameterExtractor;
-import com.compomics.pridesearchparameterextractor.extraction.impl.PrideXMLParameterExtractor;
 import org.apache.commons.cli.*;
 import org.apache.log4j.Logger;
 import uk.ac.ebi.pride.archive.dataprovider.file.ProjectFileType;
+import uk.ac.ebi.pride.cluster.tools.ICommandTool;
 import uk.ac.ebi.pride.cluster.tools.exceptions.ClusterDataImporterException;
 import uk.ac.ebi.pride.data.exception.SubmissionFileException;
 import uk.ac.ebi.pride.data.io.SubmissionFileParser;
@@ -32,7 +32,7 @@ import java.util.stream.Collectors;
  * <p>
  * Created by ypriverol (ypriverol@gmail.com) on 21/11/2017.
  */
-public class ArchiveExtractParameterTool implements ICommandTool{
+public class ArchiveExtractParameterTool implements ICommandTool {
 
     private static final Logger LOGGER = Logger.getLogger(PrideSearchparameterExtractor.class);
 

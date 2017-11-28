@@ -107,7 +107,7 @@ public class FastaProcessingTool implements ICommandTool{
                 tempFile.deleteOnExit();
 
         }catch (ParseException e){
-            throw new ClusterDataImporterException("Error parsing the provided paramters", e);
+            throw new ClusterDataImporterException("Error parsing the provided parameters", e);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

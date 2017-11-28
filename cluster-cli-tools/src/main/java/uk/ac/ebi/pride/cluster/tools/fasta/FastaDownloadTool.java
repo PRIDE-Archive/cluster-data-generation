@@ -1,6 +1,5 @@
 package uk.ac.ebi.pride.cluster.tools.fasta;
 
-import com.compomics.pridesearchparameterextractor.cmd.PrideSearchparameterExtractor;
 import org.apache.commons.cli.*;
 import org.apache.log4j.Logger;
 import uk.ac.ebi.pride.cluster.dbmanager.IDatabaseDownload;

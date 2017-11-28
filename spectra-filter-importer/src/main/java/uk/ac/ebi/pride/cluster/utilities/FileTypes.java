@@ -28,6 +28,11 @@ public class FileTypes {
     public static final String SUBMISSION_FILE      = "submission.px";
     public static final String PARAM_FILE = ".par";
 
+    //PeptideAtlas variables
+    public static final String PEPTIDEATLAS_PARAMS_EXTENSION = ".params";
+    public static final String PEPTIDEATLAS_XTANDEM_PARAMS_EXTENSION = "tandem.params";
+
+
     /**
      * This function check if one file name ends with an specific fileType
      * @param fileName
@@ -44,4 +49,6 @@ public class FileTypes {
         }
         return fileName;
     }
+
+
 }
