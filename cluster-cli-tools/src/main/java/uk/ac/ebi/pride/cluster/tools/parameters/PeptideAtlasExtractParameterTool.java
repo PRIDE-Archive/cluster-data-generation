@@ -90,7 +90,7 @@ public class PeptideAtlasExtractParameterTool implements ICommandTool{
                 System.exit(-1);
             }
 
-            XTandemParametersExtractor extractor = new XTandemParametersExtractor(inputPath, configFiles[0], cmd.hasOption("mgf"));
+            XTandemParametersExtractor extractor = new XTandemParametersExtractor(configFiles[0], getParametersOutputPath(configFiles[0]));
 
             if(extractor.analyze()){
                 LOGGER.info("Paramters has been extracted successfully from file -- " + configFiles[0]);
@@ -111,5 +111,11 @@ public class PeptideAtlasExtractParameterTool implements ICommandTool{
         } catch (ParameterExtractionException e) {
             e.printStackTrace();
         }
+    }
+
+    private File getParametersOutputPath(File configFile) {
+        String path = configFile.getAbsolutePath();
+        String newPath = path.substring(0, path.indexOf(".params")) + ".par";
+        return new File(newPath);
     }
 }
