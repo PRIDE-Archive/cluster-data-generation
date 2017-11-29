@@ -3,6 +3,7 @@ package uk.ac.ebi.pride.cluster.tools.parameters;
 
 import com.compomics.pridesearchparameterextractor.cmd.PrideSearchparameterExtractor;
 import com.compomics.pridesearchparameterextractor.extraction.impl.PrideMzIDParameterExtractor;
+import com.compomics.pridesearchparameterextractor.extraction.impl.PrideXMLParameterExtractor;
 import org.apache.commons.cli.*;
 import org.apache.log4j.Logger;
 import uk.ac.ebi.pride.archive.dataprovider.file.ProjectFileType;
@@ -79,7 +80,8 @@ public class ArchiveExtractParameterTool implements ICommandTool {
 
             submission.getDataFiles().stream()
                     .filter(file -> file.getFileType() == ProjectFileType.RESULT &&
-                            (FileTypes.isTypeFile(file.getFileName(), FileTypes.COMPRESS_MZIDENTML) || (FileTypes.isTypeFile(file.getFileName(), FileTypes.COMPRESS_PRIDE))))
+                            (FileTypes.isTypeFile(file.getFileName(), FileTypes.COMPRESS_MZIDENTML) ||
+                                    (FileTypes.isTypeFile(file.getFileName(), FileTypes.PRIDE_PREFIX, FileTypes.COMPRESS_PRIDE))))
                     .forEach(
                             file -> {
 
@@ -112,16 +114,16 @@ public class ArchiveExtractParameterTool implements ICommandTool {
                                         LOGGER.error("Error in File -- " + inputFile + " -- Message Error -- " + e.getMessage());
                                     }
 
-                                } else {  // Process a PRIDE XML
-//
-//                                String fileName = resolveOutputPath(outputFolder, file.getAssayAccession(), inputProjectFolder);
-//
-//                                try{
-//                                    PrideXMLParameterExtractor extractor = new PrideXMLParameterExtractor(inputFile, assayNumber, fileName, false, false);
-//                                    extractor.analyze();
-//                                }catch (Exception e){
-//                                    LOGGER.error("Error in File -- " + inputFile + " -- Message Error -- " + e.getMessage());
-//                                }
+                                } else if((FileTypes.isTypeFile(inputFile.getName(), FileTypes.PRIDE_PREFIX, FileTypes.PRIDE_FORMAT))){  // Process a PRIDE XML
+
+                                String fileName = resolveOutputPath(outputFolder, file.getAssayAccession(), inputProjectFolder);
+
+                                try{
+                                    PrideXMLParameterExtractor extractor = new PrideXMLParameterExtractor(inputFile, assayNumber, fileName,false, false);
+                                    extractor.analyze();
+                                }catch (Exception e){
+                                    LOGGER.error("Error in File -- " + inputFile + " -- Message Error -- " + e.getMessage());
+                                }
                                 }
                             });
         }catch (ParseException | SubmissionFileException e){

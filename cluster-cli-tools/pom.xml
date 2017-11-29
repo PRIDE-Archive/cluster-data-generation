@@ -21,6 +21,7 @@
         <web-service-model.version>0.2.13</web-service-model.version>
         <db-manager.version>0.0.1-SNAPSHOT</db-manager.version>
         <archive.repo.version>1.0.1</archive.repo.version>
+        <org.springframework.version>3.2.10.RELEASE</org.springframework.version>
         <java.version>1.8</java.version>
     </properties>
 
@@ -45,11 +46,20 @@
             <artifactId>spectra-filter-archive</artifactId>
             <version>${spectra-filter-archive.version}</version>
         </dependency>
+
+        <!-- PRIDE Parameters -->
         <dependency>
             <groupId>uk.ac.ebi.pride.toolsuite</groupId>
-            <artifactId>PRIDESearchparameterExtractor</artifactId>
-            <version>${parameters-extractor.version}</version>
+            <artifactId>pride-parameters</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>uk.ac.ebi.pride</groupId>
             <artifactId>px-submission-core</artifactId>
@@ -81,11 +91,6 @@
             <groupId>uk.ac.ebi.pride.archive</groupId>
             <artifactId>archive-repo</artifactId>
             <version>${archive.repo.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>uk.ac.ebi.pride.toolsuite</groupId>
-            <artifactId>pride-parameters</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

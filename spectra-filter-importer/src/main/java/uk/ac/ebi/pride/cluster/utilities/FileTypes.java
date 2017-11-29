@@ -19,7 +19,7 @@ public class FileTypes {
 
     public static final String COMPRESS_MZIDENTML= ".mzid.gz";
     public static final String COMPRESS_MGF      = ".mgf.gz";
-    public static final String COMPRESS_PRIDE    = ".pride.gz";
+    public static final String COMPRESS_PRIDE    = ".xml.gz";
 
     public static final String PRIDE_MGF_SUFFIX   = ".pride.mgf";
     public static final String MGF_SUFFIX         = ".mgf";
@@ -31,6 +31,21 @@ public class FileTypes {
     //PeptideAtlas variables
     public static final String PEPTIDEATLAS_PARAMS_EXTENSION = ".params";
     public static final String PEPTIDEATLAS_XTANDEM_PARAMS_EXTENSION = "tandem.params";
+
+    //PRIDE format
+    public static final String PRIDE_FORMAT = ".xml";
+    public static final String PRIDE_PREFIX = "PRIDE";
+
+
+    /**
+     * This function check if one file name ends with an specific fileType
+     * @param fileName
+     * @param fileType
+     * @return
+     */
+    public static boolean isTypeFile(String fileName, String preefix, String fileType){
+        return fileName.toLowerCase().endsWith(fileType.toLowerCase()) && fileName.startsWith(preefix);
+    }
 
 
     /**
