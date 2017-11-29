@@ -2,6 +2,7 @@ package uk.ac.ebi.pride.cluster.tools.parameters;
 
 
 import com.compomics.pridesearchparameterextractor.cmd.PrideSearchparameterExtractor;
+import com.compomics.pridesearchparameterextractor.extraction.PRIDERefinery;
 import com.compomics.pridesearchparameterextractor.extraction.impl.PrideMzIDParameterExtractor;
 import com.compomics.pridesearchparameterextractor.extraction.impl.PrideXMLParameterExtractor;
 import org.apache.commons.cli.*;
@@ -78,6 +79,8 @@ public class ArchiveExtractParameterTool implements ICommandTool {
 
             Submission submission = SubmissionFileParser.parse(new File(projectInternalPath, FileTypes.SUBMISSION_FILE));
 
+            PRIDERefinery refinery = new PRIDERefinery();
+
             submission.getDataFiles().stream()
                     .filter(file -> file.getFileType() == ProjectFileType.RESULT &&
                             (FileTypes.isTypeFile(file.getFileName(), FileTypes.COMPRESS_MZIDENTML) ||
@@ -108,7 +111,7 @@ public class ArchiveExtractParameterTool implements ICommandTool {
                                     String fileName = resolveOutputPath(outputFolder, file.getAssayAccession(), inputProjectFolder);
 
                                     try {
-                                        PrideMzIDParameterExtractor extractor = new PrideMzIDParameterExtractor(inputFile, assayNumber, peakFiles, fileName, false, false);
+                                        PrideMzIDParameterExtractor extractor = new PrideMzIDParameterExtractor(inputFile, assayNumber, peakFiles, fileName, false, false, refinery);
                                         extractor.analyze();
                                     } catch (Exception e) {
                                         LOGGER.error("Error in File -- " + inputFile + " -- Message Error -- " + e.getMessage());
@@ -119,7 +122,7 @@ public class ArchiveExtractParameterTool implements ICommandTool {
                                 String fileName = resolveOutputPath(outputFolder, file.getAssayAccession(), inputProjectFolder);
 
                                 try{
-                                    PrideXMLParameterExtractor extractor = new PrideXMLParameterExtractor(inputFile, assayNumber, fileName,false, false);
+                                    PrideXMLParameterExtractor extractor = new PrideXMLParameterExtractor(inputFile, assayNumber, fileName,false, false, refinery);
                                     extractor.analyze();
                                 }catch (Exception e){
                                     LOGGER.error("Error in File -- " + inputFile + " -- Message Error -- " + e.getMessage());
