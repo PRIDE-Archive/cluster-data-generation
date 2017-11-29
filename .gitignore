@@ -5,3 +5,6 @@
 *target/*
 target/*
 *.class
+
+
+*.log
