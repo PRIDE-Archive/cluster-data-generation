@@ -1,6 +1,9 @@
 uk/ac/ebi/pride/cluster/tools/exceptions/ClusterDataImporterException.class
+uk/ac/ebi/pride/cluster/tools/parameters/ArchiveExtractParameterTool.class
 uk/ac/ebi/pride/cluster/tools/ICommandTool.class
 uk/ac/ebi/pride/cluster/tools/parameters/PeptideAtlasExtractParameterTool.class
 uk/ac/ebi/pride/cluster/tools/fasta/FastaDownloadTool.class
+uk/ac/ebi/pride/cluster/tools/fasta/FastaProcessingTool.class
+uk/ac/ebi/pride/cluster/tools/ArchiveSpectraImportTool.class
 uk/ac/ebi/pride/cluster/tools/utilities/FileUtilities.class
 uk/ac/ebi/pride/cluster/tools/parameters/PeptideAtlasExtractParameterTool$1.class

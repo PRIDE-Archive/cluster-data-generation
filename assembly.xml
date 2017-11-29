@@ -1,21 +1,12 @@
 <assembly>
 
-    <id>spectra-filter-archive-deployment</id>
+    <id>cluster-data-generation-deployment</id>
 
     <formats>
         <format>zip</format>
     </formats>
 
     <includeBaseDirectory>false</includeBaseDirectory>
-
-    <dependencySets>
-        <dependencySet>
-            <outputDirectory>lib</outputDirectory>
-            <unpack>false</unpack>
-            <scope>runtime</scope>
-			<outputFileNameMapping>${artifact.artifactId}-${artifact.baseVersion}.${artifact.extension}</outputFileNameMapping>
-        </dependencySet>
-    </dependencySets>
 
     <fileSets>
         <fileSet>
@@ -26,16 +17,29 @@
             <outputDirectory>/</outputDirectory>
         </fileSet>
         <fileSet>
-            <directory>${project.basedir}/script</directory>
-            <outputDirectory>/</outputDirectory>
+            <directory>${project.basedir}/scripts</directory>
+            <outputDirectory>scripts</outputDirectory>
             <filtered>true</filtered>
         </fileSet>
         <fileSet>
             <outputDirectory>/log</outputDirectory>
-            <directory>${project.basedir}/script</directory>
+            <directory>${project.basedir}/scripts</directory>
             <excludes>
                 <exclude>*</exclude>
             </excludes>
         </fileSet>
     </fileSets>
+
+    <moduleSets>
+        <moduleSet>
+            <includes>
+                <include>*:*</include>
+            </includes>
+            <binaries>
+                <attachmentClassifier>jar-with-dependencies</attachmentClassifier>
+                <outputDirectory>modules</outputDirectory>
+                <outputFileNameMapping>${module.artifactId}-${module.version}-${module.classifier}.${module.extension}</outputFileNameMapping>
+            </binaries>
+        </moduleSet>
+    </moduleSets>
 </assembly>
