@@ -19,10 +19,6 @@
         </developer>
     </developers>
 
-    <properties/>
-    <assembly.outputDirectory>target/assembly/out</assembly.outputDirectory>
-    <properties/>
-
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
@@ -32,6 +28,7 @@
     </licenses>
 
     <properties>
+        <assembly.outputDirectory>target/assembly/out</assembly.outputDirectory>
         <cluster-cli-tools.version>0.0.1-SNAPSHOT</cluster-cli-tools.version>
         <peptide-shaker.version>1.16.15</peptide-shaker.version>
         <searchgui.version>3.2.21</searchgui.version>
@@ -134,7 +131,5 @@
             <layout>default</layout>
         </repository>
     </repositories>
-
-
 
 </project>
