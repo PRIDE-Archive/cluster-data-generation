@@ -1,13 +1,13 @@
 <project>
-    <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>uk.ac.ebi.pride.cluster</artifactId>
-    <groupId>cluster-data-generation</groupId>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>uk.ac.ebi.pride.cluster</groupId>
+    <artifactId>cluster-data-generation</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
 
-    <name>PRIDE Cluster Data Generation</name>
+    <name>PRIDE Cluster Data Generation : Assembly</name>
 
     <developers>
         <developer>
@@ -33,6 +33,7 @@
         <peptide-shaker.version>1.16.15</peptide-shaker.version>
         <searchgui.version>3.2.21</searchgui.version>
         <denovogui.version>1.15.12</denovogui.version>
+        <bin.directory.build>resources</bin.directory.build>
     </properties>
 
     <modules>
@@ -47,39 +48,6 @@
     </modules>
 
     <build>
-        <defaultGoal>clean install</defaultGoal>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <artifactId>maven-assembly-plugin</artifactId>
-                    <version>2.6</version>
-                    <configuration>
-                        <finalName>${artifactId}-${version}</finalName>
-                        <outputDirectory>${assembly.outputDirectory}</outputDirectory>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>2.5.3</version>
-                    <configuration>
-                        <goals>deploy</goals>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.ops4j</groupId>
-                    <artifactId>maven-pax-plugin</artifactId>
-                    <version>1.5</version>
-                    <extensions>true</extensions>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.felix</groupId>
-                    <artifactId>maven-bundle-plugin</artifactId>
-                    <version>2.5.4</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -94,14 +62,16 @@
             </plugin>
 
             <plugin>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>2.1.2</version>
+                <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>attach-source</id>
+                        <phase>install</phase>
                         <goals>
-                            <goal>jar</goal>
+                            <goal>copy-dependencies</goal>
                         </goals>
+                        <configuration>
+                            <outputDirectory>${bin.directory.build}/lib</outputDirectory>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

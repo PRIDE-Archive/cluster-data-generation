@@ -1,6 +1,0 @@
-Phosphorylation of S, 0, Phosphorylation of S, -r-, S, , 79.966331
-Oxidation of M, 1, Oxidation of M, -r-, M, , 15.994915
-Phosphorylation of T, 2, Phosphorylation of T, -r-, T, , 79.966331
-Phosphorylation of Y, 3, Phosphorylation of Y, -r-, Y, , 79.966331
-Carbamidomethylation of C, 4, Carbamidomethylation of C, -r-, C, , 57.021464
-iTRAQ4plex114, 5, iTRAQ4plex114, n--, , , 144.105919
