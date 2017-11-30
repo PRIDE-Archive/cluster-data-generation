@@ -31,6 +31,13 @@
         </license>
     </licenses>
 
+    <properties>
+        <cluster-cli-tools.version>0.0.1-SNAPSHOT</cluster-cli-tools.version>
+        <peptide-shaker.version>1.16.15</peptide-shaker.version>
+        <searchgui.version>3.2.21</searchgui.version>
+        <denovogui.version>1.15.12</denovogui.version>
+    </properties>
+
     <modules>
         <module>searchgui</module>
         <module>denovogui</module>
@@ -39,7 +46,6 @@
         <module>pride-parameters</module>
         <module>spectra-filter-importer</module>
         <module>cluster-cli-tools</module>
-        <module>reanalysis-pipeline</module>
         <module>db-manager</module>
     </modules>
 
@@ -82,8 +88,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.7.0</version>
                 <configuration>
-                    <source>1.5</source>
-                    <target>1.5</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <excludes>
                         <exclude>**/test/**/*.java</exclude>
                     </excludes>
