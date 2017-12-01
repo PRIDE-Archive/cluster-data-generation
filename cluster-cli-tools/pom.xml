@@ -180,7 +180,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.4</version>
                 <configuration>
-                    <outputDirectory>../${bin.directory.build}/${artifactId}/</outputDirectory>
+                    <outputDirectory>../${bin.directory.build}/${project.artifactId}/</outputDirectory>
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
@@ -199,8 +199,53 @@
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>../${bin.directory.build}/${artifactId}/lib</outputDirectory>
+                            <outputDirectory>../${bin.directory.build}/${project.artifactId}/lib</outputDirectory>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>../${bin.directory.build}/${project.artifactId}/</directory>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <outputDirectory>../${bin.directory.build}/${project.artifactId}/resources</outputDirectory>
+                    <resources>
+                        <resource>
+                            <directory>src/main/resources/scripts</directory>
+                            <includes>
+                                <include>*</include>
+                            </includes>
+                        </resource>
+                    </resources>
+                    <!--<resources>-->
+                    <!--<resource>-->
+                    <!--<directory>src/main/resources/scripts</directory>-->
+                    <!--<filtering>true</filtering>-->
+                    <!--</resource>-->
+                    <!--</resources>-->
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <!-- here the phase you need -->
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
