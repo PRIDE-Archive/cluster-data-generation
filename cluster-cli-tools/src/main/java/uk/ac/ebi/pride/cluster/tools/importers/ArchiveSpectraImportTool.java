@@ -1,6 +1,8 @@
 package uk.ac.ebi.pride.cluster.tools.importers;
 
+import com.compomics.pridesearchparameterextractor.cmd.PrideSearchparameterExtractor;
 import org.apache.commons.cli.*;
+import org.apache.log4j.Logger;
 import uk.ac.ebi.pride.cluster.ArchiveExporter;
 import uk.ac.ebi.pride.cluster.archive.importer.filters.SpectrumPredicateParser;
 import uk.ac.ebi.pride.cluster.tools.ICommandTool;
@@ -22,6 +24,8 @@ import java.io.*;
  */
 public class ArchiveSpectraImportTool implements ICommandTool {
 
+
+    private static final Logger LOGGER = Logger.getLogger(ArchiveSpectraImportTool.class);
 
     /**
      * usage outputDirectory filterFile directoryToProcess
@@ -73,7 +77,7 @@ public class ArchiveSpectraImportTool implements ICommandTool {
             if(cmd.hasOption("o") && cmd.hasOption("c") && cmd.hasOption("i")){
                 String outputPathName = cmd.getOptionValue("o");
                 outputDirectory = new File(outputPathName);
-                System.out.println("Output to: " + outputDirectory.getAbsolutePath());
+                LOGGER.info("Analyzing the Project -- " + cmd.getOptionValue("i") + "Output to -- " + outputDirectory.getAbsolutePath());
 
                 String filterFileName = cmd.getOptionValue("c");
                 File filtersFile = new File(filterFileName);
@@ -90,7 +94,7 @@ public class ArchiveSpectraImportTool implements ICommandTool {
                 File dir = new File(inputFolder);
                 ArchiveExporter exp = new ArchiveExporter(condition);
                 exp.export(dir, outputDirectory, splitOutput);
-                System.out.println("exported " + dir);
+                LOGGER.info("Project -- " + inputFolder + " Exported -- " + dir);
 
             }else{
                 HelpFormatter formatter = new HelpFormatter();

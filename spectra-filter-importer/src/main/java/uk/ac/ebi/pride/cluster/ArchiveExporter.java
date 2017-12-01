@@ -63,46 +63,44 @@ public class ArchiveExporter {
             output = buildOutputFile(outputDirectory, inputDirectory);
 
         PrintWriter out = null;
-        try {
-            // find all the PRIDE generated mzTab files
-            File projectInternalPath = new File(inputDirectory, FileTypes.INTERNAL_DIRECTORY);
-            List<File> files = readMZTabFiles(inputDirectory);
 
-            if (!files.isEmpty()) {
-                for (File mzTab : files) {
-                    // map the relationship between mzTab file and its mgf files
-                    ArchiveSpectra spec = buildArchiveSpectra(mzTab, projectInternalPath);
-                    if (spec == null) {
-                        System.err.println("Bad mzTab file " + mzTab);
-                        continue;
-                    }
+        // find all the PRIDE generated mzTab files
+        File projectInternalPath = new File(inputDirectory, FileTypes.INTERNAL_DIRECTORY);
+        List<File> files = readMZTabFiles(inputDirectory);
+
+        if (!files.isEmpty()) {
+            for (File mzTab : files) {
+                // map the relationship between mzTab file and its mgf files
+                ArchiveSpectra spec = buildArchiveSpectra(mzTab, projectInternalPath);
+                if (spec == null) {
+                    LOGGER.error("The following mztab is wrong formatted --  " + mzTab);
+                    continue;
+                }
+                try{
+                    MZTabProcessor processor = new MZTabProcessor(idPredicates, spec);
                     try{
-                        MZTabProcessor processor = new MZTabProcessor(idPredicates, spec);
-                        try{
-                            processor.proccessPSMs();
-                        }catch (IOException | IllegalArgumentException exception){
-                            LOGGER.error("The current mztab can't provide Peptide|FDR information " + exception.getMessage());
-                        }
-                        if(!splitOuput)
-                            if(out == null)
-                                out = new PrintWriter(new BufferedWriter(new FileWriter(output)), false);
-                            else
-                                out = new PrintWriter(new BufferedWriter(new FileWriter(output, true)), false);
-                        else {
-                            File outputMzTabFile = buildOutputFile(output, processor.getAssayId());
-                            out = new PrintWriter(new BufferedWriter(new FileWriter(outputMzTabFile)), false);
-                        }
-                        processor.handleCorrespondingMGFs(spectrumFilter, out);
-                        out.flush();
-                    }catch (Exception exception){
-                        LOGGER.error("The mzTab is not correct, or valid" + exception.getMessage());
+                        processor.proccessPSMs();
+                    }catch (IOException | IllegalArgumentException exception){
+                        LOGGER.error("The current mztab can't provide Peptide|FDR information " + exception.getMessage());
                     }
+                    if(!splitOuput)
+                        if(out == null)
+                            out = new PrintWriter(new BufferedWriter(new FileWriter(output)), false);
+                        else
+                            out = new PrintWriter(new BufferedWriter(new FileWriter(output, true)), false);
+                    else {
+                        File outputMzTabFile = buildOutputFile(output, processor.getAssayId());
+                        out = new PrintWriter(new BufferedWriter(new FileWriter(outputMzTabFile)), false);
+                    }
+                    processor.handleCorrespondingMGFs(spectrumFilter, out);
+                    out.flush();
+                }catch (Exception exception){
+                    LOGGER.error("The mzTab is not correct, or valid" + exception.getMessage());
                 }
             }
-        } finally {
-
         }
     }
+
 
     private List<File> readMZTabFiles(final File pFile1) {
 
