@@ -11,6 +11,23 @@ Please you can contact using github issues: https://github.com/PRIDE-Cluster/clu
 
 Contributors: [Marc Vaudel](https://github.com/mvaudel) , [Kenneth Verheggen](https://github.com/kverhegg)
 
+### Build the Project
+
+In order to build the project the developer should first clone the project and the corresponding submodules:
+
+```bash
+git clone --recursive  https://github.com/PRIDE-Cluster/cluster-data-generation
+```
+
+When the porject is download, the developer should make `cd` into the project folder and execute:
+
+```bash
+ $ mvn clean
+ $ mvn install
+ ```
+
+All the tools, and corresponding scripts would be store in the `resources` folder.
+
 ### Dabatase Handling
 
 A set of tools has been developed to enable the user to perform the following tasks:
