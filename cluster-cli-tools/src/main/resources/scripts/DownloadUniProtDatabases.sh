@@ -16,4 +16,4 @@ JOB_EMAIL="yperez@ebi.ac.uk"
 NOW=$(date +"%m-%d-%Y")
 LOG_FILE_NAME=$(basename ${OUTPUT_FOLDER})
 
-runJava.sh ${LOG_FOLDER}/${LOG_FILE_NAME}-${NOW}.log ${MEMORY_LIMIT}m -jar ../${project.artifactId}/${project.artifactId}-${project.version}.jar -cp uk.ac.ebi.pride.cluster.tools.fasta.FastaDownloadTool -o ${OUTPUT_FOLDER} -lc ${INITIAL_TAXONOMIES} -d
+./runJava.sh ${LOG_FOLDER}/${LOG_FILE_NAME}-${NOW}.log ${MEMORY_LIMIT}m -jar ../${project.artifactId}/${project.artifactId}-${project.version}.jar -cp uk.ac.ebi.pride.cluster.tools.fasta.FastaDownloadTool -o ${OUTPUT_FOLDER} -lc ${INITIAL_TAXONOMIES} -d
