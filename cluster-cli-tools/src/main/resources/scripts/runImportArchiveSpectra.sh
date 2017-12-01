@@ -2,6 +2,7 @@
 ### This script creates a folder of the project and add all the spectra for the corresponding project in assay based
 
 LOG_FOLDER=/nfs/pride/prod/logs/cluster
+
 ##### PARAMETERS
 MEMORY_LIMIT=$1
 OUTPUT_PATH=$2
@@ -30,4 +31,4 @@ printUsage() {
 
 ##### RUN it on the production LSF cluster
 ## this is not queued in the PRIDE LSF submission group, this is submitted as regular job as it is independent of any other job
-bsub -M ${MEMORY_LIMIT} -R "rusage[mem=${MEMORY_LIMIT}]" -q production-rh7 -g /pride_cluster_archive_import -u ${JOB_EMAIL} -J ${JOB_NAME}-${NOW}-${LOG_FILE_NAME} ../runJava.sh $LOG_FOLDER/${LOG_FILE_NAME}-${NOW}.log ${MEMORY_LIMIT}m -jar ../../resources/cluster-cli-tools-${cluster-cli-tools.version}.jar -cp uk.ac.ebi.pride.cluster.tools.importers.ArchiveSpectraImportTool -o ${OUTPUT_PATH} -c ${FILTER_XML} -i ${INPUT_PATH} -s
+bsub -M ${MEMORY_LIMIT} -R "rusage[mem=${MEMORY_LIMIT}]" -q production-rh7 -g /cluster-data-generation -u ${JOB_EMAIL} -J ${JOB_NAME}-${NOW}-${LOG_FILE_NAME} runJava.sh $LOG_FOLDER/${LOG_FILE_NAME}-${NOW}.log ${MEMORY_LIMIT}m -jar ../${project.artifactId}/${project.artifactId}-${project.version}.jar -cp uk.ac.ebi.pride.cluster.tools.importers.ArchiveSpectraImportTool -o ${OUTPUT_PATH} -c ${FILTER_XML} -i ${INPUT_PATH} -s
