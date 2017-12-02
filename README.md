@@ -39,6 +39,21 @@ A set of tools has been developed to enable the user to perform the following ta
 
 ### Parameters Predictors
 
+### Troubleshooting
+
+ If you have problem to pull the latest version please, force the repository by doing:
+
+ ```maven
+  git reset --hard origin/master
+ ```
+
+ and
+
+ ```maven
+ git pull
+ ```
+
+
 
 
 
