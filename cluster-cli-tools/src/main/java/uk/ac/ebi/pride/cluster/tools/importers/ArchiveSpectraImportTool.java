@@ -42,7 +42,7 @@ public class ArchiveSpectraImportTool implements ICommandTool {
         </properties>
      */
     public static void main(String[] args) throws IOException, ParseException {
-        ArchiveExtractParameterTool tool = new ArchiveExtractParameterTool();
+        ArchiveSpectraImportTool tool = new ArchiveSpectraImportTool();
         Options options = tool.initOptions();
         try {
             tool.runCommand(options, args);
