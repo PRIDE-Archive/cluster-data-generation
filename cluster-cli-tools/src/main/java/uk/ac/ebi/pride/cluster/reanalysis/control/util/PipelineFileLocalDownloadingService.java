@@ -7,12 +7,12 @@ import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-public class PladipusFileDownloadingService {
+public class PipelineFileLocalDownloadingService {
 
     /**
      * The Logging instance
      */
-    private static final Logger LOGGER = Logger.getLogger(PladipusFileDownloadingService.class);
+    private static final Logger LOGGER = Logger.getLogger(PipelineFileLocalDownloadingService.class);
 
     /**
      * Downloads an entire folder locally

@@ -24,6 +24,7 @@ import static com.compomics.software.autoupdater.DownloadLatestZipFromRepo.downl
 
 import uk.ac.ebi.pride.cluster.reanalysis.control.memory.MemoryWarningSystem;
 import uk.ac.ebi.pride.cluster.reanalysis.model.GlobalProcessingProperties;
+import uk.ac.ebi.pride.cluster.tools.reanalysis.SearchSetupTool;
 
 /**
  *
@@ -77,9 +78,9 @@ public class SearchGUIStep extends ProcessingStep {
 
             //update the fasta here if the search setup step was not run before
             if (!parameters.containsKey("search_setup_done")) {
-                SearchSetupStep searchSetupStep = new SearchSetupStep();
-                searchSetupStep.setParameters(parameters);
-                searchSetupStep.LoadFasta(fastaFile.getAbsolutePath());
+                SearchSetupTool searchSetupTool = new SearchSetupTool();
+                searchSetupTool.setParameters(parameters);
+                searchSetupTool.LoadFasta(fastaFile.getAbsolutePath());
                 parameters.put("search_setup_done", "true");
             }
 

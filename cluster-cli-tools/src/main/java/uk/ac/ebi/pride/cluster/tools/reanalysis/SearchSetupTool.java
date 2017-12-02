@@ -1,15 +1,16 @@
-package uk.ac.ebi.pride.cluster.reanalysis.model.processing.processsteps;
+package uk.ac.ebi.pride.cluster.tools.reanalysis;
 
 import com.compomics.util.experiment.biology.taxonomy.SpeciesFactory;
 import com.compomics.util.experiment.identification.identification_parameters.SearchParameters;
 import com.compomics.util.preferences.IdentificationParameters;
+import org.apache.commons.cli.Options;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import uk.ac.ebi.pride.cluster.reanalysis.control.util.ZipUtils;
 import uk.ac.ebi.pride.cluster.reanalysis.model.exception.ProcessingException;
 import uk.ac.ebi.pride.cluster.reanalysis.model.exception.UnspecifiedException;
 import uk.ac.ebi.pride.cluster.reanalysis.model.processing.ProcessingStep;
-import uk.ac.ebi.pride.cluster.reanalysis.control.util.PladipusFileDownloadingService;
+import uk.ac.ebi.pride.cluster.reanalysis.control.util.PipelineFileLocalDownloadingService;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.File;
@@ -17,17 +18,21 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import uk.ac.ebi.pride.cluster.reanalysis.model.GlobalProcessingProperties;
+import uk.ac.ebi.pride.cluster.reanalysis.model.processing.processsteps.SearchGUIStep;
+import uk.ac.ebi.pride.cluster.tools.ICommandTool;
+import uk.ac.ebi.pride.cluster.tools.exceptions.ClusterDataImporterException;
 
 /**
  *
  * @author Kenneth Verheggen
+ * @author Yasset Perez-Riverol
  */
-public class SearchSetupStep extends ProcessingStep {
+public class SearchSetupTool extends ProcessingStep implements ICommandTool{
 
     /**
      * The logging instance
      */
-    private static final Logger LOGGER = Logger.getLogger(SearchSetupStep.class);
+    private static final Logger LOGGER = Logger.getLogger(SearchSetupTool.class);
 
     /**
      * the temp folder for the entire processing
@@ -41,7 +46,7 @@ public class SearchSetupStep extends ProcessingStep {
      */
     private final File fasta_repo;
 
-    public SearchSetupStep() {
+    public SearchSetupTool() {
         tempResources = GlobalProcessingProperties.TEMP_FOLDER;
         tempResources.getParentFile().mkdirs();
         fasta_repo = GlobalProcessingProperties.FASTA_REPOSITORY_FOLDER;
@@ -71,7 +76,7 @@ public class SearchSetupStep extends ProcessingStep {
 
                 //move the input file to the temporary file using the pladipus file downloading service (it should be able 
                 //to handle uri's as well that way
-                File downloadFile = PladipusFileDownloadingService.downloadFile(inputPath, tempResources);
+                File downloadFile = PipelineFileLocalDownloadingService.downloadFile(inputPath, tempResources);
                 downloadFile.deleteOnExit();
                 String inputFile = downloadFile.getAbsolutePath();
                 //if it is zipped, unzip it...
@@ -107,15 +112,7 @@ public class SearchSetupStep extends ProcessingStep {
         }
         //if it's not there, create it there
         if (!fastaAlreadyExists) {
-            fastaFile = PladipusFileDownloadingService.downloadFile(fastaPath, fasta_repo, fastaName);
-        } else {
-            //do we want to delete all other fastas?
-            /*
-            for (File aFile : fasta_repo.listFiles()) {
-                if (!aFile.getName().toLowerCase().contains(fastaName.toLowerCase())) {
-                    aFile.delete();
-                }
-            }*/
+            fastaFile = PipelineFileLocalDownloadingService.downloadFile(fastaPath, fasta_repo, fastaName);
         }
 
         //if all has completed properly, there should be a fasta file here now...
@@ -125,7 +122,7 @@ public class SearchSetupStep extends ProcessingStep {
             //get and update parameters
             File paramFile;
             if (!paramPath.contains(tempResources.getAbsolutePath())) {
-                paramFile = PladipusFileDownloadingService.downloadFile(paramPath, tempResources);
+                paramFile = PipelineFileLocalDownloadingService.downloadFile(paramPath, tempResources);
                 parameters.put("id_params", paramFile.getAbsolutePath());
             }
             paramFile = new File(parameters.get("id_params"));
@@ -176,8 +173,27 @@ public class SearchSetupStep extends ProcessingStep {
         }
     }
 
+
     public static void main(String[] args) {
+        SearchSetupTool tool = new SearchSetupTool();
+        Options options = tool.initOptions();
         ProcessingStep.main(args);
     }
 
+    /**
+     * Init the options for the commandline.
+     */
+    @Override
+    public Options initOptions() {
+        Options options = new Options();
+        options.addOption("s", "spectrum-files", true, "Spectrum Files to be analyzed during the run, they should be coma separated");
+        options.addOption("f", "fasta-files", true, "Databases to run the idnetification, they should be comma sperated");
+        return options;
+
+    }
+
+    @Override
+    public void runCommand(Options options, String[] args) throws ClusterDataImporterException {
+
+    }
 }

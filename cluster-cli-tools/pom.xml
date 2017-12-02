@@ -199,6 +199,7 @@
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
+                            <useBaseVersion>false</useBaseVersion>
                             <outputDirectory>../${bin.directory.build}/${project.artifactId}/lib</outputDirectory>
                         </configuration>
                     </execution>
