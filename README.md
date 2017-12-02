@@ -39,6 +39,11 @@ A set of tools has been developed to enable the user to perform the following ta
 
 ### Parameters Predictors
 
+### Resources folder
+
+The resources folder contains all the tools, scripts and python tools to work with the data data. Most of the scripts
+are designed for working with LSF jobs.
+
 ### Troubleshooting
 
  If you have problem to pull the latest version please, force the repository by doing:
