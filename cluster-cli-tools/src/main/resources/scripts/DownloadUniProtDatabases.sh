@@ -16,4 +16,6 @@ JOB_EMAIL="yperez@ebi.ac.uk"
 NOW=$(date +"%m-%d-%Y")
 LOG_FILE_NAME=$(basename ${OUTPUT_FOLDER})
 
-./runJava.sh ${LOG_FOLDER}/${LOG_FILE_NAME}-${NOW}.log ${MEMORY_LIMIT}m -cp ../${project.artifactId}/${project.artifactId}-${project.version}.jar uk.ac.ebi.pride.cluster.tools.fasta.FastaDownloadTool -o ${OUTPUT_FOLDER} -lc ${INITIAL_TAXONOMIES} -d
+##### RUN it on the production LSF cluster
+## this is not queued in the PRIDE LSF submission group, this is submitted as regular job as it is independent of any other job
+bsub -M ${MEMORY_LIMIT} -R "rusage[mem=${MEMORY_LIMIT}]" -q production-rh7 -g /cluster-data-generation -u ${JOB_EMAIL} -J ${JOB_NAME}-${NOW}-${LOG_FILE_NAME} ./runJava.sh ${LOG_FOLDER}/${LOG_FILE_NAME}-${NOW}.log ${MEMORY_LIMIT}m -cp ../${project.artifactId}/${project.artifactId}-${project.version}.jar uk.ac.ebi.pride.cluster.tools.fasta.FastaDownloadTool -o ${OUTPUT_FOLDER} -lc ${INITIAL_TAXONOMIES} -d
