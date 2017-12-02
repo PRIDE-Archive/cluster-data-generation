@@ -13,7 +13,7 @@ printUsage() {
     echo "Usage: ./runBatchExportArchiveImport.sh <input-text-projects> <output-path> <filter-xml>"
 }
 
-if if [ "$#" -ne 3 ]
+if [ "$#" -ne 3 ]
 then
   printUsage
   exit 1

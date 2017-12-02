@@ -1,5 +1,6 @@
 #!/bin/sh
-## This can be run as a single script in the logging machine
+## This is using the LSF.
+
 OUTPUT_FOLDER=$1
 INITIAL_TAXONOMIES=$2
 LOG_FOLDER=/nfs/pride/prod/logs/cluster/
@@ -14,7 +15,7 @@ JOB_PARAMETERS=""
 JOB_EMAIL="yperez@ebi.ac.uk"
 # Log file name
 NOW=$(date +"%m-%d-%Y")
-LOG_FILE_NAME=$(basename ${OUTPUT_FOLDER})
+LOG_FILE_NAME="DATABASES"
 
 ##### FUNCTIONS
 printUsage() {
@@ -23,7 +24,7 @@ printUsage() {
     echo "Usage: ./runUniProtDatabasesInitTaxonomies.sh <output-path> <initial-taxonomies>"
 }
 
-if if [ "$#" -ne 2 ]
+if [ "$#" -ne 2 ]
 then
   printUsage
   exit 1

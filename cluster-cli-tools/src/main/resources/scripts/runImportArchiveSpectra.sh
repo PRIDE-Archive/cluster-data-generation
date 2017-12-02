@@ -27,7 +27,7 @@ printUsage() {
     echo "Usage: ./runImportArchiveSpectra.sh <memory-limit> <outputpath> <filter-xml> <input-path>"
 }
 
-if if [ "$#" -ne 4 ]
+if [ "$#" -ne 4 ]
 then
   printUsage
   exit 1
