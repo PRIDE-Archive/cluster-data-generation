@@ -20,14 +20,18 @@ JOB_EMAIL="yperez@ebi.ac.uk"
 NOW=$(date +"%m-%d-%Y")
 LOG_FILE_NAME=$(basename ${INPUT_PATH})
 
-
-
 ##### FUNCTIONS
 printUsage() {
     echo "Description: Import PRIDE Cluster data mgf into assay based system... "
     echo ""
-    echo "Usage: ./runImportArchiveSpectra.sh <outputpath> <filter-xml> <inputpath>"
+    echo "Usage: ./runImportArchiveSpectra.sh <memory-limit> <outputpath> <filter-xml> <input-path>"
 }
+
+if if [ "$#" -ne 4 ]
+then
+  printUsage
+  exit 1
+fi
 
 ##### RUN it on the production LSF cluster
 ## this is not queued in the PRIDE LSF submission group, this is submitted as regular job as it is independent of any other job
