@@ -6,19 +6,19 @@ import com.compomics.util.preferences.IdentificationParameters;
 import org.apache.commons.cli.Options;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
-import uk.ac.ebi.pride.cluster.reanalysis.control.util.ZipUtils;
-import uk.ac.ebi.pride.cluster.reanalysis.model.exception.ProcessingException;
-import uk.ac.ebi.pride.cluster.reanalysis.model.exception.UnspecifiedException;
-import uk.ac.ebi.pride.cluster.reanalysis.model.processing.ProcessingStep;
-import uk.ac.ebi.pride.cluster.reanalysis.control.util.PipelineFileLocalDownloadingService;
+import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.control.util.ZipUtils;
+import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.exception.ProcessingException;
+import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.exception.UnspecifiedException;
+import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.processing.ProcessingStep;
+import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.control.util.PipelineFileLocalDownloadingService;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import uk.ac.ebi.pride.cluster.reanalysis.model.GlobalProcessingProperties;
-import uk.ac.ebi.pride.cluster.reanalysis.model.processing.processsteps.SearchGUIStep;
+import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.GlobalProcessingProperties;
+import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.processing.processsteps.SearchGUIStep;
 import uk.ac.ebi.pride.cluster.tools.ICommandTool;
 import uk.ac.ebi.pride.cluster.tools.exceptions.ClusterDataImporterException;
 

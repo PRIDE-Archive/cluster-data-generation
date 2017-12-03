@@ -1,6 +1,5 @@
 package uk.ac.ebi.pride.cluster.tools.fasta;
 
-import EDU.oswego.cs.dl.util.concurrent.FJTask;
 import com.compomics.util.experiment.identification.protein_sequences.SequenceFactory;
 import org.apache.commons.cli.*;
 import org.apache.log4j.Logger;
