@@ -99,14 +99,14 @@ public class ArchiveExporter {
                     processor.handleCorrespondingMGFs(spectrumFilter, out);
                     out.flush();
 
-                    if(isEmpty(currentOutput)){
-                        currentOutput.deleteOnExit();
-                        LOGGER.info("The output file do nto contains spectrum files -- " + currentOutput.getAbsolutePath());
-                    }
-
                 }catch (Exception exception){
                     LOGGER.error("The mzTab is not correct, or valid" + exception.getMessage());
                 }
+                if(isEmpty(currentOutput)){
+                    currentOutput.deleteOnExit();
+                    LOGGER.info("The output file do not contains spectrum files -- " + currentOutput.getAbsolutePath());
+                }
+
             }
         }
     }

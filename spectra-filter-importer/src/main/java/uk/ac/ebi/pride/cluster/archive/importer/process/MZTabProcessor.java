@@ -49,6 +49,8 @@ public class MZTabProcessor {
 
     private Metadata metadata = new Metadata(); // We need to parse the corresponding metadata to see the Assay information.
 
+    private Boolean decoyPresent = false;
+
     public MZTabProcessor(ArchiveSpectra th) {
         archiveSpectra = th;
         idPredicates = new HashMap<>();
@@ -82,9 +84,9 @@ public class MZTabProcessor {
 
         if(!modeller.getPSMModeller().getAllFilesHaveFDRCalculated() || modeller.getPSMModeller().getFileFDRData().get(fileID).getNrFDRGoodDecoys() == 0){
             LOGGER.error("ERROR | FDR | INFORMATION about FDR NOT AVAILABLE for: " + archiveSpectra.getSource().getName());
-            for(ReportPSMSet idSet: modeller.getPSMModeller().getReportPSMSets().values())
-                LOGGER.error("ERROR | FDR | " + idSet.toString());
-            return;
+            decoyPresent = false;
+        }else{
+            decoyPresent = true;
         }
         addMzTabHandler(archiveSpectra, modeller);
 
@@ -237,7 +239,10 @@ public class MZTabProcessor {
         StringBuilder peptideScore = new StringBuilder();
 
         for (ReportPSM psm : peptides) {
-            peptideScore.append(ScoreModelEnum.PSM_LEVEL_COMBINED_FDR_SCORE.getShortName()).append(":").append(psm.getFDRScore().getValue());
+            if(!decoyPresent)
+                peptideScore.append(ScoreModelEnum.PSM_LEVEL_COMBINED_FDR_SCORE.getShortName()).append(":").append("none");
+            else
+                peptideScore.append(ScoreModelEnum.PSM_LEVEL_COMBINED_FDR_SCORE.getShortName()).append(":").append(psm.getFDRScore().getValue());
             peptideScore.append(";");
         }
         return peptideScore.substring(0, peptideScore.length() - 1).replaceAll("NO-INFO", "");
@@ -295,14 +300,29 @@ public class MZTabProcessor {
         return modifications.substring(0, modifications.length() - 1).replaceAll("NO-MOD", "");
     }
 
+    /**
+     * Combine the Decoy information at PSM level:
+     *  - Peptide Level Information:
+     *     - none (non other peptides recognized in the file as decoy). In this approach we the pipeline
+     *     doesn't know if any of the peptides are really true.
+     *     - true : The peptide is a decoy.
+     *     - false: The peptide is no decoy, is a target peptide.
+     *
+     * @param psms PSM information
+     * @return String information
+     */
     private String combineDecoyInformation(Collection<ReportPSM> psms) {
         StringBuilder decoyInformation = new StringBuilder();
 
         for (ReportPSM psm : psms) {
-            if (psm.getIsDecoy())
+            if(!decoyPresent)
+                decoyInformation.append("decoy:none").append(";");
+            else if (psm.getIsDecoy())
                 decoyInformation.append("decoy:true").append(";");
+            else if(!psm.getIsDecoy())
+                decoyInformation.append("decoy:false").append(";");
             else
-                decoyInformation.append("decoy:false;");
+                decoyInformation.append("decoy:none").append(";");
         }
         return decoyInformation.substring(0, decoyInformation.length() - 1).replaceAll("NO-INFO", "");
     }
@@ -343,15 +363,21 @@ public class MZTabProcessor {
         for(Map.Entry entry: modeller.getSpectraData().entrySet()){
             spectraIdList.put(entry.getKey().toString(), ((SpectraData) entry.getValue()).getName());
         }
-        List<ReportPSM> reportPSMS;
+        List<ReportPSM> reportPSMS = new ArrayList<>();
         List<AbstractFilter> filters = new ArrayList<>();
-        if(idPredicates != null && idPredicates.size() > 0 && modeller != null){
-            if(idPredicates.containsKey(IDFilterName.PSM_FDR_FILTER.getName())){
-                filters.add(new PSMScoreFilter(FilterComparator.less_equal, false,
-                        ((FDRFilter)idPredicates.get(IDFilterName.PSM_FDR_FILTER.getName())).getFilterValue(), ScoreModelEnum.PSM_LEVEL_FDR_SCORE.getShortName()));
+
+        if(!modeller.getPSMModeller().getAllFilesHaveFDRCalculated() || modeller.getPSMModeller().getFileFDRData().get(fileID).getNrFDRGoodDecoys() == 0){
+            reportPSMS = modeller.getPSMModeller().getFilteredReportPSMs(fileID, new ArrayList<>());
+        }else{
+            if(idPredicates != null && idPredicates.size() > 0 && modeller != null){
+                if(idPredicates.containsKey(IDFilterName.PSM_FDR_FILTER.getName())){
+                    filters.add(new PSMScoreFilter(FilterComparator.less_equal, false,
+                            ((FDRFilter)idPredicates.get(IDFilterName.PSM_FDR_FILTER.getName())).getFilterValue(), ScoreModelEnum.PSM_LEVEL_FDR_SCORE.getShortName()));
                 }
+            }
+            reportPSMS =  modeller.getPSMModeller().getFilteredReportPSMs(fileID, filters);
         }
-        reportPSMS =  modeller.getPSMModeller().getFilteredReportPSMs(fileID, filters);
+
         LOGGER.info("NUMBER OF PSMs: " + reportPSMS.size());
 
         for (ReportPSM psM : reportPSMS) {
