@@ -32,13 +32,6 @@ then
   exit 1
 fi
 
-if [ ${DATABASES_FOLDER} != /* ]
-then
-    echo "The database folder should be an absolute path in this script."
-    printUsage
-    exit 1
-fi
-
 ##### RUN it on the production LSF cluster
 ## this is not queued in the PRIDE LSF submission group, this is submitted as regular job as it is independent of any other job
 
