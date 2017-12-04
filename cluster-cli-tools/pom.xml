@@ -114,6 +114,15 @@
             <version>4.11.17</version>
             <type>jar</type>
         </dependency>
+
+
+        <!-- Database oracle -->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc14</artifactId>
+            <version>10.2.0.4.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
