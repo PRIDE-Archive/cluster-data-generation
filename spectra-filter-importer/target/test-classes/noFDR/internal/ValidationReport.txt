@@ -1,0 +1,3 @@
+Submission summary file successfully passed validation.
+Could not find any compressed files of type RESULT
+Found 202 uncompressed files of type RESULT

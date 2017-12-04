@@ -4,10 +4,12 @@ import com.compomics.pridesearchparameterextractor.cmd.PrideSearchparameterExtra
 import org.apache.commons.cli.*;
 import org.apache.log4j.Logger;
 import uk.ac.ebi.pride.cluster.ArchiveExporter;
+import uk.ac.ebi.pride.cluster.archive.importer.filters.IdentificationPredicateParser;
 import uk.ac.ebi.pride.cluster.archive.importer.filters.SpectrumPredicateParser;
 import uk.ac.ebi.pride.cluster.tools.ICommandTool;
 import uk.ac.ebi.pride.cluster.tools.exceptions.ClusterDataImporterException;
 import uk.ac.ebi.pride.cluster.tools.parameters.ArchiveExtractParameterTool;
+import uk.ac.ebi.pride.cluster.utilities.mztab.IFilter;
 import uk.ac.ebi.pride.spectracluster.spectrum.ISpectrum;
 import uk.ac.ebi.pride.spectracluster.util.function.Functions;
 import uk.ac.ebi.pride.spectracluster.util.function.IFunction;
@@ -15,6 +17,7 @@ import uk.ac.ebi.pride.spectracluster.util.function.spectrum.RemoveSpectrumEmpty
 import uk.ac.ebi.pride.spectracluster.util.predicate.IPredicate;
 
 import java.io.*;
+import java.util.Map;
 
 
 /**
@@ -80,8 +83,14 @@ public class ArchiveSpectraImportTool implements ICommandTool {
                 LOGGER.info("Analyzing the Project -- " + cmd.getOptionValue("i") + "Output to -- " + outputDirectory.getAbsolutePath());
 
                 String filterFileName = cmd.getOptionValue("c");
+
+                /** Parse the spectrum filter */
                 File filtersFile = new File(filterFileName);
                 predicate = SpectrumPredicateParser.parse(filtersFile);
+
+                /** Parse the identification peptides filters */
+                Map<String, IFilter> idPredicates = IdentificationPredicateParser.parse(filtersFile);
+
 
                 if(cmd.hasOption("s")){
                     splitOutput = true;
@@ -92,7 +101,7 @@ public class ArchiveSpectraImportTool implements ICommandTool {
 
                 String inputFolder = cmd.getOptionValue("i");
                 File dir = new File(inputFolder);
-                ArchiveExporter exp = new ArchiveExporter(condition);
+                ArchiveExporter exp = new ArchiveExporter(condition, idPredicates);
                 exp.export(dir, outputDirectory, splitOutput);
                 LOGGER.info("Project -- " + inputFolder + " Exported -- " + dir);
 

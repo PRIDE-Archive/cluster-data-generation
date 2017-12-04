@@ -63,6 +63,7 @@ public class ArchiveExporter {
             output = buildOutputFile(outputDirectory, inputDirectory);
 
         PrintWriter out = null;
+        File currentOutput = null;
 
         // find all the PRIDE generated mzTab files
         File projectInternalPath = new File(inputDirectory, FileTypes.INTERNAL_DIRECTORY);
@@ -72,6 +73,7 @@ public class ArchiveExporter {
             for (File mzTab : files) {
                 // map the relationship between mzTab file and its mgf files
                 ArchiveSpectra spec = buildArchiveSpectra(mzTab, projectInternalPath);
+                currentOutput = output;
                 if (spec == null) {
                     LOGGER.error("The following mztab is wrong formatted --  " + mzTab);
                     continue;
@@ -90,10 +92,18 @@ public class ArchiveExporter {
                             out = new PrintWriter(new BufferedWriter(new FileWriter(output, true)), false);
                     else {
                         File outputMzTabFile = buildOutputFile(output, processor.getAssayId());
+                        currentOutput = outputMzTabFile;
                         out = new PrintWriter(new BufferedWriter(new FileWriter(outputMzTabFile)), false);
                     }
+
                     processor.handleCorrespondingMGFs(spectrumFilter, out);
                     out.flush();
+
+                    if(isEmpty(currentOutput)){
+                        currentOutput.deleteOnExit();
+                        LOGGER.info("The output file do nto contains spectrum files -- " + currentOutput.getAbsolutePath());
+                    }
+
                 }catch (Exception exception){
                     LOGGER.error("The mzTab is not correct, or valid" + exception.getMessage());
                 }
@@ -204,5 +214,14 @@ public class ArchiveExporter {
             return spectra;
         }
         return null;
+    }
+
+    /**
+     * Check if the file is empty or not.
+     * @param file Original File
+     * @return check the size.
+     */
+    private boolean isEmpty(File file){
+        return file.length() == 0;
     }
 }

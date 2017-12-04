@@ -7,4 +7,5 @@
     <entry key="with.precursors">true</entry>
     <entry key="none.negative.peaks">true</entry>
     <entry key="precursor.mz.range">200-5000</entry>
+    <entry key="psm.decoy.filter">0.1</entry>
 </properties>
