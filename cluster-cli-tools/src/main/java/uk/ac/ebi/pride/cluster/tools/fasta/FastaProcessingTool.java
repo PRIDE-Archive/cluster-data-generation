@@ -20,7 +20,7 @@ import java.io.IOException;
  * ==Overview==
  * <p>
  * This class process an input Fasta file and append the corresponding contaminants, or append the decoys. Because multiple operations are supported
- * the granualrity of the tool follow the following flow:
+ * the granularity of the tool follow the following flow:
  *  - Append another database.
  *  - Append Contaminants
  *  - Append Decoys.
