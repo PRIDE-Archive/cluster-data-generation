@@ -116,11 +116,18 @@
         </dependency>
 
 
-        <!-- Database oracle -->
+        <!-- Database oracle driver. It is imoprtant to know that this driver should
+        be installed manually. The current version can be download from here:
+
+        http://www.oracle.com/technetwork/database/features/jdbc/jdbc-ucp-122-3110062.html
+
+        The version we will use here is: 12.2.0.1
+
+        -->
         <dependency>
             <groupId>com.oracle</groupId>
-            <artifactId>ojdbc14</artifactId>
-            <version>10.2.0.4.0</version>
+            <artifactId>ojdbc8</artifactId>
+            <version>12.2.0.1</version>
         </dependency>
 
     </dependencies>
@@ -231,27 +238,28 @@
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.0.2</version>
-                <configuration>
-                    <outputDirectory>../${bin.directory.build}/scripts</outputDirectory>
-                    <resources>
-                        <resource>
-                            <directory>src/main/resources/scripts</directory>
-                            <includes>
-                                <include>*</include>
-                            </includes>
-                            <filtering>true</filtering>
-                        </resource>
-                    </resources>
-                    <overwrite>true</overwrite>
-                </configuration>
                 <executions>
                     <execution>
-                        <id>copy-resources</id>
+                        <id>copy-resources-scripts</id>
                         <phase>validate</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
+                        <configuration>
+                            <outputDirectory>../${bin.directory.build}/scripts</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources/scripts</directory>
+                                    <includes>
+                                        <include>*</include>
+                                    </includes>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                            <overwrite>true</overwrite>
+                        </configuration>
                     </execution>
+
                 </executions>
             </plugin>
 
@@ -266,6 +274,13 @@
                     <include>springXMLConfig.xml</include>
                 </includes>
             </resource>
+                <resource>
+                    <directory>src/main/resources</directory>
+                    <filtering>true</filtering>
+                    <includes>
+                        <include>**/pride_archive.properties</include>
+                    </includes>
+                </resource>
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>false</filtering>
