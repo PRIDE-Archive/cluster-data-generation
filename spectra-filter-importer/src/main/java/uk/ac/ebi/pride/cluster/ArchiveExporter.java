@@ -219,7 +219,7 @@ public class ArchiveExporter {
      * @throws IOException
      */
     private File getPeakListFileFromPRIDEName(File projectInternalPath, String name) throws IOException {
-        String peakName = name.replace(FileTypes.COMPRESS_PRIDE, "") + ".pride.mgf";
+        String peakName = name.replace(FileTypes.PRIDE_FORMAT, "") + ".pride.mgf";
         File file = new File(projectInternalPath, peakName);
         if(!file.exists())
             throw new IOException("The mgf File do not exist for the corresponding PRIDE XML -- " + name );

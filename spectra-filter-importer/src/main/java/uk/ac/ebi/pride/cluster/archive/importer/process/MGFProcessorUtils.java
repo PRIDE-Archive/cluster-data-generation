@@ -63,6 +63,7 @@ public class MGFProcessorUtils {
         } catch (FileNotFoundException e) {
             throw new UnsupportedOperationException(e);
         }
+        LOGGER.info("The Appender has written -- " + totalWritten + " spectra from file -- " + file );
         return totalWritten;
     }
 

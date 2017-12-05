@@ -7,6 +7,7 @@
 /Users/yperez/IdeaProjects/github-repo/pride-cluster/PRIDE-Cluster/cluster-data-generation/spectra-filter-importer/src/main/java/uk/ac/ebi/pride/cluster/utilities/mztab/LengthFilter.java
 /Users/yperez/IdeaProjects/github-repo/pride-cluster/PRIDE-Cluster/cluster-data-generation/spectra-filter-importer/src/main/java/uk/ac/ebi/pride/cluster/utilities/mztab/IFilter.java
 /Users/yperez/IdeaProjects/github-repo/pride-cluster/PRIDE-Cluster/cluster-data-generation/spectra-filter-importer/src/main/java/uk/ac/ebi/pride/cluster/archive/importer/filters/IdentificationPredicateParser.java
+/Users/yperez/IdeaProjects/github-repo/pride-cluster/PRIDE-Cluster/cluster-data-generation/spectra-filter-importer/src/main/java/uk/ac/ebi/pride/cluster/archive/importer/process/MGFProcessorUtils.java
 /Users/yperez/IdeaProjects/github-repo/pride-cluster/PRIDE-Cluster/cluster-data-generation/spectra-filter-importer/src/main/java/uk/ac/ebi/pride/cluster/merger/MgfBySizeSplitter.java
 /Users/yperez/IdeaProjects/github-repo/pride-cluster/PRIDE-Cluster/cluster-data-generation/spectra-filter-importer/src/main/java/uk/ac/ebi/pride/cluster/archive/importer/filters/SpectrumPredicateParser.java
 /Users/yperez/IdeaProjects/github-repo/pride-cluster/PRIDE-Cluster/cluster-data-generation/spectra-filter-importer/src/main/java/uk/ac/ebi/pride/cluster/merger/Merger.java
