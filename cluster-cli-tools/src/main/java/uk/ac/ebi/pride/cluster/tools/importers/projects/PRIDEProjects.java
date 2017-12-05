@@ -44,6 +44,7 @@ public class PRIDEProjects {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             input = new FileInputStream(new File(PRIDEProjects.class.getClassLoader().getResource("pride_archive.properties").toURI()));
             props.load(input);
+            LOGGER.info("Connection will be perfomed with the following properties -- " + props.toString());
             Connection con = DriverManager.getConnection(
                     props.getProperty("pride-machine"),
                     props.getProperty("pride-user"),
