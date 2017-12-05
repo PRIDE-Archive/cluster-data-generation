@@ -42,7 +42,7 @@ public class PRIDEProjects {
         InputStream input = null;
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            input = new FileInputStream(new File(PRIDEProjects.class.getClassLoader().getResource("pride_archive.properties").toURI()));
+            input = PRIDEProjects.class.getClassLoader().getResourceAsStream("pride_archive.properties");
             props.load(input);
             LOGGER.info("Connection will be perfomed with the following properties -- " + props.toString());
             Connection con = DriverManager.getConnection(
@@ -52,7 +52,7 @@ public class PRIDEProjects {
             LOGGER.info(con.toString());
             return con;
 
-        } catch (URISyntaxException | IOException | SQLException | ClassNotFoundException e) {
+        } catch (IOException | SQLException | ClassNotFoundException e) {
                e.printStackTrace();
         }
         return null;

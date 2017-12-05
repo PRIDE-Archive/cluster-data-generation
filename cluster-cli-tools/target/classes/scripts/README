@@ -1,0 +1,35 @@
+This document contains the essential information for running the spectra filter
+
+======================       LSF jobs      =======================
+
+All command are run as EBI LSF (Loading Sharing Facility) jobs.
+
+To list all the jobs, run:
+    bjobs
+
+To stop individual jobs, run:
+    bkill <LSF job id>
+
+To stop multiple of jobs belongs to the same job group, run:
+    bkill -g <job group> 0
+
+To check the status of an individual job, run:
+    bpeek <LSF job id>
+
+To follow the progress of an individual job, run:
+    bpeek -f <LSF job id>
+
+To check the jobs running under a particular job group, run:
+    bjgroup -s <LSF job group name>
+
+To change the number of jobs that can be run concurrently, run:
+    bgmod -L <number of concurrent jobs> <LSF job group name>
+
+
+
+
+
+
+
+
+
