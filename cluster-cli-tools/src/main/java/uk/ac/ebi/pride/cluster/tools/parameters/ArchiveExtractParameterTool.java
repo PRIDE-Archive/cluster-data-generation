@@ -150,7 +150,7 @@ public class ArchiveExtractParameterTool implements ICommandTool {
             if(idFolder.length() > 0)
                 finalFolder = idFolder;
         }
-        return outputFolder + "/" + finalFolder + "-" + assayAccession + FileTypes.PARAM_FILE;
+        return outputFolder + "/" + finalFolder + "/" + finalFolder + "-" + assayAccession + FileTypes.PARAM_FILE;
     }
 
     /**
