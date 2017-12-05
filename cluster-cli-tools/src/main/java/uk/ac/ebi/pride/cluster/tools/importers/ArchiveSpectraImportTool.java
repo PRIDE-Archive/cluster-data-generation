@@ -102,7 +102,7 @@ public class ArchiveSpectraImportTool implements ICommandTool {
                 File dir = new File(inputFolder);
                 ArchiveExporter exp = new ArchiveExporter(condition, idPredicates);
                 exp.export(dir, outputDirectory, splitOutput);
-                LOGGER.info("Project -- " + inputFolder + " Exported -- " + dir);
+                LOGGER.info("Project -- " + inputFolder + " Exported -- " + outputDirectory);
 
             }else{
                 HelpFormatter formatter = new HelpFormatter();

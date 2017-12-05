@@ -3,6 +3,12 @@ package uk.ac.ebi.pride.cluster;
 import org.apache.commons.cli.*;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
+import uk.ac.ebi.pride.archive.dataprovider.file.ProjectFileType;
+import uk.ac.ebi.pride.cluster.archive.importer.process.MGFProcessorUtils;
+import uk.ac.ebi.pride.data.exception.SubmissionFileException;
+import uk.ac.ebi.pride.data.io.SubmissionFileParser;
+import uk.ac.ebi.pride.data.model.DataFile;
+import uk.ac.ebi.pride.data.model.Submission;
 import uk.ac.ebi.pride.jmztab.model.MZTabFile;
 import uk.ac.ebi.pride.jmztab.model.MsRun;
 import uk.ac.ebi.pride.jmztab.utils.MZTabFileParser;
@@ -69,6 +75,8 @@ public class ArchiveExporter {
         File projectInternalPath = new File(inputDirectory, FileTypes.INTERNAL_DIRECTORY);
         List<File> files = readMZTabFiles(inputDirectory);
 
+        List<String> rigthMztabImported = new ArrayList<>();
+
         if (!files.isEmpty()) {
             for (File mzTab : files) {
                 // map the relationship between mzTab file and its mgf files
@@ -98,10 +106,10 @@ public class ArchiveExporter {
 
                     processor.handleCorrespondingMGFs(spectrumFilter, out);
                     out.flush();
-
+                    rigthMztabImported.add(processor.getAssayId());
                 }catch (Exception exception){
                     LOGGER.error("The mzTab is not correct, or valid" + exception.getMessage());
-                }
+                 }
                 if(isEmpty(currentOutput)){
                     currentOutput.deleteOnExit();
                     LOGGER.info("The output file do not contains spectrum files -- " + currentOutput.getAbsolutePath());
@@ -109,6 +117,113 @@ public class ArchiveExporter {
 
             }
         }
+
+        /**
+         * Some of the projects fails to be converted into mztab, in this case we can't assume that the projects contains
+         * mztab. For those projects/files we will read directly the mgf for each assay.
+         */
+        try {
+            Submission submission = SubmissionFileParser.parse(new File(projectInternalPath, FileTypes.SUBMISSION_FILE));
+            List<DataFile> completeAssays = submission.getDataFiles().stream()
+                    .filter(file -> file.getFileType() == ProjectFileType.RESULT &&
+                            (FileTypes.isTypeFile(file.getFileName(), FileTypes.COMPRESS_MZIDENTML) ||
+                                    (FileTypes.isTypeFile(file.getFileName(), FileTypes.PRIDE_PREFIX, FileTypes.COMPRESS_PRIDE))))
+                   .collect(Collectors.toList());
+
+            for(DataFile file: completeAssays) {
+
+                // Processing File
+                File inputFile = new File(projectInternalPath, FileTypes.removeGzip(file.getFileName()));
+                String assayNumber = file.getAssayAccession();
+                if (!rigthMztabImported.contains(assayNumber)) {
+                    LOGGER.info("Processing Assay -- " + assayNumber + " -- Following file -- " + inputFile.getAbsolutePath());
+
+
+                    // Process an mzIdentml
+                    if (FileTypes.isTypeFile(file.getFileName(), FileTypes.COMPRESS_MZIDENTML)) {
+                        List<File> peakFiles = new ArrayList<>();
+
+                        // List of files associated with the mzIdentML
+                        retrieveListPeakFileNames(file).stream().forEach(fileName -> {
+                            File peakFile = new File(projectInternalPath, fileName);
+                            if (peakFile.exists()) {
+                                peakFiles.add(peakFile);
+                            }
+                        });
+
+                        if (!splitOuput)
+                            if (out == null)
+                                out = new PrintWriter(new BufferedWriter(new FileWriter(output)), false);
+                            else
+                                out = new PrintWriter(new BufferedWriter(new FileWriter(output, true)), false);
+                        else {
+                            File assayFile = buildOutputFile(output, assayNumber, inputDirectory);
+                            currentOutput = assayFile;
+                            out = new PrintWriter(new BufferedWriter(new FileWriter(assayFile)), false);
+                        }
+
+                        for(File peakFile: peakFiles)
+                            MGFProcessorUtils.handleCorrespondingMGFs(spectrumFilter, out, peakFile);
+
+                    } else if ((FileTypes.isTypeFile(inputFile.getName(), FileTypes.PRIDE_PREFIX, FileTypes.PRIDE_FORMAT))) {  // Process a PRIDE XML
+
+                        if (!splitOuput)
+                            if (out == null)
+                                out = new PrintWriter(new BufferedWriter(new FileWriter(output)), false);
+                            else
+                                out = new PrintWriter(new BufferedWriter(new FileWriter(output, true)), false);
+                        else {
+                            File assayFile = buildOutputFile(output, assayNumber, inputDirectory);
+                            currentOutput = assayFile;
+                            out = new PrintWriter(new BufferedWriter(new FileWriter(assayFile)), false);
+                        }
+
+                        File peakList = getPeakListFileFromPRIDEName(projectInternalPath, inputFile.getName());
+                        MGFProcessorUtils.handleCorrespondingMGFs(spectrumFilter, out, peakList);
+
+                    }
+                } else {
+                    LOGGER.info("The current Assay -- " + assayNumber + " has been correctly process with mztab");
+                }
+            }
+        } catch (SubmissionFileException e) {
+            LOGGER.error("Reading the submission file -- " +  projectInternalPath);
+            e.printStackTrace();
+        }
+
+
+    }
+
+    /**
+     * This method is a little complex because it generated an output file buy combining the name of the
+     * project and the output folder and assay. This is needed bacause sometimes is difficult to know the name of the project
+     * @param output
+     * @param assayNumber
+     * @param inputDirectory
+     * @return
+     */
+    private File buildOutputFile(File output, String assayNumber, File inputDirectory) {
+        String[] projectFolderName = inputDirectory.getAbsolutePath().split("/");
+        String lastname = "";
+        for(String currentName: projectFolderName)
+            if(currentName.trim().length() > 0)
+                lastname = currentName;
+        return new File(output, lastname + "-" + assayNumber + FileTypes.MGF_SUFFIX);
+    }
+
+    /**
+     * Get the mgf file for the corresponding pride xml file.
+     * @param projectInternalPath Project internal
+     * @param name PRIDE XML
+     * @return file
+     * @throws IOException
+     */
+    private File getPeakListFileFromPRIDEName(File projectInternalPath, String name) throws IOException {
+        String peakName = name.replace(FileTypes.COMPRESS_PRIDE, "") + ".pride.mgf";
+        File file = new File(projectInternalPath, peakName);
+        if(!file.exists())
+            throw new IOException("The mgf File do not exist for the corresponding PRIDE XML -- " + name );
+        return file;
     }
 
 
@@ -223,5 +338,21 @@ public class ArchiveExporter {
      */
     private boolean isEmpty(File file){
         return file.length() == 0;
+    }
+
+    /**
+     * This function retrieve the List of mgf files for an specific mzIdentML
+     * @param file MziDentML File
+     * @return List of file Names
+     */
+    private static List<String> retrieveListPeakFileNames(DataFile file) {
+
+        List<String> fileNames = new ArrayList<>();
+        List<DataFile> fileMapping = file.getFileMappings();
+        fileNames = fileMapping.stream()
+                .filter( fileMap -> fileMap.getFileType() == ProjectFileType.PEAK)
+                .map(fileMap -> FileTypes.removeGzip(fileMap.getFileName()))
+                .collect(Collectors.toList());
+        return fileNames;
     }
 }

@@ -38,8 +38,7 @@ public class PRIDEProjects {
     private Connection generateConnection() {
         Properties props = new Properties();
 
-
-        InputStream input = null;
+        InputStream input;
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             input = PRIDEProjects.class.getClassLoader().getResourceAsStream("pride_archive.properties");
