@@ -91,7 +91,6 @@ public class ArchiveSpectraImportTool implements ICommandTool {
                 /** Parse the identification peptides filters */
                 Map<String, IFilter> idPredicates = IdentificationPredicateParser.parse(filtersFile);
 
-
                 if(cmd.hasOption("s")){
                     splitOutput = true;
                 }

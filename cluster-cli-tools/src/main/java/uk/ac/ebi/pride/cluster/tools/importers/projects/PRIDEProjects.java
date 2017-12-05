@@ -1,14 +1,12 @@
-package uk.ac.ebi.pride.cluster.tools.projects;
+package uk.ac.ebi.pride.cluster.tools.importers.projects;
 
 import org.apache.log4j.Logger;
-import uk.ac.ebi.pride.cluster.tools.importers.ArchiveSpectraImportTool;
 
 import java.io.*;
 import java.net.URISyntaxException;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Properties;
 
@@ -24,6 +22,7 @@ import java.util.Properties;
  * This class perform simple queries into oracle database an retrieve information about projects
  * like:
  *  - Path of public projects
+ *  -
  *
  * <p>
  * Created by ypriverol (ypriverol@gmail.com) on 04/12/2017.
@@ -39,23 +38,29 @@ public class PRIDEProjects {
     private Connection generateConnection() {
         Properties props = new Properties();
 
+
         InputStream input = null;
         try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
             input = new FileInputStream(new File(PRIDEProjects.class.getClassLoader().getResource("pride_archive.properties").toURI()));
             props.load(input);
-            Connection con = DriverManager.getConnection(props.getProperty("pride-machine"),
+            Connection con = DriverManager.getConnection(
+                    props.getProperty("pride-machine"),
                     props.getProperty("pride-user"),
                     props.getProperty("pride-pwd"));
             LOGGER.info(con.toString());
             return con;
 
-        } catch (URISyntaxException | IOException | SQLException e) {
+        } catch (URISyntaxException | IOException | SQLException | ClassNotFoundException e) {
                e.printStackTrace();
         }
         return null;
     }
 
-
+    /**
+     * This function retrieve the list of paths for public datasets.
+     * @return List of public datasets paths.
+     */
     public List<String> getPublicProjectURL(){
        String query = "select accession, publication_date from project where (submission_type='PRIDE' or submission_type='COMPLETE') and is_public = 1";
        List<String> listProjects = new ArrayList<>();
@@ -88,6 +93,6 @@ public class PRIDEProjects {
         simpleDateFormat = new SimpleDateFormat("MM");
         String month = simpleDateFormat.format(date).toUpperCase();
 
-        return String.valueOf(year) + "/" + String.valueOf(month) + "/" + idProject + "/";
+        return "/" + String.valueOf(year) + "/" + String.valueOf(month) + "/" + idProject + "/";
     }
 }
