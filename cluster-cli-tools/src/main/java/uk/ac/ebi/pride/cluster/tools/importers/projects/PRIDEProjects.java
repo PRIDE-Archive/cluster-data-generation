@@ -43,7 +43,7 @@ public class PRIDEProjects {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             input = PRIDEProjects.class.getClassLoader().getResourceAsStream("pride_archive.properties");
             props.load(input);
-            LOGGER.info("Connection will be perfomed with the following properties -- " + props.toString());
+            LOGGER.info("Connection will be performed with the following properties -- " + props.toString());
             Connection con = DriverManager.getConnection(
                     props.getProperty("pride-machine"),
                     props.getProperty("pride-user"),
@@ -61,11 +61,21 @@ public class PRIDEProjects {
      * This function retrieve the list of paths for public datasets.
      * @return List of public datasets paths.
      */
-    public List<String> getPublicProjectURL(){
-       String query = "select accession, publication_date from project where (submission_type='PRIDE' or submission_type='COMPLETE') and is_public = 1";
+    public List<String> getPublicProjectURL(String taxonomy) {
        List<String> listProjects = new ArrayList<>();
-       try (Statement stmt = conn.createStatement()) {
-           ResultSet rs = stmt.executeQuery(query);
+       try {
+           PreparedStatement stmt = null;
+           if(taxonomy == null){
+               String query = "select accession, publication_date from project where (submission_type='PRIDE' or submission_type='COMPLETE') and is_public = 1";
+               stmt = conn.prepareStatement(query);
+           }
+           else {
+               String query = "select PROJECT.ACCESSION, PROJECT.PUBLICATION_DATE, CV_PARAM.ACCESSION from PROJECT, CV_PARAM, PROJECT_CVPARAM where (submission_type='PRIDE' or submission_type='COMPLETE') and is_public = 1  AND PROJECT.PROJECT_PK = PROJECT_CVPARAM.PROJECT_FK  AND PROJECT_CVPARAM.CV_PARAM_FK=CV_PARAM.CV_PARAM_PK AND CV_PARAM.CV_LABEL='NEWT'  AND CV_PARAM.ACCESSION = ?";
+               stmt = conn.prepareStatement(query);
+               stmt.setString(1, taxonomy);
+           }
+
+           ResultSet rs = stmt.executeQuery();
            while (rs.next()) {
                 String idProject = rs.getString("ACCESSION");
                 Date date = rs.getDate("PUBLICATION_DATE");

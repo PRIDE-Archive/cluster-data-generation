@@ -29,7 +29,13 @@ public class PRIDEProjectsTest {
 
     @Test
     public void getPublicProjectURL() throws Exception {
-        List<String> projectList = projectFactory.getPublicProjectURL();
+
+        //Test the number of public projects
+        List<String> projectList = projectFactory.getPublicProjectURL(null);
+        System.out.println(projectList.toString());
+
+        //Test the number of public projects
+        projectList = projectFactory.getPublicProjectURL("9913");
         System.out.println(projectList.toString());
     }
 

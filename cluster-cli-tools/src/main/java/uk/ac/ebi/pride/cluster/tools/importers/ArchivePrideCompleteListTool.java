@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,6 +35,7 @@ public class ArchivePrideCompleteListTool implements ICommandTool {
         Options options = new Options();
         options.addOption("p", "root-path", true, "Root Path to where all the projects are stored (e.g /Users/yperez/)");
         options.addOption("o","output-file", true, "The output txt file that contains all the project path.");
+        options.addOption("t","taxonomy", false, "Filter by Taxonomy the output. ");
         return options;
     }
 
@@ -47,7 +49,11 @@ public class ArchivePrideCompleteListTool implements ICommandTool {
 
                 // Projects from the PRIDE that are public
                 PRIDEProjects prideProjects = new PRIDEProjects();
-                List<String> publicProjects = prideProjects.getPublicProjectURL();
+                List<String> publicProjects = new ArrayList<>();
+                if(cmd.hasOption("t"))
+                    publicProjects = prideProjects.getPublicProjectURL(cmd.getOptionValue("t"));
+                else
+                    publicProjects = prideProjects.getPublicProjectURL(null);
 
                 String rootPath = cmd.getOptionValue("p");
 
