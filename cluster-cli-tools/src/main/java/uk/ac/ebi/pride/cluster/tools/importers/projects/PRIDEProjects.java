@@ -75,18 +75,65 @@ public class PRIDEProjects {
                stmt.setString(1, taxonomy);
            }
 
-           ResultSet rs = stmt.executeQuery();
-           while (rs.next()) {
-                String idProject = rs.getString("ACCESSION");
-                Date date = rs.getDate("PUBLICATION_DATE");
-                LOGGER.info(rs.toString());
-                listProjects.add(buildPath(idProject, date));
+           listProjects = tranformStatmentResultsToList(stmt.executeQuery());
+
+       } catch (SQLException e) {
+            e.getMessage();
+        }
+        return listProjects;
+
+    }
+
+    /**
+     * List all the projects URL path in PRIDE for projects that has spectra information
+     * @param taxonomy taxonomy to be study
+     * @return list of project paths
+     */
+    public List<String> getPublicProjectWithSpectraURL(String taxonomy){
+        List<String> listProjects = new ArrayList<>();
+        try {
+            PreparedStatement stmt = null;
+            if(taxonomy == null){
+                String query = "select accession, publication_date from PROJECT, ASSAY where (submission_type='PRIDE' or submission_type='COMPLETE') " +
+                        "AND is_public = 1 " +
+                        "AND PROJECT.PROJECT_PK = ASSAY.PROJECT_FK " +
+                        "AND ASSAY.TOTAL_SPECTRUM_COUNT > 0";
+                stmt = conn.prepareStatement(query);
             }
+            else {
+                String query = "select PROJECT.ACCESSION, PROJECT.PUBLICATION_DATE, CV_PARAM.ACCESSION " +
+                        "from PROJECT, CV_PARAM, PROJECT_CVPARAM,ASSAY where (submission_type='PRIDE' or submission_type='COMPLETE') " +
+                        "AND is_public = 1  AND PROJECT.PROJECT_PK = PROJECT_CVPARAM.PROJECT_FK  " +
+                        "AND PROJECT_CVPARAM.CV_PARAM_FK=CV_PARAM.CV_PARAM_PK AND CV_PARAM.CV_LABEL='NEWT' " +
+                        "AND PROJECT.PROJECT_PK = ASSAY.PROJECT_FK " +
+                        "AND ASSAY.TOTAL_SPECTRUM_COUNT > 0 AND CV_PARAM.ACCESSION = ?";
+                stmt = conn.prepareStatement(query);
+                stmt.setString(1, taxonomy);
+            }
+            listProjects = tranformStatmentResultsToList(stmt.executeQuery());
+
         } catch (SQLException e) {
             e.getMessage();
         }
         return listProjects;
 
+    }
+
+    /**
+     * Transform query result to List of String results.
+     * @param rs results from Query
+     * @return list of path
+     * @throws SQLException
+     */
+    private List<String> tranformStatmentResultsToList(ResultSet rs) throws SQLException {
+        List<String> listProjects = new ArrayList<>();
+        while (rs.next()) {
+            String idProject = rs.getString("ACCESSION");
+            Date date = rs.getDate("PUBLICATION_DATE");
+            LOGGER.info(rs.toString());
+            listProjects.add(buildPath(idProject, date));
+        }
+        return listProjects;
     }
 
     /**
