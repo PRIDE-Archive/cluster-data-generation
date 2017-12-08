@@ -1,34 +1,26 @@
 package uk.ac.ebi.pride.cluster.tools.reanalysis;
 
-import com.compomics.software.autoupdater.HeadlessFileDAO;
-import com.compomics.util.experiment.biology.taxonomy.SpeciesFactory;
 import com.compomics.util.experiment.identification.identification_parameters.SearchParameters;
-import com.compomics.util.gui.waiting.waitinghandlers.WaitingHandlerCLIImpl;
 import com.compomics.util.preferences.IdentificationParameters;
 import org.apache.commons.cli.*;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.control.memory.MemoryWarningSystem;
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.control.util.JarLookupService;
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.control.util.ZipUtils;
 import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.enums.AllowedSearchGUIParams;
 import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.exception.ProcessingException;
 import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.exception.UnspecifiedException;
 import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.processing.ProcessingStep;
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.control.util.PipelineFileLocalDownloadingService;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.*;
 import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.GlobalProcessingProperties;
 import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.processing.processsteps.SearchGUIStep;
 import uk.ac.ebi.pride.cluster.tools.ICommandTool;
 import uk.ac.ebi.pride.cluster.tools.exceptions.ClusterDataImporterException;
@@ -67,15 +59,28 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
      */
     private List<Path> mgfFilesPaths = null;
 
+    /**
+     * Property Tools define some of the static parameters about who to run the parameters
+     */
+    private Properties toolProperties = new Properties();
 
-    public IdentificationParameters updateAlgorithmSettings(SearchParameters searchParameters, File fasta) throws IOException, XMLStreamException, URISyntaxException, UnspecifiedException {
-        searchParameters.setFastaFile(fasta);
-        SpeciesFactory.getInstance().initiate(new SearchGUIStep().getJar().getParentFile().getAbsolutePath());
-        IdentificationParameters temp = new IdentificationParameters(searchParameters);
-        return temp;
+    /**
+     * Search GUI Tool path. This path is used globally to
+     */
+    private File searchGuiJar;
+
+    /**
+     * Default constructor initialize the tool properties file.
+     */
+    private SearchSetupTool(){
+        try {
+            InputStream propertyFile = new FileInputStream("tool.properties");
+            toolProperties.load(propertyFile);
+        } catch (IOException e) {
+            LOGGER.info("Error reading the Default property parameters for this tool -- " + SearchSetupTool.class);
+            e.printStackTrace();
+        }
     }
-
-
 
     /**
      * This project run a set of mgf for a set of fasta files and get the corresponding results.
@@ -124,10 +129,10 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
                 formatter.printHelp("ant", options);
             }
 
-            String[]  mgfFiles = cmd.getOptionValues("s");
-            String[]  fastaFiles = cmd.getOptionValues("f");
-            String    tempDirectory= cmd.getOptionValue("t");
-            String parametersFile = cmd.getOptionValue("p");
+            String[]  mgfFiles      = cmd.getOptionValue("s").split(",");
+            String[]  fastaFiles    = cmd.getOptionValue("f").split(",");
+            String    tempDirectory = cmd.getOptionValue("t");
+            String parametersFile   = cmd.getOptionValue("p");
 
             // This method clean the temporary folder
             LOGGER.info("Cleaning previous results for the same project before copying the files in the temp Directory -- " + tempDirectory);
@@ -153,6 +158,8 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
              */
             LOGGER.info("Copy the mgf to the temp Directory -- " + tempDirectory);
             copyMGFFilesToTempFolder(mgfFiles);
+
+
 
 
         }catch(ParseException | ClusterDataImporterException e){
@@ -195,7 +202,7 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
             sparameters = SearchParameters.getIdentificationParameters(paramFile.toFile());
             IdentificationParameters updatedIdentificationParameters = null;
             for(Path databasePath: fastaDatabases){
-               updatedIdentificationParameters  = updateAlgorithmSettings(sparameters, databasePath.toFile());
+               updatedIdentificationParameters  = updateAlgorithmSettingsWithFasta(sparameters, databasePath.toFile());
             }
             IdentificationParameters.saveIdentificationParameters(updatedIdentificationParameters, paramFile.toFile());
 
@@ -264,10 +271,18 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
         }
     }
 
-
+    /**
+     * Construct the Arguments for the tool, this method returns the tool and the corresponding parameters for
+     * the search tool.
+     * @return
+     * @throws IOException
+     * @throws XMLStreamException
+     * @throws URISyntaxException
+     * @throws UnspecifiedException
+     */
     private List<String> constructArguments() throws IOException, XMLStreamException, URISyntaxException, UnspecifiedException {
-        //finds the searchGUI jar in the specified folder, if it's not there, download it
-        File searchGuiJar = getJar();
+        // This is a little bit hard code but it should be seen better in the future for deploy.
+        this.searchGuiJar = new File(toolProperties.getProperty("searchgui.path"), toolProperties.getProperty("searchgui.tool") + "-" + toolProperties.getProperty("searchgui.version") + ".jar");
         //create a searchGUI commandline using the provided parameters
         ArrayList<String> cmdArgs = new ArrayList<>();
         cmdArgs.add("java");
@@ -275,9 +290,6 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
         cmdArgs.add("-cp");
         cmdArgs.add(searchGuiJar.getAbsolutePath());
         cmdArgs.add("eu.isas.searchgui.cmd.SearchCLI");
-        if (!parameters.containsKey("output_data")) {
-
-        }
         //checks if we are not missing mandatory parameters
         for (AllowedSearchGUIParams aParameter : AllowedSearchGUIParams.values()) {
             if (parameters.containsKey(aParameter.getId())) {
@@ -292,55 +304,37 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
 
     @Override
     public boolean process() throws ProcessingException, UnspecifiedException {
+
         try {
-            File parameterFile = new File(parameters.get("id_params"));
-            File fastaFile = new File(parameters.get("fasta_file"));
-            File real_outputFolder = new File(parameters.get("output_folder"));
-
-            //update the fasta here if the search setup step was not run before
-            if (!parameters.containsKey("search_setup_done")) {
-                SearchSetupTool searchSetupTool = new SearchSetupTool();
-                searchSetupTool.setParameters(parameters);
-                searchSetupTool.LoadFasta(fastaFile.getAbsolutePath());
-                parameters.put("search_setup_done", "true");
-            }
-
-            if (GlobalProcessingProperties.TEMP_FOLDER_SEARCHGUI.exists()) {
-                GlobalProcessingProperties.TEMP_FOLDER_SEARCHGUI.delete();
-            }
-            GlobalProcessingProperties.TEMP_FOLDER_SEARCHGUI.mkdirs();
-
-            LOGGER.info("Starting SearchGUI...");
-
-            parameters.put("output_folder", GlobalProcessingProperties.TEMP_FOLDER_SEARCHGUI.getAbsolutePath());
-            startProcess(getJar(), constructArguments());
-            //storing intermediate results
-            LOGGER.debug("Storing results in " + real_outputFolder);
-            real_outputFolder.mkdirs();
-            File outputFile = new File(real_outputFolder, "searchgui_out.zip");
-            File tempOutput = new File(GlobalProcessingProperties.TEMP_FOLDER_SEARCHGUI, "searchgui_out.zip");
-            //copy as a stream?
+            LOGGER.info("starting the process of data research with SearchGUI Tool in temp folder -- " + tempResources);
+            startProcess(searchGuiJar, constructArguments());
+            LOGGER.debug("Storing results in temp directory --- " + tempResources);
+            File outputFile = new File(tempResources, "searchgui_out.zip");
             if (!outputFile.exists()) {
                 outputFile.createNewFile();
             }
-            try (FileChannel source = new FileInputStream(tempOutput).getChannel();
-                 FileChannel destination = new FileOutputStream(outputFile).getChannel()) {
-                destination.transferFrom(source, 0, source.size());
-            }
-            //  FileUtils.copyDirectory(temp_searchGUI_output, real_outputFolder);
-            //in case of future peptideShaker searches :
-            parameters.put("identification_files", GlobalProcessingProperties.TEMP_FOLDER_SEARCHGUI.getAbsolutePath());
-            parameters.put("out", real_outputFolder.getAbsolutePath() + "/" + parameterFile.getName() + ".cps");
-            parameters.put("output_folder", real_outputFolder.getAbsolutePath());
-        } catch (IOException |
-                ClassNotFoundException |
-                XMLStreamException |
-                URISyntaxException |
-                UnspecifiedException ex) {
+        } catch (IOException | XMLStreamException | URISyntaxException |  UnspecifiedException ex) {
             throw new ProcessingException(ex);
         }
         return true;
     }
+
+    /**
+     * Update the parameters file with the new Fasta File
+     * @param searchParameters
+     * @param fasta
+     * @return
+     * @throws IOException
+     * @throws XMLStreamException
+     * @throws URISyntaxException
+     * @throws UnspecifiedException
+     */
+    public IdentificationParameters updateAlgorithmSettingsWithFasta(SearchParameters searchParameters, File fasta) throws IOException, XMLStreamException, URISyntaxException, UnspecifiedException {
+        searchParameters.setFastaFile(fasta);
+        IdentificationParameters newParameters = new IdentificationParameters(searchParameters);
+        return newParameters;
+    }
+
 
 
 
