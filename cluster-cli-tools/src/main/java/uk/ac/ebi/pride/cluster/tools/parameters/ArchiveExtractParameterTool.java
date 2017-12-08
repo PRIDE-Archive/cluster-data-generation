@@ -78,13 +78,15 @@ public class ArchiveExtractParameterTool implements ICommandTool {
             File projectInternalPath = new File(inputProjectFolder, FileTypes.INTERNAL_DIRECTORY);
 
             Submission submission = SubmissionFileParser.parse(new File(projectInternalPath, FileTypes.SUBMISSION_FILE));
+            LOGGER.info("The Submission File is processing -- " + submission.toString());
+
 
             PRIDERefinery refinery = new PRIDERefinery();
 
             submission.getDataFiles().stream()
                     .filter(file -> file.getFileType() == ProjectFileType.RESULT &&
                             (FileTypes.isTypeFile(file.getFileName(), FileTypes.COMPRESS_MZIDENTML) ||
-                                    (FileTypes.isTypeFile(file.getFileName(), FileTypes.PRIDE_PREFIX, FileTypes.COMPRESS_PRIDE))))
+                                    (FileTypes.isTypeFile(file.getFileName(), FileTypes.COMPRESS_PRIDE))))
                     .forEach(
                             file -> {
 
@@ -117,7 +119,7 @@ public class ArchiveExtractParameterTool implements ICommandTool {
                                         LOGGER.error("Error in File -- " + inputFile + " -- Message Error -- " + e.getMessage());
                                     }
 
-                                } else if((FileTypes.isTypeFile(inputFile.getName(), FileTypes.PRIDE_PREFIX, FileTypes.PRIDE_FORMAT))){  // Process a PRIDE XML
+                                } else if((FileTypes.isTypeFile(inputFile.getName(), FileTypes.PRIDE_FORMAT))){  // Process a PRIDE XML
 
                                 String fileName = resolveOutputPath(outputFolder, file.getAssayAccession(), inputProjectFolder);
 

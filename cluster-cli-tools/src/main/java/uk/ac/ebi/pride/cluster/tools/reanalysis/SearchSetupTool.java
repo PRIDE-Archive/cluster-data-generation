@@ -17,6 +17,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 
@@ -54,7 +55,7 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
     /**
      * The mgf Files that would be use to perform the search.
      */
-    private List<Path> mgfFilesPaths = null;
+    private List<Path> mgfFilesPaths = new ArrayList<>();
 
     /**
      * Property Tools define some of the static parameters about who to run the parameters
@@ -66,13 +67,16 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
      */
     private File searchGuiJar;
 
+
+
     /**
      * Default constructor initialize the tool properties file.
      */
     private SearchSetupTool(){
         try {
-            InputStream propertyFile = SearchSetupTool.class.getClassLoader().getResourceAsStream("tool.properties");
+            InputStream propertyFile = this.getClass().getClassLoader().getResourceAsStream("tool.properties");
             toolProperties.load(propertyFile);
+            parameters = new HashMap<>();
         } catch (IOException e) {
             LOGGER.info("Error reading the Default property parameters for this tool -- " + SearchSetupTool.class);
             e.printStackTrace();
@@ -175,8 +179,9 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
         try {
             for (String mgfFileName : mgfFiles) {
                 File mgfFile = new File(mgfFileName);
+                File outputFile = new File(tempResources.getAbsolutePath(), mgfFile.getName());
                 if (tempResources != null) {
-                    Path mgfPath = Files.copy(mgfFile.toPath(), tempResources.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    Path mgfPath = Files.copy(mgfFile.toPath(), outputFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
                     mgfFilesPaths.add(mgfPath);
                     LOGGER.info("The mgf file -- " + mgfFileName + " has been copy to the temp folder -- " + tempResources);
                 } else {
@@ -216,10 +221,12 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
         try {
             for (String fastaName : fastaFiles) {
                 File fastaFile = new File(fastaName);
+                String fastaFileName = fastaFile.getName();
                 if (tempResources != null) {
-                    Path database = Files.copy(fastaFile.toPath(), tempResources.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    File outpufFile = new File(tempResources.getAbsolutePath(), fastaFileName);
+                    Path database = Files.copy(fastaFile.toPath(), outpufFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
                     fastaDatabases.add(database);
-                    LOGGER.info("The fasta fille -- " + fastaName + " has been copy to the temp folder -- " + tempResources);
+                    LOGGER.info("The fasta filled -- " + fastaName + " has been copy to the temp folder -- " + tempResources);
                 } else {
                     throw new ClusterDataImporterException("Error copying the fasta files the the temp directory -- ", new IOException());
                 }
@@ -231,7 +238,8 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
         // The parametersFile is also copy into temp folder because they will be updated by the pipeline.
         try{
             File paramFile = new File(parametersFile);
-            this.paramFile = Files.copy(paramFile.toPath(), tempResources.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            File outputParam = new File(tempResources.getAbsolutePath(), paramFile.getName());
+            this.paramFile = Files.copy(paramFile.toPath(), outputParam.toPath(), StandardCopyOption.REPLACE_EXISTING);
         }catch (IOException ex){
             throw new ClusterDataImporterException("Error copying the parameters file into the temp folder" , ex);
         }
@@ -245,23 +253,28 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
      */
     private void cleanUp(String tempDirectoryName) throws ClusterDataImporterException {
         tempResources  = new File(tempDirectoryName);
-        if (tempResources.exists()) {
+        if (tempResources.exists() && tempResources.isDirectory()) {
             LOGGER.info("The temp folder -- " + tempDirectoryName + " already exists -- cleaning process will start");
-            for (File aFile : tempResources.listFiles()) {
-                if (aFile.exists()) {
-                    LOGGER.info("Deleting the following file -- " + aFile.getAbsoluteFile());
-                    if (aFile.isFile()) {
-                        aFile.delete();
-                    } else {
-                        try {
-                            FileUtils.deleteDirectory(aFile);
-                        } catch (IOException ex) {
-                            throw new ClusterDataImporterException("Error creating/cleaning the information from temp folder --" + tempDirectoryName, ex);
+            if(tempResources.listFiles() != null && tempResources.list().length > 0){
+                for (File aFile : tempResources.listFiles()) {
+                    if (aFile.exists()) {
+                        LOGGER.info("Deleting the following file -- " + aFile.getAbsoluteFile());
+                        if (aFile.isFile()) {
+                            aFile.delete();
+                        } else {
+                            try {
+                                FileUtils.deleteDirectory(aFile);
+                            } catch (IOException ex) {
+                                throw new ClusterDataImporterException("Error creating/cleaning the information from temp folder --" + tempDirectoryName, ex);
+                            }
                         }
                     }
                 }
             }
-        } else {
+        } else if(!tempResources.isDirectory()){
+            tempResources.deleteOnExit();
+            tempResources.mkdirs();
+        }else {
             tempResources.mkdirs();
             LOGGER.info("The temp folder -- " + tempDirectoryName + " do not exist -- a new folder has been created");
         }
