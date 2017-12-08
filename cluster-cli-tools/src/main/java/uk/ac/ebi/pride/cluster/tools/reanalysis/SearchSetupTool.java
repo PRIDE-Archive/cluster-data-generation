@@ -71,9 +71,8 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
      */
     private SearchSetupTool(){
         try {
-            InputStream propertyFile = new FileInputStream("tool.properties");
+            InputStream propertyFile = SearchSetupTool.class.getClassLoader().getResourceAsStream("tool.properties");
             toolProperties.load(propertyFile);
-
         } catch (IOException e) {
             LOGGER.info("Error reading the Default property parameters for this tool -- " + SearchSetupTool.class);
             e.printStackTrace();
