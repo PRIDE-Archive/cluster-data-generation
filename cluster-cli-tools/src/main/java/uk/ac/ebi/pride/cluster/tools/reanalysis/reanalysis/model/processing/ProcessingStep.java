@@ -5,8 +5,8 @@
  */
 package uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.processing;
 
+import uk.ac.ebi.pride.cluster.tools.exceptions.ClusterDataImporterException;
 import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.exception.ProcessingException;
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.exception.ProcessStepInitialisationException;
 import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.exception.UnspecifiedException;
 
 import java.io.File;
@@ -78,12 +78,12 @@ public abstract class ProcessingStep implements ProcessingExecutable, AutoClosea
     }
 
 
-    private static ProcessingStep loadStepFromClassName(String className) throws ProcessStepInitialisationException, IOException {
+    private static ProcessingStep loadStepFromClassName(String className) throws ClusterDataImporterException, IOException {
         try {
             Class<?> clazz = Class.forName(className);
             return (ProcessingStep) clazz.newInstance();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | IllegalArgumentException | SecurityException ex) {
-            throw new ProcessStepInitialisationException(ex.getMessage());
+            throw new ClusterDataImporterException(ex.getMessage(), ex);
         }
     }
 
@@ -92,7 +92,6 @@ public abstract class ProcessingStep implements ProcessingExecutable, AutoClosea
             HashMap<String, String> parameters = new HashMap<>();
             String currentClassName = getCallerClass();
             ProcessingStep step = loadStepFromClassName(currentClassName);
-            System.out.println(step.getDescription());
             for (int i = 0; i < args.length; i++) {
                 if (args[i].startsWith("-")) {
                     if (i <= args.length - 1 && !args[i + 1].startsWith("-")) {
@@ -104,7 +103,7 @@ public abstract class ProcessingStep implements ProcessingExecutable, AutoClosea
             }
             step.setParameters(parameters);
             step.process();
-        } catch (UnspecifiedException | ProcessingException | ClassNotFoundException | ProcessStepInitialisationException | IOException ex) {
+        } catch (UnspecifiedException | ProcessingException | ClassNotFoundException | ClusterDataImporterException | IOException ex) {
             Logger.getLogger(ProcessingStep.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

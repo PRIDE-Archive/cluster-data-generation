@@ -7,7 +7,6 @@ import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.control.memory.MemoryWarningSystem;
 import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.enums.AllowedSearchGUIParams;
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.exception.ProcessingException;
 import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.exception.UnspecifiedException;
 import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.processing.ProcessingStep;
 
@@ -21,11 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.processing.processsteps.SearchGUIStep;
 import uk.ac.ebi.pride.cluster.tools.ICommandTool;
 import uk.ac.ebi.pride.cluster.tools.exceptions.ClusterDataImporterException;
 
-import static com.compomics.software.autoupdater.DownloadLatestZipFromRepo.downloadLatestZipFromRepo;
 
 /**
  *
@@ -76,6 +73,7 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
         try {
             InputStream propertyFile = new FileInputStream("tool.properties");
             toolProperties.load(propertyFile);
+
         } catch (IOException e) {
             LOGGER.info("Error reading the Default property parameters for this tool -- " + SearchSetupTool.class);
             e.printStackTrace();
@@ -159,8 +157,7 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
             LOGGER.info("Copy the mgf to the temp Directory -- " + tempDirectory);
             copyMGFFilesToTempFolder(mgfFiles);
 
-
-
+            process();
 
         }catch(ParseException | ClusterDataImporterException e){
             LOGGER.error("The reanalysis pipeline has fail to reanalyze the dataset.. " + e.getMessage());
@@ -197,12 +194,12 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
      */
     private void modifiedParamFileWithFasta() throws ClusterDataImporterException {
 
-        SearchParameters sparameters;
+        SearchParameters sParameters;
         try {
-            sparameters = SearchParameters.getIdentificationParameters(paramFile.toFile());
+            sParameters = SearchParameters.getIdentificationParameters(paramFile.toFile());
             IdentificationParameters updatedIdentificationParameters = null;
             for(Path databasePath: fastaDatabases){
-               updatedIdentificationParameters  = updateAlgorithmSettingsWithFasta(sparameters, databasePath.toFile());
+               updatedIdentificationParameters  = updateAlgorithmSettingsWithFasta(sParameters, databasePath.toFile());
             }
             IdentificationParameters.saveIdentificationParameters(updatedIdentificationParameters, paramFile.toFile());
 
@@ -292,18 +289,34 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
         cmdArgs.add("eu.isas.searchgui.cmd.SearchCLI");
         //checks if we are not missing mandatory parameters
         for (AllowedSearchGUIParams aParameter : AllowedSearchGUIParams.values()) {
-            if (parameters.containsKey(aParameter.getId())) {
+            // Set the parameters for the Search Tool using default parameters.
+            if (toolProperties.containsKey(aParameter.getId())) {
                 cmdArgs.add("-" + aParameter.getId());
                 cmdArgs.add(parameters.get(aParameter.getId()));
-            } else if (aParameter.isMandatory()) {
+            } else if(aParameter.equals(AllowedSearchGUIParams.SPECTRUM_FILES)) {
+                StringBuilder mgfBuild = new StringBuilder("");
+                for (Path filePath : mgfFilesPaths) {
+                    mgfBuild.append(filePath.toAbsolutePath().toString()).append(", ");
+                }
+                String mgfFiles = mgfBuild.toString().substring(0, mgfBuild.toString().length() - 2);
+                cmdArgs.add("-" + aParameter.getId());
+                cmdArgs.add(mgfFiles);
+            } else if(aParameter.equals(AllowedSearchGUIParams.IDENTIFICATION_PARAMETERS)){
+                cmdArgs.add("-" + aParameter.getId());
+                cmdArgs.add(paramFile.toAbsolutePath().toString());
+            } else if(aParameter.equals(AllowedSearchGUIParams.OUTPUT_FOLDER)){
+                cmdArgs.add("-" + aParameter.getId());
+                cmdArgs.add(tempResources.getAbsolutePath());
+            }else if (aParameter.isMandatory()) {
                 throw new IllegalArgumentException("Missing mandatory parameter : " + aParameter.id);
             }
         }
+
         return cmdArgs;
     }
 
     @Override
-    public boolean process() throws ProcessingException, UnspecifiedException {
+    public boolean process() throws ClusterDataImporterException {
 
         try {
             LOGGER.info("starting the process of data research with SearchGUI Tool in temp folder -- " + tempResources);
@@ -314,7 +327,7 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
                 outputFile.createNewFile();
             }
         } catch (IOException | XMLStreamException | URISyntaxException |  UnspecifiedException ex) {
-            throw new ProcessingException(ex);
+            throw new ClusterDataImporterException("Error performing the Search with SeachGUI -- ", ex);
         }
         return true;
     }

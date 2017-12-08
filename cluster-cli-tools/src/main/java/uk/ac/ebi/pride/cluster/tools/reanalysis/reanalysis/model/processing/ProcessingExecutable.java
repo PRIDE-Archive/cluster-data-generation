@@ -1,5 +1,6 @@
 package uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.processing;
 
+import uk.ac.ebi.pride.cluster.tools.exceptions.ClusterDataImporterException;
 import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.exception.ProcessingException;
 import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.exception.UnspecifiedException;
 
@@ -13,7 +14,7 @@ public interface ProcessingExecutable {
      * @throws uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.exception.UnspecifiedException
      * @throws uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.exception.ProcessingException
     */
-    boolean process() throws UnspecifiedException,ProcessingException;
+    boolean process() throws UnspecifiedException, ProcessingException, ClusterDataImporterException;
 
     /**
      *
