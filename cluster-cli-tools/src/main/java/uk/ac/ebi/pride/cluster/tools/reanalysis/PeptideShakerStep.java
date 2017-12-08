@@ -1,4 +1,4 @@
-package uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.processing.processsteps;
+package uk.ac.ebi.pride.cluster.tools.reanalysis;
 
 import com.compomics.software.autoupdater.HeadlessFileDAO;
 import com.compomics.util.gui.waiting.waitinghandlers.WaitingHandlerCLIImpl;
@@ -96,7 +96,7 @@ public class PeptideShakerStep extends ProcessingStep {
     }
 
     @Override
-    public boolean doAction() throws ProcessingException, UnspecifiedException {
+    public boolean process() throws ProcessingException, UnspecifiedException {
         try {
             LOGGER.info("Running Peptide Shaker");
             //aqcuire the peptide shaker jar

@@ -17,56 +17,39 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Processing Step is an Abstract Class to perform some processing jobs. It encapsulate some tool and parameters
+ * behaviour.
  *
  * @author Kenneth Verheggen
+ * @author Yasset Perez-Riverol
  */
 public abstract class ProcessingStep implements ProcessingExecutable, AutoCloseable {
 
-    /**
-     * The Logger Instance
-     */
+    // Parameters for the tool to perform the processing
     protected HashMap<String, String> parameters;
-    /**
-     * The fully defined class name of the processing step
-     */
 
-    protected String processingStepClassName;
-    /**
-     * The id of the current process / job
-     */
-    private int processingID = -1;
-    /**
-     * a boolean indicating whether the step has finished
-     */
+    // A boolean indicating whether the step has finished
     protected boolean isDone = false;
 
-    public ProcessingStep() {
+    // Default Constructor
+    public ProcessingStep() {}
 
-    }
-
-    public String getProcessingStepClassName() {
-        return processingStepClassName;
-    }
-
-    public void setProcessingStepClassName(String processingStepClassName) {
-        this.processingStepClassName = processingStepClassName;
-    }
-
+    /**
+     * Set the parameter for the tool. The HashMap that contains the parameter and
+     * the value for the specific parameter.
+     * @param parameters Parameters for the specific tool
+     */
     public void setParameters(HashMap<String, String> parameters) {
         this.parameters = parameters;
     }
 
+    /**
+     * Get the parameters for the specific tool like a jey value pair.
+     * @return Parameter Hash.
+     */
     @Override
     public HashMap<String, String> getParameters() {
         return parameters;
-    }
-
-    public int getProcessingID() {
-        return processingID;
-    }
-
-    public void setProcessingID(int processingID) {
-        this.processingID = processingID;
     }
 
     public void startProcess(File executable, List<String> constructArguments) throws IOException {
@@ -74,9 +57,7 @@ public abstract class ProcessingStep implements ProcessingExecutable, AutoClosea
         for(String arg:constructArguments){
             cmdBuilder.append(arg).append(" ");
         }       
-        ProcessBuilder pb = new ProcessBuilder(cmdBuilder.substring(0, cmdBuilder.length()-1))
-                .inheritIO()
-                .directory(executable.getParentFile());
+        ProcessBuilder pb = new ProcessBuilder(cmdBuilder.substring(0, cmdBuilder.length()-1)).inheritIO() .directory(executable.getParentFile());
         pb.start();
 
     }
@@ -84,7 +65,6 @@ public abstract class ProcessingStep implements ProcessingExecutable, AutoClosea
     @Override
     public void close() {
         isDone = true;
-        //do other stuff that needs to be done to close this step nicely (close streams etc)
     }
 
     public boolean isIsDone() {
@@ -95,6 +75,16 @@ public abstract class ProcessingStep implements ProcessingExecutable, AutoClosea
         StackTraceElement[] stElements = Thread.currentThread().getStackTrace();
         String rawFQN = stElements[3].toString().split("\\(")[0];
         return (rawFQN.substring(0, rawFQN.lastIndexOf('.')));
+    }
+
+
+    private static ProcessingStep loadStepFromClassName(String className) throws ProcessStepInitialisationException, IOException {
+        try {
+            Class<?> clazz = Class.forName(className);
+            return (ProcessingStep) clazz.newInstance();
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | IllegalArgumentException | SecurityException ex) {
+            throw new ProcessStepInitialisationException(ex.getMessage());
+        }
     }
 
     public static void main(String[] args) {
@@ -113,19 +103,11 @@ public abstract class ProcessingStep implements ProcessingExecutable, AutoClosea
                 }
             }
             step.setParameters(parameters);
-            step.doAction();
+            step.process();
         } catch (UnspecifiedException | ProcessingException | ClassNotFoundException | ProcessStepInitialisationException | IOException ex) {
             Logger.getLogger(ProcessingStep.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    private static ProcessingStep loadStepFromClassName(String className) throws ProcessStepInitialisationException, IOException {
-        try {
-            Class<?> clazz = Class.forName(className);
-            return (ProcessingStep) clazz.newInstance();
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | IllegalArgumentException | SecurityException ex) {
-            throw new ProcessStepInitialisationException(ex.getMessage());
-        }
-    }
 
 }
