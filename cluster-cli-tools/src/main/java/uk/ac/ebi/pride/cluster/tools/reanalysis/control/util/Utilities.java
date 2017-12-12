@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.control.util;
+package uk.ac.ebi.pride.cluster.tools.reanalysis.control.util;
 
 import java.io.File;
 import java.io.FileInputStream;

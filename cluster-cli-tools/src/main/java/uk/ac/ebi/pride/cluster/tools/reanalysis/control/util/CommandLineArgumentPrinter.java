@@ -1,7 +1,7 @@
-package uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.control.util;
+package uk.ac.ebi.pride.cluster.tools.reanalysis.control.util;
 
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.enums.AllowedPeptideShakerParams;
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.enums.AllowedSearchGUIParams;
+import uk.ac.ebi.pride.cluster.tools.reanalysis.enums.AllowedPeptideShakerParams;
+import uk.ac.ebi.pride.cluster.tools.reanalysis.enums.AllowedSearchGUIParams;
 
 /**
  *

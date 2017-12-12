@@ -1,4 +1,4 @@
-package uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.enums;
+package uk.ac.ebi.pride.cluster.tools.reanalysis.enums;
 
 /**
  * Command line option parameters for SearchCLI.

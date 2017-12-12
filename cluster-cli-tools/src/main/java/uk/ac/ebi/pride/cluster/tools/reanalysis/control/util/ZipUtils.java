@@ -1,9 +1,9 @@
 
-package uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.control.util;
+package uk.ac.ebi.pride.cluster.tools.reanalysis.control.util;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.exception.UnspecifiedException;
+import uk.ac.ebi.pride.cluster.tools.reanalysis.exception.UnspecifiedException;
 
 import java.io.*;
 import java.util.Enumeration;

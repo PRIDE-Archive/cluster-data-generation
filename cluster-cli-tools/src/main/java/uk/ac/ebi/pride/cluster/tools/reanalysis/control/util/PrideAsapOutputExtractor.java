@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.control.util;
+package uk.ac.ebi.pride.cluster.tools.reanalysis.control.util;
 
 import org.apache.log4j.Logger;
 

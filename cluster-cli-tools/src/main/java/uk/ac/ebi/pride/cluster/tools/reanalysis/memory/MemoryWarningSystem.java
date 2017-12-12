@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.control.memory;
+package uk.ac.ebi.pride.cluster.tools.reanalysis.memory;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;

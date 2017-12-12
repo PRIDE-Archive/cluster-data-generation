@@ -5,10 +5,10 @@ import com.compomics.util.preferences.IdentificationParameters;
 import org.apache.commons.cli.*;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.control.memory.MemoryWarningSystem;
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.enums.AllowedSearchGUIParams;
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.exception.UnspecifiedException;
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.processing.ProcessingStep;
+import uk.ac.ebi.pride.cluster.tools.reanalysis.memory.MemoryWarningSystem;
+import uk.ac.ebi.pride.cluster.tools.reanalysis.enums.AllowedSearchGUIParams;
+import uk.ac.ebi.pride.cluster.tools.reanalysis.exception.UnspecifiedException;
+import uk.ac.ebi.pride.cluster.tools.reanalysis.processing.ProcessingStep;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.*;
@@ -23,6 +23,9 @@ import java.util.Properties;
 
 import uk.ac.ebi.pride.cluster.tools.ICommandTool;
 import uk.ac.ebi.pride.cluster.tools.exceptions.ClusterDataImporterException;
+import uk.ac.ebi.pride.spectracluster.io.MGFSpectrumAppenderIntCharge;
+import uk.ac.ebi.pride.spectracluster.io.ParserUtilities;
+import uk.ac.ebi.pride.spectracluster.spectrum.ISpectrum;
 
 
 /**
@@ -160,12 +163,27 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
             LOGGER.info("Copy the mgf to the temp Directory -- " + tempDirectory);
             copyMGFFilesToTempFolder(mgfFiles);
 
+            LOGGER.info("Set Parameters name of the Search parameters File -- " + paramFile.toString());
+            setParametersName();
+
             process();
 
         }catch(ParseException | ClusterDataImporterException e){
             LOGGER.error("The reanalysis pipeline has fail to reanalyze the dataset.. " + e.getMessage());
             HelpFormatter formatter = new HelpFormatter();
             formatter.printHelp("ant", options);
+        }
+    }
+
+    private void setParametersName() throws ClusterDataImporterException {
+        SearchParameters sParameters;
+        try {
+            sParameters = SearchParameters.getIdentificationParameters(paramFile.toFile());
+            IdentificationParameters idParameters = new IdentificationParameters(sParameters);
+            idParameters.setName("Default Parameters from PRIDE Predictor");
+            IdentificationParameters.saveIdentificationParameters(idParameters, paramFile.toFile());
+        } catch (IOException | ClassNotFoundException  e) {
+            throw new ClusterDataImporterException("The parameters file was not found in the temp folder, then it can not be modfied -- " + paramFile, e);
         }
     }
 
@@ -180,9 +198,8 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
             for (String mgfFileName : mgfFiles) {
                 File mgfFile = new File(mgfFileName);
                 File outputFile = new File(tempResources.getAbsolutePath(), mgfFile.getName());
-                if (tempResources != null) {
-                    Path mgfPath = Files.copy(mgfFile.toPath(), outputFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-                    mgfFilesPaths.add(mgfPath);
+                if (copyMGFWithCorrectChargeSearchGUI(mgfFile, outputFile)) {
+                    mgfFilesPaths.add(outputFile.toPath());
                     LOGGER.info("The mgf file -- " + mgfFileName + " has been copy to the temp folder -- " + tempResources);
                 } else {
                     throw new ClusterDataImporterException("Error copying the fasta files the the temp directory -- ", new IOException());
@@ -191,6 +208,24 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
         }catch (IOException ex){
             throw new ClusterDataImporterException("Error copying the mgf files the the temp directory -- ", new IOException());
         }
+    }
+
+    /**
+     * Copy the spectra from the exported files into the spectra to be search. Here we are adding
+     * some corrections to the spectra needed for the reprocessing by the search engines.
+     * @param mgfFile mgfFile
+     * @param outputFile Outpuf MGF
+     * @return
+     * @throws IOException
+     */
+    private boolean copyMGFWithCorrectChargeSearchGUI(File mgfFile, File outputFile) throws IOException {
+
+        ISpectrum[] spectra = ParserUtilities.readMGFScans(mgfFile);
+        FileWriter outputFileAppend = new FileWriter(outputFile, true);
+        for(ISpectrum spectrum: spectra)
+            MGFSpectrumAppenderIntCharge.INSTANCE.appendSpectrum(outputFileAppend, spectrum);
+
+        return true;
     }
 
     /**
@@ -332,7 +367,8 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
 
         try {
             LOGGER.info("starting the process of data research with SearchGUI Tool in temp folder -- " + tempResources);
-            startProcess(searchGuiJar, constructArguments());
+            List<String> cmdParams = constructArguments();
+            startProcess(this.searchGuiJar, cmdParams);
             LOGGER.debug("Storing results in temp directory --- " + tempResources);
             File outputFile = new File(tempResources, "searchgui_out.zip");
             if (!outputFile.exists()) {

@@ -1,4 +1,4 @@
-package uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.enums;
+package uk.ac.ebi.pride.cluster.tools.reanalysis.enums;
 
 /**
  * Enum class specifying the Command Line Parameters for PeptideShaker.

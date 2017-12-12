@@ -1,4 +1,4 @@
-package uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.control.memory;
+package uk.ac.ebi.pride.cluster.tools.reanalysis.memory;
 
 import com.sun.management.HotSpotDiagnosticMXBean;
 import java.io.File;

@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.processing;
+package uk.ac.ebi.pride.cluster.tools.reanalysis.processing;
 
 import uk.ac.ebi.pride.cluster.tools.exceptions.ClusterDataImporterException;
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.exception.ProcessingException;
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.exception.UnspecifiedException;
+import uk.ac.ebi.pride.cluster.tools.reanalysis.exception.ProcessingException;
+import uk.ac.ebi.pride.cluster.tools.reanalysis.exception.UnspecifiedException;
 
 import java.io.File;
 import java.io.IOException;
@@ -57,9 +57,8 @@ public abstract class ProcessingStep implements ProcessingExecutable, AutoClosea
         for(String arg:constructArguments){
             cmdBuilder.append(arg).append(" ");
         }       
-        ProcessBuilder pb = new ProcessBuilder(cmdBuilder.substring(0, cmdBuilder.length()-1)).inheritIO() .directory(executable.getParentFile());
+        ProcessBuilder pb = new ProcessBuilder(cmdBuilder.substring(0, cmdBuilder.length()-1));
         pb.start();
-
     }
 
     @Override

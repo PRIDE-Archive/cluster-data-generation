@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.control.util;
+package uk.ac.ebi.pride.cluster.tools.reanalysis.control.util;
 
 import org.apache.commons.io.FileUtils;
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.exception.UnspecifiedException;
+import uk.ac.ebi.pride.cluster.tools.reanalysis.exception.UnspecifiedException;
 
 import java.io.File;
 import java.util.ArrayList;

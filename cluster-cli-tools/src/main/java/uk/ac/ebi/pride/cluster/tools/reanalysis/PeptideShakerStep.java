@@ -1,27 +1,10 @@
 package uk.ac.ebi.pride.cluster.tools.reanalysis;
 
-import com.compomics.software.autoupdater.HeadlessFileDAO;
-import com.compomics.util.gui.waiting.waitinghandlers.WaitingHandlerCLIImpl;
-import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Logger;
 import uk.ac.ebi.pride.cluster.tools.exceptions.ClusterDataImporterException;
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.control.util.JarLookupService;
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.enums.AllowedPeptideShakerFollowUpParams;
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.enums.AllowedPeptideShakerParams;
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.exception.ProcessingException;
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.exception.UnspecifiedException;
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.model.processing.ProcessingStep;
+import uk.ac.ebi.pride.cluster.tools.reanalysis.exception.ProcessingException;
+import uk.ac.ebi.pride.cluster.tools.reanalysis.exception.UnspecifiedException;
+import uk.ac.ebi.pride.cluster.tools.reanalysis.processing.ProcessingStep;
 
-import javax.xml.stream.XMLStreamException;
-import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.control.memory.MemoryWarningSystem;
-import uk.ac.ebi.pride.cluster.tools.reanalysis.reanalysis.control.util.Utilities;
 import static com.compomics.software.autoupdater.DownloadLatestZipFromRepo.downloadLatestZipFromRepo;
 
 /**
