@@ -326,6 +326,7 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
      */
     private List<String> constructArguments() throws IOException, XMLStreamException, URISyntaxException, UnspecifiedException {
         // This is a little bit hard code but it should be seen better in the future for deploy.
+
         this.searchGuiJar = new File(toolProperties.getProperty("searchgui.path"), toolProperties.getProperty("searchgui.tool") + "-" + toolProperties.getProperty("searchgui.version") + ".jar");
         //create a searchGUI commandline using the provided parameters
         ArrayList<String> cmdArgs = new ArrayList<>();
@@ -340,6 +341,7 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
             if (toolProperties.containsKey(aParameter.getId())) {
                 cmdArgs.add("-" + aParameter.getId());
                 cmdArgs.add(parameters.get(aParameter.getId()));
+                cmdArgs.add(toolProperties.getProperty(aParameter.getId()));
             } else if(aParameter.equals(AllowedSearchGUIParams.SPECTRUM_FILES)) {
                 StringBuilder mgfBuild = new StringBuilder("");
                 for (Path filePath : mgfFilesPaths) {
