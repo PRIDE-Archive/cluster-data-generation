@@ -52,13 +52,15 @@ public abstract class ProcessingStep implements ProcessingExecutable, AutoClosea
         return parameters;
     }
 
-    public void startProcess(File executable, List<String> constructArguments) throws IOException {
+    public Process startProcess(File executable, List<String> constructArguments) throws IOException {
+
         StringBuilder cmdBuilder = new StringBuilder();
         for(String arg:constructArguments){
             cmdBuilder.append(arg).append(" ");
-        }       
-        ProcessBuilder pb = new ProcessBuilder(cmdBuilder.substring(0, cmdBuilder.length()-1));
-        pb.start();
+        }
+        ProcessBuilder pb = new ProcessBuilder(cmdBuilder.substring(0, cmdBuilder.length()-1).split("\\s+")).inheritIO();
+        pb.directory(executable);
+        return pb.start();
     }
 
     @Override

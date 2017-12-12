@@ -340,7 +340,6 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
             // Set the parameters for the Search Tool using default parameters.
             if (toolProperties.containsKey(aParameter.getId())) {
                 cmdArgs.add("-" + aParameter.getId());
-                cmdArgs.add(parameters.get(aParameter.getId()));
                 cmdArgs.add(toolProperties.getProperty(aParameter.getId()));
             } else if(aParameter.equals(AllowedSearchGUIParams.SPECTRUM_FILES)) {
                 StringBuilder mgfBuild = new StringBuilder("");
@@ -370,7 +369,9 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
         try {
             LOGGER.info("starting the process of data research with SearchGUI Tool in temp folder -- " + tempResources);
             List<String> cmdParams = constructArguments();
-            startProcess(this.searchGuiJar, cmdParams);
+            Process process = startProcess(tempResources, cmdParams);
+            process.waitFor();
+
             LOGGER.debug("Storing results in temp directory --- " + tempResources);
             File outputFile = new File(tempResources, "searchgui_out.zip");
             if (!outputFile.exists()) {
@@ -378,6 +379,8 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
             }
         } catch (IOException | XMLStreamException | URISyntaxException |  UnspecifiedException ex) {
             throw new ClusterDataImporterException("Error performing the Search with SeachGUI -- ", ex);
+        } catch (InterruptedException ex) {
+            throw new ClusterDataImporterException("Execution of the SearchGUI subprocess has fail -- ", ex);
         }
         return true;
     }
