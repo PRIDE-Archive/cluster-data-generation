@@ -373,9 +373,9 @@ public class SearchSetupTool extends ProcessingStep implements ICommandTool{
             process.waitFor();
 
             LOGGER.debug("Storing results in temp directory --- " + tempResources);
-            File outputFile = new File(tempResources, "searchgui_out.zip");
+            File outputFile = new File(tempResources, toolProperties.getProperty("searchgui_output_file"));
             if (!outputFile.exists()) {
-                outputFile.createNewFile();
+                throw new ClusterDataImporterException("Error performing the Search with SeachGUI, not results found -- ", new Exception());
             }
         } catch (IOException | XMLStreamException | URISyntaxException |  UnspecifiedException ex) {
             throw new ClusterDataImporterException("Error performing the Search with SeachGUI -- ", ex);
