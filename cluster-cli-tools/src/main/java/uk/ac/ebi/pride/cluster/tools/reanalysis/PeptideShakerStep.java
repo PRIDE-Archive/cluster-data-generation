@@ -6,6 +6,7 @@ import org.apache.commons.cli.*;
 import org.apache.log4j.Logger;
 import uk.ac.ebi.pride.cluster.tools.ICommandTool;
 import uk.ac.ebi.pride.cluster.tools.exceptions.ClusterDataImporterException;
+import uk.ac.ebi.pride.cluster.tools.reanalysis.enums.AllowedPeptideShakerMzIdConversionParams;
 import uk.ac.ebi.pride.cluster.tools.reanalysis.enums.AllowedPeptideShakerParams;
 import uk.ac.ebi.pride.cluster.tools.reanalysis.enums.AllowedSearchGUIParams;
 import uk.ac.ebi.pride.cluster.tools.reanalysis.exception.UnspecifiedException;
@@ -52,10 +53,14 @@ public class PeptideShakerStep extends ProcessingStep implements ICommandTool{
     private Properties toolProperties = new Properties();
 
     /**
-     * Search GUI Tool path. This path is used globally to
+     * PeptideShaker Tool path. This path is used globally to
      */
     private File peptideSheckerJar;
 
+    /**
+     * The output of the mzId files
+     */
+    private File mzIDFile;
 
 
     /**
@@ -99,6 +104,7 @@ public class PeptideShakerStep extends ProcessingStep implements ICommandTool{
         Options options = new Options();
         options.addOption("i", "identification-results", true,    "The user can specified full path to searchgui results ");
         options.addOption("p", "search-parameters", true, "Search parameters provided by the user to perform the analysis");
+        options.addOption("o","mzid-output", true, "Absolute path to the mzid output file");
         return options;
 
     }
@@ -112,13 +118,14 @@ public class PeptideShakerStep extends ProcessingStep implements ICommandTool{
         try {
             CommandLine cmd = parser.parse(options, args);
 
-            if(!cmd.hasOption("i") || !cmd.hasOption("p")){
+            if(!cmd.hasOption("i") || !cmd.hasOption("p") || !cmd.hasOption("o")){
                 HelpFormatter formatter = new HelpFormatter();
                 formatter.printHelp("ant", options);
             }
 
             this.searchGUIResultsFile = new File(cmd.getOptionValue("i"));
             this.paramFile     = new File(cmd.getOptionValue("p"));
+            this.mzIDFile = new File(cmd.getOptionValue("o"));
 
             if(!searchGUIResultsFile.exists() || !this.paramFile.exists()){
                 LOGGER.info("The param files or SearchGUI results do not exists in the folloing paths -- " + searchGUIResultsFile.getAbsolutePath() + " -- " + paramFile.getAbsolutePath());
@@ -129,11 +136,69 @@ public class PeptideShakerStep extends ProcessingStep implements ICommandTool{
             LOGGER.info("PeptideShaker starts the processing of the SearchGUI results -- " + paramFile.toString());
             process();
 
+            LOGGER.info("Star the conversion to mzIdentML of the PeptideShaker results -- " + paramFile.toString());
+            posProcessMZIdConversion();
+
         }catch(ParseException | ClusterDataImporterException e){
             LOGGER.error("The reanalysis pipeline has fail to reanalyze the dataset.. " + e.getMessage());
             HelpFormatter formatter = new HelpFormatter();
             formatter.printHelp("ant", options);
         }
+    }
+
+    /**
+     * This method convert the results from PeptideShaker to mzId
+     */
+    private boolean posProcessMZIdConversion() throws ClusterDataImporterException {
+
+        try {
+            LOGGER.info("starting the process of data research with SearchGUI Tool in temp folder -- " + searchGUIResultsFile);
+            List<String> parameters = constructMzIdArguments();
+            Process process = startProcess(searchGUIResultsFile.getParentFile().getAbsoluteFile(), parameters);
+            process.waitFor();
+
+            LOGGER.debug("Converting the PeptideShaker results to mzID File --- " + searchGUIResultsFile);
+            if (!mzIDFile.exists()) {
+                throw new ClusterDataImporterException("The Conversion to mzID hasn't success -- " + searchGUIResultsFile, new Exception());
+            }
+        } catch (IOException | XMLStreamException | URISyntaxException |  UnspecifiedException ex) {
+            throw new ClusterDataImporterException("Error performing the Search with SeachGUI -- ", ex);
+        } catch (InterruptedException ex) {
+            throw new ClusterDataImporterException("Execution of the SearchGUI subprocess has fail -- ", ex);
+        }
+        return true;
+
+    }
+
+    private List<String> constructMzIdArguments() throws IOException, XMLStreamException, URISyntaxException, UnspecifiedException {
+        // This is a little bit hard code but it should be seen better in the future for deploy.
+
+        this.peptideSheckerJar = new File(toolProperties.getProperty("peptideshaker.path"), toolProperties.getProperty("peptideshaker.tool") + "-" + toolProperties.getProperty("peptideshaker.version") + ".jar");
+        //create a searchGUI commandline using the provided parameters
+        ArrayList<String> cmdArgs = new ArrayList<>();
+        cmdArgs.add("java");
+        cmdArgs.add("-Xmx" + MemoryWarningSystem.getAllowedRam() + "M");
+        cmdArgs.add("-cp");
+        cmdArgs.add(peptideSheckerJar.getAbsolutePath());
+        cmdArgs.add("eu.isas.peptideshaker.cmd.MzidCLI");
+        //checks if we are not missing mandatory parameters
+        for (AllowedPeptideShakerMzIdConversionParams aParameter : AllowedPeptideShakerMzIdConversionParams.values()) {
+            // Set the parameters for the Search Tool using default parameters.
+            if (toolProperties.containsKey(aParameter.getId())) {
+                cmdArgs.add("-" + aParameter.getId());
+                cmdArgs.add(toolProperties.getProperty(aParameter.getId()));
+            } else if(aParameter.equals(AllowedPeptideShakerMzIdConversionParams.INPUT_FILE)) {
+                cmdArgs.add("-" + aParameter.getId());
+                cmdArgs.add(searchGUIResultsFile.getParentFile().getAbsolutePath() + "/" + toolProperties.getProperty("peptideshaker_output_file"));
+            } else if(aParameter.equals(AllowedPeptideShakerMzIdConversionParams.OUTPUT_FILE)){
+                cmdArgs.add("-" + aParameter.getId());
+                cmdArgs.add(this.mzIDFile.getAbsolutePath());
+            } else if (aParameter.isMandatory()) {
+                throw new IllegalArgumentException("Missing mandatory parameter : " + aParameter.id);
+            }
+        }
+
+        return cmdArgs;
     }
 
     /**
