@@ -97,7 +97,7 @@ public class PeptideShakerStep extends ProcessingStep implements ICommandTool{
     @Override
     public Options initOptions() {
         Options options = new Options();
-        options.addOption("t", "temp-directory", true,    "The user can specified full path to searchgui results ");
+        options.addOption("i", "identification-results", true,    "The user can specified full path to searchgui results ");
         options.addOption("p", "search-parameters", true, "Search parameters provided by the user to perform the analysis");
         return options;
 
@@ -112,12 +112,12 @@ public class PeptideShakerStep extends ProcessingStep implements ICommandTool{
         try {
             CommandLine cmd = parser.parse(options, args);
 
-            if(!cmd.hasOption("s") ||  !cmd.hasOption("t") || !cmd.hasOption("p")){
+            if(!cmd.hasOption("i") || !cmd.hasOption("p")){
                 HelpFormatter formatter = new HelpFormatter();
                 formatter.printHelp("ant", options);
             }
 
-            this.searchGUIResultsFile = new File(cmd.getOptionValue("t"));
+            this.searchGUIResultsFile = new File(cmd.getOptionValue("i"));
             this.paramFile     = new File(cmd.getOptionValue("p"));
 
             if(!searchGUIResultsFile.exists() || !this.paramFile.exists()){
@@ -155,7 +155,7 @@ public class PeptideShakerStep extends ProcessingStep implements ICommandTool{
         cmdArgs.add("-Xmx" + MemoryWarningSystem.getAllowedRam() + "M");
         cmdArgs.add("-cp");
         cmdArgs.add(peptideSheckerJar.getAbsolutePath());
-        cmdArgs.add("eu.isas.searchgui.cmd.SearchCLI");
+        cmdArgs.add("eu.isas.peptideshaker.cmd.PeptideShakerCLI");
         //checks if we are not missing mandatory parameters
         for (AllowedPeptideShakerParams aParameter : AllowedPeptideShakerParams.values()) {
             // Set the parameters for the Search Tool using default parameters.
@@ -189,7 +189,7 @@ public class PeptideShakerStep extends ProcessingStep implements ICommandTool{
             process.waitFor();
 
             LOGGER.debug("Storing results in temp directory --- " + searchGUIResultsFile);
-            File outputFile = new File(searchGUIResultsFile, "searchgui_out.zip");
+            File outputFile = new File(searchGUIResultsFile.getParentFile().getAbsolutePath() + "/" + toolProperties.getProperty("peptideshaker_output_file"));
             if (!outputFile.exists()) {
                 outputFile.createNewFile();
             }

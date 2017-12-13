@@ -36,6 +36,8 @@ public enum AllowedPeptideShakerParams {
     SPECIES_TYPE("species_type", "The species type to use for the gene annotation. Supported species types are listed in the GUI.", false),
     SPECIES_UPDATE("species_update", "Check for new species information in Ensembl and update if possible. (1: true, 0: false, default is '0').", false),
     ZIP("zip", "Exports the entire project as a zip file in the file specified.", false),
+    TEMP_FOLDER("temp_folder", "Temporary Folder use by PeptideShacker", false),
+    LOG_FOLDER("log", "LOG folder used by PeptideShaker", false),
     THREADS("threads", "The number of threads to use. Defaults to the number of available CPUs.", false);
 
     /**
