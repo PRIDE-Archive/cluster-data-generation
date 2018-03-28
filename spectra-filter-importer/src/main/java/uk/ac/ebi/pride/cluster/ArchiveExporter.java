@@ -132,58 +132,64 @@ public class ArchiveExporter {
 
             for(DataFile file: completeAssays) {
 
-                // Processing File
-                File inputFile = new File(projectInternalPath, FileTypes.removeGzip(file.getFileName()));
-                String assayNumber = file.getAssayAccession();
-                if (!rigthMztabImported.contains(assayNumber)) {
-                    LOGGER.info("Processing Assay -- " + assayNumber + " -- Following file -- " + inputFile.getAbsolutePath());
+                try{
+
+                    // Processing File
+                    File inputFile = new File(projectInternalPath, FileTypes.removeGzip(file.getFileName()));
+                    String assayNumber = file.getAssayAccession();
+                    if (!rigthMztabImported.contains(assayNumber)) {
+                        LOGGER.info("Processing Assay -- " + assayNumber + " -- Following file -- " + inputFile.getAbsolutePath());
 
 
-                    // Process an mzIdentml
-                    if (FileTypes.isTypeFile(file.getFileName(), FileTypes.COMPRESS_MZIDENTML)) {
-                        List<File> peakFiles = new ArrayList<>();
+                        // Process an mzIdentml
+                        if (FileTypes.isTypeFile(file.getFileName(), FileTypes.COMPRESS_MZIDENTML)) {
+                            List<File> peakFiles = new ArrayList<>();
 
-                        // List of files associated with the mzIdentML
-                        retrieveListPeakFileNames(file).stream().forEach(fileName -> {
-                            File peakFile = new File(projectInternalPath, fileName);
-                            if (peakFile.exists()) {
-                                peakFiles.add(peakFile);
+                            // List of files associated with the mzIdentML
+                            retrieveListPeakFileNames(file).stream().forEach(fileName -> {
+                                File peakFile = new File(projectInternalPath, fileName);
+                                if (peakFile.exists()) {
+                                    peakFiles.add(peakFile);
+                                }
+                            });
+
+                            if (!splitOuput)
+                                if (out == null)
+                                    out = new PrintWriter(new BufferedWriter(new FileWriter(output)), false);
+                                else
+                                    out = new PrintWriter(new BufferedWriter(new FileWriter(output, true)), false);
+                            else {
+                                File assayFile = buildOutputFile(output, assayNumber, inputDirectory);
+                                currentOutput = assayFile;
+                                out = new PrintWriter(new BufferedWriter(new FileWriter(assayFile)), false);
                             }
-                        });
 
-                        if (!splitOuput)
-                            if (out == null)
-                                out = new PrintWriter(new BufferedWriter(new FileWriter(output)), false);
-                            else
-                                out = new PrintWriter(new BufferedWriter(new FileWriter(output, true)), false);
-                        else {
-                            File assayFile = buildOutputFile(output, assayNumber, inputDirectory);
-                            currentOutput = assayFile;
-                            out = new PrintWriter(new BufferedWriter(new FileWriter(assayFile)), false);
+                            for(File peakFile: peakFiles)
+                                MGFProcessorUtils.handleCorrespondingMGFs(spectrumFilter, out, peakFile);
+
+                        } else if ((FileTypes.isTypeFile(inputFile.getName(), FileTypes.PRIDE_PREFIX, FileTypes.PRIDE_FORMAT))) {  // Process a PRIDE XML
+
+                            if (!splitOuput)
+                                if (out == null)
+                                    out = new PrintWriter(new BufferedWriter(new FileWriter(output)), false);
+                                else
+                                    out = new PrintWriter(new BufferedWriter(new FileWriter(output, true)), false);
+                            else {
+                                File assayFile = buildOutputFile(output, assayNumber, inputDirectory);
+                                currentOutput = assayFile;
+                                out = new PrintWriter(new BufferedWriter(new FileWriter(assayFile)), false);
+                            }
+
+                            File peakList = getPeakListFileFromPRIDEName(projectInternalPath, inputFile.getName());
+                            MGFProcessorUtils.handleCorrespondingMGFs(spectrumFilter, out, peakList);
+
                         }
-
-                        for(File peakFile: peakFiles)
-                            MGFProcessorUtils.handleCorrespondingMGFs(spectrumFilter, out, peakFile);
-
-                    } else if ((FileTypes.isTypeFile(inputFile.getName(), FileTypes.PRIDE_PREFIX, FileTypes.PRIDE_FORMAT))) {  // Process a PRIDE XML
-
-                        if (!splitOuput)
-                            if (out == null)
-                                out = new PrintWriter(new BufferedWriter(new FileWriter(output)), false);
-                            else
-                                out = new PrintWriter(new BufferedWriter(new FileWriter(output, true)), false);
-                        else {
-                            File assayFile = buildOutputFile(output, assayNumber, inputDirectory);
-                            currentOutput = assayFile;
-                            out = new PrintWriter(new BufferedWriter(new FileWriter(assayFile)), false);
-                        }
-
-                        File peakList = getPeakListFileFromPRIDEName(projectInternalPath, inputFile.getName());
-                        MGFProcessorUtils.handleCorrespondingMGFs(spectrumFilter, out, peakList);
-
+                    } else {
+                        LOGGER.info("The current Assay -- " + assayNumber + " has been correctly process with mztab");
                     }
-                } else {
-                    LOGGER.info("The current Assay -- " + assayNumber + " has been correctly process with mztab");
+
+                }catch(Exception ex){
+                    LOGGER.info("The current assay -- " + file + " has not reference mgf file -- ");
                 }
             }
         } catch (SubmissionFileException e) {
